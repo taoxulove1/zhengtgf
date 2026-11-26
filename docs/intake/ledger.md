@@ -11,7 +11,7 @@
 | 2 | `CLIENT_VERSION` | `3.1.46.0` | 已确认 | `imversion.ini` `[version]` |
 | 3 | `CLIENT_FILE_COUNT` | 579 | 已确认 | `find . -type f \| wc -l` |
 | 4 | `CLIENT_TOTAL_BYTES` | ≈ 6.1 GB | 约值 | 精确值见 `assets/manifest/assets.json` |
-| 5 | `CLIENT_BACKUP_MD5` | **TODO** | 待办 | 整包 7z 冷备后取 MD5 |
+| 5 | `CLIENT_BACKUP_MD5` | `1028e2ba…4984`（树指纹）/ `a8116110`（实体包） | 已确认 | 冷备 6.1 GB + 聚合指纹，见 `assets/manifest/backup.md5` |
 | 6 | `SERVER_SRC` | `/opt/game/server` | 假设 | 待盛久稳确认目标路径 |
 | 7 | `SERVER_PKG` | `E:/源端/VS2022服务端server.rar`（31.7 MB） | 已确认 | 本地压缩包，已解至 `src/server/` |
 | 8 | `SERVER_PROCESSES` | 8 个：Super / Record / Bill / Mini / Session / Scenes / Gateway / FL | 已确认 | `src/server/` 目录 |
@@ -21,7 +21,7 @@
 | 12 | `GAME_PORT` | `7001` | 假设 | 待 P1 抓包实测 |
 | 13 | `GATE_PORT` | `7002` | 假设 | 同上 |
 | 14 | `GM_PORT` | `7003`（仅 127.0.0.1） | 假设 | 后台端口 |
-| 15 | `INTRANET_CIDR` | `192.168.1.0/24` | 假设 | 待用户确认 |
+| 15 | `INTRANET_CIDR` | `192.168.1.0/24` | 已确认 | 按默认段落地，变更只影响 P4B |
 | 16 | `PUBLIC_EXPOSE` | `["7001"]` | 假设 | 单端口 NAT |
 | 17 | `CCU_TARGET` | 200 | 假设 | P5 压测目标 |
 | 18 | `DEPLOY_OS` | CentOS 7.9 x86_64 / glibc 2.17 | 假设 | 32 位兼容基线 |
@@ -40,7 +40,7 @@
 
 ## 3. 缺口
 
-1. 客户端整包未做冷备，`CLIENT_BACKUP_MD5` 为空 → P0 门禁未过。
+1. ~~客户端整包未做冷备~~ → 已完成：实体包 6.1 GB（MD5 `a81161105e4a`）+ 树指纹 `1028e2ba…`。
 2. 内网 IP 段、目标发行版未确认 → P4B 只能用默认值推进。
 3. 原数据库未就位（无 dump、无 `.frm`）→ P4A 输入缺失。
 4. 抓包环境未准备（无 Wireshark / dumpcap 安装记录）→ P1 首日要补。

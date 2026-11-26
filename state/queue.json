@@ -1,15 +1,16 @@
 {
-  "updated_at": "2026-11-26T18:59:09Z",
+  "updated_at": "2026-11-26T19:05:45Z",
   "tasks": {
     "P0": {
-      "state": "blocked",
+      "state": "done",
       "note": "gate rc=1",
       "blocked_at": "2026-11-26T18:59:09Z",
-      "actor": "taoxulove1",
+      "actor": "local",
       "reopened_at": "2026-11-26T18:58:21Z",
       "started_at": "2026-11-26T18:59:08Z",
-      "gate_rc": 1,
-      "gate_at": "2026-11-26T18:59:08Z"
+      "gate_rc": 0,
+      "gate_at": "2026-11-26T18:59:08Z",
+      "finished_at": "2026-11-26T19:05:45Z"
     },
     "P1": {
       "state": "pending"

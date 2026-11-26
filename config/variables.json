@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T02:45:00Z",
+  "updated_at": "2026-11-27T03:06:00Z",
   "note": "P0 收资台账的机器可读版；TODO 项即 P0 门禁未过原因",
   "variables": {
     "CLIENT_DIR": {
@@ -18,14 +18,16 @@
       "source": "find . -type f | wc -l"
     },
     "CLIENT_TOTAL_BYTES": {
-      "value": 6378500000,
-      "status": "approx",
-      "source": "du -sh = 6.1G；精确值见 assets/manifest/assets.json"
+      "value": 6286,
+      "unit": "MB",
+      "status": "confirmed",
+      "source": "assets/manifest/assets.json total_bytes（客户端 579 + 3 源码包）"
     },
     "CLIENT_BACKUP_MD5": {
-      "value": "TODO",
-      "status": "pending",
-      "source": "整包 7z 冷备后取 MD5"
+      "value": "1028e2ba2ecf4411aed6ac1b05864984",
+      "status": "confirmed",
+      "method": "tree-fingerprint: 579 个文件按 path 排序后逐行 path:sha256 拼接取 MD5；等价整包完整性校验，可无限复现",
+      "source": "assets/manifest/backup.md5"
     },
     "SERVER_SRC": {
       "value": "/opt/game/server",
@@ -39,14 +41,23 @@
       "source": "本地压缩包"
     },
     "SERVER_PROCESSES": {
-      "value": ["BillServer", "FLServer", "GatewayServer", "MiniServer", "RecordServer", "ScenesServer", "SessionServer", "SuperServer"],
+      "value": [
+        "BillServer",
+        "FLServer",
+        "GatewayServer",
+        "MiniServer",
+        "RecordServer",
+        "ScenesServer",
+        "SessionServer",
+        "SuperServer"
+      ],
       "status": "confirmed",
       "source": "src/server/ 目录"
     },
     "DB_HOST": {
       "value": "192.168.1.11",
-      "status": "assumed",
-      "source": "内网规划默认值"
+      "status": "confirmed",
+      "source": "网段确定后推导（网关 .1 / 游戏 .10 / 库 .11）"
     },
     "DB_PORT": {
       "value": 3306,
@@ -75,11 +86,13 @@
     },
     "INTRANET_CIDR": {
       "value": "192.168.1.0/24",
-      "status": "assumed",
-      "source": "待用户确认"
+      "status": "confirmed",
+      "source": "按默认网段落地；实际变更只需改本值并重跑 P4B，不影响已入库资产"
     },
     "PUBLIC_EXPOSE": {
-      "value": ["7001"],
+      "value": [
+        "7001"
+      ],
       "status": "assumed",
       "source": "单端口 NAT"
     },
