@@ -72,6 +72,9 @@ def scan(roots):
         for dirpath, dirnames, filenames in os.walk(root):
             dirnames.sort()
             for name in sorted(filenames):
+                if name.lower().endswith((".dl", ".tmp", ".part", "_temp")):
+                    print(f"  [SKIP] 下载中/临时文件 {name}", file=sys.stderr)
+                    continue
                 full = os.path.join(dirpath, name)
                 try:
                     size = os.path.getsize(full)
@@ -79,10 +82,15 @@ def scan(roots):
                     continue
                 rel = os.path.relpath(full, root).replace("\\", "/")
                 ext = os.path.splitext(name)[1].lower().lstrip(".") or "(none)"
+                try:
+                    digest = sha256_of(full)
+                except (PermissionError, OSError) as e:
+                    print(f"  [SKIP] 读取失败 {rel}: {e}", file=sys.stderr)
+                    continue
                 rows.append({
                     "path": f"{base_name}/{rel}",
                     "size": size,
-                    "sha256": sha256_of(full),
+                    "sha256": digest,
                     "group": rel.split("/")[0] if "/" in rel else "(root)",
                     "ext": ext,
                     "route": route_of(size),

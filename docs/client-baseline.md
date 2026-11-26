@@ -13,6 +13,39 @@
 | 4 | 协议随版本漂移，抓包结果过期 | 抓一次即可定版，`msgid.csv` 不再需要版本维度 | P1 / P2 |
 | 5 | 新反作弊上线 | `HProtect.exe` 停留在 2011-11，属老式保护，静态分析成本低 | P1 |
 
+## 1.1 反证：更新源仍存活（2026-11-27 07:56 实测）
+
+上文"已停止更新"的判断被现场证据推翻：
+
+| 证据 | 数值 |
+|---|---|
+| `patchupdate.exe` 进程 | 运行中，PID **23128**，经 `127.0.0.1:7897` 代理出网 |
+| 正在下载的临时文件 | `cef/patchupdatehelp.exe.tmp`、`Data/map_4_pack/map_4/dengjifubun2.map.dl`、`Data/npc2af6.tmp` |
+| 文件集变化（对入库基线） | 新增 **235**、缺失 **2**、体积变化 **62** |
+| 总体积 | 6.1 GB → **6.4 GB**（579 → 812 文件） |
+| `imversion.ini` | 仍为 `3.1.46.0`（补丁不改版本号） |
+
+关键文件被替换：
+
+| 文件 | 原 | 现 | 含义 |
+|---|---|---|---|
+| `Data/HPLoader.dll` | 172624 | **187256** | 保护组件升级 |
+| `Data/HPLoader64.sys` | 172704 | **190840** | 内核驱动升级 |
+| `Data/gui.pak` | 983500 | **1277484** | UI 资源扩容 |
+| `Data/CheckMalicious.exe` | 723664 | 726936 | 检测逻辑更新 |
+
+新增组件：`cef/libcef.dll`（49.8 MB）、`Data/browser/`（CEF 内嵌浏览器 + 20 个 locale）、`Data/3DVoiceEngine/zencdec.dll`。
+
+**结论**：版本号冻结 ≠ 文件集冻结。存在一个可用的更新源，客户端每次运行都可能自我改写。
+
+### 处置三步
+
+1. 终止本次更新（保住当前文件集）：`taskkill /PID 23128 /F`
+2. 阻断后续更新：把 `config/client/patchsetup.local.ini` 覆盖到客户端根目录的 `patchsetup.ini`
+3. 断根：把客户端根目录的 `patchupdate.exe` 改名为 `patchupdate.exe.bak`
+
+三条都做完、确认无 `.dl` / `.tmp` / `_temp` 残留后，再重跑 `gen-manifest.py` 定版——**不要在有下载进行中时冻结基线**。
+
 ## 2. 已失效的外部依赖（必须在架设前切断）
 
 `patchsetup.ini` 原文 8 个外网入口，全部指向官方域名：
