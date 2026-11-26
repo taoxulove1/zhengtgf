@@ -34,6 +34,37 @@
 
 下发命令：`bash tools/protect-branch.sh`（读 `GITHUB_TOKEN` + `REPO`，幂等，可重复执行）。
 
+### 2.1 免费私有库下的等效保护（当前生效方案）
+
+GitHub 免费私有库不开放 branch protection 与 rulesets，API 返回
+`Upgrade to GitHub Pro or make this repository public to enable this feature`。
+在升级 Pro 或转 public 之前，用**两道本地/CI 闸**等价覆盖四条硬约束：
+
+| 约束 | 闸一：本地 `pre-push` | 闸二：`05 主分支守门`（push 后） |
+|---|---|---|
+| R1 提交信息规范 | 逐条正则校验，不合规拒绝推送 | 违反则回滚 + 开 `[GUARD]` Issue |
+| R2 线性历史 | 分支名白名单 | 检出 merge commit 即回滚 |
+| R3 单文件 ≤ 100 MB | — | `ls-tree -l` 扫描，超限回滚 |
+| R4 禁历史重写 | — | `merge-base --is-ancestor` 判定，非祖先即回滚 |
+| 审批 / 会话解决 | 约定 + PR 模板清单（无强制力） | 无替代 |
+
+```bash
+pwsh -File tools/install-hooks.ps1     # 启用本地钩子（core.hooksPath=.githooks）
+python tools/guard_main.py --before <sha> --after <sha>   # 本地复跑同一判据
+```
+
+**诚实边界**：review 强制、`enforce_admins`、合并队列这三项无免费替代。升级路径见 §2.2。
+
+### 2.2 解锁正式保护的两种方式
+
+| 方式 | 动作 | 代价 | 可逆 |
+|---|---|---|---|
+| 转 public | `PATCH /repos {"private":false}` 或 Settings → Danger Zone → Change visibility | 服务端源码、582 条资产清单、协议文档全部公开 | 可，但 fork 与缓存已扩散 |
+| 升 Pro | 个人 \$4/月，或 Team \$4/人/月 | 私有库获得完整保护 + rulesets | 可，降级后规则失效 |
+
+升级后重跑 `bash tools/protect-branch.sh`，回读确认 `enforce_admins=true`，
+再按 §5 把 `github-actions[bot]` 加入 bypass，否则 `03 执行` 无法回写 `state/queue.json`。
+
 ---
 
 ## 3. 提交信息规范（Conventional Commits + 中文正文）

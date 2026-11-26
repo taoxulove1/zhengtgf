@@ -1,0 +1,52 @@
+#!/bin/sh
+# .githooks/pre-push — 本地拦截（第一道闸，免费、即时）
+# 安装: pwsh -File tools/install-hooks.ps1
+# 绕过: ALLOW_MAIN_PUSH=1 git push   （仅在明确知情时使用）
+
+remote="$1"
+z40="0000000000000000000000000000000000000000"
+fail=0
+
+while read local_ref local_sha remote_ref remote_sha; do
+    case "$remote_ref" in
+        refs/heads/main)
+            if [ "${ALLOW_MAIN_PUSH:-0}" != "1" ]; then
+                echo "[pre-push] 拒绝直推 main。走 PR：git switch -c feat/xxx && git push -u origin feat/xxx"
+                echo "[pre-push] 确需直推（如首推/紧急回滚）用: ALLOW_MAIN_PUSH=1 git push"
+                fail=1
+                continue
+            fi
+            ;;
+    esac
+
+    # 分支命名
+    branch=$(echo "$remote_ref" | sed 's|^refs/heads/||')
+    case "$branch" in
+        main) : ;;
+        feat/*|fix/*|data/*|chore/*|docs/*) : ;;
+        *)
+            echo "[pre-push] 分支名不合规: $branch（须为 feat|fix|data|chore|docs/<slug>）"
+            fail=1
+            ;;
+    esac
+
+    # 提交信息（仅检查本次新增的提交）
+    if [ "$remote_sha" = "$z40" ]; then
+        range="$local_sha --not --remotes"
+    else
+        range="$remote_sha..$local_sha"
+    fi
+    git log --no-merges --pretty=%s $range 2>/dev/null | while IFS= read -r subj; do
+        [ -z "$subj" ] && continue
+        case "$subj" in
+            *"[skip ci]"*) continue ;;
+        esac
+        printf '%s' "$subj" | grep -Eq '^(feat|fix|data|docs|chore|refactor|perf|test|revert)(\([a-z0-9-]+\))?: .{4,60}$' || {
+            echo "[pre-push] 提交信息不合规: $subj"
+            echo "[pre-push] 期望: type(scope): 中文简述"
+            fail=1
+        }
+    done
+done
+
+exit $fail

@@ -1,0 +1,78 @@
+name: 05 主分支守门
+
+# 私有免费库不开放 branch protection，这里用"push 后判定 + 自动回滚"补上四条硬约束：
+#   R1 提交信息规范 / R2 线性历史 / R3 单文件 100 MB / R4 禁历史重写
+# 触发条件自豁免：state 回写、Release 资产、以及带 [skip ci] 的机器人提交。
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: guard-main
+  cancel-in-progress: false
+
+jobs:
+  guard:
+    name: guard
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: 检出（全历史，供祖先性判定）
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 判定
+        id: judge
+        run: |
+          set +e
+          python tools/guard_main.py --before "${{ github.event.before }}" --after "${{ github.sha }}" --json > /tmp/v.json
+          echo "rc=$?" >> "$GITHUB_OUTPUT"
+          cat /tmp/v.json
+
+      - name: 违规回滚
+        if: steps.judge.outputs.rc != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -uo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git revert --no-edit HEAD || git reset --hard HEAD~1
+          git commit --allow-empty -m "chore(guard): 回滚违规提交 ${{ github.sha }} [skip ci]" || true
+          git push origin HEAD:main || echo "回滚推送失败，需人工处理"
+
+          {
+            echo "### 主分支守门拦截了 1 次违规推送"
+            echo ""
+            echo "- 提交：\`${{ github.sha }}\`"
+            echo "- 触发人：\`${{ github.actor }}\`"
+            echo ""
+            echo "<details><summary>违规明细</summary>"
+            echo ""
+            echo '```json'
+            cat /tmp/v.json
+            echo '```'
+            echo "</details>"
+          } > /tmp/body.md
+          gh issue create --title "[GUARD] 违规推送已回滚 ${{ github.sha }}" \
+            --body-file /tmp/body.md --label "blocked" || true
+
+      - name: 汇总
+        if: always()
+        run: |
+          echo "### 守门结果" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          cat /tmp/v.json >> "$GITHUB_STEP_SUMMARY" 2>/dev/null || echo "无输出" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
