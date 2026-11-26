@@ -51,4 +51,7 @@ id,direction,name,length_rule,min_len,max_len,phase,captured
 
 ## 6. 当前状态
 
-`protocol.md` 为骨架，六类均未填写；`msgid.csv` 仅表头。P1 未过门禁前不得开写。
+- `msgid.csv`：**559 条**（47 个命令域），由 `tools/extract_msgid.py` 从 `src/server/base/Command.h` 自动提取。
+- `schema/commands.h`：由同一脚本生成，`#pragma pack(1)` 结构体声明。
+- `protocol.md`：§0 报文封装与登录域已填实测结论；选区/进图/心跳/移动/背包五类待 P2 补。
+- P1 门禁第三项 `captures/*.pcapng` 未满足（需管理员权限跑 `tools/capture.ps1`）。
