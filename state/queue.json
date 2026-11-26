@@ -1,11 +1,12 @@
 {
-  "updated_at": "2026-11-27T02:40:00Z",
+  "updated_at": "2026-11-26T18:58:21Z",
   "tasks": {
     "P0": {
-      "state": "blocked",
-      "note": "等待源目录与目标机访问确认；清单已生成 582 条",
+      "state": "pending",
+      "note": "",
       "blocked_at": "2026-11-27T02:40:00Z",
-      "actor": "陆全通"
+      "actor": "local",
+      "reopened_at": "2026-11-26T18:58:21Z"
     },
     "P1": {
       "state": "pending"
