@@ -1,0 +1,55 @@
+name: 04 资产发布
+
+# 6.1 GB 客户端资源不进 Git，按 90 MB 分卷挂到 Release。
+# 需要在能读源目录的 Windows 自托管 runner 上跑（源目录不在 GitHub 托管机上）。
+# 本地手动等效：
+#   pwsh -File tools/split-assets.ps1 -Source "E:/源端/官方" -Out dist
+#   gh release upload v0.1.0 dist/*.part* --clobber
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Release 标签（如 v0.1.0）"
+        required: true
+      source:
+        description: "源目录（runner 本地绝对路径）"
+        required: true
+        default: "E:/源端/官方"
+      part_mb:
+        description: "分卷大小 MB（100 MB 硬限留余量，默认 90）"
+        required: false
+        default: "90"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    name: publish
+    runs-on: [self-hosted, Windows, X64]
+    timeout-minutes: 180
+    steps:
+      - name: 检出
+        uses: actions/checkout@v4
+
+      - name: 切分 90 MB 分卷
+        shell: pwsh
+        run: |
+          pwsh -File tools/split-assets.ps1 -Source "${{ github.event.inputs.source }}" `
+               -Out dist -PartMB ${{ github.event.inputs.part_mb }}
+
+      - name: 上传为 Release 附件
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $tag = "${{ github.event.inputs.tag }}"
+          gh release view $tag 2>$null
+          if ($LASTEXITCODE -ne 0) {
+            gh release create $tag --title "assets $tag" --notes "客户端资源分卷（90 MB/卷），用 tools/fetch-assets.ps1 还原"
+          }
+          Get-ChildItem dist -Filter *.part* | ForEach-Object {
+            gh release upload $tag $_.FullName --clobber
+          }
+          if (Test-Path dist/SHA256SUMS.txt) { gh release upload $tag dist/SHA256SUMS.txt --clobber }

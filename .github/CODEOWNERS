@@ -1,0 +1,32 @@
+# CODEOWNERS · 路径级审核归属
+# 说明：GitHub 用户名请按 docs/repo-rules.md §4 的角色表替换；当前统一挂仓库 owner。
+# 顺序有意义：后面的规则覆盖前面的规则。
+
+*                                   @taoxulove1
+
+# ---- 阶段 P3 / P4B：服务端与部署 ----
+/src/server/                        @taoxulove1
+/src/server-rebuild/                @taoxulove1
+/config/server/                     @taoxulove1
+/deploy/                            @taoxulove1
+
+# ---- 阶段 P1 / P2：客户端与协议 ----
+/src/client/                        @taoxulove1
+/src/client-legacy/                 @taoxulove1
+/config/client/                     @taoxulove1
+/docs/protocol/                     @taoxulove1
+
+# ---- 阶段 P4A：数据 ----
+/docs/db/                           @taoxulove1
+/sql/                               @taoxulove1
+/assets/manifest/                   @taoxulove1
+
+# ---- 阶段 P5：测试 ----
+/docs/qa/                           @taoxulove1
+
+# ---- 全局治理：任务流与规范化 ----
+/.github/                           @taoxulove1
+/tools/                             @taoxulove1
+/tasks/                             @taoxulove1
+/docs/repo-rules.md                 @taoxulove1
+/docs/assets-policy.md              @taoxulove1

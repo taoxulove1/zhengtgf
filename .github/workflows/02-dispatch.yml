@@ -1,0 +1,100 @@
+name: 02 任务下发
+
+on:
+  schedule:
+    # 每日 09:00 CST（UTC 01:00）巡检，自动下发下一个可执行任务
+    - cron: "0 1 * * *"
+  workflow_dispatch:
+    inputs:
+      task_id:
+        description: "指定任务 ID（P0/P1/P2/P3/P4A/P4B/P5/P6），留空自动取下一个"
+        required: false
+        default: ""
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: dispatch-${{ github.event.issue.number || github.run_id }}
+  cancel-in-progress: false
+
+jobs:
+  dispatch:
+    name: dispatch
+    if: >-
+      github.event_name != 'issues' ||
+      (github.event.label.name == 'task:dispatch' && github.event.issue.state == 'open')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    outputs:
+      task_id: ${{ steps.pick.outputs.task_id }}
+    steps:
+      - name: 检出
+        uses: actions/checkout@v4
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 选取任务
+        id: pick
+        run: |
+          set -uo pipefail
+          TID="${{ github.event.inputs.task_id }}"
+          if [ -z "$TID" ]; then
+            if python tools/taskctl.py next --json > /tmp/next.json; then
+              TID=$(python -c "import json;print(json.load(open('/tmp/next.json'))['id'])")
+            else
+              echo "task_id=" >> "$GITHUB_OUTPUT"
+              echo "无就绪任务，本轮不下发" >> "$GITHUB_STEP_SUMMARY"
+              exit 0
+            fi
+          fi
+          echo "task_id=$TID" >> "$GITHUB_OUTPUT"
+          echo "本轮下发: $TID" >> "$GITHUB_STEP_SUMMARY"
+          python tools/taskctl.py status >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: 生成任务正文
+        if: steps.pick.outputs.task_id != ''
+        run: |
+          python - "${{ steps.pick.outputs.task_id }}" <<'PY' > /tmp/body.md
+          import json, sys
+          tid = sys.argv[1]
+          reg = json.load(open("tasks/registry.json", encoding="utf-8"))
+          t = next(x for x in reg["tasks"] if x["id"] == tid)
+          print(f"## {t['id']} · {t['name']}\n")
+          print(f"- 负责人：**{t['owner']}**（agent: `{t['agent']}`）")
+          print(f"- 预估工时：{t['est_days'][0]}–{t['est_days'][1]} 人日")
+          print(f"- 前置：{', '.join(t['deps']) if t['deps'] else '无'}\n")
+          print("### 输入\n" + "\n".join(f"- {i}" for i in t["inputs"]) + "\n")
+          print("### 交付物\n" + "\n".join(f"- [ ] `{o}`" for o in t["outputs"]) + "\n")
+          print(f"### 门禁\n{t['gate']['desc']}\n")
+          print(f"```bash\n{t['gate']['cmd']}\n```\n")
+          print("### 风险\n" + "\n".join(f"- {r}" for r in t.get("risks", [])) + "\n")
+          print("---\n打 `task:run` 标签即开始执行；`python tools/taskctl.py run " + tid + "` 本地同效。")
+          PY
+
+      - name: 建任务 Issue（去重）
+        if: steps.pick.outputs.task_id != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TID: ${{ steps.pick.outputs.task_id }}
+        run: |
+          set -euo pipefail
+          NAME=$(python -c "import json;print(next(x['name'] for x in json.load(open('tasks/registry.json',encoding='utf-8'))['tasks'] if x['id']=='${TID}'))")
+          TITLE="[TASK][${TID}] ${NAME}"
+          EXIST=$(gh issue list --state open --search "$TITLE in:title" --json number,title \
+                  --jq "[.[] | select(.title == \"$TITLE\")] | length")
+          if [ "$EXIST" != "0" ]; then
+            echo "已存在未关闭任务单，跳过创建"
+            exit 0
+          fi
+          gh label create "task:run"      --color 1D76DB --description "已就绪待执行" 2>/dev/null || true
+          gh label create "task:dispatch" --color FBCA04 --description "请求下发任务" 2>/dev/null || true
+          gh label create "phase:${TID:1:1}" --color 5319E7 --description "阶段 ${TID}" 2>/dev/null || true
+          gh issue create --title "$TITLE" --body-file /tmp/body.md \
+            --label "task:run" --label "phase:${TID:1:1}"

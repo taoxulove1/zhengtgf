@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 任务流说明
+    url: https://github.com/taoxulove1/zhengtugf/blob/main/docs/repo-rules.md
+    about: 分支保护、提交规范、权限与审核矩阵、数据更新约定
+  - name: 资产分层策略
+    url: https://github.com/taoxulove1/zhengtugf/blob/main/docs/assets-policy.md
+    about: 6.1 GB 客户端资源为何不进 Git，如何用 Release 分卷还原

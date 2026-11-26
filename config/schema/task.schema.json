@@ -1,0 +1,32 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "zhengtugf task",
+  "type": "object",
+  "required": ["id", "name", "owner", "agent", "deps", "est_days", "inputs", "outputs", "gate"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^P[0-9][A-Z]?$" },
+    "name": { "type": "string", "minLength": 2, "maxLength": 24 },
+    "owner": { "type": "string", "enum": ["陆全通", "文定协", "柯正栈", "盛久稳", "褚安库", "毕联通"] },
+    "agent": { "type": "string" },
+    "deps": { "type": "array", "items": { "type": "string", "pattern": "^P[0-9][A-Z]?$" } },
+    "est_days": {
+      "type": "array", "minItems": 2, "maxItems": 2,
+      "items": { "type": "number", "minimum": 0.25 },
+      "description": "[乐观, 悲观]"
+    },
+    "inputs": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "outputs": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "gate": {
+      "type": "object",
+      "required": ["desc", "cmd"],
+      "properties": {
+        "desc": { "type": "string", "minLength": 8 },
+        "cmd": { "type": "string", "minLength": 5 }
+      }
+    },
+    "ci_cmd": { "type": "string" },
+    "labels": { "type": "array", "items": { "type": "string" } },
+    "risks": { "type": "array", "items": { "type": "string" } }
+  }
+}

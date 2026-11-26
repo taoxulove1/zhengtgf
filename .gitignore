@@ -1,0 +1,95 @@
+# ============================================================
+# zhengtugf / 征途客户端逆向架设仓库 · 忽略规则
+# 规则分层：构建产物 → 运行备份 → 第三方 vendor → 大资源
+# 判定标准见 docs/assets-policy.md
+# ============================================================
+
+# ---------- 构建产物（任何目录） ----------
+*.obj
+*.o
+*.a
+*.lo
+*.la
+*.lib
+*.exp
+*.pdb
+*.ilk
+*.idb
+*.tlog
+*.lastbuildstate
+*.res
+*.aps
+*.ncb
+*.sdf
+*.suo
+*.user
+*.VC.db
+*.VC.opendb
+*.log
+*.tmp
+*.bak
+*.orig
+*.rej
+Debug/
+Release/
+x64/
+Win32/
+ipch/
+.vs/
+obj/
+bin/
+out/
+build/
+CMakeFiles/
+CMakeCache.txt
+
+# ---------- 服务端运行期备份与临时 ----------
+src/server/.backup/
+src/server/*.tar.gz
+src/server/tmp/
+src/server/log/
+src/server/*.pid
+src/server/*.sock
+
+# ---------- 第三方 vendor（体积大、可复现，走 assets 清单） ----------
+src/client/boost_1_34_1/
+src/client/code_backup/
+src/client/cache/
+src/client/compile.log
+src/client/compile_errors.txt
+src/client-legacy/boost_1_34_1/
+
+# ---------- 客户端大资源（6.1 GB，走 Release 分卷，只留清单） ----------
+assets/paks/
+assets/client/**/*.pak
+assets/client/**/*.ghd
+assets/client/**/*.mp3
+assets/client/**/*.wav
+assets/client/**/*.dav
+assets/client/**/*.skn
+assets/client/**/*.hp0
+assets/client/**/*.hp1
+assets/client/**/*.fnt
+assets/client/**/*.rar
+assets/client/**/*.exe
+assets/client/**/*.dll
+assets/client/**/*.sys
+assets/client/**/*.ocx
+assets/client/**/*.db
+
+# 全局二进制兜底（源码树里的编译产物）
+*.dll
+*.exe
+*.ocx
+*.sys
+*.drv
+
+# ---------- 密钥与环境变量 ----------
+.env
+.env.*
+*.secret
+*.pem
+*.key
+!docs/**/*.pem
+state/*.lock
+.auth/

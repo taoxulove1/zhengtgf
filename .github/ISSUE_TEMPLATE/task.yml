@@ -1,0 +1,61 @@
+name: 任务单
+description: 下发一个阶段任务（P0–P6）
+title: "[TASK][P?] "
+labels: ["task:run"]
+body:
+  - type: dropdown
+    id: phase
+    attributes:
+      label: 阶段
+      options:
+        - P0 收资与环境盘点
+        - P1 客户端抓包与解密
+        - P2 协议文档汇编
+        - P3 C++ 服务端还原
+        - P4A 数据库基线
+        - P4B Linux 部署
+        - P5 联调测试
+        - P6 汇总交付
+    validations:
+      required: true
+
+  - type: input
+    id: owner
+    attributes:
+      label: 负责人
+      placeholder: 陆全通 / 文定协 / 柯正栈 / 盛久稳 / 褚安库 / 毕联通
+    validations:
+      required: true
+
+  - type: textarea
+    id: inputs
+    attributes:
+      label: 输入
+      description: 本任务依赖的资产、文档、环境
+      placeholder: 一行一项
+    validations:
+      required: true
+
+  - type: textarea
+    id: outputs
+    attributes:
+      label: 交付物
+      description: 必须是可校验的文件路径
+      placeholder: docs/protocol/protocol.md
+    validations:
+      required: true
+
+  - type: textarea
+    id: gate
+    attributes:
+      label: 门禁判据
+      description: 二值可判，给出命令与期望输出
+      placeholder: python tools/validate_repo.py --phase P1 退出码 0
+    validations:
+      required: true
+
+  - type: input
+    id: estimate
+    attributes:
+      label: 预估人日
+      placeholder: 3–5

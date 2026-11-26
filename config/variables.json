@@ -1,0 +1,97 @@
+{
+  "updated_at": "2026-11-27T02:45:00Z",
+  "note": "P0 收资台账的机器可读版；TODO 项即 P0 门禁未过原因",
+  "variables": {
+    "CLIENT_DIR": {
+      "value": "E:/源端/官方",
+      "status": "confirmed",
+      "source": "本地盘点"
+    },
+    "CLIENT_VERSION": {
+      "value": "3.1.46.0",
+      "status": "confirmed",
+      "source": "imversion.ini [version] version"
+    },
+    "CLIENT_FILE_COUNT": {
+      "value": 579,
+      "status": "confirmed",
+      "source": "find . -type f | wc -l"
+    },
+    "CLIENT_TOTAL_BYTES": {
+      "value": 6378500000,
+      "status": "approx",
+      "source": "du -sh = 6.1G；精确值见 assets/manifest/assets.json"
+    },
+    "CLIENT_BACKUP_MD5": {
+      "value": "TODO",
+      "status": "pending",
+      "source": "整包 7z 冷备后取 MD5"
+    },
+    "SERVER_SRC": {
+      "value": "/opt/game/server",
+      "status": "assumed",
+      "source": "部署路径待盛久稳确认"
+    },
+    "SERVER_PKG": {
+      "value": "E:/源端/VS2022服务端server.rar",
+      "size_mb": 31.7,
+      "status": "confirmed",
+      "source": "本地压缩包"
+    },
+    "SERVER_PROCESSES": {
+      "value": ["BillServer", "FLServer", "GatewayServer", "MiniServer", "RecordServer", "ScenesServer", "SessionServer", "SuperServer"],
+      "status": "confirmed",
+      "source": "src/server/ 目录"
+    },
+    "DB_HOST": {
+      "value": "192.168.1.11",
+      "status": "assumed",
+      "source": "内网规划默认值"
+    },
+    "DB_PORT": {
+      "value": 3306,
+      "status": "assumed",
+      "source": "MySQL 默认"
+    },
+    "DB_VERSION": {
+      "value": "5.7.44",
+      "status": "assumed",
+      "source": "原库版本待探测"
+    },
+    "GAME_PORT": {
+      "value": 7001,
+      "status": "assumed",
+      "source": "协议层待 P1 实测确认"
+    },
+    "GATE_PORT": {
+      "value": 7002,
+      "status": "assumed",
+      "source": "同上"
+    },
+    "GM_PORT": {
+      "value": 7003,
+      "status": "assumed",
+      "source": "仅绑 127.0.0.1"
+    },
+    "INTRANET_CIDR": {
+      "value": "192.168.1.0/24",
+      "status": "assumed",
+      "source": "待用户确认"
+    },
+    "PUBLIC_EXPOSE": {
+      "value": ["7001"],
+      "status": "assumed",
+      "source": "单端口 NAT"
+    },
+    "CCU_TARGET": {
+      "value": 200,
+      "status": "assumed",
+      "source": "P5 压测目标"
+    },
+    "DEPLOY_OS": {
+      "value": "CentOS 7.9 x86_64 / glibc 2.17",
+      "status": "assumed",
+      "source": "老服务端 32 位兼容基线"
+    }
+  }
+}

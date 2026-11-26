@@ -1,0 +1,48 @@
+name: 缺陷
+description: 架设 / 联调中的可复现问题
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: layer
+    attributes:
+      label: 归属层（不确定就选「未定位」）
+      options:
+        - 未定位
+        - 包内容（客户端发的东西不对）
+        - 解析（服务端收包解析错）
+        - 连接 / 端口 / 防火墙
+        - 账号 / 角色数据
+        - 客户端版本校验
+    validations:
+      required: true
+
+  - type: input
+    id: step
+    attributes:
+      label: 断在第几步
+      placeholder: 登录第 2 步（账号密码提交后 3 秒断开）
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro
+    attributes:
+      label: 复现步骤
+      placeholder: "1. 启动 server\n2. 客户端登录 test_01\n3. ..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 证据
+      description: pcap 文件名 / 服务端 hexdump / 相关日志 20 行
+    validations:
+      required: true
+
+  - type: input
+    id: env
+    attributes:
+      label: 环境
+      placeholder: CentOS 7.9 / glibc 2.17 / 客户端 3.1.46.0

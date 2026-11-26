@@ -1,0 +1,46 @@
+# 默认：自动识别文本，统一 LF 入库
+* text=auto eol=lf
+
+# ---------- Windows 工程文件保持 CRLF ----------
+*.sln    text eol=crlf
+*.vcproj text eol=crlf
+*.vcxproj text eol=crlf
+*.vcproj.filters text eol=crlf
+*.vcxproj.filters text eol=crlf
+*.bat    text eol=crlf
+*.cmd    text eol=crlf
+*.ps1    text eol=crlf
+*.ini    text eol=crlf
+*.rc     text eol=crlf
+
+# ---------- Linux 侧脚本强制 LF ----------
+*.sh     text eol=lf
+*.service text eol=lf
+Makefile text eol=lf
+*.mk     text eol=lf
+
+# ---------- 二进制：禁止 diff / merge ----------
+*.pak   binary -diff -merge
+*.ghd   binary -diff -merge
+*.dll   binary -diff -merge
+*.exe   binary -diff -merge
+*.sys   binary -diff -merge
+*.ocx   binary -diff -merge
+*.lib   binary -diff -merge
+*.pdb   binary -diff -merge
+*.mp3   binary -diff -merge
+*.wav   binary -diff -merge
+*.dav   binary -diff -merge
+*.skn   binary -diff -merge
+*.fnt   binary -diff -merge
+*.rar   binary -diff -merge
+*.gz    binary -diff -merge
+
+# ---------- 清单类：按文本 diff，方便 review ----------
+assets/manifest/*.csv  text eol=lf
+assets/manifest/*.json text eol=lf
+assets/manifest/*.sha256 text eol=lf
+
+# ---------- 语言统计校正 ----------
+src/client-legacy/** linguist-vendored
+src/client/boost_1_34_1/** linguist-vendored

@@ -1,0 +1,46 @@
+name: 01 校验
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: 检出（含历史，供提交信息校验）
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 通用规则（体积 / JSON / 分支 / 提交 / 密钥）
+        run: python tools/validate_repo.py --ci
+
+      - name: 资产清单自洽
+        run: python tools/validate_repo.py --manifest
+
+      - name: 任务 DAG 合法性
+        run: python tools/taskctl.py plan --check
+
+      - name: 汇总
+        if: always()
+        run: |
+          echo "### 校验结果" >> "$GITHUB_STEP_SUMMARY"
+          python tools/taskctl.py status >> "$GITHUB_STEP_SUMMARY" || true

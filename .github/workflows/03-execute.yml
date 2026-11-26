@@ -1,0 +1,124 @@
+name: 03 任务执行
+
+on:
+  issues:
+    types: [labeled]
+  workflow_dispatch:
+    inputs:
+      task_id:
+        description: "任务 ID（P0/P1/P2/P3/P4A/P4B/P5/P6）"
+        required: true
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: execute-${{ github.event.issue.number || github.event.inputs.task_id }}
+  cancel-in-progress: false
+
+jobs:
+  execute:
+    name: execute
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.label.name == 'task:run' && github.event.issue.state == 'open')
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: 检出
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 解析任务 ID
+        id: tid
+        env:
+          INPUT_TID: ${{ github.event.inputs.task_id }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          set -uo pipefail
+          TID="$INPUT_TID"
+          if [ -z "$TID" ]; then
+            TID=$(printf '%s' "$ISSUE_TITLE" | sed -nE 's/.*\[TASK\]\[([A-Za-z0-9]+)\].*/\1/p')
+          fi
+          if [ -z "$TID" ]; then
+            echo "无法解析任务 ID（标题需形如 [TASK][P1] 名称）"
+            exit 1
+          fi
+          echo "task_id=$TID" >> "$GITHUB_OUTPUT"
+          echo "任务: $TID"
+
+      - name: 置 running
+        run: python tools/taskctl.py start "${{ steps.tid.outputs.task_id }}"
+
+      - name: 跑门禁
+        id: gate
+        continue-on-error: true
+        run: |
+          set +e
+          python tools/taskctl.py gate "${{ steps.tid.outputs.task_id }}" 2>&1 | tee /tmp/gate.log
+          echo "rc=${PIPESTATUS[0]}" >> "$GITHUB_OUTPUT"
+
+      - name: 置 done 或 blocked
+        run: |
+          set -uo pipefail
+          TID="${{ steps.tid.outputs.task_id }}"
+          RC="${{ steps.gate.outputs.rc }}"
+          if [ "$RC" = "0" ]; then
+            python tools/taskctl.py done "$TID"
+          else
+            python tools/taskctl.py block "$TID" --reason "gate rc=$RC"
+          fi
+
+      - name: 回写状态
+        continue-on-error: true
+        run: |
+          set -uo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- state/queue.json; then
+            echo "状态无变化"
+            exit 0
+          fi
+          git add state/queue.json
+          git commit -m "chore(state): ${{ steps.tid.outputs.task_id }} 状态更新 [skip ci]"
+          git push origin HEAD:main
+          echo "已回写 main（若被保护规则拦截，见 docs/repo-rules.md §2 的 bypass 说明）"
+
+      - name: 结果评论
+        if: always() && github.event_name == 'issues'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TID: ${{ steps.tid.outputs.task_id }}
+          RC: ${{ steps.gate.outputs.rc }}
+        run: |
+          set -uo pipefail
+          {
+            echo "### 执行结果：$TID"
+            echo ""
+            echo "- 门禁退出码：\`${RC:-未执行}\`"
+            echo "- 状态：\`$(python tools/taskctl.py status | grep "  $TID " || echo '见 queue.json')\`"
+            echo ""
+            echo "<details><summary>门禁输出</summary>"
+            echo ""
+            echo '```'
+            tail -40 /tmp/gate.log 2>/dev/null || echo "(无输出)"
+            echo '```'
+            echo "</details>"
+          } > /tmp/comment.md
+          gh issue comment "${{ github.event.issue.number }}" --body-file /tmp/comment.md
+
+      - name: 上传门禁日志
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate-log-${{ steps.tid.outputs.task_id }}-${{ github.run_id }}
+          path: /tmp/gate.log
+          retention-days: 30
+          if-no-files-found: ignore
