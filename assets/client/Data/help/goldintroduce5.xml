@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n color="255,255,255,255 ">购买钥匙</n>
+	</p>
+	<p>
+		<n>    你可以在“高级杂货商”处购买密银之匙，并用它开启“密银宝盒”。通过“密银宝盒”可以获得各种好东西，高级技能书、高级材料，甚至是13星6等材料打造的极品装备。</n>
+	</p>
+	<p>
+		<a href="goldintroduce.xml">返回到上一层</a>
+	</p>
+	<p>
+		<a href="Index.xml">返回</a>
+	</p>
+</body>
+

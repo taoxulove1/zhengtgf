@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="GB2312"?>
+<FileList><!--清理dudu目录下废弃的文件 -->
+	<fileitem filepath = "rcValentineDay.dll"/>
+	<fileitem filepath = "rcScene2.dll"/>
+	<fileitem filepath = "rcScene_config.dll"/>
+	<fileitem filepath = "rcNewYear.dll"/>
+	<fileitem filepath = "rcMidAutumn.dll"/>
+	<fileitem filepath = "rcSingerMatch.dll"/>
+	<fileitem filepath = "rcThanksgiving.dll"/>
+	<fileitem filepath = "rcLantern.dll"/>
+	<fileitem filepath = "rcChinaNewYear.dll"/>
+	<fileitem filepath = "rcDragonBoatFestival.dll"/>
+	<fileitem filepath = "rcBigGod.dll"/>
+	<fileitem filepath = "rc2014YearAppraise.dll"/>
+	<fileitem filepath = "rcChristmas.dll"/>
+	<fileitem filepath = "avcodec-55.dll"/>
+	<fileitem filepath = "avutil-52.dll"/>
+	<fileitem filepath = "cef"/>
+	<fileitem filepath = "dudugame\hitboss_Data"/>
+	<fileitem filepath = "dudugame\hitboss.exe"/>
+	<fileitem filepath = "avcodec-57.dll"/>
+	<fileitem filepath = "avutil-55.dll"/>
+</FileList>
+<rcFileList><!--清理rc.db里面的资源 （此处的实现代码在duduup.exe里面）-->
+	<fileitem filepath = "castle\mengceng.png" />
+	<fileitem filepath = "codeflash\%d.png" start="1" num = "36" />
+	<fileitem filepath = "codeflash\n%d.png" start="0" num = "10" />
+	<fileitem filepath = "gloryking\glory%d.png" start="1" num = "37"/>
+	<fileitem filepath = "hairycrab\effect\\%d.png" start="1" num = "14"/>
+	<fileitem filepath = "publicscene\scene_effect\atmosphere_hairycrab.png"/>
+	<fileitem filepath = "xiuxian\effect_1\%d.png"  start="1" num = "3" />
+	<fileitem filepath = "xiuxian\effect_2\%d.png"  start="1" num = "27" />
+	<fileitem filepath = "xiuxian\effect_3\%d.png"  start="0" num = "27" />
+	<fileitem filepath = "xiuxian\effect_3\2-%d.png"  start="0" num = "18" />
+	<fileitem filepath = "channelscene\scene\scene_137.png" />
+	<fileitem filepath = "channelscene\scene\scene_137ex.png" />
+</rcFileList>

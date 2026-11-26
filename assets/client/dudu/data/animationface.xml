@@ -1,0 +1,580 @@
+<?xml version="1.0" encoding="GB2312"?>
+<AnimationFace>
+		<face base = "0" num="95" facewidth="26" faceheight="26">
+			<child transstr="/微笑" faceid="0" />
+			<child transstr="/wxm" faceid="0" /> 
+			<child transstr="/撇嘴" faceid="1" /> 
+			<child transstr="/pz" faceid="1" /> 
+			<child transstr="/色" faceid="2" /> 
+			<child transstr="/sem" faceid="2" /> 
+			<child transstr="/发呆" faceid="3" /> 
+			<child transstr="/fdaim" faceid="3" /> 
+			<child transstr="/得意" faceid="4" /> 
+			<child transstr="/dym" faceid="4" /> 
+			<child transstr="/大哭" faceid="5" /> 
+			<child transstr="/dkm" faceid="5" /> 
+			<child transstr="/害羞" faceid="6" /> 
+			<child transstr="/hxium" faceid="6" /> 
+			<child transstr="/闭嘴" faceid="7" /> 
+			<child transstr="/bzm" faceid="7" /> 
+			<child transstr="/睡觉" faceid="8" /> 
+			<child transstr="/sjm" faceid="8" /> 
+			<child transstr="/哭泣" faceid="9" /> 
+			<child transstr="/kqm" faceid="9" /> 
+			<child transstr="/尴尬" faceid="10" /> 
+			<child transstr="/ggm" faceid="10" /> 
+			<child transstr="/愤怒" faceid="11" /> 
+			<child transstr="/fnm" faceid="11" /> 
+			<child transstr="/调皮" faceid="12" /> 
+			<child transstr="/tpm" faceid="12" /> 
+			<child transstr="/呲牙" faceid="13" /> 
+			<child transstr="/cym" faceid="13" /> 
+			<child transstr="/惊讶" faceid="14" /> 
+			<child transstr="/jy" faceid="14" /> 
+			<child transstr="/难过" faceid="15" /> 
+			<child transstr="/ngm" faceid="15" /> 
+			<child transstr="/酷" faceid="16" /> 
+			<child transstr="/coolm" faceid="16" /> 
+			<child transstr="/冷汗" faceid="17" /> 
+			<child transstr="/lhm" faceid="17" /> 
+			<child transstr="/抓狂" faceid="18" /> 
+			<child transstr="/zkm" faceid="18" /> 
+			<child transstr="/吐" faceid="19" /> 
+			<child transstr="/tum" faceid="19" /> 
+			<child transstr="/偷笑" faceid="20" /> 
+			<child transstr="/txm" faceid="20" /> 
+			<child transstr="/可爱" faceid="21" /> 
+			<child transstr="/kam" faceid="21" /> 
+			<child transstr="/白眼" faceid="22" /> 
+			<child transstr="/byanm" faceid="22" /> 
+			<child transstr="/傲慢" faceid="23" /> 
+			<child transstr="/amm" faceid="23" /> 
+			<child transstr="/饥饿" faceid="24" /> 
+			<child transstr="/jem" faceid="24" /> 
+			<child transstr="/困" faceid="25" /> 
+			<child transstr="/kunm" faceid="25" /> 
+			<child transstr="/汗" faceid="26" /> 
+			<child transstr="/hanm" faceid="26" /> 
+			<child transstr="/欢乐" faceid="27" /> 
+			<child transstr="/hlm" faceid="27" /> 
+			<child transstr="/大兵" faceid="28" /> 
+			<child transstr="/dbm" faceid="28" /> 
+			<child transstr="/奋斗" faceid="29" /> 
+			<child transstr="/fdm" faceid="29" /> 
+			<child transstr="/疑问" faceid="30" /> 
+			<child transstr="/ywm" faceid="30" /> 
+			<child transstr="/嘘" faceid="31" /> 
+			<child transstr="/xum" faceid="31" /> 
+			<child transstr="/晕" faceid="32" /> 
+			<child transstr="/yunm" faceid="32" /> 
+			<child transstr="/打哈欠" faceid="33" /> 
+			<child transstr="/dhqm" faceid="33" /> 
+			<child transstr="/敲打" faceid="34" /> 
+			<child transstr="/qdam" faceid="34" /> 
+			<child transstr="/拜拜" faceid="35" /> 
+			<child transstr="/byem" faceid="35" /> 
+			<child transstr="/擦汗" faceid="36" /> 
+			<child transstr="/chm" faceid="36" /> 
+			<child transstr="/抠鼻" faceid="37" /> 
+			<child transstr="/kb" faceid="37" /> 
+			<child transstr="/鼓掌" faceid="38" /> 
+			<child transstr="/gzm" faceid="38" /> 
+			<child transstr="/糗大了" faceid="39" /> 
+			<child transstr="/qdlm" faceid="39" /> 
+			<child transstr="/坏笑" faceid="40" /> 
+			<child transstr="/hxiaom" faceid="40" /> 
+			<child transstr="/左哼哼" faceid="41" /> 
+			<child transstr="/zhh" faceid="41" /> 
+			<child transstr="/右哼哼" faceid="42" /> 
+			<child transstr="/yhh" faceid="42" />
+			<child transstr="/衰" faceid="43" /> 
+			<child transstr="/shuai" faceid="43" /> 
+			<child transstr="/鄙视" faceid="44" /> 
+			<child transstr="/bsm" faceid="44" /> 
+			<child transstr="/委屈" faceid="45" /> 
+			<child transstr="/wqm" faceid="45" /> 
+			<child transstr="/快哭了" faceid="46" /> 
+			<child transstr="/kklm" faceid="46" /> 
+			<child transstr="/阴险" faceid="47" /> 
+			<child transstr="/yxm" faceid="47" /> 
+			<child transstr="/亲亲" faceid="48" /> 
+			<child transstr="/qqm" faceid="48" /> 
+			<child transstr="/吓" faceid="49" /> 
+			<child transstr="/xiam" faceid="49" /> 
+			<child transstr="/可怜" faceid="50" /> 
+			<child transstr="/klm" faceid="50" /> 
+			<child transstr="/刀" faceid="51" /> 
+			<child transstr="/dao" faceid="51" /> 
+			<child transstr="/西瓜" faceid="52" /> 
+			<child transstr="/xg" faceid="52" /> 
+			<child transstr="/饮料" faceid="53" /> 
+			<child transstr="/yl" faceid="53" /> 
+			<child transstr="/咖啡" faceid="54" /> 
+			<child transstr="/kf" faceid="54" /> 
+			<child transstr="/闪电" faceid="55" /> 
+			<child transstr="/sdian" faceid="55" /> 
+			<child transstr="/炸弹" faceid="56" /> 
+			<child transstr="/zd" faceid="56" /> 
+			<child transstr="/足球" faceid="57" /> 
+			<child transstr="/zqiu" faceid="57" /> 
+			<child transstr="/瓢虫" faceid="58" /> 
+			<child transstr="/pc" faceid="58" />
+			<child transstr="/棒棒糖" faceid="59" /> 
+			<child transstr="/bbt" faceid="59" /> 
+			<child transstr="/吻" faceid="60" /> 
+			<child transstr="/wen" faceid="60" />
+			<child transstr="/爱心" faceid="61" /> 
+			<child transstr="/axm" faceid="61" />
+			<child transstr="/心碎" faceid="62" /> 
+			<child transstr="/xs" faceid="62" />
+			<child transstr="/蛋糕" faceid="63" /> 
+			<child transstr="/dg" faceid="63" />
+			<child transstr="/小花" faceid="64" /> 
+			<child transstr="/xh" faceid="64" />
+			<child transstr="/玫瑰" faceid="65" /> 
+			<child transstr="/mg" faceid="65" />
+			<child transstr="/凋谢" faceid="66" /> 
+			<child transstr="/dx" faceid="66" />
+			<child transstr="/礼物" faceid="67" /> 
+			<child transstr="/lw" faceid="67" />
+			<child transstr="/铃铛" faceid="68" /> 
+			<child transstr="/ldang" faceid="68" />
+			<child transstr="/圣诞树" faceid="69" /> 
+			<child transstr="/sds" faceid="69" />
+			<child transstr="/幽灵" faceid="70" /> 
+			<child transstr="/ylm" faceid="70" />
+			<child transstr="/喜庆" faceid="71" /> 
+			<child transstr="/xq" faceid="71" />
+			<child transstr="/水晶球" faceid="72" /> 
+			<child transstr="/sjq" faceid="72" />
+			<child transstr="/干杯" faceid="73" /> 
+			<child transstr="/gb" faceid="73" />
+			<child transstr="/音符" faceid="74" /> 
+			<child transstr="/yf" faceid="74" />
+			<child transstr="/猪头" faceid="75" /> 
+			<child transstr="/zt" faceid="75" />
+			<child transstr="/便便" faceid="76" /> 
+			<child transstr="/bb" faceid="76" />
+			<child transstr="/闹钟" faceid="77" /> 
+			<child transstr="/nz" faceid="77" />
+			<child transstr="/电话" faceid="78" /> 
+			<child transstr="/dhua" faceid="78" />
+			<child transstr="/强" faceid="79" /> 
+			<child transstr="/qiang" faceid="79" />
+			<child transstr="/弱" faceid="80" /> 
+			<child transstr="/ruo" faceid="80" />
+			<child transstr="/握手" faceid="81" /> 
+			<child transstr="/ws" faceid="81" />
+			<child transstr="/胜利" faceid="82" /> 
+			<child transstr="/sl" faceid="82" />
+			<child transstr="/抱拳" faceid="83" /> 
+			<child transstr="/bq" faceid="83" />
+			<child transstr="/勾引" faceid="84" /> 
+			<child transstr="/gy" faceid="84" />
+			<child transstr="/握拳" faceid="85" /> 
+			<child transstr="/wq" faceid="85" />
+			<child transstr="/差劲" faceid="86" /> 
+			<child transstr="/cjin" faceid="86" />
+			<child transstr="/我爱你" faceid="87" /> 
+			<child transstr="/lovem" faceid="87" />
+			<child transstr="/NO" faceid="88" /> 
+			<child transstr="/no" faceid="88" />
+			<child transstr="/OK" faceid="89" /> 
+			<child transstr="/okm" faceid="89" />
+			<child transstr="/太阳" faceid="90" /> 
+			<child transstr="/taiy" faceid="90" />
+			<child transstr="/星星" faceid="91" /> 
+			<child transstr="/xx" faceid="91" />
+			<child transstr="/月亮" faceid="92" /> 
+			<child transstr="/yliang" faceid="92" />
+			<child transstr="/伞" faceid="93" /> 
+			<child transstr="/san" faceid="93" />
+			<child transstr="/彩虹" faceid="94" /> 
+			<child transstr="/chong" faceid="94" />                                  
+		</face>
+		<sysface base = "101" num = "59" facewidth = "25" faceheight = "25">
+		    	<child transstr="/d微笑" faceid="101"/>	
+			<child transstr="/wxd" faceid="101"/>	
+            		<child transstr="/撅嘴" faceid="102"/>	
+			<child transstr="/jz" faceid="102"/>	
+			<child transstr="/d色" faceid="103"/>
+           		<child transstr="/sed" faceid="103"/>				
+            		<child transstr="/d发呆" faceid="104"/>	
+			<child transstr="/fdaid" faceid="104"/>	
+			<child transstr="/d得意" faceid="105"/>
+            		<child transstr="/dyd" faceid="105"/>				
+           		<child transstr="/d哭泣" faceid="106"/>	
+			<child transstr="/kqd" faceid="106"/>	
+			<child transstr="/d害羞" faceid="107"/>	
+           		<child transstr="/hxiud" faceid="107"/>	
+			<child transstr="/d闭嘴" faceid="108"/>	
+			<child transstr="/bzd" faceid="108"/>	
+			<child transstr="/d睡觉" faceid="109"/>	
+			<child transstr="/sjd" faceid="109"/>	
+			<child transstr="/d大哭" faceid="110"/>
+			<child transstr="/dkd" faceid="110"/>
+			<child transstr="/d愤怒" faceid="111"/>
+			<child transstr="/fnd" faceid="111"/>
+			<child transstr="/d调皮" faceid="112"/>
+			<child transstr="/tpd" faceid="112"/>
+			<child transstr="/d呲牙" faceid="113"/>
+			<child transstr="/cyd" faceid="113"/>
+			<child transstr="/吃惊" faceid="114"/>
+			<child transstr="/cjing" faceid="114"/>
+			<child transstr="/d难过" faceid="115"/>
+			<child transstr="/ngd" faceid="115"/>
+			<child transstr="/d酷" faceid="116"/>
+			<child transstr="/coold" faceid="116"/>
+			<child transstr="/d抓狂" faceid="117"/>
+			<child transstr="/zkd" faceid="117"/>
+			<child transstr="/d吐" faceid="118"/>
+			<child transstr="/tud" faceid="118"/>
+			<child transstr="/d偷笑" faceid="119"/>
+			<child transstr="/txd" faceid="119"/>
+			<child transstr="/d可爱" faceid="120"/>
+			<child transstr="/kad" faceid="120"/>
+			<child transstr="/d白眼" faceid="121"/>
+			<child transstr="/byand" faceid="121"/>
+			<child transstr="/d傲慢" faceid="122"/>
+			<child transstr="/amd" faceid="122"/>
+			<child transstr="/d饥饿" faceid="123"/>
+			<child transstr="/jed" faceid="123"/>
+			<child transstr="/d困" faceid="124"/>
+			<child transstr="/kund" faceid="124"/>
+			<child transstr="/惊恐" faceid="125"/>
+			<child transstr="/jk" faceid="125"/>
+			<child transstr="/d汗" faceid="126"/>
+			<child transstr="/hand" faceid="126"/>
+			<child transstr="/d欢乐" faceid="127"/>
+			<child transstr="/hld" faceid="127"/>
+			<child transstr="/d大兵" faceid="128"/>
+			<child transstr="/dbd" faceid="128"/>
+			<child transstr="/咒骂" faceid="129"/>
+			<child transstr="/zm" faceid="129"/>
+			<child transstr="/d疑问" faceid="130"/>
+			<child transstr="/ywd" faceid="130"/>
+			<child transstr="/d嘘" faceid="131"/>
+			<child transstr="/xud" faceid="131"/>
+			<child transstr="/d晕" faceid="132"/>
+			<child transstr="/yund" faceid="132"/>
+			<child transstr="/痛苦" faceid="133"/>
+			<child transstr="/tk" faceid="133"/>
+			<child transstr="/d敲打" faceid="134"/>
+			<child transstr="/qdad" faceid="134"/>
+			<child transstr="/d拜拜" faceid="135"/>
+			<child transstr="/byed" faceid="135"/>
+			<child transstr="/d冷汗" faceid="136"/>
+			<child transstr="/lhd" faceid="136"/>
+			<child transstr="/d奋斗" faceid="137"/>
+			<child transstr="/fdd" faceid="137"/>
+			<child transstr="/d鼓掌" faceid="138"/>
+			<child transstr="/gzd" faceid="138"/>
+			<child transstr="/d糗大了" faceid="139"/>
+			<child transstr="/qdld" faceid="139"/>
+			<child transstr="/d坏笑" faceid="140"/>
+			<child transstr="/hxiaod" faceid="140"/>
+			<child transstr="/d擦汗" faceid="141"/>
+			<child transstr="/chd" faceid="141"/>
+			<child transstr="/d鄙视" faceid="142"/>
+			<child transstr="/bsd" faceid="142"/>
+			<child transstr="/d打哈欠" faceid="143"/>
+			<child transstr="/dhqd" faceid="143"/>
+			<child transstr="/d委屈" faceid="144"/>
+			<child transstr="/wqd" faceid="144"/>
+			<child transstr="/d快哭了" faceid="145"/>
+			<child transstr="/kkld" faceid="145"/>
+			<child transstr="/奸笑" faceid="146"/>
+			<child transstr="/jx" faceid="146"/>
+			<child transstr="/d亲亲" faceid="147"/>
+			<child transstr="/qqd" faceid="147"/>
+			<child transstr="/d吓" faceid="148"/>
+			<child transstr="/xiad" faceid="148"/>
+			<child transstr="/d可怜" faceid="149"/>
+			<child transstr="/kld" faceid="149"/>
+			<child transstr="/小迷糊" faceid="150"/>
+			<child transstr="/xmh" faceid="150"/>
+			<child transstr="/d阴险" faceid="151"/>
+			<child transstr="/yxd" faceid="151"/>
+			<child transstr="/雷" faceid="152"/>
+			<child transstr="/lei" faceid="152"/>
+			<child transstr="/度假" faceid="153"/>
+			<child transstr="/dj" faceid="153"/>
+			<child transstr="/HIGH" faceid="154"/>
+			<child transstr="/high" faceid="154"/>
+			<child transstr="/dOK" faceid="155"/>
+			<child transstr="/okd" faceid="155"/>
+			<child transstr="/冷" faceid="156"/>
+			<child transstr="/leng" faceid="156"/>
+			<child transstr="/焦了" faceid="157"/>
+			<child transstr="/jl" faceid="157"/>
+			<child transstr="/d尴尬" faceid="158"/>
+			<child transstr="/ggd" faceid="158"/>
+			<child transstr="/d233" faceid="159"/>
+			<child transstr="/233" faceid="159"/>
+		</sysface>
+		<bigface base = "200" num = "52" facewidth = "25" faceheight = "25">
+		    	<child transstr="/挨打" faceid="200"/>
+			<child transstr="/ad" faceid="200"/>
+			<child transstr="/t色" faceid="201"/>
+			<child transstr="/set" faceid="201"/>
+			<child transstr="/嘲笑" faceid="202"/>
+			<child transstr="/cx" faceid="202"/>
+			<child transstr="/t汗" faceid="203"/>
+			<child transstr="/hant" faceid="203"/>
+			<child transstr="/t困" faceid="204"/>
+			<child transstr="/kunt" faceid="204"/>
+			<child transstr="/t大汗" faceid="205"/>
+			<child transstr="/dht" faceid="205"/>
+			<child transstr="/t哭泣" faceid="206"/>
+			<child transstr="/kqt" faceid="206"/>
+			<child transstr="/t大哭" faceid="207"/>
+			<child transstr="/dkt" faceid="207"/>
+			<child transstr="/妈呀" faceid="208"/>
+			<child transstr="/my" faceid="208"/>	
+			<child transstr="/感动" faceid="209"/>
+			<child transstr="/gd" faceid="209"/>	
+			<child transstr="/失明" faceid="210"/>
+			<child transstr="/sm" faceid="210"/>
+			<child transstr="/我来了" faceid="211"/>
+			<child transstr="/wll" faceid="211"/>
+			<child transstr="/拜托" faceid="212"/>
+			<child transstr="/bt" faceid="212"/>	
+			<child transstr="/不要" faceid="213"/>
+			<child transstr="/biao" faceid="213"/>	
+			<child transstr="/怀疑" faceid="214"/>
+			<child transstr="/hy" faceid="214"/>	
+			<child transstr="/大笑" faceid="215"/>
+			<child transstr="/dax" faceid="215"/>
+			<child transstr="/潦倒" faceid="216"/>
+			<child transstr="/ld" faceid="216"/>
+			<child transstr="/t拜拜" faceid="217"/>
+			<child transstr="/byet" faceid="217"/>
+			<child transstr="/气死了" faceid="218"/>
+			<child transstr="/qsl" faceid="218"/>
+			<child transstr="/路过" faceid="219"/>
+			<child transstr="/lg" faceid="219"/>	
+			<child transstr="/甜吻" faceid="220"/>
+			<child transstr="/tw" faceid="220"/>
+			<child transstr="/t吐" faceid="221"/>
+			<child transstr="/tut" faceid="221"/>
+			<child transstr="/叹气" faceid="222"/>
+			<child transstr="/tq" faceid="222"/>
+			<child transstr="/t愤怒" faceid="223"/>
+			<child transstr="/fnt" faceid="223"/>	
+			<child transstr="/兴奋" faceid="224"/>
+			<child transstr="/xf" faceid="224"/>
+			<child transstr="/t爱心" faceid="225"/>
+			<child transstr="/axt" faceid="225"/>
+			<child transstr="/无聊" faceid="226"/>
+			<child transstr="/wul" faceid="226"/>
+			<child transstr="/鬼脸" faceid="227"/>
+			<child transstr="/gl" faceid="227"/>
+			<child transstr="/讨厌" faceid="228"/>
+			<child transstr="/ty" faceid="228"/>
+			<child transstr="/冒星星" faceid="229"/>
+			<child transstr="/mxx" faceid="229"/>
+			<child transstr="/加油" faceid="230"/>
+			<child transstr="/jyou" faceid="230"/>
+			<child transstr="/解除" faceid="231"/>
+			<child transstr="/jc" faceid="231"/>	
+			<child transstr="/t鄙视" faceid="232"/>
+			<child transstr="/bst" faceid="232"/>	
+			<child transstr="/撕咬" faceid="233"/>
+			<child transstr="/sy" faceid="233"/>
+			<child transstr="/天使" faceid="234"/>
+			<child transstr="/ts" faceid="234"/>
+			<child transstr="/香蕉皮" faceid="235"/>
+			<child transstr="/xjp" faceid="235"/>	
+			<child transstr="/神灯" faceid="236"/>
+			<child transstr="/sd" faceid="236"/>
+			<child transstr="/飘过" faceid="237"/>
+			<child transstr="/pg" faceid="237"/>	
+			<child transstr="/恶魔" faceid="238"/>
+			<child transstr="/em" faceid="238"/>		
+			<child transstr="/喂" faceid="239"/>
+			<child transstr="/wei" faceid="239"/>	
+			<child transstr="/t幽灵" faceid="240"/>
+			<child transstr="/ylt" faceid="240"/>	
+			<child transstr="/殴打" faceid="241"/>
+			<child transstr="/oda" faceid="241"/>	
+			<child transstr="/吸引" faceid="242"/>
+			<child transstr="/xy" faceid="242"/>
+			<child transstr="/撞墙" faceid="243"/>
+			<child transstr="/zq" faceid="243"/>
+			<child transstr="/耳光" faceid="244"/>
+			<child transstr="/eg" faceid="244"/>
+			<child transstr="/吵架" faceid="245"/>
+			<child transstr="/cjia" faceid="245"/>
+			<child transstr="/烧香" faceid="246"/>
+			<child transstr="/sx" faceid="246"/>
+			<child transstr="/依偎" faceid="247"/>
+			<child transstr="/yw" faceid="247"/>
+			<child transstr="/t亲亲" faceid="248"/>
+			<child transstr="/qqt" faceid="248"/>
+			<child transstr="/拥抱" faceid="249"/>
+			<child transstr="/yb" faceid="249"/>
+			<child transstr="/t我爱你" faceid="250"/>
+			<child transstr="/lovet" faceid="250"/>	
+			<child transstr="/好忙" faceid="251"/>
+			<child transstr="/hm" faceid="251"/>
+		</bigface>
+		<mobileface base = "400" num = "18" facewidth = "98" faceheight = "42">
+		<child transstr="/布吉岛" faceid="400"/>
+		<child transstr="/bjdmm" faceid="400"/>
+		<child transstr="/不明觉厉"   faceid="401"/>
+		<child transstr="/bmjlmm"   faceid="401"/>
+		<child transstr="/高大上" faceid="402"/>
+		<child transstr="/gdsmm" faceid="402"/>
+		<child transstr="/点赞" faceid="403"/>
+		<child transstr="/dzmm" faceid="403"/>
+		<child transstr="/女汉子" faceid="404"/>
+		<child transstr="/nhzmm" faceid="404"/>
+		<child transstr="/啵一个" faceid="405"/>
+		<child transstr="/bygmm" faceid="405"/>
+		<child transstr="/求关注" faceid="406"/>
+		<child transstr="/qgzmm" faceid="406"/>
+		<child transstr="/要抱抱" faceid="407"/>
+		<child transstr="/ybbmm" faceid="407"/>
+		<child transstr="/土豪来了" faceid="408"/>
+		<child transstr="/thllmm" faceid="408"/>
+		<child transstr="/嗨起来" faceid="409"/>
+		<child transstr="/hqlmm" faceid="409"/>
+		<child transstr="/女神来了" faceid="410"/>
+		<child transstr="/nsllmm" faceid="410"/>
+		<child transstr="/且行且珍惜" faceid="411"/>
+		<child transstr="/qxqzxmm" faceid="411"/>
+		<child transstr="/涨姿势" faceid="412"/>
+		<child transstr="/zzsmm" faceid="412"/>
+		<child transstr="/呵呵" faceid="413"/>
+		<child transstr="/hhmm" faceid="413"/>
+		<child transstr="/软妹子" faceid="414"/>
+		<child transstr="/rmzmm" faceid="414"/>
+		<child transstr="/跟我回家吧" faceid="415"/>
+		<child transstr="/gwhjbmm" faceid="415"/>
+		<child transstr="/碉堡了" faceid="416"/>
+		<child transstr="/dblmm" faceid="416"/>
+		<child transstr="/好盆(ji)友" faceid="417"/>
+		<child transstr="/hjymm" faceid="417"/>
+		</mobileface>
+		<vipface base = "501" num = "59" facewidth = "35" faceheight = "35">
+			<child transstr="/微笑v" faceid="501"/>	
+			<child transstr="/vwx" faceid="501"/>	
+            <child transstr="/撅嘴v" faceid="502"/>	
+			<child transstr="/vjz" faceid="502"/>	
+			<child transstr="/色v" faceid="503"/>
+           	<child transstr="/vse" faceid="503"/>				
+            <child transstr="/发呆v" faceid="504"/>	
+			<child transstr="/vfdai" faceid="504"/>	
+			<child transstr="/得意v" faceid="505"/>
+            <child transstr="/vdy" faceid="505"/>				
+           	<child transstr="/哭泣v" faceid="506"/>	
+			<child transstr="/vkq" faceid="506"/>	
+			<child transstr="/害羞v" faceid="507"/>	
+           	<child transstr="/vhxiu" faceid="507"/>	
+			<child transstr="/闭嘴v" faceid="508"/>	
+			<child transstr="/vbz" faceid="508"/>	
+			<child transstr="/睡觉v" faceid="509"/>	
+			<child transstr="/vsj" faceid="509"/>	
+			<child transstr="/大哭v" faceid="510"/>
+			<child transstr="/vdk" faceid="510"/>
+			<child transstr="/愤怒v" faceid="511"/>
+			<child transstr="/vfn" faceid="511"/>
+			<child transstr="/调皮v" faceid="512"/>
+			<child transstr="/vtp" faceid="512"/>
+			<child transstr="/呲牙v" faceid="513"/>
+			<child transstr="/vcy" faceid="513"/>
+			<child transstr="/吃惊v" faceid="514"/>
+			<child transstr="/vcjing" faceid="514"/>
+			<child transstr="/难过v" faceid="515"/>
+			<child transstr="/vng" faceid="515"/>
+			<child transstr="/酷v" faceid="516"/>
+			<child transstr="/vcool" faceid="516"/>
+			<child transstr="/抓狂v" faceid="517"/>
+			<child transstr="/vzk" faceid="517"/>
+			<child transstr="/吐v" faceid="518"/>
+			<child transstr="/vtu" faceid="518"/>
+			<child transstr="/偷笑v" faceid="519"/>
+			<child transstr="/vtx" faceid="519"/>
+			<child transstr="/可爱v" faceid="520"/>
+			<child transstr="/vka" faceid="520"/>
+			<child transstr="/白眼v" faceid="521"/>
+			<child transstr="/vbyan" faceid="521"/>
+			<child transstr="/傲慢v" faceid="522"/>
+			<child transstr="/vam" faceid="522"/>
+			<child transstr="/饥饿v" faceid="523"/>
+			<child transstr="/vje" faceid="523"/>
+			<child transstr="/困v" faceid="524"/>
+			<child transstr="/vkun" faceid="524"/>
+			<child transstr="/惊恐v" faceid="525"/>
+			<child transstr="/vjk" faceid="525"/>
+			<child transstr="/汗v" faceid="526"/>
+			<child transstr="/vhand" faceid="526"/>
+			<child transstr="/欢乐v" faceid="527"/>
+			<child transstr="/vhl" faceid="527"/>
+			<child transstr="/大兵v" faceid="528"/>
+			<child transstr="/vdb" faceid="528"/>
+			<child transstr="/咒骂v" faceid="529"/>
+			<child transstr="/vzm" faceid="529"/>
+			<child transstr="/疑问v" faceid="530"/>
+			<child transstr="/vyw" faceid="530"/>
+			<child transstr="/嘘v" faceid="531"/>
+			<child transstr="/vxu" faceid="531"/>
+			<child transstr="/晕v" faceid="532"/>
+			<child transstr="/vyun" faceid="532"/>
+			<child transstr="/痛苦v" faceid="533"/>
+			<child transstr="/vtk" faceid="533"/>
+			<child transstr="/敲打v" faceid="534"/>
+			<child transstr="/vqda" faceid="534"/>
+			<child transstr="/拜拜v" faceid="535"/>
+			<child transstr="/vbye" faceid="535"/>
+			<child transstr="/冷汗v" faceid="536"/>
+			<child transstr="/vlh" faceid="536"/>
+			<child transstr="/奋斗v" faceid="537"/>
+			<child transstr="/vfd" faceid="537"/>
+			<child transstr="/鼓掌v" faceid="538"/>
+			<child transstr="/vgz" faceid="538"/>
+			<child transstr="/糗大了v" faceid="539"/>
+			<child transstr="/vqdl" faceid="539"/>
+			<child transstr="/坏笑v" faceid="540"/>
+			<child transstr="/vhxiao" faceid="540"/>
+			<child transstr="/擦汗v" faceid="541"/>
+			<child transstr="/vch" faceid="541"/>
+			<child transstr="/鄙视v" faceid="542"/>
+			<child transstr="/vbs" faceid="542"/>
+			<child transstr="/打哈欠v" faceid="543"/>
+			<child transstr="/vdhq" faceid="543"/>
+			<child transstr="/委屈v" faceid="544"/>
+			<child transstr="/vwq" faceid="544"/>
+			<child transstr="/快哭了v" faceid="545"/>
+			<child transstr="/vkkl" faceid="545"/>
+			<child transstr="/奸笑v" faceid="546"/>
+			<child transstr="/vjx" faceid="546"/>
+			<child transstr="/亲亲v" faceid="547"/>
+			<child transstr="/vqq" faceid="547"/>
+			<child transstr="/吓v" faceid="548"/>
+			<child transstr="/vxia" faceid="548"/>
+			<child transstr="/可怜v" faceid="549"/>
+			<child transstr="/vkl" faceid="549"/>
+			<child transstr="/小迷糊v" faceid="550"/>
+			<child transstr="/vxmh" faceid="550"/>
+			<child transstr="/阴险v" faceid="551"/>
+			<child transstr="/vyx" faceid="551"/>
+			<child transstr="/雷v" faceid="552"/>
+			<child transstr="/vlei" faceid="552"/>
+			<child transstr="/度假v" faceid="553"/>
+			<child transstr="/vdj" faceid="553"/>
+			<child transstr="/HIGHv" faceid="554"/>
+			<child transstr="/vhigh" faceid="554"/>
+			<child transstr="/OKv" faceid="555"/>
+			<child transstr="/vok" faceid="555"/>
+			<child transstr="/冷v" faceid="556"/>
+			<child transstr="/vleng" faceid="556"/>
+			<child transstr="/焦了v" faceid="557"/>
+			<child transstr="/vjl" faceid="557"/>
+			<child transstr="/尴尬v" faceid="558"/>
+			<child transstr="/vgg" faceid="558"/>
+			<child transstr="/233v" faceid="559"/>
+			<child transstr="/v233" faceid="559"/>
+		</vipface>
+</AnimationFace>
+

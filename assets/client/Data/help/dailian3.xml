@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n color="255,255,255,255 ">关于代练消耗：</n>
+	</p>
+	<p>
+		<n>    代练本身是免费的，但代练过程中产生的各种消耗，如装备修理，购买自动补血补篮药水和经验珠，这些消耗将在你提取经验值的时候扣除。</n>
+	</p>
+	<p>
+		<a href="dailian.xml">返回到上一层</a>
+	</p>
+	<p>
+		<a href="Index.xml">返回</a>
+	</p>
+</body>

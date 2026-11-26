@@ -1,0 +1,93 @@
+<?xml version="1.0" standalone="no" ?>
+<!-- cur avalidate version-->
+<versioninfo cur="1.0.5.28">
+<version no="1.0.0.0">
+<item priority="1" name="\banks.z" path="v_1.0.0.0/banks.z" />
+<item priority="1" name="\res\close.png" path="v_1.0.0.0/res/close.png" />
+<item priority="1" name="\res\min.png" path="v_1.0.0.0/res/min.png" />
+<item priority="1" name="\res\pgclose.png" path="v_1.0.0.0/res/pgclose.png" />
+<item priority="1" name="\res\button.png" path="v_1.0.0.0/res/button.png" />
+<item priority="1" name="\res\pageImg1.png" path="v_1.0.0.0/res/pageImg1.png" />
+<item priority="1" name="\res\pageImg2.png" path="v_1.0.0.0/res/pageImg2.png" />
+<item priority="1" name="\res\ptopImg.png" path="v_1.0.0.0/res/ptopImg.png" />
+<item priority="1" name="\res\pbottomImg.png" path="v_1.0.0.0/res/pbottomImg.png" />
+<item priority="1" name="\res\pltopImg.png" path="v_1.0.0.0/res/pltopImg.png" />
+<item priority="1" name="\res\prtopImg.png" path="v_1.0.0.0/res/prtopImg.png" />
+<item priority="1" name="\res\wbk.png" path="v_1.0.0.0/res/wbk.png" />
+<item priority="1" name="\res\pop.html" path="v_1.0.0.0/res/pop.html" />
+<item priority="1" name="\res\images\load_bg.png" path="v_1.0.0.0/res/images/load_bg.png" />
+<item priority="1" name="\res\images\wait3.gif" path="v_1.0.0.0/res/images/wait3.gif" />
+<item priority="1" name="\epayupdate.exe" path="v_1.0.0.0/epayupdate.exe" />
+<item priority="1" name="\unzip.exe" path="v_1.0.0.0/unzip.exe" />
+<item priority="1" name="\Register.exe" path="v_1.0.0.0/Register.exe" />
+<item priority="1" name="\cfg.ini" path="v_1.0.0.0/cfg.ini" />
+<item priority="1" name="\epay.exe" path="v_1.0.0.0/epay.exe" />
+</version>
+<version no="1.0.5.6">
+<item priority="1" name="\epay.exe" path="v_1.0.5.6/epay.exe"/>
+</version>
+<version no="1.0.5.8">
+<item priority="1" name="\autoupdate.exe" path="v_1.0.5.8/autoupdate.exe"/>
+</version>
+<version no="1.0.5.10">
+<item priority="1" name="\epay.exe" path="v_1.0.5.10/epay.exe"/>
+</version>
+<version no="1.0.5.12">
+<item priority="1" name="\autoupdate.exe" path="v_1.0.5.12/autoupdate.exe"/>
+</version>
+<version no="1.0.5.14">
+<item priority="1" name="\epayupdate.exe" path="v_1.0.5.14/epayupdate.exe"/>
+<item priority="1" name="\Register.exe" path="v_1.0.5.14/Register.exe"/>
+<item priority="1" name="\unzip.exe" path="v_1.0.5.14/unzip.exe"/>
+<item priority="1" name="\cfg.ini" path="v_1.0.5.14/cfg.ini"/>
+</version>
+<version no="1.0.5.16">
+<item priority="1" name="\autoupdate.exe" path="v_1.0.5.16/autoupdate.exe"/>
+<item priority="1" name="\epayupdate.exe" path="v_1.0.5.16/epayupdate.exe"/>
+<item priority="1" name="\Register.exe" path="v_1.0.5.16/Register.exe"/>
+<item priority="1" name="\unzip.exe" path="v_1.0.5.16/unzip.exe"/>
+<item priority="1" name="\epay.exe" path="v_1.0.5.16/epay.exe"/>
+</version>
+<version no="1.0.5.18">
+<item priority="1" name="\autoupdate.exe" path="v_1.0.5.18/autoupdate.exe"/>
+<item priority="1" name="\epayupdate.exe" path="v_1.0.5.18/epayupdate.exe"/>
+<item priority="1" name="\Register.exe" path="v_1.0.5.18/Register.exe"/>
+<item priority="1" name="\unzip.exe" path="v_1.0.5.18/unzip.exe"/>
+<item priority="1" name="\epay.exe" path="v_1.0.5.18/epay.exe"/>
+</version>
+<version no="1.0.5.20">
+<item priority="1" name="\autoupdate.exe" path="v_1.0.5.20/autoupdate.exe"/>
+<item priority="1" name="\epayupdate.exe" path="v_1.0.5.20/epayupdate.exe"/>
+<item priority="1" name="\Register.exe" path="v_1.0.5.20/Register.exe"/>
+<item priority="1" name="\unzip.exe" path="v_1.0.5.20/unzip.exe"/>
+<item priority="1" name="\epay.exe" path="v_1.0.5.20/epay.exe"/>
+</version>
+<version no="1.0.5.22">
+<item priority="1" name="\autoupdate.exe" path="v_1.0.5.22/autoupdate.exe"/>
+<item priority="1" name="\epayupdate.exe" path="v_1.0.5.22/epayupdate.exe"/>
+<item priority="1" name="\Register.exe" path="v_1.0.5.22/Register.exe"/>
+<item priority="1" name="\unzip.exe" path="v_1.0.5.22/unzip.exe"/>
+<item priority="1" name="\epay.exe" path="v_1.0.5.22/epay.exe"/>
+</version>
+<version no="1.0.5.24">
+<item priority="1" name="\autoupdate.exe" path="v_1.0.5.24/autoupdate.exe"/>
+<item priority="1" name="\epayupdate.exe" path="v_1.0.5.24/epayupdate.exe"/>
+<item priority="1" name="\Register.exe" path="v_1.0.5.24/Register.exe"/>
+<item priority="1" name="\unzip.exe" path="v_1.0.5.24/unzip.exe"/>
+<item priority="1" name="\epay.exe" path="v_1.0.5.24/epay.exe"/>
+</version>
+<version no="1.0.5.26">
+<item priority="1" name="\autoupdate.exe" path="v_1.0.5.26/autoupdate.exe"/>
+<item priority="1" name="\epayupdate.exe" path="v_1.0.5.26/epayupdate.exe"/>
+<item priority="1" name="\Register.exe" path="v_1.0.5.26/Register.exe"/>
+<item priority="1" name="\unzip.exe" path="v_1.0.5.26/unzip.exe"/>
+<item priority="1" name="\epay.exe" path="v_1.0.5.26/epay.exe"/>
+</version>
+<version no="1.0.5.28">
+<item priority="1" name="\autoupdate.exe" path="v_1.0.5.28/autoupdate.exe"/>
+<item priority="1" name="\epayupdate.exe" path="v_1.0.5.28/epayupdate.exe"/>
+<item priority="1" name="\Register.exe" path="v_1.0.5.28/Register.exe"/>
+<item priority="1" name="\unzip.exe" path="v_1.0.5.28/unzip.exe"/>
+<item priority="1" name="\epay.exe" path="v_1.0.5.28/epay.exe"/>
+</version>
+</versioninfo>

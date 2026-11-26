@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Rules>
+	<level name="高">
+		<sender>
+			<ext name=".pif" refuse="true"/>
+		</sender>
+		<recver>
+		</recver>
+	</level>
+	<level name="中">
+		<sender>
+			<ext name=".pif" refuse="true"/>
+		</sender>
+		<recver>
+			<ext name=".dll" refuse="true"/>
+			<ext name=".bat" refuse="true"/>
+			<ext name=".reg" refuse="true"/>
+			<ext name=".ocx" refuse="true"/>
+			<ext name=".com" refuse="true"/>
+			<ext name=".vbs" refuse="true"/>
+			<ext name=".js" refuse="true"/>
+			<ext name=".hlp" refuse="true"/>
+			<ext name=".cpl" refuse="true"/>
+			<ext name=".scr" refuse="true"/>
+			<ext name=".chm" refuse="true"/>
+			<ext name=".cab" refuse="true"/>
+			<ext name=".lnk" refuse="true"/>
+			<ext name=".exe" rename="true"/>
+			<ext name=".msi" rename="true"/>
+		</recver>
+	</level>
+	<level name="低">
+		<sender>
+			<ext name=".pif" refuse="true"/>
+		</sender>
+		<recver>
+			<ext name=".dll" rename="true"/>
+			<ext name=".bat" rename="true"/>
+			<ext name=".reg" rename="true"/>
+			<ext name=".ocx" rename="true"/>
+			<ext name=".com" rename="true"/>
+			<ext name=".vbs" rename="true"/>
+			<ext name=".js" rename="true"/>
+			<ext name=".hlp" rename="true"/>
+			<ext name=".cpl" rename="true"/>
+			<ext name=".scr" rename="true"/>
+			<ext name=".chm" rename="true"/>
+			<ext name=".cab" rename="true"/>
+			<ext name=".lnk" rename="true"/>
+			<ext name=".exe" rename="true"/>
+			<ext name=".msi" rename="true"/>
+		</recver>
+	</level>
+</Rule>
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n color="255,0,255,0 ">                帮会建设帮助</n>
+	</p>
+	<p>
+		<a href="untionHelp1.xml">如何获得帮会地图</a>
+	</p>
+	<p>
+		<a href="untionHelp2.xml">获得帮会地图的好处</a>
+	</p>
+	<p>
+		<a href="untionHelp3.xml">帮会的等级</a>
+	</p>
+	<p>
+		<a href="untionHelp4.xml">帮会资金的获得和消耗</a>
+	</p>
+	<p>
+		<a href="untionHelp5.xml">帮会繁荣度的获得和消耗</a>
+	</p>
+	<p>
+		<a href="untionHelp6.xml">帮会贡献度的获得和用途</a>
+	</p>
+	<p>
+		<a href="untionHelp7.xml">帮会总舵地图</a>
+	</p>
+	<p>
+		<a href="untionHelp8.xml">钥匙链系统</a>
+	</p>
+	<p>
+		<a href="ziliaopian.xml">返回到上一层</a>
+	</p>
+</body>
+

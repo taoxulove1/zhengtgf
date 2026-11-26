@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- edited with XMLSpy v2005 rel. 3 U (http://www.altova.com) by  () -->
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by wt (zt) -->
+<config>
+	<All>
+		<!--
+	function MainDialog()
+	this:AddHelpDialog("新帮助系统（选项显示字样）","SeptHelp3.xml（调用的首页配置文件名称）");
+	end
+	this:AddDialog("MainDialog")
+
+	所有图文帮助图素放置在Interfaces\170图包下。
+	图片名称必须为编号，
+	所有配置文件放置在data\datas\newhelp目录下。
+	配置文件命名标准：septhelp + 编号(必须按照顺序).xml	
+	page:0==>表示没有下一页，1==>表示还有下一页
+	backimage:表示当前帮助文件采用哪张背景图，填写图片编号
+	caption:表示当前帮助文件标题
+-->
+		<info page="0" backimage="30" caption="全自动辅助系统图文说明"/>
+	</All>
+	<everyone>
+		<!--
+	topleft_x:图片左上角X坐标
+	topleft_y:图片左上角Y坐标
+	rightbot_x:图片右下角X坐标
+	rightbot_y:图片右下角Y坐标
+	str:悬浮提示说明信息，可使用"\n"进行换行
+-->
+	</everyone>
+</config>

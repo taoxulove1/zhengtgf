@@ -1,0 +1,35 @@
+# src/client 局部忽略规则（覆盖 upstream 的 boost 反选）
+# 原始规则存档于 .gitignore.upstream
+# 政策：boost_1_34_1 为第三方 vendor，不入库，由 assets/manifest + Release 归档还原
+
+# 构建中间目录
+**/Release/
+**/Debug/
+**/ReleaseTest/
+**/Debug_Tool/
+**/Release_Tool/
+**/DebugNoGrp/
+**/ReleaseNoGrp/
+**/*.ncb
+**/*.suo
+**/*.user
+**/*.obj
+**/*.pdb
+**/*.ilk
+**/*.tlog
+**/*.idb
+
+# 第三方 vendor
+boost_1_34_1/
+code_backup/
+cache/
+
+# 资源包
+*.pak
+*.ghd
+
+# 运行期产物
+runclient/*.log
+runclient/*.dmp
+compile.log
+compile_errors.txt

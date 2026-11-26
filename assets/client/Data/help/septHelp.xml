@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n color="255,0,255,0 ">           家族建设帮助</n>
+	</p>
+	<p>
+		<a href="septHelp1.xml">如何获得家族地图</a>
+	</p>
+	<p>
+		<a href="septHelp2.xml">拥有家族地图的好处</a>
+	</p>
+	<p>
+		<a href="septHelp3.xml">家族的等级</a>
+	</p>
+	<p>
+		<a href="septHelp4.xml">家族资金的获得和消耗</a>
+	</p>
+	<p>
+		<a href="septHelp5.xml">家族繁荣度的获得和消耗</a>
+	</p>
+	<p>
+		<a href="septHelp6.xml">家族贡献度的获得和用途</a>
+	</p>
+	<p>
+		<a href="septHelp7.xml">家族龙舟赛</a>
+	</p>
+	<p>
+		<a href="septHelp8.xml">钥匙链系统</a>
+	</p>
+	<p>
+		<a href="ziliaopian.xml">返回到上一层</a>
+	</p>
+</body>
+

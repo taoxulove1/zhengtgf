@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by wt (zt) -->
+<!--定义游戏中所有的表情符号-->
+<!-- 字段定义： id 表情ID， pic 表情的图片ID，esc 转义字符串，玩家键入这个字符则输入的是特定表情 -->
+<faces>
+    <!--团队赛季军 -->
+	<face id="296" pic="198">
+	</face>
+	<face id="0" pic="0">
+		<esc>#惊讶</esc>
+		<esc>#:O</esc>
+		<esc>#jy</esc>
+	</face>
+	<face id="1" pic="1">
+		<esc>#撇嘴</esc>
+		<esc>#:～</esc>
+		<esc>#pz</esc>
+	</face>
+	<face id="2" pic="2">
+		<esc>#色</esc>
+		<esc>#:*</esc>
+		<esc>#se</esc>
+	</face>
+	<face id="3" pic="3">
+		<esc>#发呆</esc>
+		<esc>#:L</esc>
+		<esc>#fd</esc>
+	</face>
+	<face id="4" pic="4">
+		<esc>#得意</esc>
+		<esc>#8-)</esc>
+		<esc>#dy</esc>
+	</face>
+	<face id="5" pic="5">
+		<esc>#流泪</esc>
+		<esc>#:&lt;</esc>
+		<esc>#ll</esc>
+	</face>
+	<face id="6" pic="6">
+		<esc>#害羞</esc>
+		<esc>#:$</esc>
+		<esc>#hx</esc>
+	</face>
+	<face id="7" pic="7">
+		<esc>#闭嘴</esc>
+		<esc>#:X</esc>
+		<esc>#bz</esc>
+	</face>
+	<face id="8" pic="8">
+		<esc>#睡</esc>
+		<esc>#:Z</esc>
+		<esc>#shui</esc>
+	</face>
+	<face id="9" pic="9">
+		<esc>#大哭</esc>
+		<esc>#:'(</esc>
+		<esc>#dk</esc>
+	</face>
+	<face id="10" pic="10">
+		<esc>#尴尬</esc>
+		<esc>#:-l</esc>
+		<esc>#gg</esc>
+	</face>
+	<face id="11" pic="11">
+		<esc>#发怒</esc>
+		<esc>#:@</esc>
+		<esc>#fn</esc>
+	</face>
+	<face id="12" pic="12">
+		<esc>#调皮</esc>
+		<esc>#:P</esc>
+		<esc>#tp</esc>
+	</face>
+	<face id="13" pic="13">
+		<esc>#呲牙</esc>
+		<esc>#:D</esc>
+		<esc>#cy</esc>
+	</face>
+	<face id="14" pic="14">
+		<esc>#微笑</esc>
+		<esc>#:)</esc>
+		<esc>#wx</esc>
+	</face>
+	<face id="15" pic="15">
+		<esc>#难过</esc>
+		<esc>#:(</esc>
+		<esc>#ng</esc>
+	</face>
+	<face id="16" pic="16">
+		<esc>#酷</esc>
+		<esc>#:+</esc>
+		<esc>#kuk</esc>
+	</face>
+	<face id="18" pic="18">
+		<esc>#抓狂</esc>
+		<esc>#:Q</esc>
+		<esc>#zk</esc>
+	</face>
+	<face id="19" pic="19">
+		<esc>#吐</esc>
+		<esc>#:T</esc>
+		<esc>#tu</esc>
+	</face>
+	<face id="20" pic="20">
+		<esc>#偷笑</esc>
+		<esc>#:P</esc>
+		<esc>#tx</esc>
+	</face>
+	<face id="21" pic="21">
+		<esc>#可爱</esc>
+		<esc>#:-D</esc>
+		<esc>#ka</esc>
+	</face>
+	<face id="22" pic="22">
+		<esc>#白眼</esc>
+		<esc>#:d</esc>
+		<esc>#baiy</esc>
+	</face>
+	<face id="23" pic="23">
+		<esc>#傲慢</esc>
+		<esc>#:o</esc>
+		<esc>#am</esc>
+	</face>
+	<face id="24" pic="24">
+		<esc>#饥饿</esc>
+		<esc>#:g</esc>
+		<esc>#jie</esc>
+	</face>
+	<face id="25" pic="25">
+		<esc>#困</esc>
+		<esc>#:-)</esc>
+		<esc>#kun</esc>
+	</face>
+	<face id="26" pic="26">
+		<esc>#惊恐</esc>
+		<esc>#:!</esc>
+		<esc>#jk</esc>
+	</face>
+	<face id="27" pic="27">
+		<esc>#流汗</esc>
+		<esc>#:L</esc>
+		<esc>#lh</esc>
+	</face>
+	<face id="28" pic="28">
+		<esc>#憨笑</esc>
+		<esc>#:></esc>
+		<esc>#hanx</esc>
+	</face>
+	<face id="29" pic="29">
+		<esc>#大兵</esc>
+		<esc>#:;</esc>
+		<esc>#db</esc>
+	</face>
+	<face id="30" pic="30">
+		<esc>#奋斗</esc>
+		<esc>#:f</esc>
+		<esc>#fendou</esc>
+	</face>
+	<face id="31" pic="31">
+		<esc>#咒骂</esc>
+		<esc>#:-S</esc>
+		<esc>#zhm</esc>
+	</face>
+	<face id="32" pic="32">
+		<esc>#疑问</esc>
+		<esc>#?</esc>
+		<esc>#yiw</esc>
+	</face>
+	<face id="33" pic="33">
+		<esc>#嘘...</esc>
+		<esc>#;x</esc>
+		<esc>#xu</esc>
+	</face>
+	<face id="34" pic="34">
+		<esc>#晕</esc>
+		<esc>#:@</esc>
+		<esc>#yun</esc>
+	</face>
+	<face id="35" pic="35">
+		<esc>#折磨</esc>
+		<esc>#:8</esc>
+		<esc>#zhem</esc>
+	</face>
+	<face id="38" pic="38">
+		<esc>#敲打</esc>
+		<esc>#xx</esc>
+		<esc>#qiao</esc>
+	</face>
+	<face id="39" pic="39">
+		<esc>#再见</esc>
+		<esc>#bye</esc>
+		<esc>#zj</esc>
+	</face>
+	<face id="63" pic="63">
+		<esc>#玫瑰</esc>
+		<esc>#rose</esc>
+		<esc>#mg</esc>
+	</face>
+	<face id="64" pic="64">
+		<esc>#凋谢</esc>
+		<esc>#fade</esc>
+		<esc>#dx</esc>
+	</face>
+	<face id="65" pic="65">
+		<esc>#吻</esc>
+		<esc>#kiss</esc>
+		<esc>#wen</esc>
+	</face>
+	<face id="66" pic="66">
+		<esc>#爱心</esc>
+		<esc>#heart</esc>
+		<esc>#xin</esc>
+	</face>
+	<face id="67" pic="67">
+		<esc>#心碎</esc>
+		<esc>#break</esc>
+		<esc>#xs</esc>
+	</face>
+	<face id="76" pic="76">
+		<esc>#强</esc>
+		<esc>#strong</esc>
+		<esc>#qiang</esc>
+	</face>
+	<face id="77" pic="77">
+		<esc>#弱</esc>
+		<esc>#weak</esc>
+		<esc>#ruo</esc>
+	</face>
+	<face id="78" pic="78">
+		<esc>#握手</esc>
+		<esc>#share</esc>
+		<esc>#ws</esc>
+	</face>
+	<face id="79" pic="79">
+		<esc>#胜利</esc>
+		<esc>#v</esc>
+		<esc>#shl</esc>
+	</face>
+	<face id="110" pic="180">
+	</face>
+	<face id="111" pic="181">
+	</face>
+	<face id="112" pic="182">
+	</face>
+	<face id="113" pic="183">
+	</face><!--征途宝贝 -->
+	<face id="114" pic="184">
+	</face>
+	<face id="115" pic="185">
+	</face>
+	<face id="116" pic="186">
+	</face>
+	<face id="117" pic="187">
+	</face><!--人气宝贝 -->
+	<face id="118" pic="188">
+	</face>
+	<face id="119" pic="189">
+	</face>
+	<face id="120" pic="190">
+	</face>
+	<face id="121" pic="191">
+	</face><!--沉鱼落雁 -->
+	<face id="88" pic="88">
+		<esc>#噘嘴</esc>
+		<esc>#jz</esc>
+	</face>
+	<face id="89" pic="89">
+		<esc>#发呆2</esc>
+		<esc>#fd2</esc>
+	</face>
+	<face id="90" pic="90">
+		<esc>#流泪2</esc>
+		<esc>#ll2</esc>
+	</face>
+	<face id="91" pic="91">
+		<esc>#害羞2</esc>
+		<esc>#hx2</esc>
+	</face>
+	<face id="92" pic="92">
+		<esc>#闭嘴2</esc>
+		<esc>#bz2</esc>
+	</face>
+	<face id="93" pic="93">
+		<esc>#大哭2</esc>
+		<esc>#dk2</esc>
+	</face>
+	<face id="94" pic="94">
+		<esc>#尴尬2</esc>
+		<esc>#gg2</esc>
+	</face>
+	<face id="95" pic="95">
+		<esc>#呲牙2</esc>
+		<esc>#cy2</esc>
+	</face>
+	<face id="96" pic="96">
+		<esc>#微笑2</esc>
+		<esc>#wx2</esc>
+	</face>
+	<face id="97" pic="97">
+		<esc>#偷笑2</esc>
+		<esc>#tx2</esc>
+	</face>
+	<face id="98" pic="98">
+		<esc>#可爱2</esc>
+		<esc>#ka2</esc>
+	</face>
+	<face id="99" pic="99">
+		<esc>#瞌睡2</esc>
+		<esc>#ks2</esc>
+	</face>
+	<face id="100" pic="100">
+		<esc>#流汗2</esc>
+		<esc>#lh2</esc>
+	</face>
+	<face id="101" pic="101">
+		<esc>#发奋2</esc>
+		<esc>#ff2</esc>
+	</face>
+	<face id="102" pic="102">
+		<esc>#咒骂2</esc>
+		<esc>#zm2</esc>
+	</face>
+	<face id="103" pic="103">
+		<esc>#嘘2</esc>
+		<esc>#x2</esc>
+	</face>
+	<face id="104" pic="104">
+		<esc>#抓狂2</esc>
+		<esc>#zk2</esc>
+	</face>
+	<face id="105" pic="105">
+		<esc>#敲打2</esc>
+		<esc>#qd2</esc>
+	</face>
+	<face id="106" pic="106">
+		<esc>#爱心2</esc>
+		<esc>#ax2</esc>
+	</face>
+	<face id="107" pic="107">
+		<esc>#我顶2</esc>
+		<esc>#wd2</esc>
+	</face>
+	<face id="108" pic="108">
+		<esc>#鄙视2</esc>
+		<esc>#bs2</esc>
+	</face>
+	<!--号角 -->
+	<face id="122" pic="192">
+	</face>
+	<!--金号 -->
+	<face id="123" pic="193">
+	</face>
+	<!--烟花 -->
+	<face id="124" pic="194">
+	</face>
+	<!--福到 -->
+	<face id="125" pic="195">
+	</face>
+	<face id="256" pic="129">
+		<esc>#敲打3</esc>
+		<esc>#qd3</esc>
+	</face>		
+	<face id="257" pic="130">
+		<esc>#惊讶3</esc>
+		<esc>#jy3</esc>
+	</face>		
+	<face id="258" pic="131">
+		<esc>#撇嘴3</esc>
+		<esc>#pz3</esc>
+	</face>			
+	<face id="259" pic="132">
+		<esc>#色3</esc>
+		<esc>#se3</esc>
+	</face>			
+	<face id="260" pic="133">
+		<esc>#发呆3</esc>
+		<esc>#fd3</esc>
+	</face>				
+	<face id="261" pic="134">
+		<esc>#得意3</esc>
+		<esc>#dy3</esc>
+	</face>				
+	<face id="262" pic="135">
+		<esc>#流泪3</esc>
+		<esc>#ll3</esc>
+	</face>				
+	<face id="263" pic="136">
+		<esc>#害羞3</esc>
+		<esc>#hx3</esc>
+	</face>				
+	<face id="264" pic="137">
+		<esc>#闭嘴3</esc>
+		<esc>#bz3</esc>
+	</face>				
+	<face id="265" pic="138">
+		<esc>#睡3</esc>
+		<esc>#shui3</esc>
+	</face>		
+	<face id="267" pic="139">
+		<esc>#大哭3</esc>
+		<esc>#dk3</esc>
+	</face>			
+	<face id="268" pic="140">
+		<esc>#尴尬3</esc>
+		<esc>#gg3</esc>
+	</face>			
+	<face id="269" pic="141">
+		<esc>#发怒3</esc>
+		<esc>#fn3</esc>
+	</face>			
+	<face id="270" pic="142">
+		<esc>#调皮3</esc>
+		<esc>#tp3</esc>
+	</face>			
+	<face id="271" pic="143">
+		<esc>#龇牙3</esc>
+		<esc>#zy3</esc>
+	</face>			
+	<face id="272" pic="144">
+		<esc>#微笑3</esc>
+		<esc>#wx3</esc>
+	</face>			
+	<face id="273" pic="145">
+		<esc>#酷3</esc>
+		<esc>#ku3</esc>
+	</face>			
+	<face id="274" pic="146">
+		<esc>#抓狂3</esc>
+		<esc>#zk3</esc>
+	</face>			
+	<face id="275" pic="147">
+		<esc>#吐3</esc>
+		<esc>#tu3</esc>
+	</face>			
+	<face id="276" pic="148">
+		<esc>#偷笑3</esc>
+		<esc>#tx3</esc>
+	</face>			
+	<face id="277" pic="149">
+		<esc>#可爱3</esc>
+		<esc>#ka3</esc>
+	</face>			
+	<face id="278" pic="150">
+		<esc>#白眼3</esc>
+		<esc>#by3</esc>
+	</face>			
+	<face id="279" pic="151">
+		<esc>#傲慢3</esc>
+		<esc>#am3</esc>
+	</face>			
+	<face id="280" pic="152">
+		<esc>#饿3</esc>
+		<esc>#e3</esc>
+	</face>		
+	<face id="281" pic="153">
+		<esc>#困3</esc>
+		<esc>#kun3</esc>
+	</face>		
+	<face id="282" pic="154">
+		<esc>#惊恐3</esc>
+		<esc>#jk3</esc>
+	</face>				
+	<face id="283" pic="155">
+		<esc>#流汗3</esc>
+		<esc>#lh3</esc>
+	</face>			
+	<face id="284" pic="156">
+		<esc>#憨笑3</esc>
+		<esc>#hx3</esc>
+	</face>				
+	<face id="285" pic="157">
+		<esc>#大兵3</esc>
+		<esc>#db3</esc>
+	</face>			
+	<face id="286" pic="158">
+		<esc>#奋斗3</esc>
+		<esc>#fendou3</esc>
+	</face>			
+	<face id="287" pic="159">
+		<esc>#咒骂3</esc>
+		<esc>#zm3</esc>
+	</face>		
+	<face id="288" pic="160">
+		<esc>#疑问3</esc>
+		<esc>#yw3</esc>
+	</face>		
+	<face id="289" pic="161">
+		<esc>#嘘3</esc>
+		<esc>#xu3</esc>
+	</face>			
+	<face id="290" pic="162">
+		<esc>#晕3</esc>
+		<esc>#yun3</esc>
+	</face>			
+	<face id="291" pic="163">
+		<esc>#折磨3</esc>
+		<esc>#zhemo3</esc>
+	</face>			
+	<face id="292" pic="164">
+		<esc>#蓝玫瑰</esc>
+		<esc>#bluerose</esc>
+		<esc>#lmg</esc>
+	</face>
+	<face id="293" pic="165">
+		<esc>#凋谢2</esc>
+		<esc>#dx2</esc>
+	</face>	
+	<!--团队赛冠军 -->
+	<face id="294" pic="196">
+	</face>	
+	<!--团队赛亚军 -->
+	<face id="295" pic="197">
+	</face>
+	<!--红包 -->
+	<face id="298" pic="199">
+	</face>
+</faces>

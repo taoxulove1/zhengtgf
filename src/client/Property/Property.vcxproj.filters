@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{1011dda6-35f5-4b0e-950a-c0e9e8cf80ed}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{f7cb05bc-a7e1-4807-9b43-fa3d017ce935}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="Extra">
+      <UniqueIdentifier>{cb25a755-a54f-4269-8bda-ad8e7dccf4a4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cFileOP.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cPropertyTable.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cTableManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cFileOP.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cPropertyTable.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cTableManager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="iProperty.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="public.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

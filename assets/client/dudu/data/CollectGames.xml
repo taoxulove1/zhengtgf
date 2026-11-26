@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<CollectGames>
+    <MMoGames>
+        <item name="征途" regkey="SOFTWARE\上海征途网络科技有限公司\征途" image="3002" exename="patchupdate.exe" officalloc="http://zt.ztgame.com" defpath="" />
+        <item name="绿色征途" regkey="" image="3006" exename="patchupdate.exe" officalloc="http://ls.ztgame.com" defpath="" />
+        <item name="征途怀旧版" regkey="" image="3008" exename="patchupdate.exe" officalloc="http://zthj.ztgame.com" defpath="" />
+		<item name="征途2" regkey="" image="3018" exename="patchupdate.exe" officalloc="http://zt2.ztgame.com" defpath="" />
+        <item name="巨人" regkey="" image="3010" exename="patchupdate.exe" officalloc="http://jr.ztgame.com" defpath="" />
+        <item name="万王之王3" regkey="" image="3012" exename="patchupdate.exe" officalloc="http://kok3.ztgame.com" defpath="" />
+        <item name="龙魂" regkey="" image="3014" exename="patcher.exe" officalloc="http://lh.ztgame.com" defpath="" />
+    </MMoGames>
+    <NetGames>
+        <item name="黄金国度" image="3004" location="http://gd.ztgame.com" />
+    </NetGames>
+</CollectGames>

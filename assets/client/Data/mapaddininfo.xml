@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by wt (zt) -->
+<map>
+	<scenemusic>
+		<!--MinInterval: 声音的最小间隔时间 
+MaxInterval: 声音的最小间隔时间 如果为0则循环播放
+sname: 简称（在编辑器格子中的显示）
+-->
+		<item id="1" name="小孩的笑声" sname="童笑" MinInterval="5000" MaxInterval="10000" file="10000">
+			<hour start="6" end="8"/>
+			<hour start="10" end="11"/>
+			<hour start="17" end="19"/>
+		</item>
+		<item id="2" name="小孩被大人打骂的哭声" sname="童哭" MinInterval="10000" MaxInterval="50000" file="10001">
+			<hour start="9" end="10"/>
+			<hour start="11" end="12"/>
+			<hour start="19" end="21"/>
+		</item>
+		<item id="3" name="烧菜的声音" sname="烧菜" MinInterval="5000" MaxInterval="10000" file="10002">
+			<hour start="11" end="12"/>
+			<hour start="19" end="21"/>
+		</item>
+		<item id="4" name="苍蝇嗡嗡声" sname="蝇声" MinInterval="5000" MaxInterval="10000" file="10003">
+			<hour start="8" end="19"/>
+		</item>
+		<item id="5" name="茅厕人声" sname="厕人" MinInterval="5000" MaxInterval="10000" file="10004">
+			<hour start="7" end="9"/>
+			<hour start="11" end="13"/>
+			<hour start="19" end="21"/>
+		</item>
+		<item id="6" name="林中鸟叫" sname="林鸟" MinInterval="5000" MaxInterval="10000" file="10005">
+			<hour start="5" end="19"/>
+		</item>
+		<item id="7" name="流水声" sname="流水" MinInterval="0" MaxInterval="0" file="10006">
+			<hour start="0" end="23"/>
+		</item>
+		<item id="8" name="木船吱吱声" sname="船吱" MinInterval="10000" MaxInterval="30000" file="10007">
+			<hour start="0" end="23"/>
+		</item>
+		<item id="9" name="屋内打骂的声音" sname="屋骂" MinInterval="10000" MaxInterval="40000" file="10008">
+			<hour start="8" end="10"/>
+			<hour start="13" end="15"/>
+			<hour start="19" end="21"/>
+		</item>
+		<item id="10" name="叫卖声" sname="叫卖" MinInterval="2000" MaxInterval="20000" file="10009">
+			<hour start="7" end="11"/>
+			<hour start="13" end="18"/>
+		</item>
+		<item id="11" name="铁器撞击声" sname="铁撞" MinInterval="5000" MaxInterval="10000" file="10010">
+			<hour start="7" end="11"/>
+			<hour start="12" end="19"/>
+		</item>
+		<item id="12" name="狗叫声" sname="狗叫" MinInterval="5000" MaxInterval="120000" file="10011">
+			<hour start="3" end="23"/>
+		</item>
+		<item id="13" name="牛叫声" sname="牛叫" MinInterval="5000" MaxInterval="10000" file="10012">
+			<hour start="7" end="9"/>
+			<hour start="17" end="19"/>
+		</item>
+		<item id="14" name="鸭叫声" sname="鸭叫" MinInterval="5000" MaxInterval="10000" file="10013">
+			<hour start="7" end="19"/>
+		</item>
+		<item id="15" name="鸡叫声" sname="鸡叫" MinInterval="5000" MaxInterval="10000" file="10014">
+			<hour start="7" end="19"/>
+		</item>
+		<item id="16" name="屋内男女说话声" sname="屋说" MinInterval="10000" MaxInterval="50000" file="10015">
+			<hour start="6" end="8"/>
+			<hour start="9" end="10"/>
+			<hour start="11" end="13"/>
+			<hour start="14" end="16"/>
+			<hour start="17" end="21"/>
+		</item>
+		<item id="17" name="猪圈猪声" sname="猪叫" MinInterval="5000" MaxInterval="10000" file="10016">
+			<hour start="5" end="8"/>
+			<hour start="9" end="10"/>
+			<hour start="11" end="13"/>
+			<hour start="15" end="17"/>
+			<hour start="18" end="20"/>
+		</item>
+		<item id="18" name="蝉鸣" sname="蝉鸣" MinInterval="3000" MaxInterval="10000" file="10017">
+			<hour start="9" end="19"/>
+		</item>
+		<item id="19" name="田野蛙叫" sname="蛙叫" MinInterval="5000" MaxInterval="15000" file="10018">
+			<hour start="18" end="23"/>
+			<hour start="0" end="6"/>
+		</item>
+		<item id="20" name="鸭棚鸭叫" sname="棚鸭" MinInterval="20000" MaxInterval="40000" file="10019">
+			<hour start="6" end="9"/>
+			<hour start="18" end="19"/>
+		</item>
+		<item id="21" name="鸡棚鸡叫" sname="棚鸡" MinInterval="30000" MaxInterval="50000" file="10020">
+			<hour start="6" end="10"/>
+			<hour start="16" end="19"/>
+		</item>
+		<item id="22" name="布谷鸟叫" sname="布谷" MinInterval="4000" MaxInterval="30000" file="10021">
+			<hour start="7" end="19"/>
+		</item>
+		<item id="23" name="猫头鹰叫" sname="猫鹰" MinInterval="40000" MaxInterval="120000" file="10022">
+			<hour start="20" end="23"/>
+			<hour start="0" end="5"/>
+		</item>
+		<item id="24" name="山边风声" sname="风小" MinInterval="5000" MaxInterval="15000" file="10023">
+			<hour start="18" end="23"/>
+			<hour start="1" end="5"/>
+			<hour start="6" end="17"/>
+		</item>
+		<item id="25" name="山边风声" sname="风大" MinInterval="15000" MaxInterval="50000" file="10024">
+			<hour start="18" end="23"/>
+			<hour start="0" end="4"/>
+			<hour start="6" end="11"/>
+			<hour start="13" end="17"/>
+		</item>
+		<item id="26" name="巨大瀑布声" sname="巨瀑" MinInterval="0" MaxInterval="0" file="10025">
+			<hour start="0" end="23"/>
+		</item>
+		<item id="27" name="远处瀑布声" sname="远瀑" MinInterval="0" MaxInterval="0" file="10026">
+			<hour start="0" end="23"/>
+		</item>
+		<item id="28" name="集市杂乱音效" sname="集市" MinInterval="5000" MaxInterval="10000" file="10027">
+			<hour start="7" end="11"/>
+			<hour start="13" end="18"/>
+		</item>
+		<item id="29" name="燃烧木头的声音" sname="烧木" MinInterval="0" MaxInterval="0" file="10100">
+			<hour start="0" end="23"/>
+		</item>
+		<item id="30" name="风吹峡谷的声音" sname="吹小" MinInterval="0" MaxInterval="0" file="10101">
+			<hour start="0" end="23"/>
+		</item>
+		<item id="31" name="有哭泣人声" sname="人泣" MinInterval="10000" MaxInterval="50000" file="10102">
+			<hour start="7" end="8"/>
+			<hour start="13" end="14"/>
+			<hour start="18" end="19"/>
+		</item>
+		<item id="32" name="燃烧火焰的声音" sname="火声" MinInterval="0" MaxInterval="0" file="10103">
+			<hour start="0" end="23"/>
+		</item>
+		<item id="33" name="峡谷风吹的声音" sname="吹大" MinInterval="0" MaxInterval="0" file="10200">
+			<hour start="0" end="23"/>
+		</item>
+		<item id="34" name="海鸥叫声" sname="海鸥" MinInterval="0" MaxInterval="0" file="10250">
+			<hour start="5" end="19"/>
+		</item>
+		<item id="35" name="海边海浪声" sname="海浪" MinInterval="0" MaxInterval="0" file="10251">
+			<hour start="0" end="23"/>
+		</item>
+		<item id="36" name="魔法神像" sname="魔像" MinInterval="0" MaxInterval="0" file="10028">
+			<hour start="0" end="23"/>
+		</item>
+		<item id="37" name="寺庙和尚念经" sname="念经" MinInterval="0" MaxInterval="0" file="10029">
+			<hour start="6" end="7"/>
+		</item>
+		<item id="38" name="工厂机械转动声" sname="机声" MinInterval="0" MaxInterval="0" file="10030">
+			<hour start="7" end="11"/>
+			<hour start="13" end="18"/>
+			<hour start="19" end="21"/>
+		</item>
+	</scenemusic>
+</map>

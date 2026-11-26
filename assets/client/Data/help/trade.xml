@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+
+	<p>
+		<n color="255,255,255,255">交易</n>
+	</p>
+	<p>
+		<n>    先点击主界面上的交易按钮或者通过快捷键u执行交易功能，鼠标变成一个特殊的图标，然后选择你要交易的目标点击左键。这样你就可以把自己的物品和其他角色物品进行交易了。</n>
+	</p>
+	<p>
+		<a href="Index.xml">返回</a>
+	</p>
+</body>

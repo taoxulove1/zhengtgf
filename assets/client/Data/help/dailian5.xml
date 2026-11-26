@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n color="255,255,255,255 ">其他：</n>
+	</p>
+	<p>
+		<n>     开启代练功能后，无论你是否在线，疲劳度都将持续计算。在结束代练功能的时候，系统将根据代练所持续的时间，重新计算你的疲劳度。</n>
+	</p>
+	<p>
+		<n>     注意：如果你选择的是自动买药代练模式或者使用使用经验珠子、自动买药代练模式时，请临时取消“财产保护”设置。</n>
+	</p>
+	<p>
+		<a href="dailian.xml">返回到上一层</a>
+	</p>
+	<p>
+		<a href="Index.xml">返回</a>
+	</p>
+</body>
+

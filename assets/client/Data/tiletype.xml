@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by mm (p) -->
+<type>
+	<item id="0" name="土地" sname="土">
+		<music>
+			<walk first="10000,4"/>
+			<run first="11000,4"/>
+			<ride_walk first="21000,4"/>
+			<ride_run first="28000,4"/>
+		</music>
+	</item>
+	<item id="1" name="草地" sname="草">
+		<music>
+			<walk first="20000,4"/>
+			<run first="12000,4"/>
+			<ride_walk first="22000,4"/>
+			<ride_run first="29000,4"/>
+		</music>
+	</item>
+	<item id="2" name="沙地" sname="沙">
+		<music>
+			<walk first="30000,4"/>
+			<run first="13000,4"/>
+			<ride_walk first="23000,4"/>
+			<ride_run first="31000,4"/>
+		</music>
+	</item>
+	<item id="3" name="碎石地" sname="碎石">
+		<music>
+			<walk first="40000,4"/>
+			<run first="14000,4"/>
+			<ride_walk first="24000,4"/>
+			<ride_run first="32000,4"/>
+		</music>
+	</item>
+	<item id="4" name="石砖地" sname="石砖">
+		<music>
+			<walk first="50000,4"/>
+			<run first="15000,4"/>
+			<ride_walk first="25000,4"/>
+			<ride_run first="33000,4"/>
+		</music>
+	</item>
+	<item id="5" name="湿土地(沼泽)" sname="湿土">
+		<music>
+			<walk first="60000,4"/>
+			<run first="16000,4"/>
+			<ride_walk first="26000,4"/>
+			<ride_run first="34000,4"/>
+		</music>
+	</item>
+	<item id="6" name="雪地" sname="雪">
+		<music>
+			<walk first="70000,4"/>
+			<run first="17000,4"/>
+			<ride_walk first="27000,4"/>
+			<ride_run first="37000,4"/>
+		</music>
+	</item>
+	<item id="7" name="木地板" sname="木">
+		<music>
+			<walk first="80000,4"/>
+			<run first="18000,4"/>
+		</music>
+	</item>
+	<item id="8" name="地毯" sname="毯">
+		<music>
+			<walk first="90000,4"/>
+			<run first="19000,4"/>
+		</music>
+	</item>
+	<item id="9" name="种植" sname="植">
+		<music>
+			<walk first="90000,4"/>
+			<run first="19000,4"/>
+		</music>
+	</item>
+	<item id="10" name="挖矿" sname="挖">
+		<music>
+			<walk first="90000,4"/>
+			<run first="19000,4"/>
+		</music>
+	</item>
+	<item id="11" name="伐木" sname="伐">
+		<music>
+			<walk first="90000,4"/>
+			<run first="19000,4"/>
+		</music>
+	</item>
+	<item id="12" name="勘探" sname="勘">
+		<music>
+			<walk first="90000,4"/>
+			<run first="19000,4"/>
+		</music>
+	</item>
+	<item id="13" name="采集" sname="采">
+		<music>
+			<walk first="90000,4"/>
+			<run first="19000,4"/>
+		</music>
+	</item>
+	<item id="14" name="钓鱼" sname="钓">
+		<music>
+			<walk first="90000,4"/>
+			<run first="19000,4"/>
+		</music>
+	</item>
+	<item id="15" name="捕猎" sname="捕">
+		<music>
+			<walk first="90000,4"/>
+			<run first="19000,4"/>
+		</music>
+	</item>
+	<item id="16" name="水" sname="水"/>
+		<music>
+			<walk first="10000,4"/>
+			<run first="11000,4"/>
+			<ride_walk first="21000,4"/>
+			<ride_run first="28000,4"/>
+		</music>
+</type>

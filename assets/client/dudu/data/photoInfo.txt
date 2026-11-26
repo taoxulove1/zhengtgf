@@ -1,0 +1,18 @@
+{"version":1,
+"Photo_config":[
+		{"secenName":"甜蜜一刻正常",  "secneID":89,   "SuddenPhotoID":98, "ThreePhotoID":117, "takePicture":[44, 44, 44],  "BigAndSmallFrame":1,   "MidleFrame":1, "ThreePhotoBtnFrame":0, "ThreePhotoAnimationFrame":0},
+		{"secenName":"甜蜜一刻突袭",  "secneID":98,   "SuddenPhotoID":98, "ThreePhotoID":117, "takePicture":[1,  1,  1 ],  "BigAndSmallFrame":1,
+"MidleFrame":1, "ThreePhotoBtnFrame":0, "ThreePhotoAnimationFrame":0},
+		{"secenName":"甜蜜一刻三拍",  "secneID":117,  "SuddenPhotoID":98, "ThreePhotoID":117, "takePicture":[30, 37, 44],  "BigAndSmallFrame":33,  "MidleFrame":2, "ThreePhotoBtnFrame":1, "ThreePhotoAnimationFrame":34},
+		{"secenName":"玫瑰之恋正常",  "secneID":111, "SuddenPhotoID":112, "ThreePhotoID":118, "takePicture":[44, 44, 44],  "BigAndSmallFrame":2,   "MidleFrame":1, "ThreePhotoBtnFrame":0, "ThreePhotoAnimationFrame":0},
+		{"secenName":"玫瑰之恋突袭",  "secneID":112, "SuddenPhotoID":112, "ThreePhotoID":118, "takePicture":[1,  1,  1 ],  "BigAndSmallFrame":2,   "MidleFrame":1, "ThreePhotoBtnFrame":0, "ThreePhotoAnimationFrame":0},
+		{"secenName":"玫瑰之恋三拍",  "secneID":118, "SuddenPhotoID":112, "ThreePhotoID":118, "takePicture":[30, 37, 44],  "BigAndSmallFrame":33,  "MidleFrame":2, "ThreePhotoBtnFrame":2, "ThreePhotoAnimationFrame":34},
+		{"secenName":"愚你同乐正常",  "secneID":114, "SuddenPhotoID":115, "ThreePhotoID":119, "takePicture":[42, 42, 44],  "BigAndSmallFrame":3,   "MidleFrame":1, "ThreePhotoBtnFrame":0, "ThreePhotoAnimationFrame":0},
+		{"secenName":"愚你同乐突袭",  "secneID":115, "SuddenPhotoID":115, "ThreePhotoID":119, "takePicture":[1,  1,  1 ],  "BigAndSmallFrame":3,   "MidleFrame":1, "ThreePhotoBtnFrame":0,  "ThreePhotoAnimationFrame":0},
+		{"secenName":"愚你同乐三拍",  "secneID":119, "SuddenPhotoID":115, "ThreePhotoID":119, "takePicture":[27, 35, 42],  "BigAndSmallFrame":33,  "MidleFrame":2, "ThreePhotoBtnFrame":3, "ThreePhotoAnimationFrame":34},
+		{"secenName":"儿童节正常",    "secneID":122,  "SuddenPhotoID":123, "ThreePhotoID":124, "takePicture":[44, 44, 44], "BigAndSmallFrame":4,   "MidleFrame":1, "ThreePhotoBtnFrame":0, "ThreePhotoAnimationFrame":0},
+		{"secenName":"儿童节突袭",  "secneID":123,  "SuddenPhotoID":123,  "ThreePhotoID":124, "takePicture":[1,  1,  1 ],  "BigAndSmallFrame":4,   "MidleFrame":1, "ThreePhotoBtnFrame":0, "ThreePhotoAnimationFrame":0},
+		{"secenName":"儿童节三拍",  "secneID":124,  "SuddenPhotoID":123,  "ThreePhotoID":124, "takePicture":[30, 37, 44],  "BigAndSmallFrame":33,  
+"MidleFrame":2, "ThreePhotoBtnFrame":4 , "ThreePhotoAnimationFrame":34}
+		]
+}

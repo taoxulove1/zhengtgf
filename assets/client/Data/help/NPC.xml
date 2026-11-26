@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n color="255,255,255,255">npc</n>
+	</p>
+	<p>
+		<n>    npc指由系统操控并且会主动或者被动与玩家控制的角色发生互动的角色。在游戏中npc分为：功能npc和怪物两种。功能npc主要提供玩家一些信息，提供给玩家各种买卖。怪物是玩家控制角色的主要攻击对象，玩家主要以怪物类npc来练级。</n>
+	</p>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<p>
+		<a href="Index.xml">返回</a>
+	</p>
+</body>

@@ -1,0 +1,31 @@
+{
+    "files.encoding": "gbk",
+    "files.autoGuessEncoding": false,
+    "files.associations": {
+        "*.ipp": "cpp",
+        "cctype": "cpp",
+        "cmath": "cpp",
+        "cstdarg": "cpp",
+        "cstddef": "cpp",
+        "cstdio": "cpp",
+        "cstdlib": "cpp",
+        "cstring": "cpp",
+        "ctime": "cpp",
+        "cwchar": "cpp",
+        "cwctype": "cpp",
+        "iostream": "cpp"
+    },
+    "terminal.integrated.profiles.windows": {
+        "VS2003": {
+            "path": "cmd.exe",
+            "args": [
+                "/k",
+                "C:\\Program Files (x86)\\Microsoft Visual Studio .NET 2003\\Common7\\Tools\\vsvars32.bat"
+            ]
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "VS2003",
+    "codingcopilot.enableAutoCompletions": false,
+    "codingcopilot.enableNextEditSuggestions": false,
+    "codingcopilot.floatShortcut": false
+}

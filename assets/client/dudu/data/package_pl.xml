@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- 
+说明：packageid包裹ID， nSort排序（越小越靠前）， bCanSelectNum是否可以选择数量
+注意：本配置文件，每加一项都要去代码里面添加Tips说明内容CPackageTipsWnd
+ -->
+<Package_Config>
+	<!-- 水晶 -->
+	<packageitem packageid="42" name="水晶" nSort="1" bCanSelectNum="1"
+	/>
+	<!-- 荣耀卡 -->
+	<packageitem packageid="61" name="荣耀卡" nSort="2" bCanSelectNum="1"
+	/>
+	<!-- 糖果 -->
+	<packageitem packageid="62" name="糖果" nSort="3" bCanSelectNum="1"
+	/>
+	<!-- 雪糕 -->
+	<packageitem packageid="70" name="雪糕" nSort="4" bCanSelectNum="1"
+	/>
+	<!-- 为你打call -->
+	<packageitem packageid="89" name="为你打call" nSort="0" bCanSelectNum="1"
+	/>
+</Package_Config>

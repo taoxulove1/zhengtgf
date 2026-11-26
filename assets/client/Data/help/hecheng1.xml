@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n color="255,255,255,255 ">装备合成需要满足的条件：</n>
+	</p>
+	<p>
+		<n>1.需要130级以上装备。（包括转生装备）</n>
+	</p>
+	<p>
+		<n>2.需要5件绿色签名绑定装备才能进行合成。</n>
+	</p>
+	<p>
+		<n>3.5件装备必须等级一致或者周边四格内放置的装备比中间格子放置的装备高一个等级档次时，装备才能成功合成。</n>
+	</p>
+	<p>
+		<a href="hecheng.xml">返回到上一层</a>
+	</p>
+</body>
+

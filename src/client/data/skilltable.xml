@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skills>
+    <skill id="1001" name="普通攻击" type="active"/>
+    <skill id="1101" name="重击" type="active"/>
+</skills>

@@ -1,0 +1,560 @@
+{"version":1,
+ "字段信息说明":[
+		{	"secneID":"道具ID", 
+			"szSceneName":"名称", 
+			"nTabIndex":"显示tab页，0表示普通，1表示特殊",
+			"byShowType":"0不需要显示button,1需要显示button,2特殊大神button,待续...", 
+			"bVoiceShow":"语音频道是否显示", 
+			"nStartX":"特效起始x位置", 
+			"nStartY":"特效起始y位置",
+			"Width":"特效宽度", 
+			"Height":"特效高度", 
+			"nBackX":"特效背景起始x位置",
+			"nBackY":"特效背景起始y位置", 
+			"nNumberX":"特效数字起始x位置",
+			"nNumberY":"特效数字起始y位置",
+			"nTextX":"特效文字起始x位置",
+			"nTextY":"特效文字起始y位置",
+			"EffectInfo":"特效播放总帧数数组，分别对应礼物数量1、10、30、66、188、512、1314", 
+			"MinFrame":"已经废弃", 
+			"StopFrame":"当播放总帧数大于特效资源总帧数，特效是否在某一帧停留，如果不停留，则考虑下面的循环播放特定帧，否则CicleFrameBigen和CicleFrameEnd无实际意义",
+			"CicleFrameBigen":"循环播放开始帧,当播放总帧数大于特效资源总帧数,就会循环播放中间一段特效", 
+			"CicleFrameEnd":"循环播放结束帧", 
+			"PicFrame":"礼物特效资源总帧数", 
+			"rcGifName":"礼物大动画资源名",
+			"rcSceneName": "礼物特效资源名",
+			"rcPngResName":"礼物资源名",
+			"rcSmallGifName":"礼物小动画资源名" 
+		}
+	],
+ "Scecen_config":[
+ 		{	"secneID":130, 
+			"szSceneName":"喜鹊", "nTabIndex":0, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":-150, "nStartY":100, "Width":246, "Height":62, "nBackX":320, "nBackY":40, "nNumberX":310, "nNumberY":115, "nTextX":100, "nTextY":250,
+			"EffectInfo":[10, 15, 15, 15, 15, 15, 15], "MinFrame":10, "StopFrame":0, "CicleFrameBigen":1, "CicleFrameEnd":15, "PicFrame":15, 
+			"rcGifName":"scene_130.gif", "rcSceneName": "scene_130.png", "rcPngResName":"scene_130.png", "rcSmallGifName":"scene_130.gif" 
+		}, 
+		{	"secneID":131, 
+			"szSceneName":"鹊桥", "nTabIndex":0, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":216, "nStartY":-104, "Width":240, "Height":200, "nBackX":310, "nBackY":72, "nNumberX":400, "nNumberY":20, "nTextX":100, "nTextY":260,
+			"EffectInfo":[40, 40, 40, 40, 40, 40, 40], "MinFrame":40, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":40, 
+			"rcGifName":"scene_131.gif", "rcSceneName": "scene_131.png", "rcPngResName":"scene_131.png", "rcSmallGifName":"scene_131.gif" 
+		}, 
+   		{	"secneID":151, 
+			"szSceneName":"积分卡", "nTabIndex":0, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":118, "nStartY":30, "Width":222, "Height":179, "nBackX":220, "nBackY":20, "nNumberX":310, "nNumberY":130, "nTextX":100, "nTextY":220,
+			"EffectInfo":[10, 10, 10, 15, 15, 15, 15], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":14, "CicleFrameEnd":14, "PicFrame":15, 
+			"rcGifName":"scene_151.gif", "rcSceneName": "scene_151.png", "rcPngResName":"scene_151.png", "rcSmallGifName":"scene_151.gif" 
+		},
+		{	"secneID":125, 
+			"szSceneName":"粽子", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":100, "nStartY":-80, "Width":232, "Height":285, "nBackX":320, "nBackY":40, "nNumberX":320, "nNumberY":115, "nTextX":100, "nTextY":210,
+			"EffectInfo":[10, 10, 10, 10, 15, 20, 25], "MinFrame":10, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":24, 
+			"rcGifName":"scene_125.gif", "rcSceneName": "scene_125.png", "rcPngResName":"scene_125.png", "rcSmallGifName":"scene_125.gif" 
+		},
+ 		{	"secneID":116, 
+			"szSceneName":"小丑", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":95, "nStartY":61, "Width":240, "Height":149, "nBackX":291, "nBackY":101, "nNumberX":291, "nNumberY":120, "nTextX":65, "nTextY":230,
+			"EffectInfo":[10, 10, 10, 10, 10, 10, 10], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":10, 
+			"rcGifName":"scene_116.gif", "rcSceneName": "scene_116.png", "rcPngResName":"scene_116.png", "rcSmallGifName":"scene_116.gif" 
+		}, 
+ 		{	"secneID":149, 
+			"szSceneName":"神豪驾到", "nTabIndex":0, "byShowType":0, "bVoiceShow":0, 
+			"nStartX":118, "nStartY":30, "Width":183, "Height":145, "nBackX":220, "nBackY":20, "nNumberX":310, "nNumberY":130, "nTextX":100, "nTextY":220,
+			"EffectInfo":[16, 16, 16, 16, 16, 16, 16], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":15, "PicFrame":16, 
+			"rcGifName":"scene_151.gif", "rcSceneName": "scene_149.png", "rcPngResName":"scene_151.png", "rcSmallGifName":"scene_151.gif" 
+		},
+ 		{	"secneID":60, 
+			"szSceneName":"爆竹", "nTabIndex":0, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":180, "nStartY":35, "Width":106, "Height":217, "nBackX":220, "nBackY":20, "nNumberX":310, "nNumberY":130, "nTextX":100, "nTextY":200,
+			"EffectInfo":[15, 15, 20, 25, 25, 30, 30], "MinFrame":30, "StopFrame":0, "CicleFrameBigen":20, "CicleFrameEnd":30, "PicFrame":30, 
+			"rcGifName":"scene_60.gif", "rcSceneName": "scene_60.png", "rcPngResName":"scene_60.png", "rcSmallGifName":"scene_60.gif" 
+		}, 
+ 		{	"secneID":95, 
+			"szSceneName":"雪橇", "nTabIndex":0, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":100, "nStartY":0, "Width":251, "Height":251, "nBackX":420, "nBackY":40, "nNumberX":380, "nNumberY":180, "nTextX":100, "nTextY":220,
+			"EffectInfo":[10, 10, 10, 16, 16, 20, 20], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":9, "CicleFrameEnd":14, "PicFrame":16, 
+			"rcGifName":"scene_95.gif", "rcSceneName": "scene_95.png", "rcPngResName":"scene_95.png", "rcSmallGifName":"scene_95.gif" 
+		}, 
+		{	"secneID":96, 
+			"szSceneName":"驯鹿", "nTabIndex":0, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":100, "nStartY":0, "Width":250, "Height":250, "nBackX":420, "nBackY":40, "nNumberX":380, "nNumberY":180, "nTextX":100, "nTextY":220,
+			"EffectInfo":[10, 10, 10, 15, 15, 20, 20], "MinFrame":4, "StopFrame":13, "CicleFrameBigen":5, "CicleFrameEnd":13, "PicFrame":13, 
+			"rcGifName":"scene_96.gif", "rcSceneName": "scene_96.png", "rcPngResName":"scene_96.png", "rcSmallGifName":"scene_96.gif" 
+		},
+  		{	"secneID":91, 
+			"szSceneName":"南瓜灯", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":0, "nStartY":-50, "Width":550, "Height":400, "nBackX":320, "nBackY":40, "nNumberX":360, "nNumberY":115, "nTextX":100, "nTextY":250,
+			"EffectInfo":[26, 26, 26, 26, 26, 26, 26], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":4, "CicleFrameEnd":26, "PicFrame":26, 
+			"rcGifName":"scene_91.gif", "rcSceneName": "scene_91.png", "rcPngResName":"scene_91.png", "rcSmallGifName":"scene_91.gif" 
+		},
+ 		{	"secneID":87, 
+			"szSceneName":"糖果月饼", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":50, "nStartY":-100, "Width":360, "Height":385, "nBackX":320, "nBackY":40, "nNumberX":360, "nNumberY":115, "nTextX":100, "nTextY":250,
+			"EffectInfo":[10, 10, 13, 13, 18, 20, 29], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":4, "CicleFrameEnd":29, "PicFrame":29, 
+			"rcGifName":"scene_87.gif", "rcSceneName": "scene_87.png", "rcPngResName":"scene_87.png", "rcSmallGifName":"scene_87.gif" 
+		},
+		{	"secneID":139, 
+			"szSceneName":"小猪佩奇", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":0, "nStartY":-50, "Width":471, "Height":345, "nBackX":150, "nBackY":50, "nNumberX":400, "nNumberY":110, "nTextX":100, "nTextY":230,
+			"EffectInfo":[15, 15, 20, 20, 30, 30, 30], "MinFrame":15, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":30, "PicFrame":30, 
+			"rcGifName":"scene_139.gif", "rcSceneName": "scene_139.png", "rcPngResName":"scene_139.png", "rcSmallGifName":"scene_139.gif" 
+		},
+		{	"secneID":23, 
+			"szSceneName":"元宵", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":70, "nStartY":-70, "Width":300, "Height":300, "nBackX":300, "nBackY":40, "nNumberX":320, "nNumberY":130, "nTextX":100, "nTextY":200,
+			"EffectInfo":[15, 15, 15, 18, 20, 24, 26], "MinFrame":30, "StopFrame":14, "CicleFrameBigen":20, "CicleFrameEnd":30, "PicFrame":20, 
+			"rcGifName":"scene_23.gif", "rcSceneName": "scene_23.png", "rcPngResName":"scene_23.png", "rcSmallGifName":"scene_23.gif" 
+		},
+		{	"secneID":97, 
+			"szSceneName":"驯鹿雪橇", "nTabIndex":0, "byShowType":0, "bVoiceShow":0, 
+			"nStartX":30, "nStartY":-30, "Width":520, "Height":310, "nBackX":490, "nBackY":0, "nNumberX":460, "nNumberY":170, "nTextX":100, "nTextY":240,
+			"EffectInfo":[10, 10, 10, 15, 15, 21, 21], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":21, 
+			"rcGifName":"scene_97.gif", "rcSceneName": "scene_97.png", "rcPngResName":"scene_97.png", "rcSmallGifName":"scene_97.gif" 
+		},
+		{	"secneID":133, 
+			"szSceneName":"狗粮", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":118, "nStartY":30, "Width":171, "Height":174, "nBackX":220, "nBackY":20, "nNumberX":310, "nNumberY":130, "nTextX":100, "nTextY":200,
+			"EffectInfo":[10, 10, 13, 13, 18, 20, 25], "MinFrame":10, "StopFrame":0, "CicleFrameBigen":4, "CicleFrameEnd":25, "PicFrame":25, 
+			"rcGifName":"scene_133.gif", "rcSceneName": "scene_133.png", "rcPngResName":"scene_133.png", "rcSmallGifName":"scene_133.gif" 
+		},
+		{	"secneID":70, 
+			"szSceneName":"糖果", "nTabIndex":0, "byShowType":0, "bVoiceShow":0, 
+			"nStartX":145, "nStartY":30, "Width":183, "Height":183, "nBackX":320, "nBackY":40, "nNumberX":360, "nNumberY":115, "nTextX":100, "nTextY":210,
+			"EffectInfo":[12, 12, 12, 12, 15, 20, 25], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":4, "CicleFrameEnd":12, "PicFrame":12, 
+			"rcGifName":"scene_70.gif", "rcSceneName": "scene_70.png", "rcPngResName":"scene_70.png", "rcSmallGifName":"scene_70.gif" 
+		}, 	
+		{	"secneID":80, 
+			"szSceneName":"沙发", "nTabIndex":0, "byShowType":0, "bVoiceShow":0, 
+			"nStartX":100, "nStartY":0, "Width":260, "Height":248, "nBackX":320, "nBackY":40, "nNumberX":360, "nNumberY":115, "nTextX":100, "nTextY":210,
+			"EffectInfo":[10, 10, 10, 13, 15, 19, 19], "MinFrame": 4, "StopFrame":0, "CicleFrameBigen":4, "CicleFrameEnd":19, "PicFrame":19, 
+			"rcGifName":"scene_80.gif", "rcSceneName": "scene_80.png", "rcPngResName":"scene_80.png", "rcSmallGifName":"scene_80.gif"
+		}, 	
+		{	"secneID":66, 
+			"szSceneName":"荣耀卡", "nTabIndex":0, "byShowType":0, "bVoiceShow":0, 
+			"nStartX":145, "nStartY":30, "Width":196, "Height":151, "nBackX":320, "nBackY":40, "nNumberX":360, "nNumberY":115, "nTextX":100, "nTextY":210,
+			"EffectInfo":[9, 9, 9, 9, 15, 20, 25], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":4, "CicleFrameEnd":9, "PicFrame":9, 
+			"rcGifName":"scene_66.gif", "rcSceneName": "scene_66.png", "rcPngResName":"scene_66.png", "rcSmallGifName":"scene_66.gif" 
+		}, 	
+		{	"secneID":21, 
+			"szSceneName":"四叶草", "nTabIndex":0, "byShowType":0, "bVoiceShow":0, 
+			"nStartX":20, "nStartY":20, "Width":262, "Height":229, "nBackX":220, "nBackY":40, "nNumberX":270, "nNumberY":118, "nTextX":110, "nTextY":300,
+			"EffectInfo":[60, 70, 80, 90, 137, 183, 243], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":20, 
+			"rcGifName":"scene_21.gif", "rcSceneName": "scene_21.png", "rcPngResName":"scene_21.png", "rcSmallGifName":"scene_21.png" 
+		},
+		{	"secneID":49, 
+			"szSceneName":"水晶", "nTabIndex":0, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":20, "nStartY":20, "Width":250, "Height":250, "nBackX":220, "nBackY":40, "nNumberX":270, "nNumberY":118, "nTextX":110, "nTextY":230,
+			"EffectInfo":[60, 70, 80, 90, 137, 183, 243], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":14, 
+			"rcGifName":"scene_49.gif", "rcSceneName": "scene_49.png", "rcPngResName":"scene_49.png", "rcSmallGifName":"scene_49.png" 
+		}, 	
+		{	"secneID":44, 
+			"szSceneName":"娃娃头雪糕", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":95, "nStartY":61, "Width":177, "Height":170, "nBackX":291, "nBackY":101, "nNumberX":291, "nNumberY":120, "nTextX":65, "nTextY":230,
+			"EffectInfo":[10, 10, 10, 10, 15, 20, 24], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":24, 
+			"rcGifName":"scene_44.gif", "rcSceneName": "scene_44.png", "rcPngResName":"scene_44.png", "rcSmallGifName":"scene_44.gif" 
+		}, 	
+		{	"secneID":82, 
+			"szSceneName":"黄瓜", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":90, "nStartY":38, "Width":175, "Height":178, "nBackX":290, "nBackY":40, "nNumberX":320, "nNumberY":160, "nTextX":100, "nTextY":250,
+			"EffectInfo":[10, 10, 10, 10, 20, 25, 25], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":5, "CicleFrameEnd":16, "PicFrame":16, 
+			"rcGifName":"scene_82.gif", "rcSceneName": "scene_82.png", "rcPngResName":"scene_82.png", "rcSmallGifName":"scene_82.gif" 
+		}, 	
+		{	"secneID":83, 
+			"szSceneName":"去污粉", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":100, "nStartY":38, "Width":227, "Height":214, "nBackX":320, "nBackY":40, "nNumberX":360, "nNumberY":115, "nTextX":100, "nTextY":250,
+			"EffectInfo":[21, 21, 21, 21, 21, 21, 21], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":6, "CicleFrameEnd":21, "PicFrame":21, 
+			"rcGifName":"scene_83.gif", "rcSceneName": "scene_83.png", "rcPngResName":"scene_83.png", "rcSmallGifName":"scene_83.gif" 
+		}, 	
+		{	"secneID":3, 
+			"szSceneName":"棒棒糖", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":105, "nStartY":40, "Width":171, "Height":174, "nBackX":320, "nBackY":20, "nNumberX":295, "nNumberY":120, "nTextX":100, "nTextY":210,
+			"EffectInfo":[10, 10, 10, 10, 15, 20, 25], "MinFrame":10, "StopFrame":8, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":4, 
+			"rcGifName":"scene_3.gif", "rcSceneName": "scene_3.png", "rcPngResName":"scene_3.png", "rcSmallGifName":"scene_3.gif"
+		}, 	
+		{	"secneID":24, 
+			"szSceneName":"啤酒", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":90, "nStartY":20, "Width":250, "Height":250, "nBackX":150, "nBackY":40, "nNumberX":300, "nNumberY":140, "nTextX":100, "nTextY":230,
+			"EffectInfo":[10, 10, 10, 15, 20, 20, 25], "MinFrame":10, "StopFrame":0, "CicleFrameBigen":5, "CicleFrameEnd":10, "PicFrame":12, 
+			"rcGifName":"scene_24.gif", "rcSceneName": "scene_24.png", "rcPngResName":"scene_24.png", "rcSmallGifName":"scene_24.gif"
+		}, 	
+		{	"secneID":25, 
+			"szSceneName":"炸鸡", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":90, "nStartY":0, "Width":250, "Height":250, "nBackX":320, "nBackY":40, "nNumberX":310, "nNumberY":128, "nTextX":100, "nTextY":230,
+			"EffectInfo":[10, 10, 10, 10, 15, 20, 25], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":9, "CicleFrameEnd":14, "PicFrame":16, 
+			"rcGifName":"scene_25.gif", "rcSceneName": "scene_25.png", "rcPngResName":"scene_25.png", "rcSmallGifName":"scene_25.gif" 
+		}, 	
+		
+		{	"secneID":43, 
+			"szSceneName":"大白", "nTabIndex":0, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":100, "nStartY":-95, "Width":456, "Height":397, "nBackX":440, "nBackY":125, "nNumberX":480, "nNumberY":220, "nTextX":100, "nTextY":310,
+			"EffectInfo":[10, 10, 10, 10, 15, 20, 27], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":27, 
+			"rcGifName":"scene_43.gif", "rcSceneName": "scene_43.png", "rcPngResName":"scene_43.png", "rcSmallGifName":"scene_43.png"
+		}, 	
+		
+		{	"secneID":2, 
+			"szSceneName":"巧克力", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":49, "nStartY":10, "Width":311, "Height":236, "nBackX":320, "nBackY":0, "nNumberX":300, "nNumberY":140, "nTextX":100, "nTextY":210,
+			"EffectInfo":[10, 10, 10, 10, 15, 20, 25], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":16, 
+			"rcGifName":"scene_2.gif", "rcSceneName": "scene_2.png", "rcPngResName":"scene_2.png", "rcSmallGifName":"scene_2.gif" 
+		}, 	
+		
+		{	"secneID":8, 
+			"szSceneName":"蛋糕", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":130, "nStartY":-20, "Width":175, "Height":225, "nBackX":290, "nBackY":20, "nNumberX":300, "nNumberY":130, "nTextX":100, "nTextY":210,
+			"EffectInfo":[10, 10, 10, 10, 15, 20, 25], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":20, 
+			"rcGifName":"scene_8.gif", "rcSceneName": "scene_8.png", "rcPngResName":"scene_8.png", "rcSmallGifName":"scene_8.gif" 
+		}, 	
+		
+		{	"secneID":4, 
+			"szSceneName":"鼓掌", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":30, "nStartY":15, "Width":347, "Height":182, "nBackX":320, "nBackY":20, "nNumberX":290, "nNumberY":130, "nTextX":100, "nTextY":210,
+			"EffectInfo":[10, 10, 10, 10, 15, 20, 25], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":9, "CicleFrameEnd":12, "PicFrame":15, 
+			"rcGifName":"scene_4.gif", "rcSceneName": "scene_4.png", "rcPngResName":"scene_4.png", "rcSmallGifName":"scene_4.gif" 
+		}, 	
+		
+		{	"secneID":9, 
+			"szSceneName":"鸡蛋", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":100, "nStartY":20, "Width":312, "Height":297, "nBackX":320, "nBackY":40, "nNumberX":300, "nNumberY":130, "nTextX":100, "nTextY":230,
+			"EffectInfo":[10, 10, 10, 10, 15, 20, 25], "MinFrame":4, "StopFrame":8, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":13, 
+			"rcGifName":"scene_9.gif", "rcSceneName": "scene_9.png", "rcPngResName":"scene_9.png", "rcSmallGifName":"scene_9.gif" 
+		}, 	
+		
+		{	"secneID":14, 
+			"szSceneName":"番茄", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":100, "nStartY":20, "Width":312, "Height":297, "nBackX":320, "nBackY":40, "nNumberX":315, "nNumberY":138, "nTextX":100, "nTextY":230,
+			"EffectInfo":[10, 10, 10, 10, 15, 20, 25], "MinFrame":4, "StopFrame":8, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":10, 
+			"rcGifName":"scene_14.gif", "rcSceneName": "scene_14.png", "rcPngResName":"scene_14.png", "rcSmallGifName":"scene_14.gif" 
+		}, 	
+		{	"secneID":77, 
+			"szSceneName":"项链", "nTabIndex":0, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":240, "nStartY":-105, "Width":154, "Height":179, "nBackX":220, "nBackY":20, "nNumberX":310, "nNumberY":130, "nTextX":100, "nTextY":200,
+			"EffectInfo":[10, 10, 10, 15, 20, 25, 25], "MinFrame":10, "StopFrame":0, "CicleFrameBigen":4, "CicleFrameEnd":10, "PicFrame":10, 
+			"rcGifName":"scene_77.gif", "rcSceneName": "scene_77.png", "rcPngResName":"scene_77.png", "rcSmallGifName":"scene_77.gif" 
+		}, 
+		{	"secneID":5, 
+			"szSceneName":"拥抱", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":30, "nStartY":0, "Width":321, "Height":246, "nBackX":320, "nBackY":20, "nNumberX":310, "nNumberY":130, "nTextX":100, "nTextY":210,
+			"EffectInfo":[15, 15, 15, 15, 20, 25, 40], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":16, 
+			"rcGifName":"scene_5.gif", "rcSceneName": "scene_5.png", "rcPngResName":"scene_5.png", "rcSmallGifName":"scene_5.gif" 
+		}, 	
+		
+		{	"secneID":84, 
+			"szSceneName":"麻辣烫", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":100, "nStartY":0, "Width":236, "Height":254, "nBackX":320, "nBackY":40, "nNumberX":360, "nNumberY":115, "nTextX":100, "nTextY":250,
+			"EffectInfo":[15, 15, 15, 15, 20, 25, 40], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":20, 
+			"rcGifName":"scene_84.gif", "rcSceneName": "scene_84.png", "rcPngResName":"scene_84.png", "rcSmallGifName":"scene_84.gif" 
+		}, 
+		
+		{	"secneID":12, 
+			"szSceneName":"最佳歌手", "nTabIndex":0, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":80, "nStartY":-40, "Width":334, "Height":354, "nBackX":300, "nBackY":65, "nNumberX":365, "nNumberY":175, "nTextX":100, "nTextY":255,
+			"EffectInfo":[15, 15, 15, 20, 25, 35, 45], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":45, 
+			"rcGifName":"scene_12.gif", "rcSceneName": "scene_12.png", "rcPngResName":"scene_12.png", "rcSmallGifName":"scene_12.gif" 
+		}, 	
+		{	"secneID":78, 
+			"szSceneName":"戒指", "nTabIndex":0, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":180, "nStartY":35, "Width":151, "Height":138, "nBackX":220, "nBackY":20, "nNumberX":310, "nNumberY":130, "nTextX":100, "nTextY":200,
+			"EffectInfo":[10, 10, 10, 15, 20, 25, 25], "MinFrame":30, "StopFrame":0, "CicleFrameBigen":4, "CicleFrameEnd":9, "PicFrame":9, 
+			"rcGifName":"scene_78.gif", "rcSceneName": "scene_78.png", "rcPngResName":"scene_78.png", "rcSmallGifName":"scene_78.gif" 
+		},
+		
+		{	"secneID":28, 
+			"szSceneName":"小黄人", "nTabIndex":0, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":80, "nStartY":-40, "Width":250, "Height":231, "nBackX":320, "nBackY":40, "nNumberX":315, "nNumberY":145, "nTextX":100, "nTextY":210,
+			"EffectInfo":[10, 10, 10, 10, 15, 20, 25], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":35, 
+			"rcGifName":"scene_28.gif", "rcSceneName": "scene_28.png", "rcPngResName":"scene_28.png", "rcSmallGifName":"scene_28.gif" 
+		}, 
+		
+		{	"secneID":102, 
+			"szSceneName":"糖果礼盒", "nTabIndex":0, "byShowType":0, "bVoiceShow":0, 
+			"nStartX":220, "nStartY":-30, "Width":250, "Height":250, "nBackX":320, "nBackY":10, "nNumberX":295, "nNumberY":90, "nTextX":100, "nTextY":220,
+			"EffectInfo":[29, 10, 10, 10, 15, 20, 25], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":8, "CicleFrameEnd":11, "PicFrame":19, 
+			"rcGifName":"scene_102.gif", "rcSceneName": "scene_102.png", "rcPngResName":"scene_102.png", "rcSmallGifName":"scene_102.gif" 
+		}, 	
+		
+		{	"secneID":100, 
+			"szSceneName":"番茄鸡蛋", "nTabIndex":0, "byShowType":0, "bVoiceShow":0, 
+			"nStartX":100, "nStartY":0, "Width":260, "Height":260, "nBackX":320, "nBackY":40, "nNumberX":360, "nNumberY":115, "nTextX":100, "nTextY":247,
+			"EffectInfo":[30, 10, 10, 10, 15, 20, 25], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":18, 
+			"rcGifName":"scene_100.gif", "rcSceneName": "scene_100.png", "rcPngResName":"scene_100.png", "rcSmallGifName":"scene_100.gif" 
+		}, 
+		
+		{	"secneID":9999, 
+			"szSceneName":"神秘礼物", "nTabIndex":0, "byShowType":0, "bVoiceShow":0, 
+			"nStartX":100, "nStartY":-20, "Width":136, "Height":196, "nBackX":320, "nBackY":40, "nNumberX":360, "nNumberY":115, "nTextX":100, "nTextY":210,
+			"EffectInfo":[10, 10, 10, 10, 15, 20, 25], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":13, 
+			"rcGifName":"scene_9999.gif", "rcSceneName": "scene_9999.png", "rcPngResName":"scene_9999.png", "rcSmallGifName":"scene_9999.gif" 
+		}, 
+		{	"secneID":127, 
+			"szSceneName":"小鸟炮弹", "nTabIndex":1, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":42, "nStartY":-245, "Width":550, "Height":470, "nBackX":155, "nBackY":100, "nNumberX":290, "nNumberY":440, "nTextX":100, "nTextY":220,
+			"EffectInfo":[26, 26, 26, 26, 26, 26, 26], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":30, 
+			"rcGifName":"scene_127.gif", "rcSceneName": "scene_127.png", "rcPngResName":"scene_127.png", "rcSmallGifName":"scene_127.gif" 
+		}, 		
+		{	"secneID":126, 
+			"szSceneName":"带你飞", "nTabIndex":1, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":66, "nStartY":-300, "Width":580, "Height":464, "nBackX":155, "nBackY":100, "nNumberX":290, "nNumberY":440, "nTextX":100, "nTextY":220,
+			"EffectInfo":[30, 30, 30, 30, 30, 30, 30], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":30, 
+			"rcGifName":"scene_126.gif", "rcSceneName": "scene_126.png", "rcPngResName":"scene_126.png", "rcSmallGifName":"scene_126.gif" 
+		}, 
+		{	"secneID":93, 
+			"szSceneName":"我爱你", "nTabIndex":1, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":10, "nStartY":-210, "Width":610, "Height":502, "nBackX":155, "nBackY":200, "nNumberX":290, "nNumberY":540, "nTextX":100, "nTextY":320,
+			"EffectInfo":[41, 41, 41, 41, 41, 41, 41], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":41, 
+			"rcGifName":"scene_93.gif", "rcSceneName": "scene_93_nor.png", "rcPngResName":"scene_93.png", "rcSmallGifName":"scene_93.gif" 
+		},
+		{	"secneID":89, 
+			"szSceneName":"甜蜜一刻", "nTabIndex":1, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":70, "nStartY":-310, "Width":560, "Height":500, "nBackX":155, "nBackY":100, "nNumberX":290, "nNumberY":440, "nTextX":100, "nTextY":220,
+			"EffectInfo":[46, 46, 46, 46, 46, 46, 46], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":46, 
+			"rcGifName":"scene_89.gif", "rcSceneName": "scene_89.png", "rcPngResName":"scene_89.png", "rcSmallGifName":"scene_89.gif" 
+		}, 	
+
+		{	"secneID":98, 
+			"szSceneName":"甜蜜一刻", "nTabIndex":1, "byShowType":0, "bVoiceShow":0, 
+			"nStartX":70, "nStartY":-310, "Width":560, "Height":500, "nBackX":155, "nBackY":100, "nNumberX":290, "nNumberY":440, "nTextX":100, "nTextY":220,
+			"EffectInfo":[46, 46, 46, 46, 46, 46, 46], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":46, 
+			"rcGifName":"scene_89.gif", "rcSceneName": "scene_98.png", "rcPngResName":"scene_89.png", "rcSmallGifName":"scene_89.gif" 
+		}, 
+		{	"secneID":117, 
+			"szSceneName":"甜蜜一刻三连拍", "nTabIndex":1, "byShowType":0, "bVoiceShow":0, 
+			"nStartX":70, "nStartY":-310, "Width":560, "Height":500, "nBackX":155, "nBackY":100, "nNumberX":290, "nNumberY":440, "nTextX":100, "nTextY":220,
+			"EffectInfo":[46, 46, 46, 46, 46, 46, 46], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":46, 
+			"rcGifName":"scene_89.gif", "rcSceneName": "scene_117.png", "rcPngResName":"scene_89.png", "rcSmallGifName":"scene_89.gif" 
+		}, 
+
+		{	"secneID":111, 
+			"szSceneName":"玫瑰之恋", "nTabIndex":1, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":-45, "nStartY":-310, "Width":870, "Height":500, "nBackX":155, "nBackY":100, "nNumberX":290, "nNumberY":440, "nTextX":100, "nTextY":220,
+			"EffectInfo":[46, 46, 46, 46, 46, 46, 46], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":46, 
+			"rcGifName":"scene_111.gif", "rcSceneName": "scene_111.png", "rcPngResName":"scene_111.png", "rcSmallGifName":"scene_111.gif" 
+		}, 	
+
+		{	"secneID":112, 
+			"szSceneName":"玫瑰之恋", "nTabIndex":1, "byShowType":0, "bVoiceShow":0, 
+			"nStartX":-45, "nStartY":-310, "Width":870, "Height":500, "nBackX":155, "nBackY":100, "nNumberX":290, "nNumberY":440, "nTextX":100, "nTextY":220,
+			"EffectInfo":[46, 46, 46, 46, 46, 46, 46], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":46, 
+			"rcGifName":"scene_111.gif", "rcSceneName": "scene_112.png", "rcPngResName":"scene_111.png", "rcSmallGifName":"scene_111.gif" 
+		},
+		{	"secneID":118, 
+			"szSceneName":"玫瑰之恋三连拍", "nTabIndex":1, "byShowType":0, "bVoiceShow":0, 
+			"nStartX":-45, "nStartY":-310, "Width":870, "Height":500, "nBackX":155, "nBackY":100, "nNumberX":290, "nNumberY":440, "nTextX":100, "nTextY":220,
+			"EffectInfo":[46, 46, 46, 46, 46, 46, 46], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":46, 
+			"rcGifName":"scene_111.gif", "rcSceneName": "scene_118.png", "rcPngResName":"scene_111.png", "rcSmallGifName":"scene_111.gif" 
+		},
+		
+		{	"secneID":113, 
+			"szSceneName":"皇冠", "nTabIndex":1, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":-150, "nStartY":-290, "Width":1000, "Height":650, "nBackX":155, "nBackY":100, "nNumberX":290, "nNumberY":440, "nTextX":100, "nTextY":220,
+			"EffectInfo":[60, 60, 60, 60, 60, 60, 60], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":60, 
+			"rcGifName":"scene_113.gif", "rcSceneName": "scene_113.png", "rcPngResName":"scene_113.png", "rcSmallGifName":"scene_113.gif" 
+		},
+
+		{	"secneID":86, 
+			"szSceneName":"房产证", "nTabIndex":1, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":-100, "nStartY":-300, "Width":730, "Height":623, "nBackX":320, "nBackY":0, "nNumberX":100, "nNumberY":115, "nTextX":100, "nTextY":300,
+			"EffectInfo":[45, 45, 45, 45, 45, 45, 45], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":45, 
+			"rcGifName":"scene_86.gif", "rcSceneName": "scene_86.png", "rcPngResName":"scene_86.png", "rcSmallGifName":"scene_86.gif" 
+		}, 	
+		
+		{	"secneID":81, 
+			"szSceneName":"浪漫鹊桥", "nTabIndex":1, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":-148, "nStartY":-312, "Width":1000, "Height":525, "nBackX":155, "nBackY":100, "nNumberX":290, "nNumberY":440, "nTextX":100, "nTextY":220,
+			"EffectInfo":[60, 60, 60, 60, 60, 60, 60], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":60, 
+			"rcGifName":"scene_81.gif", "rcSceneName": "scene_81.png", "rcPngResName":"scene_81.png", "rcSmallGifName":"scene_81.gif" 
+		}, 
+		
+		{	"secneID":5001, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":0, "Width":362, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[40, 40, 40, 40, 40, 40, 40], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":40, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5001.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		{	"secneID":5002, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":0, "Width":362, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[42, 42, 42, 42, 42, 42, 42], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":42, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5002.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		
+		{	"secneID":5003, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":0, "Width":362, "Height":392, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[39, 39, 39, 39, 39, 39, 39], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":39, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5003.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif"  
+		},
+		
+		{	"secneID":5004, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":0, "Width":362, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[35, 35, 35, 35, 35, 35, 35], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":35, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5004.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif"
+		}, 
+		{	"secneID":5005, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":0, "Width":362, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[40, 40, 40, 40, 40, 40, 40], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":40, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5005.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+ 
+		{	"secneID":5006, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":0, "Width":362, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[40, 40, 40, 40, 40, 40, 40], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":40, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5006.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		{	"secneID":5007, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":0, "Width":387, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[39, 39, 39, 39, 39, 39, 39], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":39, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5007.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		{	"secneID":5008, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":0, "Width":362, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[45, 45, 45, 45, 45, 45, 45], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":45, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5008.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		
+		{	"secneID":5009, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":0, "Width":387, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[34, 34, 34, 34, 34, 34, 34], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":45, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5009.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		
+		{	"secneID":5010, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":10, "Width":362, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[43, 43, 43, 43, 43, 43, 43], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":43, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5010.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		
+		{	"secneID":5011, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":10, "Width":387, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[30, 30, 30, 30, 30, 30, 30], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":45, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5011.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		
+		{	"secneID":5012, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":-60, "Width":362, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[57, 57, 57, 57, 57, 57, 57], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":57, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5012.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		
+		{	"secneID":5013, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":-60, "Width":362, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[56, 56, 56, 56, 56, 56, 56], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":56, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5013.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		
+		{	"secneID":5014, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":-60, "Width":362, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[40, 40, 40, 40, 40, 40, 40], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":40, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5014.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		
+		{	"secneID":5015, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":-60, "Width":362, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[45, 45, 45, 45, 45, 45, 45], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":45, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5015.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		
+		{	"secneID":5016, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":-60, "Width":362, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[45, 45, 45, 45, 45, 45, 45], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":45, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5016.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		
+		{	"secneID":5017, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":-60, "Width":362, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[37, 37, 37, 37, 37, 37, 37], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":37, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5017.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		
+		{	"secneID":5018, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":-60, "Width":362, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[40, 40, 40, 40, 40, 40, 40], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":40, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5018.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		
+		{	"secneID":5019, 
+			"szSceneName":"神印", "nTabIndex":1, "byShowType":2, "bVoiceShow":1, 
+			"nStartX":170, "nStartY":-60, "Width":362, "Height":387, "nBackX":310, "nBackY":40, "nNumberX":260, "nNumberY":150, "nTextX":97, "nTextY":310,
+			"EffectInfo":[38, 38, 38, 38, 38, 38, 38], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":38, 
+			"rcGifName":"scene_5000.gif", "rcSceneName": "scene_5019.png", "rcPngResName":"scene_5000.png", "rcSmallGifName":"scene_5000.gif" 
+		}, 
+		
+		{	"secneID":38, 
+			"szSceneName":"表白烟花", "nTabIndex":1, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":15, "nStartY":40, "Width":171, "Height":174, "nBackX":220, "nBackY":40, "nNumberX":260, "nNumberY":115, "nTextX":10, "nTextY":210,
+			"EffectInfo":[52, 52, 52, 52, 52, 52, 52], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":52, 
+			"rcGifName":"scene_38.gif", "rcSceneName": "scene_38.png", "rcPngResName":"scene_38.png", "rcSmallGifName":"scene_38.gif" 
+		},
+
+		{	"secneID":36, 
+			"szSceneName":"爱心", "nTabIndex":1, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":20, "nStartY":20, "Width":250, "Height":250, "nBackX":220, "nBackY":40, "nNumberX":270, "nNumberY":118, "nTextX":110, "nTextY":230,
+			"EffectInfo":[60, 70, 80, 90, 137, 183, 243], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":21, 
+			"rcGifName":"scene_36.gif", "rcSceneName": "scene_36.png", "rcPngResName":"scene_36.png", "rcSmallGifName":"scene_36.gif" 
+		},
+		
+		{	"secneID":48, 
+			"szSceneName":"炸弹", "nTabIndex":1, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":110, "nStartY":-189, "Width":481, "Height":446, "nBackX":280, "nBackY":90, "nNumberX":330, "nNumberY":170, "nTextX":100, "nTextY":260,
+			"EffectInfo":[47, 47, 47, 47, 47, 47, 47], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":47, 
+			"rcGifName":"scene_48.gif", "rcSceneName": "scene_48.png", "rcPngResName":"scene_48.png", "rcSmallGifName":"scene_48.gif" 
+		},
+		
+		{	"secneID":59, 
+			"szSceneName":"亲一口", "nTabIndex":1, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":0, "nStartY":-330, "Width":788, "Height":560, "nBackX":220, "nBackY":20, "nNumberX":310, "nNumberY":130, "nTextX":100, "nTextY":200,
+			"EffectInfo":[27, 27, 27, 27, 27, 27, 27], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":27, 
+			"rcGifName":"scene_59.gif", "rcSceneName": "scene_59.png", "rcPngResName":"scene_59.png", "rcSmallGifName":"scene_59.gif" 
+		},
+		
+		{	"secneID":39, 
+			"szSceneName":"骰子", "nTabIndex":1, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":250, "nStartY":-20, "Width":465, "Height":403, "nBackX":320, "nBackY":40, "nNumberX":360, "nNumberY":115, "nTextX":100, "nTextY":210,
+			"EffectInfo":[25, 25, 25, 25, 25, 25, 25], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":20, 
+			"rcGifName":"scene_39.gif", "rcSceneName": "scene_39.png", "rcPngResName":"scene_39.png", "rcSmallGifName":"scene_39.png" 
+		},
+		
+		{	"secneID":37, 
+			"szSceneName":"浪漫樱花雨", "nTabIndex":1, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":-2, "nStartY":-315, "Width":708, "Height":554, "nBackX":155, "nBackY":100, "nNumberX":290, "nNumberY":440, "nTextX":100, "nTextY":220,
+			"EffectInfo":[26, 26, 26, 26, 26, 26, 26], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":26, 
+			"rcGifName":"scene_37.gif", "rcSceneName": "scene_37.png", "rcPngResName":"scene_37.png", "rcSmallGifName":"scene_37.gif" 
+		},
+		
+		{	"secneID":34, 
+			"szSceneName":"果汁", "nTabIndex":1, "byShowType":1, "bVoiceShow":1, 
+			"nStartX":100, "nStartY":20, "Width":204, "Height":210, "nBackX":320, "nBackY":40, "nNumberX":360, "nNumberY":115, "nTextX":100, "nTextY":210,
+			"EffectInfo":[18, 18, 18, 18, 18, 18, 18], "MinFrame":4, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":18, "PicFrame":18, 
+			"rcGifName":"scene_34.gif", "rcSceneName": "scene_34.png", "rcPngResName":"scene_34.png", "rcSmallGifName":"scene_34.png" 
+		},
+
+		{	"secneID":94, 
+			"szSceneName":"豪华游艇", "nTabIndex":1, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":-150, "nStartY":-300, "Width":1000, "Height":530, "nBackX":320, "nBackY":0, "nNumberX":100, "nNumberY":115, "nTextX":100, "nTextY":300,
+			"EffectInfo":[56, 56, 56, 56, 56, 56, 56], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":0, "CicleFrameEnd":0, "PicFrame":56, 
+			"rcGifName":"scene_94.gif", "rcSceneName": "scene_94.png", "rcPngResName":"scene_94.png", "rcSmallGifName":"scene_94.gif"
+		},
+		
+		{	"secneID":137, 
+			"szSceneName":"爱的旅行", "nTabIndex":1, "byShowType":1, "bVoiceShow":0, 
+			"nStartX":-150, "nStartY":-350, "Width":1000, "Height":748, "nBackX":320, "nBackY":0, "nNumberX":100, "nNumberY":115, "nTextX":100, "nTextY":300,
+			"EffectInfo":[300, 300, 300, 300, 300, 300, 300], "MinFrame":0, "StopFrame":0, "CicleFrameBigen":61, "CicleFrameEnd":79, "PicFrame":80, 
+			"rcGifName":"scene_137.gif", "rcSceneName": "scene_137.png", "rcPngResName":"scene_137.png", "rcSmallGifName":"scene_137.gif"
+		}
+	]
+}

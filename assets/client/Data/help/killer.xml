@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n color="255,255,255,255">消除红名</n>
+	</p>
+	<p>
+		<n>    第一种消除红名的方法：随着角色在线时间的积累人物的pk值会慢慢减少直到红名消除。</n>
+	</p>
+	<p>
+		<n>    第二种消除红名的方法：杀怪。只有杀比人物自身等级相同或者更高级的怪物才能慢慢的减少pk值直到红名消除。</n>
+	</p>
+	<p>
+		<a href="Index.xml">返回</a>
+	</p>
+</body>

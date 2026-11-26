@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- edited with XMLSPY v2004 rel. 2 U (http://www.xmlspy.com) by mm (p) -->
+<map>
+	<house id="0" name="gongyu">
+		<furniture type="0"><!-- 壁纸 -->
+			<area rect="64,129,320,0,320,193,64,322" dir="1"/>
+			<area rect="320,0,640,160,640,353,320,193" dir="2"/>
+		</furniture>
+		<furniture type="1"><!-- 地板 -->
+			<area rect="64,322,320,193,640,353,388,484" dir="0" col="11" row="11"/>
+		</furniture>
+		<furniture type="2"><!-- 壁挂 -->
+			<area rect="64,129,320,0,320,193,64,322" dir="0"/>
+			<area rect="320,0,640,160,640,353,320,193" dir="4"/>
+		</furniture>
+		<furniture type="3"><!-- 地毯 -->
+			<area rect="64,322,320,193,640,353,388,484" dir="0"/>
+		</furniture>
+		<furniture type="4"><!-- 家具 -->
+			<area rect="64,322,320,193,640,353,388,484" dir="0"/>
+		</furniture>
+		<furniture type="5"><!-- 宠物 -->
+			<area rect="64,322,320,193,640,353,388,484" dir="0"/>
+		</furniture>
+	</house>	
+	
+	
+	<house id="1" name="gongyu1">
+		<furniture type="0"><!-- 壁纸 -->
+			<area rect="65,256,513,34,513,227,65,449" dir="1"/>
+			<area rect="513,34,897,225,897,418,513,227" dir="2"/>
+		</furniture>
+		<furniture type="1"><!-- 地板 -->
+			<area rect="65,449,513,227,897,418,458,646" dir="0" col="17" row="13"/>
+		</furniture>
+		<furniture type="2"><!-- 壁挂 -->
+			<area rect="65,256,513,34,513,227,65,449" dir="0"/>
+			<area rect="513,34,897,225,897,418,513,227" dir="4"/>
+		</furniture>
+		<furniture type="3"><!-- 地毯 -->
+			<area rect="65,449,513,227,897,418,458,646" dir="0"/>
+		</furniture>
+		<furniture type="4"><!-- 家具 -->
+			<area rect="65,449,513,227,897,418,458,646" dir="0"/>
+		</furniture>
+		<furniture type="5"><!-- 宠物 -->
+			<area rect="65,449,513,227,897,418,458,646" dir="0"/>
+		</furniture>
+	</house>
+
+
+	<house id="2" name="gongyu2">
+		<furniture type="0"><!-- 壁纸 -->
+			<area rect="65,256,513,34,513,227,65,449" dir="1"/>
+			<area rect="513,34,1153,352,1153,545,513,227" dir="2"/>
+		</furniture>
+		<furniture type="1"><!-- 地板 -->
+			<area rect="65,449,513,227,1153,545,712,774" dir="0" col="17" row="21"/>
+		</furniture>
+		<furniture type="2"><!-- 壁挂 -->
+			<area rect="65,256,513,34,513,227,65,449" dir="0"/>
+			<area rect="513,34,1153,352,1153,545,513,227" dir="4"/>
+		</furniture>
+		<furniture type="3"><!-- 地毯 -->
+			<area rect="65,449,513,227,1153,545,712,774" dir="0"/>
+		</furniture>
+		<furniture type="4"><!-- 家具 -->
+			<area rect="65,449,513,227,1153,545,712,774" dir="0"/>
+		</furniture>
+		<furniture type="5"><!-- 宠物 -->
+			<area rect="65,449,513,227,1153,545,712,774" dir="0"/>
+		</furniture>
+	</house>
+
+
+	<house id="3" name="gongyu3">
+		<furniture type="0"><!-- 壁纸 -->
+			<area rect="62,385,768,43,768,218,68,571" dir="1"/>
+			<area rect="768,43,1342,308,1342,517,772,218" dir="2"/>
+		</furniture>
+		<furniture type="1"><!-- 地板 -->
+			<area rect="54,575,768,224,1278,491,596,841" dir="0" col="30" row="30"/>
+		</furniture>
+		<furniture type="2"><!-- 壁挂 -->
+			<area rect="62,385,768,43,768,218,68,571" dir="0"/>
+			<area rect="768,43,1342,308,1342,517,772,218" dir="4"/>
+		</furniture>
+		<furniture type="3"><!-- 地毯 -->
+			<area rect="54,575,768,224,1278,491,596,841" dir="0"/>
+		</furniture>
+		<furniture type="4"><!-- 家具 -->
+			<area rect="54,575,768,224,1278,491,596,841" dir="0"/>
+		</furniture>
+		<furniture type="5"><!-- 宠物 -->
+			<area rect="54,575,768,224,1278,491,596,841" dir="0"/>
+		</furniture>
+	</house>
+
+
+	<house id="4" name="gongyu4">
+		<furniture type="0"><!-- 壁纸 -->
+			<area rect="65,609,1153,65,1153,258,65,802" dir="1"/>
+			<area rect="1153,65,1793,385,1793,578,1153,258" dir="2"/>
+		</furniture>
+		<furniture type="1"><!-- 地板 -->
+			<area rect="65,802,505,582,899,771,456,998" dir="0" col="17" row="13"/>
+			<area rect="503,583,1153,258,1793,578,1159,902" dir="0" col="24" row="21"/>
+		</furniture>
+		<furniture type="2"><!-- 壁挂 -->
+			<area rect="65,609,1153,65,1153,258,65,802" dir="0"/>
+			<area rect="1153,65,1793,385,1793,578,1153,258" dir="4"/>
+		</furniture>
+		<furniture type="3"><!-- 地毯 -->
+			<area rect="65,802,505,582,899,771,456,998" dir="0"/>
+			<area rect="503,583,1153,258,1793,578,1161,901" dir="0"/>
+		</furniture>
+		<furniture type="4"><!-- 家具 -->
+			<area rect="65,802,505,582,899,771,456,998" dir="0"/>
+			<area rect="503,583,1153,258,1793,578,1161,901" dir="0"/>
+		</furniture>
+		<furniture type="5"><!-- 宠物 -->
+			<area rect="65,802,505,582,899,771,456,998" dir="0"/>
+			<area rect="503,583,1153,258,1793,578,1161,901" dir="0"/>
+		</furniture>
+	</house>
+</map>

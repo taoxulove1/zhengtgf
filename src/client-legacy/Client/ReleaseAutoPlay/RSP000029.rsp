@@ -1,0 +1,3 @@
+/Ob2 /Ot /Oy /I "./" /I "C:\Documents and Settings\Administrator\Desktop\Client\luabind" /I "C:\Documents and Settings\Administrator\Desktop\Client\lua-5.0.2\include" /I "C:\boost_1_47_0" /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "YANGZI_TEST" /D "DEBUG_ITEM_EXCHANGE" /D "ACCESS_BTN_FULL_TIPS" /D "PARTICLE_SYSTEM" /D "WEATHER_EFFECT" /D "_AUTOPLAY" /D "GAME_VERSION=" /D "__SPRING__" /D "_MBCS" /GF /FD /EHsc /MT /Gy /Fo"ReleaseAutoPlay/" /Fd"ReleaseAutoPlay/vc70.pdb" /W3 /c /TP
+".\GuiPasswordDlg.cpp"
+".\Game.cpp"

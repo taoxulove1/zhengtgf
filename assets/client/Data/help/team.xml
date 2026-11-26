@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+
+	<p>
+		<n color="255,255,255,255">组队</n>
+	</p>
+	<p>
+		<n>    你可以右键点击其他角色头像选择邀请加入功能。这样就能和别的角色组成一个团队一起冒险了。</n>
+	</p>
+	<p>
+		<a href="Index.xml">返回</a>
+	</p>
+</body>

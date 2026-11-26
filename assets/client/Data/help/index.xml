@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n>    关于这个国家的一切我无所不知，请问有什么需要帮忙的吗？</n>
+	</p>
+	<p>
+		<a href="move.xml">移动</a>
+	</p>
+	<p>
+		<a href="npc.xml">npc</a>
+	</p>
+	<p>
+		<a href="npcchat.xml">npc对话</a>
+	</p>
+	<p>
+		<a href="attact.xml">攻击</a>
+	</p>
+	<p>
+		<a href="pk.xml">PK</a>
+	</p>
+	<p>
+		<a href="killer.xml">消除红名</a>
+	</p>
+	<p>
+		<a href="quest.xml">任务</a>
+	</p>
+	<p>
+		<a href="right.xml">右键选项</a>
+	</p>
+	<p>
+		<a href="trade.xml">交易</a>
+	</p>
+	<p>
+		<a href="team.xml">组队</a>
+	</p>
+	<p>
+		<a href="pic.xml">队员头像</a>
+	</p>
+	<p>
+		<a href="quick.xml">快捷使用物品</a>
+	</p>
+	<p>
+		<a href="bag.xml">包裹</a>
+	</p>
+	<p>
+		<a href="wear.xml">如何装备物品</a>
+	</p>
+	<p>
+		<a href="exbag.xml">额外包裹</a>
+	</p>
+	<p>
+		<a href="neaby.xml">附近玩家</a>
+	</p>
+	<p>
+		<a href="skilluse.xml">技能</a>
+	</p>
+	<p>
+		<a href="skilllearn.xml">技能学习</a>
+	</p>
+	<p>
+		<a href="point.xml">加点属性</a>
+	</p>
+	<p>
+		<a href="newer.xml">新手攻略</a>
+	</p>
+	<p>
+		<a href="skill.xml">技能介绍</a>
+	</p>
+	<p>
+		<a href="pkmodel.xml">pk模式</a>
+	</p>
+	<p>
+		<a href="auto.xml">自动寻路</a>
+	</p>
+	<p>
+		<a href="item.xml">物品链接</a>
+	</p>
+	<p>
+		<a href="chat.xml">悄悄话</a>
+	</p>
+	<p>
+		<a href="material.xml">原料</a>
+	</p>
+	<p>
+		<a href="insert.xml">魂魄镶嵌</a>
+	</p>
+	<p>
+		<a href="itemup.xml">道具升级</a>
+	</p>
+	<p>
+		<a href="switch.xml">攻击模式切换</a>
+	</p>
+	<p>
+		<a href="talk.xml">聊天</a>
+	</p>
+	<p>
+		<a href="choice.xml">选择目标</a>
+	</p>
+	<p>
+		<a href="alt.xml">自动选择NPC</a>
+	</p>
+	<p>
+		<a href="fangwu.xml">房屋介绍</a>
+	</p>
+	<p>
+		<a href="goldintroduce.xml">金币指南</a>
+	</p>
+</body>

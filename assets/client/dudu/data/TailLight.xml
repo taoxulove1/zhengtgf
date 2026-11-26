@@ -1,0 +1,2131 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!--活动尾灯配置文件
+	资源格式为一个长条型的png用配置中高宽和帧数来切割动画, 由于dui限制,还需提供一张透明背景png高宽和动画高宽一致
+	如三帧动画,动画大小为18*18,那图片需为54*18,背景图片需为18*18
+	
+	**资源需放在rcFace.dll中
+	
+	**如确定一个活动已结束(活动类型标志再也不会重复),可以直接覆盖其占用的资源号和图片,旧版本不会冲突
+	
+	**尾灯位置按每个TailLight的partyCode字段值从小到大往后添加
+	**尾灯等级按每个TreeItem或ChatAreaItem位置,起始为一级,后续二级三级,类推
+	
+	******注意活动类型(partyCode)冲突*********
+-->
+<TailLights>
+	<!--TailLight 一种活动尾灯类型
+		partyCode:活动类型标志 
+		codeByTime: 是否时间生成的活动类型,不是的话使用完整一串当类型比如"2014080166"
+	    partyName:活动名称,暂时无用
+	    justOpenClose:是否是开关状态型,如果是开关状态型,将不关心活动结束与否
+		notifyLevelUp:是否提示升级, 如果codeByTime为false,或justOpenClose为true,那升级信息部分数据位置已被占用,notifyLevelUp会被强制设成0
+	-->
+	<!--TreeItem 成员列表动画资源
+		name:tips内容
+		imgResID:动画图片在rcface,dll中资源ID
+		imgW_PerFrame:每一帧图片宽(以此切割动画)
+		imgH_PerFrame:图片高 
+		frameCnt:尾灯动画帧数 
+	-->
+	<!--ChatAreaItem 聊天显示区动画资源
+		name:tips内容
+		imgResID:动画图片在rcface,dll中资源ID
+		imgW_PerFrame:每一帧图片宽(以此切割动画)
+		imgH_PerFrame:图片高 
+		frameCnt:尾灯动画帧数 
+	-->
+	
+	<TailLight partyCode="0" codeByTime=0 partyName="VIP等级" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="非年费会员1" imgResID=2201 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="非年费会员2" imgResID=2202 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="非年费会员3" imgResID=2203 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="非年费会员4" imgResID=2204 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="非年费会员5" imgResID=2205 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="非年费会员6" imgResID=2206 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="非年费会员7" imgResID=2207 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="非年费会员8" imgResID=2208 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="非年费会员9" imgResID=2209 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			
+			<TreeItem name="年费会员1" imgResID=2210 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="年费会员2" imgResID=2211 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="年费会员3" imgResID=2212 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="年费会员4" imgResID=2213 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="年费会员5" imgResID=2214 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="年费会员6" imgResID=2215 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="年费会员7" imgResID=2216 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="年费会员8" imgResID=2217 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+			<TreeItem name="年费会员9" imgResID=2218 imgW_PerFrame=15 imgH_PerFrame=15 frameCnt=1/>
+		</TreeItems>
+	</TailLight>
+	
+	<TailLight partyCode="1" codeByTime=0 partyName="认证主播" justOpenClose=1 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="认证主播" imgResID=2386 imgW_PerFrame=14 imgH_PerFrame=14 frameCnt=1/>
+		</TreeItems>
+	</TailLight>
+	
+	<TailLight partyCode="2" codeByTime=0 partyName="手机登陆" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="Android在线" imgResID=2400 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="IOS在线" imgResID=2401 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="网页版嘟嘟在线" imgResID=2407 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="WIFI嘟嘟在线" imgResID=3220 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="Android在线" imgResID=2405 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="IOS在线" imgResID=2406 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="网页版嘟嘟在线" imgResID=2407 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="WIFI嘟嘟在线" imgResID=3220 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="3" codeByTime=0 partyName="十月魅力女神" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="落寂背影专属勋章" imgResID=3300 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="丁思雨专属勋章" imgResID=3301 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="简单专属勋章" imgResID=3302 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="落寂背影专属勋章" imgResID=3300 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="丁思雨专属勋章" imgResID=3301 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="简单专属勋章" imgResID=3302 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+		<TailLight partyCode="4" codeByTime=0 partyName="专属定制勋章" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="蝴蝶专属勋章" imgResID=3310 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="大胡子专属勋章" imgResID=3311 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="兔子专属勋章" imgResID=3312 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="天下专属勋章" imgResID=3313 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="默默专属勋章" imgResID=3314 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="活跃主播专属勋章" imgResID=3315 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="大开专属勋章" imgResID=3316 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="枝山专属勋章" imgResID=10720 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="有情人专属勋章" imgResID=10721 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="蝴蝶专属勋章" imgResID=3310 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="大胡子专属勋章" imgResID=3311 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="兔子专属勋章" imgResID=3312 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="天下专属勋章" imgResID=3313 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="默默专属勋章" imgResID=3314 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="活跃主播专属勋章" imgResID=3315 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="大开专属勋章" imgResID=3316 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="枝山专属勋章" imgResID=10720 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="有情人专属勋章" imgResID=10721 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>	
+	<TailLight partyCode="2014061800" codeByTime=0 partyName="踩雷英雄" justOpenClose=1 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="踩雷英雄" imgResID=2403 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="踩雷英雄" imgResID=2403 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2014122600" codeByTime=0 partyName="连击王" justOpenClose=1 notifyLevelUp=0>
+		<!-- 应要求去除成员列表上尾灯 -->
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="连击王" imgResID=4086 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2014122601" codeByTime=0 partyName="豪华连击冠军" justOpenClose=1 notifyLevelUp=0>
+		<!-- 应要求去除成员列表上尾灯 -->
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="豪华连击冠军" imgResID=4087 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2014122602" codeByTime=0 partyName="高级连击冠军" justOpenClose=1 notifyLevelUp=0>
+		<!-- 应要求去除成员列表上尾灯 -->
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="高级连击冠军" imgResID=4087 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	
+	<TailLight partyCode="2014122603" codeByTime=0 partyName="日常连击冠军" justOpenClose=1 notifyLevelUp=0>
+		<!-- 应要求去除成员列表上尾灯 -->
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="日常连击冠军" imgResID=4087 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	
+	<TailLight partyCode="2014061866" codeByTime=0 partyName="幸运之星" justOpenClose=1 notifyLevelUp=0>
+		<!-- 应要求去除成员列表上尾灯 -->
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="幸运之星" imgResID=2404 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="20140801" codeByTime=1 partyName="第二届歌手大赛" justOpenClose=0 notifyLevelUp=1>
+		<!-- 应要求去除成员列表上尾灯 -->
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="梦响好声音小小粉丝" imgResID=2411 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+			<ChatAreaItem name="梦响好声音新秀粉丝" imgResID=2412 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+			<ChatAreaItem name="梦响好声音忠实粉丝" imgResID=2413 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+			<ChatAreaItem name="梦响好声音资深粉丝" imgResID=2414 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+			<ChatAreaItem name="梦响好声音首席粉丝" imgResID=2415 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+			<ChatAreaItem name="梦响好声音歌迷会副会长" imgResID=2416 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+			<ChatAreaItem name="梦响好声音歌迷会会长" imgResID=2417 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="201408011" codeByTime=0 partyName="第二届歌手大赛粉丝榜" justOpenClose=0 notifyLevelUp=0>
+		<!-- 应要求去除成员列表上尾灯 -->
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="梦响好声音娱乐大亨" imgResID=2425 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+			<ChatAreaItem name="梦响好声音娱乐总监" imgResID=2426 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+			<ChatAreaItem name="梦响好声音金牌经纪人" imgResID=2427 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+			<ChatAreaItem name="梦响好声音明星经纪人" imgResID=2428 imgW_PerFrame=18 imgH_PerFrame=18 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2014091201" codeByTime=0 partyName="2014中秋月宫仙子" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="2014中秋月宫仙子第①名" imgResID=3200 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋月宫仙子第②名" imgResID=3201 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋月宫仙子第③名" imgResID=3202 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋月宫仙子第④名" imgResID=3203 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋月宫仙子第⑤名" imgResID=3203 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋月宫仙子第⑥名" imgResID=3203 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋月宫仙子第⑦名" imgResID=3203 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋月宫仙子第⑧名" imgResID=3203 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋月宫仙子第⑨名" imgResID=3203 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋月宫仙子第⑩名" imgResID=3203 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="2014中秋月宫仙子第①名" imgResID=3200 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋月宫仙子第②名" imgResID=3201 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋月宫仙子第③名" imgResID=3202 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋月宫仙子第④名" imgResID=3203 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋月宫仙子第⑤名" imgResID=3203 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋月宫仙子第⑥名" imgResID=3203 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋月宫仙子第⑦名" imgResID=3203 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋月宫仙子第⑧名" imgResID=3203 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋月宫仙子第⑨名" imgResID=3203 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋月宫仙子第⑩名" imgResID=3203 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015081803" codeByTime=0 partyName="2015七夕" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="心心相印" imgResID=4705 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="彩红玫瑰" imgResID=4706 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="四叶草" imgResID=4707 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="蝴蝶" imgResID=4708 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="心心相印" imgResID=4709 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="彩红玫瑰" imgResID=4710 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="四叶草" imgResID=4711 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="蝴蝶" imgResID=4712 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="心心相印" imgResID=4705 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="彩红玫瑰" imgResID=4706 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="四叶草" imgResID=4707 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="蝴蝶" imgResID=4708 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="心心相印" imgResID=4709 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="彩红玫瑰" imgResID=4710 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="四叶草" imgResID=4711 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="蝴蝶" imgResID=4712 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2016081101" codeByTime=0 partyName="环球挑战专属纪念" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="环球挑战专属纪念" imgResID=10740 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="环球挑战专属纪念" imgResID=10740 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015081801" codeByTime=0 partyName="小雪球" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="小雪球" imgResID=4703 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="小雪球" imgResID=4703 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+
+	<TailLight partyCode="2015081802" codeByTime=0 partyName="雪花" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="雪花" imgResID=4704 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="雪花" imgResID=4704 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2014091202" codeByTime=0 partyName="2014中秋玉兔宠儿" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="2014中秋玉兔宠儿第①名" imgResID=3205 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋玉兔宠儿第②名" imgResID=3206 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋玉兔宠儿第③名" imgResID=3207 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋玉兔宠儿第④名" imgResID=3208 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋玉兔宠儿第⑤名" imgResID=3208 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋玉兔宠儿第⑥名" imgResID=3208 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋玉兔宠儿第⑦名" imgResID=3208 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋玉兔宠儿第⑧名" imgResID=3208 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋玉兔宠儿第⑨名" imgResID=3208 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="2014中秋玉兔宠儿第⑩名" imgResID=3208 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="2014中秋玉兔宠儿第①名" imgResID=3205 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋玉兔宠儿第②名" imgResID=3206 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋玉兔宠儿第③名" imgResID=3207 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋玉兔宠儿第④名" imgResID=3208 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋玉兔宠儿第⑤名" imgResID=3208 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋玉兔宠儿第⑥名" imgResID=3208 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋玉兔宠儿第⑦名" imgResID=3208 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋玉兔宠儿第⑧名" imgResID=3208 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋玉兔宠儿第⑨名" imgResID=3208 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<ChatAreaItem name="2014中秋玉兔宠儿第⑩名" imgResID=3208 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2014120100" codeByTime=0 partyName="礼物周星" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="礼物周星" imgResID=4050 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="礼物周星" imgResID=4050 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	
+	<TailLight partyCode="2015021400" codeByTime=0 partyName="情人节尾灯" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="情人节尾灯" imgResID=4218 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="情人节尾灯" imgResID=4218 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015021401" codeByTime=0 partyName="情人节浪漫尾灯" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="情人节浪漫尾灯" imgResID=4210 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=8/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="情人节浪漫尾灯" imgResID=4210 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=8/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015021402" codeByTime=0 partyName="情人节豪华尾灯" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="情人节豪华尾灯" imgResID=4226 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=8/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="情人节豪华尾灯" imgResID=4226 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=8/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015021403" codeByTime=0 partyName="情人节至尊尾灯" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="情人节至尊尾灯" imgResID=4200 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=8/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="情人节至尊尾灯" imgResID=4200 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=8/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050801" codeByTime=0 partyName="2B" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="2B" imgResID=2800 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="2B" imgResID=2800 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050802" codeByTime=0 partyName="屌丝" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="屌丝" imgResID=2801 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="屌丝" imgResID=2801 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050803" codeByTime=0 partyName="逗比" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="逗比" imgResID=2802 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="逗比" imgResID=2802 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050804" codeByTime=0 partyName="土豪" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="土豪" imgResID=2803 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="土豪" imgResID=2803 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050805" codeByTime=0 partyName="萝莉" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="萝莉" imgResID=2804 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="萝莉" imgResID=2804 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050806" codeByTime=0 partyName="么么哒" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="么么哒" imgResID=2805 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="么么哒" imgResID=2805 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050807" codeByTime=0 partyName="牛掰" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="牛掰" imgResID=2806 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="牛掰" imgResID=2806 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050808" codeByTime=0 partyName="女神" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="女神" imgResID=2807 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="女神" imgResID=2807 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050809" codeByTime=0 partyName="禽兽" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="禽兽" imgResID=2808 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="禽兽" imgResID=2808 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050810" codeByTime=0 partyName="万人迷" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="万人迷" imgResID=2809 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="万人迷" imgResID=2809 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050811" codeByTime=0 partyName="御姐" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="御姐" imgResID=2810 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="御姐" imgResID=2810 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>	
+	
+	<TailLight partyCode="2015050812" codeByTime=0 partyName="猪头" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="猪头" imgResID=2811 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="猪头" imgResID=2811 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050813" codeByTime=0 partyName="宝贝" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="宝贝" imgResID=2812 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="宝贝" imgResID=2812 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050814" codeByTime=0 partyName="葫芦娃" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="葫芦娃" imgResID=2813 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="葫芦娃" imgResID=2813 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050815" codeByTime=0 partyName="撸" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="撸" imgResID=2814 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="撸" imgResID=2814 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050816" codeByTime=0 partyName="闷骚" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="闷骚" imgResID=2815 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="闷骚" imgResID=2815 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050817" codeByTime=0 partyName="萌" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="萌" imgResID=2816 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="萌" imgResID=2816 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050818" codeByTime=0 partyName="男神" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="男神" imgResID=2817 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="男神" imgResID=2817 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050819" codeByTime=0 partyName="脑残" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="脑残" imgResID=2818 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="脑残" imgResID=2818 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050820" codeByTime=0 partyName="色狼" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="色狼" imgResID=2819 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="色狼" imgResID=2819 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050821" codeByTime=0 partyName="帅哥" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="帅哥" imgResID=2820 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="帅哥" imgResID=2820 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050822" codeByTime=0 partyName="猥琐" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="猥琐" imgResID=2821 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="猥琐" imgResID=2821 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050823" codeByTime=0 partyName="城会玩" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="城会玩" imgResID=2822 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="城会玩" imgResID=2822 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>	
+	
+	<TailLight partyCode="2015050824" codeByTime=0 partyName="活两集" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="活两集" imgResID=2823 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="活两集" imgResID=2823 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+		<TailLight partyCode="2015050825" codeByTime=0 partyName="静静" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="静静" imgResID=2824 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="静静" imgResID=2824 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050826" codeByTime=0 partyName="菊花" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="菊花" imgResID=2825 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="菊花" imgResID=2825 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050827" codeByTime=0 partyName="奶妈" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="奶妈" imgResID=2826 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="奶妈" imgResID=2826 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050828" codeByTime=0 partyName="求包养" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="求包养" imgResID=2827 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="求包养" imgResID=2827 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050829" codeByTime=0 partyName="然并卵" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="然并卵" imgResID=2828 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="然并卵" imgResID=2828 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050830" codeByTime=0 partyName="睡起嗨" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="睡起嗨" imgResID=2829 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="睡起嗨" imgResID=2829 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050831" codeByTime=0 partyName="童颜巨乳" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="童颜巨乳" imgResID=2830 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="童颜巨乳" imgResID=2830 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050832" codeByTime=0 partyName="脱裤看" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="脱裤看" imgResID=2831 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="脱裤看" imgResID=2831 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050833" codeByTime=0 partyName="舞神" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="舞神" imgResID=2832 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="舞神" imgResID=2832 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050834" codeByTime=0 partyName="乡话多" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="乡话多" imgResID=2833 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="乡话多" imgResID=2833 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050835" codeByTime=0 partyName="征婚" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="征婚" imgResID=2834 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="征婚" imgResID=2834 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>	
+	
+	<TailLight partyCode="2015050836" codeByTime=0 partyName="重金求子" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="重金求子" imgResID=2835 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="重金求子" imgResID=2835 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+
+	<TailLight partyCode="2015050841" codeByTime=0 partyName="小鲜肉" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="小鲜肉" imgResID=2840 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="小鲜肉" imgResID=2840 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050842" codeByTime=0 partyName="本宝宝" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="本宝宝" imgResID=2841 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="本宝宝" imgResID=2841 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050843" codeByTime=0 partyName="任性" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="任性" imgResID=2842 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="任性" imgResID=2842 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050844" codeByTime=0 partyName="别插嘴" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="别插嘴" imgResID=2843 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="别插嘴" imgResID=2843 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050845" codeByTime=0 partyName="大樱花" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="大樱花" imgResID=2844 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="大樱花" imgResID=2844 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050846" codeByTime=0 partyName="紫柿子" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="紫柿子" imgResID=2845 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="紫柿子" imgResID=2845 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050847" codeByTime=0 partyName="Diao" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="Diao" imgResID=2846 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="Diao" imgResID=2846 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050848" codeByTime=0 partyName="上缴工资" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="上缴工资" imgResID=2847 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="上缴工资" imgResID=2847 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050849" codeByTime=0 partyName="单身汪" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="单身汪" imgResID=2848 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="单身汪" imgResID=2848 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050850" codeByTime=0 partyName="小公举" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="小公举" imgResID=2849 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="小公举" imgResID=2849 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050851" codeByTime=0 partyName="求守护" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="求守护" imgResID=2850 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="求守护" imgResID=2850 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+		<TailLight partyCode="2015050851" codeByTime=0 partyName="求守护" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="求守护" imgResID=2850 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="求守护" imgResID=2850 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015050852" codeByTime=0 partyName="飞机场" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="飞机场" imgResID=2851 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="飞机场" imgResID=2851 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050853" codeByTime=0 partyName="减肥中" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="减肥中" imgResID=2852 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="减肥中" imgResID=2852 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+		<TailLight partyCode="2015050854" codeByTime=0 partyName="老司机" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="老司机" imgResID=2853 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="老司机" imgResID=2853 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015050855" codeByTime=0 partyName="看气质" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="看气质" imgResID=2854 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="看气质" imgResID=2854 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015050856" codeByTime=0 partyName="水蛇腰" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="水蛇腰" imgResID=2855 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="水蛇腰" imgResID=2855 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015050857" codeByTime=0 partyName="蜜桃臀" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="蜜桃臀" imgResID=2856 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="蜜桃臀" imgResID=2856 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015050858" codeByTime=0 partyName="胸大无脑" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="胸大无脑" imgResID=2857 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="胸大无脑" imgResID=2857 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015050859" codeByTime=0 partyName="脑大无胸" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="脑大无胸" imgResID=2858 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="脑大无胸" imgResID=2858 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015050860" codeByTime=0 partyName="伐木累" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="伐木累" imgResID=2859 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="伐木累" imgResID=2859 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015050861" codeByTime=0 partyName="狗带" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="狗带" imgResID=2860 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="狗带" imgResID=2860 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015050862" codeByTime=0 partyName="污" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="污" imgResID=2861 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="污" imgResID=2861 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050863" codeByTime=0 partyName="本宫" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="本宫" imgResID=2862 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="本宫" imgResID=2862 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050864" codeByTime=0 partyName="吃土" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="吃土" imgResID=2863 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="吃土" imgResID=2863 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050865" codeByTime=0 partyName="老公" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="老公" imgResID=2864 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="老公" imgResID=2864 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050866" codeByTime=0 partyName="老婆" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="老婆" imgResID=2865 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="老婆" imgResID=2865 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050867" codeByTime=0 partyName="老王" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="老王" imgResID=2866 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="老王" imgResID=2866 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050868" codeByTime=0 partyName="啪啪啪" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="啪啪啪" imgResID=2867 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="啪啪啪" imgResID=2867 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050869" codeByTime=0 partyName="蛇精病" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="蛇精病" imgResID=2868 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="蛇精病" imgResID=2868 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050870" codeByTime=0 partyName="蓝瘦" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="蓝瘦" imgResID=2869 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="蓝瘦" imgResID=2869 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015050871" codeByTime=0 partyName="香菇" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="香菇" imgResID=2870 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="香菇" imgResID=2870 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015050873" codeByTime=0 partyName="汪汪汪" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="汪汪汪" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="汪汪汪" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015050874" codeByTime=0 partyName="666" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="666" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="666" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015050875" codeByTime=0 partyName="老铁" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="老铁" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="老铁" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015050876" codeByTime=0 partyName="小可爱" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="小可爱" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="小可爱" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015050877" codeByTime=0 partyName="跑骚王" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="跑骚王" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="跑骚王" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015050878" codeByTime=0 partyName="三生三世" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="三生三世" imgResID=2870 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="三生三世" imgResID=2870 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015051101" codeByTime=0 partyName="2B" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="2B" imgResID=3100 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="2B" imgResID=3100 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051102" codeByTime=0 partyName="屌丝" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="屌丝" imgResID=3101 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="屌丝" imgResID=3101 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051103" codeByTime=0 partyName="逗比" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="逗比" imgResID=3102 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="逗比" imgResID=3102 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051104" codeByTime=0 partyName="土豪" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="土豪" imgResID=3103 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="土豪" imgResID=3103 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051105" codeByTime=0 partyName="萝莉" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="萝莉" imgResID=3104 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="萝莉" imgResID=3104 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051106" codeByTime=0 partyName="么么哒" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="么么哒" imgResID=3105 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="么么哒" imgResID=3105 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051107" codeByTime=0 partyName="牛掰" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="牛掰" imgResID=3106 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="牛掰" imgResID=3106 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051108" codeByTime=0 partyName="女神" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="女神" imgResID=3107 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="女神" imgResID=3107 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051109" codeByTime=0 partyName="禽兽" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="禽兽" imgResID=3108 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="禽兽" imgResID=3108 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051110" codeByTime=0 partyName="万人迷" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="万人迷" imgResID=3109 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="万人迷" imgResID=3109 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051111" codeByTime=0 partyName="御姐" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="御姐" imgResID=3110 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="御姐" imgResID=3110 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>	
+	
+	<TailLight partyCode="2015051112" codeByTime=0 partyName="猪头" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="猪头" imgResID=3111 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="猪头" imgResID=3111 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051113" codeByTime=0 partyName="宝贝" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="宝贝" imgResID=3112 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="宝贝" imgResID=3112 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051114" codeByTime=0 partyName="葫芦娃" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="葫芦娃" imgResID=3113 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="葫芦娃" imgResID=3113 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051115" codeByTime=0 partyName="撸" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="撸" imgResID=3114 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="撸" imgResID=3114 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051116" codeByTime=0 partyName="闷骚" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="闷骚" imgResID=3115 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="闷骚" imgResID=3115 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051117" codeByTime=0 partyName="萌" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="萌" imgResID=3116 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="萌" imgResID=3116 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051118" codeByTime=0 partyName="男神" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="男神" imgResID=3117 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="男神" imgResID=3117 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051119" codeByTime=0 partyName="脑残" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="脑残" imgResID=3118 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="脑残" imgResID=3118 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051120" codeByTime=0 partyName="色狼" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="色狼" imgResID=3119 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="色狼" imgResID=3119 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051121" codeByTime=0 partyName="帅哥" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="帅哥" imgResID=3120 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="帅哥" imgResID=3120 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051122" codeByTime=0 partyName="猥琐" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="猥琐" imgResID=3121 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="猥琐" imgResID=3121 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051123" codeByTime=0 partyName="城会玩" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="城会玩" imgResID=3122 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="城会玩" imgResID=3122 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>	
+	
+	<TailLight partyCode="2015051124" codeByTime=0 partyName="活两集" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="活两集" imgResID=3123 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="活两集" imgResID=3123 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+		<TailLight partyCode="2015051125" codeByTime=0 partyName="静静" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="静静" imgResID=3124 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="静静" imgResID=3124 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051126" codeByTime=0 partyName="菊花" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="菊花" imgResID=3125 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="菊花" imgResID=3125 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051127" codeByTime=0 partyName="奶妈" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="奶妈" imgResID=3126 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="奶妈" imgResID=3126 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051128" codeByTime=0 partyName="求包养" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="求包养" imgResID=3127 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="求包养" imgResID=3127 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051129" codeByTime=0 partyName="然并卵" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="然并卵" imgResID=3128 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="然并卵" imgResID=3128 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051130" codeByTime=0 partyName="睡起嗨" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="睡起嗨" imgResID=3129 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="睡起嗨" imgResID=3129 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051131" codeByTime=0 partyName="童颜巨乳" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="童颜巨乳" imgResID=3130 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="童颜巨乳" imgResID=3130 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051132" codeByTime=0 partyName="脱裤看" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="脱裤看" imgResID=3131 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="脱裤看" imgResID=3131 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051133" codeByTime=0 partyName="舞神" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="舞神" imgResID=3132 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="舞神" imgResID=3132 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051134" codeByTime=0 partyName="乡话多" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="乡话多" imgResID=3133 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="乡话多" imgResID=3133 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051135" codeByTime=0 partyName="征婚" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="征婚" imgResID=3134 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="征婚" imgResID=3134 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>	
+	
+	<TailLight partyCode="2015051136" codeByTime=0 partyName="重金求子" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="重金求子" imgResID=3135 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="重金求子" imgResID=3135 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051137" codeByTime=0 partyName="美美专属" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="美美专属" imgResID=3136 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="美美专属" imgResID=3136 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051138" codeByTime=0 partyName="艺仔专属" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="艺仔专属" imgResID=3137 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="艺仔专属" imgResID=3137 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051139" codeByTime=0 partyName="匆匆那年" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="匆匆那年" imgResID=3138 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="匆匆那年" imgResID=3138 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051140" codeByTime=0 partyName="雨中竹阁" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="雨中竹阁" imgResID=3139 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="雨中竹阁" imgResID=3139 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051141" codeByTime=0 partyName="小鲜肉" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="小鲜肉" imgResID=3140 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="小鲜肉" imgResID=3140 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051142" codeByTime=0 partyName="本宝宝" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="本宝宝" imgResID=3141 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="本宝宝" imgResID=3141 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051143" codeByTime=0 partyName="任性" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="任性" imgResID=3142 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="任性" imgResID=3142 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051144" codeByTime=0 partyName="别插嘴" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="别插嘴" imgResID=3143 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="别插嘴" imgResID=3143 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051145" codeByTime=0 partyName="大樱花" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="大樱花" imgResID=3144 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="大樱花" imgResID=3144 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051146" codeByTime=0 partyName="紫柿子" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="紫柿子" imgResID=3145 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="紫柿子" imgResID=3145 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051147" codeByTime=0 partyName="Diao" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="Diao" imgResID=3146 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="Diao" imgResID=3146 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051148" codeByTime=0 partyName="上缴工资" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="上缴工资" imgResID=3147 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="上缴工资" imgResID=3147 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051149" codeByTime=0 partyName="单身汪" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="单身汪" imgResID=3148 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="单身汪" imgResID=3148 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051150" codeByTime=0 partyName="小公举" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="小公举" imgResID=3149 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="小公举" imgResID=3149 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051151" codeByTime=0 partyName="求守护" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="求守护" imgResID=3150 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="求守护" imgResID=3150 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051152" codeByTime=0 partyName="飞机场" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="飞机场" imgResID=3151 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="飞机场" imgResID=3151 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051153" codeByTime=0 partyName="减肥中" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="减肥中" imgResID=3152 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="减肥中" imgResID=3152 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+		<TailLight partyCode="2015051154" codeByTime=0 partyName="老司机" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="老司机" imgResID=3153 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="老司机" imgResID=3153 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015051155" codeByTime=0 partyName="看气质" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="看气质" imgResID=3154 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="看气质" imgResID=3154 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015051156" codeByTime=0 partyName="水蛇腰" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="水蛇腰" imgResID=3155 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="水蛇腰" imgResID=3155 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015051157" codeByTime=0 partyName="蜜桃臀" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="蜜桃臀" imgResID=3156 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="蜜桃臀" imgResID=3156 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015051158" codeByTime=0 partyName="胸大无脑" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="胸大无脑" imgResID=3157 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="胸大无脑" imgResID=3157 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015051159" codeByTime=0 partyName="脑大无胸" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="脑大无胸" imgResID=3158 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="脑大无胸" imgResID=3158 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015051160" codeByTime=0 partyName="伐木累" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="伐木累" imgResID=3159 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="伐木累" imgResID=3159 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015051161" codeByTime=0 partyName="狗带" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="狗带" imgResID=3160 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="狗带" imgResID=3160 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+			<TailLight partyCode="2015051162" codeByTime=0 partyName="污" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="污" imgResID=3161 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="污" imgResID=3161 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051163" codeByTime=0 partyName="本宫" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="本宫" imgResID=3162 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="本宫" imgResID=3162 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051164" codeByTime=0 partyName="吃土" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="吃土" imgResID=3163 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="吃土" imgResID=3163 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051165" codeByTime=0 partyName="老公" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="老公" imgResID=3164 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="老公" imgResID=3164 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051166" codeByTime=0 partyName="老婆" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="老婆" imgResID=3165 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="老婆" imgResID=3165 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051167" codeByTime=0 partyName="老王" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="老王" imgResID=3166 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="老王" imgResID=3166 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051168" codeByTime=0 partyName="啪啪啪" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="啪啪啪" imgResID=3167 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="啪啪啪" imgResID=3167 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051169" codeByTime=0 partyName="蛇精病" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="蛇精病" imgResID=3168 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="蛇精病" imgResID=3168 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051170" codeByTime=0 partyName="蓝瘦" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="蓝瘦" imgResID=3169 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="蓝瘦" imgResID=3169 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051171" codeByTime=0 partyName="香菇" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="香菇" imgResID=3170 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="香菇" imgResID=3170 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+		<TailLight partyCode="2015051173" codeByTime=0 partyName="汪汪汪" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="汪汪汪" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="汪汪汪" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015051174" codeByTime=0 partyName="666" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="666" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="666" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015051175" codeByTime=0 partyName="老铁" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="老铁" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="老铁" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015051176" codeByTime=0 partyName="小可爱" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="小可爱" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="小可爱" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015051177" codeByTime=0 partyName="跑骚王" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="跑骚王" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="跑骚王" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051178" codeByTime=0 partyName="三生三世" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="三生三世" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="三生三世" imgResID=0 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051201" codeByTime=0 partyName="歌神" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="歌神" imgResID=13201 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="歌神" imgResID=13201 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051202" codeByTime=0 partyName="女王" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="女王" imgResID=13202 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="女王" imgResID=13202 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051203" codeByTime=0 partyName="性感" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="性感" imgResID=13203 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="性感" imgResID=13203 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051204" codeByTime=0 partyName="大嫂" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="大嫂" imgResID=13204 imgW_PerFrame=44 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="大嫂" imgResID=13204 imgW_PerFrame=44 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051205" codeByTime=0 partyName="舞娘" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="舞娘" imgResID=13205 imgW_PerFrame=45 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="舞娘" imgResID=13205 imgW_PerFrame=45 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051206" codeByTime=0 partyName="王的女人" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="王的女人" imgResID=13206 imgW_PerFrame=46 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="王的女人" imgResID=13206 imgW_PerFrame=46 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015051301" codeByTime=0 partyName="头牌" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="头牌" imgResID=13301 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="头牌" imgResID=13301 imgW_PerFrame=43 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015091500" codeByTime=0 partyName="征途2游戏用户" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="征途2动作版-2.5D征途系列新作" imgResID=5000 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="征途2动作版-2.5D征途系列新作" imgResID=5000 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+		<TailLight partyCode="2015090900" codeByTime=0 partyName="射日尾灯" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="射日尾灯" imgResID=5001 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="射日尾灯" imgResID=5001 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2015121501" codeByTime=0 partyName="劫镖" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="当日劫得巨额财物" imgResID=10401 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="当日劫得巨额财物" imgResID=10401 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015121502" codeByTime=0 partyName="护镖" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="当日护花使者" imgResID=10400 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="当日护花使者" imgResID=10400 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015121503" codeByTime=0 partyName="最后一击" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="对镖车造成最后一击" imgResID=10403 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="对镖车造成最后一击" imgResID=10403 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2015121504" codeByTime=0 partyName="主播" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="当日完成全部运镖" imgResID=10402 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="当日完成全部运镖" imgResID=10402 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+		<TailLight partyCode="2016012101" codeByTime=0 partyName="紧箍" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="爱你一万年" imgResID=10515 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="爱你一万年" imgResID=10515 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2016012102" codeByTime=0 partyName="猴头" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="猴年大吉" imgResID=10514 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="猴年大吉" imgResID=10514 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2016022501" codeByTime=0 partyName="口红" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="守护女神" imgResID=10516 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="守护女神" imgResID=10516 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2016040701" codeByTime=0 partyName="闭月" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="小公举争夺中荣获闭月小公举称号" imgResID=10702 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="小公举争夺中荣获闭月小公举称号" imgResID=10702 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2016040702" codeByTime=0 partyName="羞花" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="小公举争夺中荣获羞花小公举称号" imgResID=10703 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="小公举争夺中荣获羞花小公举称号" imgResID=10703 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2016040703" codeByTime=0 partyName="沉鱼" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="小公举争夺中荣获沉鱼小公举称号" imgResID=10705 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="小公举争夺中荣获沉鱼小公举称号" imgResID=10705 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2016040704" codeByTime=0 partyName="落雁" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="小公举争夺中荣获落雁小公举称号" imgResID=10704 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="小公举争夺中荣获落雁小公举称号" imgResID=10704 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+		<TailLight partyCode="2016040705" codeByTime=0 partyName="大白见习" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="小公举争夺中赠送主播1000个糖果获得" imgResID=10706 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="小公举争夺中赠送主播1000个糖果获得" imgResID=10706 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2016040706" codeByTime=0 partyName="大白高级" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="在小公举争夺中成为主播的大白第一名" imgResID=10707 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="在小公举争夺中成为主播的大白第一名" imgResID=10707 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<TailLight partyCode="2016051318" codeByTime=0 partyName="粉丝勋章" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表，粉丝勋章的资源不是通过imgResID加载，而是通过rc.db加载，故imgResID值无所谓-->
+			<TreeItem name="粉丝勋章" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="粉丝勋章" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="粉丝勋章" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="粉丝勋章" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="粉丝勋章" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="粉丝勋章" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="新人粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="新人粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="新人粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="新人粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="新人粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="新人粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="新人粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="新人粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="新人粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="新人粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="新人粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="新人粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="新人粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="新人粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="酱油粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="酱油粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="酱油粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="酱油粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="酱油粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="酱油粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="酱油粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="酱油粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="酱油粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="酱油粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="狂热粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="狂热粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="狂热粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="狂热粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="狂热粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="狂热粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="狂热粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="狂热粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="狂热粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="狂热粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+			<TreeItem name="真爱粉" imgResID=10722 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+	</TailLight>
+	<TailLight partyCode="2016102701" codeByTime=0 partyName="年度勋章" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="神豪评委" imgResID=10742 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=16/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="神豪评委" imgResID=10742 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=16/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2016102702" codeByTime=0 partyName="年度勋章" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="高级评委" imgResID=10743 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=12/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="高级评委" imgResID=10743 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=12/>
+		</ChatAreaItems>
+	</TailLight>
+		<TailLight partyCode="2016102703" codeByTime=0 partyName="年度勋章" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="贵宾评委" imgResID=10744 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=16/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="贵宾评委" imgResID=10744 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=16/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2016112301" codeByTime=0 partyName="新人青铜尾灯" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="新人青铜尾灯" imgResID=10745 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="新人青铜尾灯" imgResID=10745 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2016112302" codeByTime=0 partyName="新人白银尾灯" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="新人白银尾灯" imgResID=10746 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="新人白银尾灯" imgResID=10746 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2016112303" codeByTime=0 partyName="新人王尾灯" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="新人王尾灯" imgResID=10747 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="新人王尾灯" imgResID=10747 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2017010101" codeByTime=0 partyName="鸡年大吉" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="鸡年大吉" imgResID=10748 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="鸡年大吉" imgResID=10748 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2017030101" codeByTime=0 partyName="一怒红颜" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="一怒红颜" imgResID=10749 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="一怒红颜" imgResID=10749 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+		<TailLight partyCode="2017030102" codeByTime=0 partyName="侠骨柔情" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="侠骨柔情" imgResID=10750 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="侠骨柔情" imgResID=10750 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+		<TailLight partyCode="2017030103" codeByTime=0 partyName="为爱痴狂" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="为爱痴狂" imgResID=10751 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="为爱痴狂" imgResID=10751 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2017080801" codeByTime=0 partyName="小嘟机器人" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="小嘟机器人" imgResID=10752 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="小嘟机器人" imgResID=10752 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2017081601" codeByTime=0 partyName="七夕喜鹊尾灯" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="七夕喜鹊尾灯：送出1000个喜鹊获得" imgResID=10753 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="七夕喜鹊尾灯：送出1000个喜鹊获得" imgResID=10753 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2017081602" codeByTime=0 partyName="七夕比翼鸟尾灯" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="七夕比翼鸟尾灯：送出1000嘟币礼物获得" imgResID=10754 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="七夕比翼鸟尾灯：送出1000嘟币礼物获得" imgResID=10754 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2017081603" codeByTime=0 partyName="七夕专属情侣尾灯" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="七夕专属情侣尾灯：七夕活动前10名主播和粉丝获得" imgResID=10755 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="七夕专属情侣尾灯：七夕活动前10名主播和粉丝获得" imgResID=10755 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+		<TailLight partyCode="2018011001" codeByTime=0 partyName="狗年大吉" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="狗年大吉" imgResID=10756 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="狗年大吉" imgResID=10756 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2018032801" codeByTime=0 partyName="疯狂答人" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="疯狂答人" imgResID=10757 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="疯狂答人" imgResID=10757 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2018041901" codeByTime=0 partyName="手心手背达人" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="手心手背达人" imgResID=10758 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="手心手背达人" imgResID=10758 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+
+	<TailLight partyCode="2018061401" codeByTime=0 partyName="世界杯球迷" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="世界杯球迷" imgResID=10759 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=8/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="世界杯球迷" imgResID=10759 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=8/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2018061402" codeByTime=0 partyName="大力神杯" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="大力神杯" imgResID=10760 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=12/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="大力神杯" imgResID=10760 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=8/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2018082801" codeByTime=0 partyName="女神尾灯第一名" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="女神尾灯第一名" imgResID=10763 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="女神尾灯第一名" imgResID=10763 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2018082802" codeByTime=0 partyName="女神尾灯第二名" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="女神尾灯第二名" imgResID=10764 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="女神尾灯第二名" imgResID=10764 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2018082803" codeByTime=0 partyName="女神尾灯第三名" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="女神尾灯第三名" imgResID=10765 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="女神尾灯第三名" imgResID=10765 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2018102401" codeByTime=0 partyName="回归尾灯" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="回归尾灯" imgResID=10766 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="回归尾灯" imgResID=10766 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2019010801" codeByTime=0 partyName="猪年大吉" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="猪年大吉" imgResID=10767 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="猪年大吉" imgResID=10767 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2019012101" codeByTime=0 partyName="佩奇尾灯" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="活动期间赠送1000个小猪佩奇可获得" imgResID=10768 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="活动期间赠送1000个小猪佩奇可获得" imgResID=10768 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	<TailLight partyCode="2019040201" codeByTime=0 partyName="心心相印" justOpenClose=0 notifyLevelUp=0>
+		<TreeItems><!--成员列表-->
+			<TreeItem name="心心相印" imgResID=10769 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</TreeItems>
+		<ChatAreaItems><!--聊天显示区-->
+			<ChatAreaItem name="心心相印" imgResID=10769 imgW_PerFrame=16 imgH_PerFrame=16 frameCnt=1/>
+		</ChatAreaItems>
+	</TailLight>
+	
+	<!-- 再一个活动类型
+	<TailLight partyCode= partyName="" notOver= bgImgID= bgImgW= bgImgH=>
+		<TreeItems>
+			<TreeItem name="" imgResID= imgW_PerFrame= imgH_PerFrame= frameCnt=/>
+		</TreeItems>
+		<ChatAreaItems>
+			<ChatAreaItem name="" imgResID= imgW_PerFrame= imgH_PerFrame= frameCnt=/>
+		</ChatAreaItems>
+	</TailLight>
+	-->
+</TailLights>

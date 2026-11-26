@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="gb2312"?>
+<messageSystem>
+	<page login="1">
+		<message>欢迎广大玩家加入《征途》怀旧测试！</message>
+	</page>
+	<page interval="120">
+		<message>感谢您对《征途》怀旧测试的热情参与，让我们感受《征途》怀旧的快乐与激情！</message>
+		<message>你的征途，我的征途，让你我一起携手《征途》怀旧!</message>
+		<message>漫漫“征途”，一路有你，从此风雨也温柔。</message>
+		<message>Ctrl+X可以快速切换攻击模式</message>
+		<message>鼠标左键点击地图可以使角色移动</message>
+		<message>按下C键可以快速打开人物装备以及属性窗口</message>
+		<message>按下V键可以快速打开人物技能窗口</message>
+		<message>按下B键可以快速打开包裹</message>
+		<message>鼠标移到NPC身上再点击鼠标左键或者右键可以与NPC对话</message>
+		<message>鼠标移到怪物身上再点击鼠标左键就可以攻击敌人</message>
+		<message>按下F键，再选择NPC名字后点移动就可以自动寻路</message>
+		<message>按下M键，在大地图上点击就可以自动走到该位置</message>
+		<message>Ctrl+1~Ctrl+9可以切换不同的聊天频道</message>
+		<message>按下shift键再右键或者左键点击其他玩家、NPC可以选中目标</message>
+		<message>按下H可以打开热情帮助信息</message>
+		<message>按下L可以打开任务栏</message>
+		<message>按下D可以进行打坐，快速恢复HP以及MP</message>
+		<message>按下G再左键点击玩家，就可以跟随这个玩家</message>
+		<message>玩家在游戏的高级钱庄老板处兑换金币后即可开通一个储物箱（此储物箱不受任何玩家等级限制，只要充值兑换即可获得，如果玩家等级没有达到20级，其将做为玩家的第一个储物箱供玩家使用）。 </message>
+		<message>使用快捷键CTRL+Z，可以快速开启自动寻怪功能</message>
+	</page>
+	<page interval="60">
+	</page>
+</messageSystem>

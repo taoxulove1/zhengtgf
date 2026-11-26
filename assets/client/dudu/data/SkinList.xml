@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="GB2312"?>
+<SkinList>
+	<Skin ID = "1" SkinBkPicName = "dudumainbackgroud30_1.png" SkinPreviewImageBase = "BtnSkin1"/>
+	<Skin ID = "2" SkinBkPicName = "dudumainbackgroud30_2.png" SkinPreviewImageBase = "BtnSkin2"/>
+	<Skin ID = "3" SkinBkPicName = "dudumainbackgroud30_3.png" SkinPreviewImageBase = "BtnSkin3"/>
+	<Skin ID = "4" SkinBkPicName = "dudumainbackgroud30_4.png" SkinPreviewImageBase = "BtnSkin4"/>
+	<Skin ID = "5" SkinBkPicName = "dudumainbackgroud30_5.png" SkinPreviewImageBase = "BtnSkin5"/>
+	<Skin ID = "6" SkinBkPicName = "dudumainbackgroud30_6.png" SkinPreviewImageBase = "BtnSkin6"/>
+	<Skin ID = "7" SkinBkPicName = "dudumainbackgroud30_7.png" SkinPreviewImageBase = "BtnSkin7"/>
+	<Skin ID = "8" SkinBkPicName = "dudumainbackgroud30_8.png" SkinPreviewImageBase = "BtnSkin8"/>
+	<Skin ID = "9" SkinBkPicName = "dudumainbackgroud30_9.png" SkinPreviewImageBase = "BtnSkin9"/>
+</SkinList>
+

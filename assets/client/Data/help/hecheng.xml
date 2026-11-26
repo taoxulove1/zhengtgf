@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n color="255,0,255,0 ">           装备合成帮助</n>
+	</p>
+	<p>
+		<a href="hecheng1.xml">装备合成需要满足的条件</a>
+	</p>
+	<p>
+		<a href="hecheng2.xml">装备合成的规则</a>
+	</p>
+</body>
+

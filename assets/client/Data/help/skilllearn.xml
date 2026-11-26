@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n color="255,255,255,255">技能学习</n>
+	</p>
+	<p>
+		<n>    学习一项新的技能需要相应技能的秘笈。秘笈可以从书商那边买到，或者通过杀死怪物获得。学习技能有两种方式：第一种是鼠标右键点击技能界面中要学习的技能图标；第二种是直接右键点击相应技能的秘笈学习</n>
+	</p>
+	<p>
+		<a href="Index.xml">返回</a>
+	</p>
+</body>

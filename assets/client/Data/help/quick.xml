@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n color="255,255,255,255">快捷使用物品</n>
+	</p>
+	<p>
+		<n>    游戏提供了f1-f12以及1－0两栏快捷键。只要把包裹中的物品用鼠标拖放到快捷栏中就可以通过这些快捷键使用这些物品了。不是所有物品都能够快捷使用的，主要是药品、卷轴、装备类的物品能够快捷使用。</n>
+	</p>
+	<p>
+		<a href="Index.xml">返回</a>
+	</p>
+</body>

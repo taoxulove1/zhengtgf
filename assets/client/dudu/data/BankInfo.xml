@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Bank>
+<MainType index="0" name="中国农业银行">
+</MainType>
+
+<MainType index="1" name="中国工商银行">
+</MainType>
+
+<MainType index="2" name="中国银行">
+</MainType>
+
+<MainType index="3" name="交通银行">
+</MainType>
+
+<MainType index="4" name="招商银行">
+</MainType>
+
+<MainType index="5" name="邮政储蓄">
+</MainType>
+
+<MainType index="6" name="兴业银行">
+</MainType>
+
+<MainType index="7" name="浦发银行">
+</MainType>
+
+<MainType index="8" name="平安银行">
+</MainType>
+
+<MainType index="9" name="民生银行">
+</MainType>
+
+<MainType index="10" name="光大银行">
+</MainType>
+
+<MainType index="11" name="广发银行">
+</MainType>
+
+<MainType index="12" name="中信银行">
+</MainType>
+
+</Bank>

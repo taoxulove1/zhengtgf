@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n color="255,255,255,255">PK</n>
+	</p>
+	<p>
+		<n>    要攻击别的角色必须先切换自己的攻击模式。攻击模式切换可以通过键盘上的 Ctrl+X 键切换或者鼠标点击人物头像旁边的模式切换按钮选择需要的攻击模式。</n>
+	</p>
+	<p>
+		<a href="Index.xml">返回</a>
+	</p>
+</body>

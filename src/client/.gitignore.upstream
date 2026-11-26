@@ -1,0 +1,18 @@
+# 排除 Visual Studio 编译生成的目录
+**/Release/
+**/Debug/
+**/ReleaseTest/
+**/Debug_Tool/
+**/Release_Tool/
+**/DebugNoGrp/
+**/ReleaseNoGrp/
+runclient/*
+**/*.ncb
+**/*.suo
+*.pak
+# 放行 Boost 库的小写路径
+!boost_1_34_1/
+!boost_1_34_1/**/*
+!boost_1_34_1/
+!boost_1_34_1/**/*
+boost_1_34_1/**/*.obj

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n color="255,255,255,255 ">购买材料</n>
+	</p>
+	<p>
+		<n>    金子可以在“高级杂货商”处购买高级材料，高级材料有以下几个用途：</n>
+	</p>
+        <p>
+		<n>    1、在NPC“武器锻造师”、“防具锻造师”、“首饰锻造师”处打造装备</n>
+	</p>
+        <p>
+		<n>    2、在NPC“天机老人”处打造马铠、额外包裹</n>
+	</p>
+        <p>
+		<n>    提示：在打造、改造、升级装备时，材料等级越高，装备的属性越好。</n>
+	</p>
+	<p>
+		<a href="goldintroduce.xml">返回到上一层</a>
+	</p>
+	<p>
+		<a href="Index.xml">返回</a>
+	</p>
+</body>
+

@@ -1,0 +1,41 @@
+========================================
+手动修复指南 (upgrade_vs2003.sh 生成)
+========================================
+
+自动修复已完成，但以下函数需要手动添加缓冲区大小参数：
+
+1. strcpy_s 用法:
+   原: strcpy(dest, src);
+   自动: strcpy_s(dest, src);  // [UPGRADED] ...
+   手动改为: strcpy_s(dest, sizeof(dest), src);
+
+2. strcat_s 用法:
+   原: strcat(dest, src);
+   自动: strcat_s(dest, src);  // [UPGRADED] ...
+   手动改为: strcat_s(dest, sizeof(dest), src);
+
+3. sprintf_s 用法:
+   原: sprintf(buffer, "%s", str);
+   自动: sprintf_s(buffer, "%s", str);  // [UPGRADED] ...
+   手动改为: sprintf_s(buffer, sizeof(buffer), "%s", str);
+
+4. fgets 用法 (替换 gets):
+   原: gets(buffer);
+   自动: fgets(buffer);  // [UPGRADED] ...
+   手动改为: fgets(buffer, sizeof(buffer), stdin);
+
+快速搜索需要手动修复的地方:
+  grep -rn "NEEDS_MANUAL_FIX" /home/Client --include="*.cpp" --include="*.h" --include="*.c"
+
+编译设置建议:
+  项目属性 -> C/C++ -> 预处理器 -> 预处理器定义 -> 添加:
+    _CRT_SECURE_NO_WARNINGS
+    _CRT_NONSTDC_NO_WARNINGS
+    _SCL_SECURE_NO_WARNINGS
+
+或者使用更安全的替代方案:
+  - 用 std::string 替代 char 数组
+  - 用 std::stringstream 替代 sprintf
+  - 用 std::vector<char> 替代固定大小缓冲区
+
+========================================

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serverlist>
+    <server id="1" name="测试服" ip="192.168.0.117" port="8080"/>
+</serverlist>

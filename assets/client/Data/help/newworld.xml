@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n color="255,0,255,0 ">          新世界功能帮助</n>
+	</p>
+	<p>
+		<a href="nwhelp1.xml">新世界功能概述</a>
+	</p>
+	<p>
+		<a href="nwhelp2.xml">新世界带来的好处</a>
+	</p>
+</body>
+

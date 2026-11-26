@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- 
+说明：sceneid道具ID， offx特效水平方向偏移值， offy特效垂直方向偏移值，nTabIndex（0表示普通道具，1表示特殊道具） playNum1~playNum3344分别表示各个阶段的特效帧数
+ -->
+<Scene_Config>
+	<!-- 冰淇淋道具 -->
+	<sceneitem sceneid="76" nTabIndex="0" width="137" hight="200" PicNum="6" offx="150" offy="300" 
+		playNum1="0" playNum10="6" playNum30="6" playNum66="10" playNum188="16" playNum520="20" playNum1314="20" playNum3344="20" cicleBegin="1" cicleEnd="6" />
+	<!-- 项链 -->
+	<sceneitem sceneid="77" nTabIndex="0" width="154" hight="179" PicNum="10" offx="150" offy="305" 
+		playNum1="8" playNum10="10" playNum30="12" playNum66="14" playNum188="18" playNum520="20" playNum1314="26" playNum3344="26" cicleBegin="4" cicleEnd="10" />
+	<!-- 戒指 -->
+	<sceneitem sceneid="78" nTabIndex="0" width="151" hight="138" PicNum="9" offx="150" offy="355" 
+		playNum1="12" playNum10="12" playNum30="12" playNum66="12" playNum188="15" playNum520="17" playNum1314="20" playNum3344="20" cicleBegin="3" cicleEnd="8" />
+	<!-- 香水 -->
+	<sceneitem sceneid="79" nTabIndex="0" width="162" hight="191" PicNum="15" offx="150" offy="310" 
+		playNum1="8" playNum10="8" playNum30="10" playNum66="15" playNum188="15" playNum520="20" playNum1314="26" playNum3344="26" cicleBegin="8" cicleEnd="12" />
+	<!-- 弓-->
+	<sceneitem sceneid="88" nTabIndex="0" width="310" hight="400" PicNum="15" offx="80" offy="180" 
+		playNum1="6" playNum10="8" playNum30="8" playNum66="8" playNum188="8" playNum520="15" playNum1314="15" playNum3344="15" cicleBegin="8" cicleEnd="15" />
+	<!-- 巧克力 -->
+	<sceneitem sceneid="2" nTabIndex="0" width="311" hight="236" PicNum="16" offx="60" offy="275" 
+		playNum1="0" playNum10="10" playNum30="10" playNum66="10" playNum188="10" playNum520="15" playNum1314="20" playNum3344="25" cicleBegin="10" cicleEnd="16" />
+	<!-- 棒棒糖 -->
+	<sceneitem sceneid="3" nTabIndex="0" width="171" hight="174" PicNum="4" offx="150" offy="310" 
+		playNum1="0" playNum10="9" playNum30="9" playNum66="10" playNum188="10" playNum520="13" playNum1314="15" playNum3344="18" cicleBegin="2" cicleEnd="4" />
+	<!-- 鼓掌 -->
+	<sceneitem sceneid="4" nTabIndex="0" width="347" hight="182" PicNum="15" offx="70" offy="310" 
+		playNum1="8" playNum10="8" playNum30="10" playNum66="15" playNum188="15" playNum520="20" playNum1314="26" playNum3344="26" cicleBegin="8" cicleEnd="12" />
+	<!-- 抱抱 -->
+	<sceneitem sceneid="5" nTabIndex="0" width="320" hight="246" PicNum="16" offx="50" offy="250" 
+		playNum1="8" playNum10="10" playNum30="12" playNum66="14" playNum188="18" playNum520="20" playNum1314="26" playNum3344="26" cicleBegin="8" cicleEnd="14" />
+	<!-- 蛋糕 -->
+	<sceneitem sceneid="8" nTabIndex="0" width="175" hight="225" PicNum="20" offx="150" offy="265" 
+		playNum1="10" playNum10="10" playNum30="10" playNum66="10" playNum188="10" playNum520="15" playNum1314="20" playNum3344="25" cicleBegin="7" cicleEnd="13" />
+	<!-- 鸡蛋 -->
+	<sceneitem sceneid="9" nTabIndex="0" width="312" hight="297" PicNum="13" offx="150" offy="205" 
+		playNum1="10" playNum10="10" playNum30="10" playNum66="10" playNum188="10" playNum520="15" playNum1314="20" playNum3344="25" cicleBegin="6" cicleEnd="7" />
+	<!-- 最佳歌手 -->
+	<sceneitem sceneid="12" nTabIndex="0" width="334" hight="354" PicNum="45" offx="50" offy="145" 
+		playNum1="25" playNum10="15" playNum30="15" playNum66="15" playNum188="20" playNum520="25" playNum1314="35" playNum3344="45" cicleBegin="0" cicleEnd="0" />
+	<!-- 番茄 -->
+	<sceneitem sceneid="14" nTabIndex="0" width="312" hight="297" PicNum="10" offx="150" offy="225" 
+		playNum1="10" playNum10="10" playNum30="10" playNum66="10" playNum188="10" playNum520="15" playNum1314="20" playNum3344="25" cicleBegin="8" cicleEnd="8" />
+	<!-- 元宵 -->
+	<sceneitem sceneid="23" nTabIndex="0" width="300" hight="300" PicNum="20" offx="120" offy="220" 
+		playNum1="0" playNum10="15" playNum30="15" playNum66="18" playNum188="20" playNum520="24" playNum1314="26" playNum3344="26" cicleBegin="15" cicleEnd="15" />	
+	<!-- 啤酒 -->
+	<sceneitem sceneid="24" nTabIndex="0" width="250" hight="250" PicNum="12" offx="120" offy="265" 
+		playNum1="0" playNum10="10" playNum30="10" playNum66="10" playNum188="15" playNum520="20" playNum1314="20" playNum3344="25" cicleBegin="5" cicleEnd="10" />
+	<!-- 炸鸡 -->
+	<sceneitem sceneid="25" nTabIndex="0" width="250" hight="250" PicNum="16" offx="100" offy="265" 
+		playNum1="0" playNum10="10" playNum30="10" playNum66="10" playNum188="15" playNum520="20" playNum1314="20" playNum3344="25" cicleBegin="5" cicleEnd="10" />	
+	<!-- 小黄人 -->
+	<sceneitem sceneid="28" nTabIndex="0" width="250" hight="231" PicNum="25" offx="100" offy="235" 
+		playNum1="10" playNum10="10" playNum30="10" playNum66="10" playNum188="15" playNum520="20" playNum1314="25" playNum3344="25" cicleBegin="1" cicleEnd="25" />	
+	<!-- 爱心 -->
+	<sceneitem sceneid="36" nTabIndex="1" width="250" hight="250" PicNum="21" offx="22" offy="94" 
+		playNum1="60" playNum10="70" playNum30="80" playNum66="90" playNum188="137" playNum520="183" playNum1314="243" playNum3344="243" cicleBegin="1" cicleEnd="24" />
+	<!-- 浪漫樱花雨 -->
+	<sceneitem sceneid="37" nTabIndex="1" width="374" hight="670" PicNum="24" offx="22" offy="94" 
+		playNum1="40" playNum10="40" playNum30="40" playNum66="40" playNum188="40" playNum520="40" playNum1314="40" playNum3344="40" cicleBegin="1" cicleEnd="24" />
+	<!-- 娃娃头雪糕 -->
+	<sceneitem sceneid="44" nTabIndex="0" width="177" hight="170" PicNum="24" offx="152" offy="284" 
+		playNum1="10" playNum10="10" playNum30="10" playNum66="10" playNum188="15" playNum520="20" playNum1314="24" playNum3344="24" cicleBegin="1" cicleEnd="24" />
+	<!-- 炸弹 -->
+	<sceneitem sceneid="48" nTabIndex="1" width="374" hight="670" PicNum="47" offx="9" offy="41" 
+		playNum1="47" playNum10="47" playNum30="47" playNum66="47" playNum188="47" playNum520="47" playNum1314="47" playNum3344="47" cicleBegin="1" cicleEnd="47" />
+	<!-- 水晶 -->
+	<sceneitem sceneid="49" nTabIndex="3" width="250" hight="250" PicNum="24" offx="22" offy="94" 
+		playNum1="60" playNum10="70" playNum30="80" playNum66="90" playNum188="137" playNum520="183" playNum1314="243" playNum3344="243" cicleBegin="1" cicleEnd="24" />
+	<!-- 大白 -->
+	<sceneitem sceneid="43" nTabIndex="0" width="456" hight="397" PicNum="27" offx="120" offy="94" 
+		playNum1="10" playNum10="10" playNum30="10" playNum66="10" playNum188="15" playNum520="20" playNum1314="25" playNum3344="25" cicleBegin="1" cicleEnd="24" />
+	<!-- 亲一口 -->
+	<sceneitem sceneid="59" nTabIndex="1" width="788" hight="560" PicNum="27" offx="-80" offy="94" 
+		playNum1="27" playNum10="27" playNum30="27" playNum66="27" playNum188="27" playNum520="27" playNum1314="27" playNum3344="27" cicleBegin="1" cicleEnd="27" />
+	<!-- 爆竹 -->
+	<sceneitem sceneid="60" nTabIndex="0" width="106" hight="217" PicNum="30" offx="130" offy="300" 
+		playNum1="15" playNum10="15" playNum30="20" playNum66="25" playNum188="25" playNum520="30" playNum1314="30" playNum3344="30" cicleBegin="1" cicleEnd="30" />
+	<!-- 荣耀卡 -->
+	<sceneitem sceneid="66" nTabIndex="0" width="196" hight="151" PicNum="9" offx="135" offy="320" 
+		playNum1="0" playNum10="9" playNum30="9" playNum66="9" playNum188="9" playNum520="15" playNum1314="20" playNum3344="25" cicleBegin="4" cicleEnd="9" />
+	<!-- 糖果 -->
+	<sceneitem sceneid="70" nTabIndex="0" width="183" hight="183" PicNum="12" offx="135" offy="320" 
+		playNum1="0" playNum10="12" playNum30="12" playNum66="12" playNum188="12" playNum520="15" playNum1314="20" playNum3344="25" cicleBegin="1" cicleEnd="21" />
+	<!-- 浪漫鹊桥 -->
+	<sceneitem sceneid="81" nTabIndex="1" width="374" hight="670" PicNum="60" offx="9" offy="41" 
+		playNum1="60" playNum10="60" playNum30="60" playNum66="60" playNum188="60" playNum520="60" playNum1314="60" playNum3344="60" cicleBegin="1" cicleEnd="60" />
+	<!-- 黄瓜 -->
+	<sceneitem sceneid="82" nTabIndex="0" width="175" hight="178" PicNum="16" offx="135" offy="320" 
+		playNum1="0" playNum10="10" playNum30="10" playNum66="10" playNum188="10" playNum520="20" playNum1314="25" playNum3344="25" cicleBegin="5" cicleEnd="16" />
+	<!-- 去污粉 -->
+	<sceneitem sceneid="83" nTabIndex="0" width="227" hight="214" PicNum="21" offx="115" offy="300" 
+		playNum1="0" playNum10="21" playNum30="21" playNum66="21" playNum188="21" playNum520="21" playNum1314="21" playNum3344="21" cicleBegin="6" cicleEnd="21" />
+	<!-- 麻辣烫 -->
+	<sceneitem sceneid="84" nTabIndex="0" width="236" hight="254" PicNum="20" offx="115" offy="230" 
+		playNum1="15" playNum10="15" playNum30="15" playNum66="15" playNum188="15" playNum520="20" playNum1314="25" playNum3344="40" cicleBegin="1" cicleEnd="21" />
+	<!-- 房产证 -->
+	<sceneitem sceneid="86" nTabIndex="1" width="730" hight="623" PicNum="45" offx="100" offy="0" 
+		playNum1="45" playNum10="45" playNum30="45" playNum66="45" playNum188="45" playNum520="45" playNum1314="45" playNum3344="45" cicleBegin="1" cicleEnd="45" />
+	<!-- 糖果月饼 -->
+	<sceneitem sceneid="87" nTabIndex="0" width="360" hight="385" PicNum="29" offx="70" offy="110" 
+		playNum1="0" playNum10="10" playNum30="10" playNum66="13" playNum188="13" playNum520="18" playNum1314="20" playNum3344="29" cicleBegin="1" cicleEnd="29" />
+	<!-- 大闸蟹 -->
+	<sceneitem sceneid="90" nTabIndex="0" width="181" hight="121" PicNum="14" offx="130" offy="350" 
+		playNum1="10" playNum10="15" playNum30="15" playNum66="20" playNum188="25" playNum520="25" playNum1314="26" playNum3344="26" cicleBegin="1" cicleEnd="13" />
+	<!-- 南瓜 -->
+	<sceneitem sceneid="91" nTabIndex="0" width="550" hight="400" PicNum="26" offx="-70" offy="150" 
+		playNum1="8" playNum10="10" playNum30="12" playNum66="14" playNum188="18" playNum520="20" playNum1314="26" playNum3344="26" cicleBegin="1" cicleEnd="13" />
+	<!-- 支持票 -->
+	<sceneitem sceneid="92" nTabIndex="0" width="370" hight="310" PicNum="20" offx="60" offy="230" 
+		playNum1="0" playNum10="12" playNum30="16" playNum66="16" playNum188="20" playNum520="25" playNum1314="28" playNum3344="28" cicleBegin="1" cicleEnd="18" />
+	<!-- 520 -->
+	<sceneitem sceneid="93" nTabIndex="1" width="610" hight="502" PicNum="41" offx="130" offy="50" 
+		playNum1="41" playNum10="41" playNum30="41" playNum66="41" playNum188="41" playNum520="41" playNum1314="41" playNum3344="41" cicleBegin="1" cicleEnd="1" />
+	<!-- 游艇 -->
+	<sceneitem sceneid="94" nTabIndex="1" width="1000" hight="530" PicNum="56" offx="10" offy="50" 
+		playNum1="56" playNum10="56" playNum30="56" playNum66="56" playNum188="56" playNum520="56" playNum1314="56" playNum3344="56" cicleBegin="1" cicleEnd="56" />
+	<!-- 雪橇 -->
+	<sceneitem sceneid="95" nTabIndex="0" width="251" hight="251" PicNum="16" offx="100" offy="275" 
+		playNum1="0" playNum10="10" playNum30="10" playNum66="10" playNum188="16" playNum520="16" playNum1314="20" playNum3344="20" cicleBegin="14" cicleEnd="16" />
+	<!-- 驯鹿 -->
+	<sceneitem sceneid="96" nTabIndex="0" width="250" hight="250" PicNum="13" offx="110" offy="258" 
+		playNum1="0" playNum10="10" playNum30="10" playNum66="10" playNum188="15" playNum520="15" playNum1314="20" playNum3344="20" cicleBegin="5" cicleEnd="13" />
+	<!-- 驯鹿雪橇 -->
+	<sceneitem sceneid="97" nTabIndex="0" width="520" hight="310" PicNum="21" offx="50" offy="210" 
+		playNum1="0" playNum10="10" playNum30="10" playNum66="10" playNum188="15" playNum520="15" playNum1314="21" playNum3344="21" cicleBegin="1" cicleEnd="21" />
+	<!-- 蓝色妖姬 -->
+	<sceneitem sceneid="107" nTabIndex="0" width="140" hight="220" PicNum="27" offx="150" offy="305" 
+		playNum1="0" playNum10="0" playNum30="0" playNum66="0" playNum188="0" playNum520="15" playNum1314="27" playNum3344="27" cicleBegin="1" cicleEnd="27" />
+	<!-- 水晶鞋 -->
+	<sceneitem sceneid="110" nTabIndex="0" width="171" hight="174" PicNum="27" offx="150" offy="305"
+		playNum1="0" playNum10="0" playNum30="0" playNum66="0" playNum188="0" playNum520="15" playNum1314="27" playNum3344="27" cicleBegin="1" cicleEnd="27" />
+	<!-- 许愿星免费 -->
+	<sceneitem sceneid="121" nTabIndex="0" width="196" hight="169" PicNum="13" offx="150" offy="305"
+		playNum1="0" playNum10="0" playNum30="0" playNum66="13" playNum188="13" playNum520="13" playNum1314="13" playNum3344="13" cicleBegin="1" cicleEnd="13" />
+	<!-- 许愿星不免费 -->
+	<sceneitem sceneid="120" nTabIndex="0" width="330" hight="400" PicNum="25" offx="150" offy="200"
+		playNum1="0" playNum10="15" playNum30="18" playNum66="20" playNum188="25" playNum520="25" playNum1314="25" playNum3344="25" cicleBegin="1" cicleEnd="25" />
+	<!-- 皇冠 -->
+	<sceneitem sceneid="113" nTabIndex="1" width="1000" hight="650" PicNum="43" offx="0" offy="30"
+		playNum1="43" playNum10="43" playNum30="43" playNum66="43" playNum188="43" playNum520="43" playNum1314="43" playNum3344="43" cicleBegin="1" cicleEnd="43" />
+	<!-- 粽子 -->
+	<sceneitem sceneid="125" nTabIndex="0" width="232" hight="285" PicNum="24" offx="160" offy="275"
+		playNum1="0" playNum10="10" playNum30="10" playNum66="10" playNum188="10" playNum520="15" playNum1314="20" playNum3344="25" cicleBegin="1" cicleEnd="24" />
+	<!-- 带你飞 -->
+	<sceneitem sceneid="126" nTabIndex="1" width="580" hight="464" PicNum="30" offx="200" offy="65"
+		playNum1="30" playNum10="30" playNum30="30" playNum66="30" playNum188="30" playNum520="30" playNum1314="30" playNum3344="30" cicleBegin="1" cicleEnd="30" />
+		
+	<sceneitem sceneid="127" nTabIndex="1" width="550" hight="470" PicNum="30" offx="200" offy="65"
+		playNum1="26" playNum10="26" playNum30="26" playNum66="0" playNum188="0" playNum520="0" playNum1314="0" playNum3344="0" cicleBegin="1" cicleEnd="30" />
+	<!-- 冰镇椰子 -->
+	<sceneitem sceneid="128" nTabIndex="0" width="250" hight="259" PicNum="25" offx="150" offy="305"
+		playNum1="0" playNum10="0" playNum30="0" playNum66="25" playNum188="25" playNum520="25" playNum1314="25" playNum3344="25" cicleBegin="1" cicleEnd="25" />
+	<!-- 遮阳伞 -->
+	<sceneitem sceneid="129" nTabIndex="0" width="287" hight="285" PicNum="24" offx="150" offy="200"
+		playNum1="0" playNum10="24" playNum30="24" playNum66="24" playNum188="24" playNum520="24" playNum1314="24" playNum3344="24" cicleBegin="1" cicleEnd="24" />
+	<!-- 小红花 -->
+	<sceneitem sceneid="132" nTabIndex="0" width="176" hight="179" PicNum="15" offx="150" offy="300"
+		playNum1="0" playNum10="0" playNum30="0" playNum66="15" playNum188="15" playNum520="15" playNum1314="15" playNum3344="15" cicleBegin="1" cicleEnd="15" />
+	<!-- 狗粮 -->
+	<sceneitem sceneid="133" nTabIndex="0" width="171" hight="174" PicNum="25" offx="150" offy="300"
+		playNum1="0" playNum10="10" playNum30="13" playNum66="13" playNum188="18" playNum520="20" playNum1314="25" playNum3344="25" cicleBegin="1" cicleEnd="25" />
+	<!-- 为你打call -->
+	<sceneitem sceneid="134" nTabIndex="0" width="306" hight="210" PicNum="15" offx="150" offy="300"
+		playNum1="0" playNum10="15" playNum30="15" playNum66="15" playNum188="15" playNum520="15" playNum1314="15" playNum3344="15" cicleBegin="1" cicleEnd="15" />
+	<!-- 翅膀 -->
+	<sceneitem sceneid="136" nTabIndex="0" width="171" hight="174" PicNum="15" offx="150" offy="300"
+		playNum1="0" playNum10="15" playNum30="15" playNum66="15" playNum188="15" playNum520="15" playNum1314="15" playNum3344="15" cicleBegin="1" cicleEnd="15" />
+	<!-- 小丑 -->
+	<sceneitem sceneid="116" nTabIndex="0" width="240" hight="149" PicNum="10" offx="150" offy="300"
+		playNum1="0" playNum10="10" playNum30="10" playNum66="10" playNum188="10" playNum520="10" playNum1314="10" playNum3344="10" cicleBegin="1" cicleEnd="10" />
+	<!-- 麦克风 -->
+	<sceneitem sceneid="138" nTabIndex="0" width="171" hight="174" PicNum="15" offx="150" offy="300"
+		playNum1="0" playNum10="15" playNum30="15" playNum66="15" playNum188="15" playNum520="15" playNum1314="15" playNum3344="15" cicleBegin="1" cicleEnd="15" />
+	<!-- 小猪佩奇 -->
+	<sceneitem sceneid="139" nTabIndex="0" width="471" hight="345" PicNum="30" offx="30" offy="200"
+		playNum1="0" playNum10="15" playNum30="15" playNum66="30" playNum188="30" playNum520="30" playNum1314="30" playNum3344="30" cicleBegin="1" cicleEnd="30" />
+	<!-- 大力神杯 -->
+	<sceneitem sceneid="140" nTabIndex="0" width="431" hight="359" PicNum="25" offx="30" offy="200"
+		playNum1="0" playNum10="15" playNum30="15" playNum66="25" playNum188="25" playNum520="25" playNum1314="25" playNum3344="25" cicleBegin="1" cicleEnd="25" />
+	<!-- 缤纷果茶 -->
+	<sceneitem sceneid="141" nTabIndex="0" width="175" hight="178" PicNum="15" offx="150" offy="300"
+		playNum1="0" playNum10="15" playNum30="15" playNum66="15" playNum188="15" playNum520="15" playNum1314="15" playNum3344="15" cicleBegin="1" cicleEnd="15" />
+	<!-- 喜鹊 -->
+	<sceneitem sceneid="130" nTabIndex="0" width="246" hight="62" PicNum="15" offx="150" offy="200"
+		playNum1="0" playNum10="10" playNum30="10" playNum66="15" playNum188="15" playNum520="15" playNum1314="15" playNum3344="15" cicleBegin="1" cicleEnd="15" />
+	<!-- 鹊桥 -->
+	<sceneitem sceneid="131" nTabIndex="0" width="240" hight="200" PicNum="40" offx="150" offy="200"
+		playNum1="40" playNum10="40" playNum30="40" playNum66="40" playNum188="40" playNum520="40" playNum1314="40" playNum3344="40" cicleBegin="1" cicleEnd="40" />
+	<!-- 女神卡 -->
+	<sceneitem sceneid="142" nTabIndex="0" width="174" hight="174" PicNum="15" offx="150" offy="300"
+		playNum1="0" playNum10="15" playNum30="15" playNum66="15" playNum188="15" playNum520="15" playNum1314="15" playNum3344="15" cicleBegin="1" cicleEnd="15" />
+	<!-- 女神桂冠 -->
+	<sceneitem sceneid="143" nTabIndex="0" width="174" hight="174" PicNum="15" offx="150" offy="300"
+		playNum1="0" playNum10="15" playNum30="15" playNum66="15" playNum188="15" playNum520="15" playNum1314="15" playNum3344="15" cicleBegin="1" cicleEnd="15" />
+	<!-- 长裙 -->
+	<sceneitem sceneid="144" nTabIndex="0" width="296" hight="276" PicNum="30" offx="150" offy="300"
+		playNum1="0" playNum10="30" playNum30="30" playNum66="30" playNum188="30" playNum520="30" playNum1314="30" playNum3344="30" cicleBegin="1" cicleEnd="30" />
+	<!-- 你最闪耀 -->
+	<sceneitem sceneid="145" nTabIndex="0" width="284" hight="349" PicNum="25" offx="100" offy="220"
+		playNum1="0" playNum10="15" playNum30="15" playNum66="15" playNum188="15" playNum520="15" playNum1314="25" playNum3344="25" cicleBegin="1" cicleEnd="25" />
+	<!-- 音符 -->
+	<sceneitem sceneid="146" nTabIndex="0" width="500" hight="500" PicNum="16" offx="150" offy="70"
+		playNum1="0" playNum10="10" playNum30="10" playNum66="10" playNum188="10" playNum520="10" playNum1314="16" playNum3344="16" cicleBegin="1" cicleEnd="16" />
+	<!-- 桃花 -->
+	<sceneitem sceneid="147" nTabIndex="0" width="174" hight="171" PicNum="15" offx="150" offy="300"
+		playNum1="0" playNum10="15" playNum30="15" playNum66="15" playNum188="15" playNum520="15" playNum1314="15" playNum3344="15" cicleBegin="1" cicleEnd="15" />
+	<!-- 郁金香 -->
+	<sceneitem sceneid="148" nTabIndex="0" width="170" hight="169" PicNum="15" offx="150" offy="300"
+		playNum1="0" playNum10="15" playNum30="15" playNum66="15" playNum188="15" playNum520="15" playNum1314="15" playNum3344="15" cicleBegin="1" cicleEnd="15" />
+	<!-- 梦之花 -->
+	<sceneitem sceneid="150" nTabIndex="0" width="170" hight="169" PicNum="15" offx="150" offy="300"
+		playNum1="0" playNum10="15" playNum30="15" playNum66="15" playNum188="15" playNum520="15" playNum1314="15" playNum3344="15" cicleBegin="1" cicleEnd="15" />
+  <!-- 积分卡 -->
+  <sceneitem sceneid="151" nTabIndex="0" width="222" hight="179" PicNum="15" offx="150" offy="300"
+		playNum1="0" playNum10="15" playNum30="15" playNum66="15" playNum188="15" playNum520="15" playNum1314="15" playNum3344="15" cicleBegin="1" cicleEnd="15" />
+</Scene_Config>

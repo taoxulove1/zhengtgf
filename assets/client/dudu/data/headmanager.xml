@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<HeadManager>
+        <HeadGroup name = "嘟嘟头像" groupid = "1" >
+			<HeadImage id = "1" />
+			<HeadImage id = "2" />
+			<HeadImage id = "3" />
+			<HeadImage id = "4" />
+			<HeadImage id = "54" />
+			<HeadImage id = "55" />
+			<HeadImage id = "56" />
+			<HeadImage id = "57" />
+			<HeadImage id = "58" />
+			<HeadImage id = "59" />
+			<HeadImage id = "60" />
+			<HeadImage id = "61" />
+			<HeadImage id = "63" />
+			<HeadImage id = "64" />
+		</HeadGroup>
+		 <HeadGroup name = "个性头像" groupid = "1" >
+			<HeadImage id = "8" />
+			<HeadImage id = "9" />
+			<HeadImage id = "10" />
+			<HeadImage id = "11" />
+			<HeadImage id = "12" />
+			<HeadImage id = "13" />
+			<HeadImage id = "14" />
+			<HeadImage id = "15" />
+			<HeadImage id = "16" />
+			<HeadImage id = "17" />
+			<HeadImage id = "18" />
+			<HeadImage id = "19" />
+			<HeadImage id = "20" />
+			<HeadImage id = "21" />
+			<HeadImage id = "5"/>
+			<HeadImage id = "6" />
+			<HeadImage id = "7" />
+			<HeadImage id = "62" />
+			<HeadImage id = "65" />
+			<HeadImage id = "66" />
+			<HeadImage id = "67" />
+			<HeadImage id = "68" />
+		</HeadGroup>
+		<HeadGroup name = "征途头像" groupid = "2" >
+			<HeadImage id = "42" />
+			<HeadImage id = "43" />
+			<HeadImage id = "44" />
+			<HeadImage id = "45" />
+			<HeadImage id = "46" />
+			<HeadImage id = "47" />
+			<HeadImage id = "48" />
+			<HeadImage id = "49" />
+			<HeadImage id = "50" />
+			<HeadImage id = "51" />
+			<HeadImage id = "52" />
+			<HeadImage id = "53" />	
+		</HeadGroup>
+		<HeadGroup name = "巨人头像" groupid = "2" >
+			<HeadImage id = "22" />
+			<HeadImage id = "23" />
+			<HeadImage id = "24" />
+			<HeadImage id = "25" />
+			<HeadImage id = "26" />
+			<HeadImage id = "27" />
+			<HeadImage id = "28" />
+			<HeadImage id = "29" />
+			<HeadImage id = "30" />
+			<HeadImage id = "31" />
+			<HeadImage id = "32" />
+			<HeadImage id = "33" />
+		</HeadGroup>
+		<HeadGroup name = "万王头像" groupid = "2" >
+			<HeadImage id = "34" />
+			<HeadImage id = "35" />
+			<HeadImage id = "36" />
+			<HeadImage id = "37" />
+			<HeadImage id = "38" />
+			<HeadImage id = "39" />
+			<HeadImage id = "40" />
+			<HeadImage id = "41" />
+		</HeadGroup>
+</HeadManager> 

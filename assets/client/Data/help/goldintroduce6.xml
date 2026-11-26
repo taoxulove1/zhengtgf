@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<body>
+	<p>
+		<n color="255,255,255,255 ">购买时装</n>
+	</p>
+	<p>
+		<n>    这些时装不仅可以让你变的与众不同，更加可以在您练级、PK的时候增加您的各种属性，帮您在游戏中变的更加强大。</n>
+	</p>
+	<p>
+		<n>    同时您在穿上时装后，还可以骑着您的宝马在地宫中驰骋，享受风驰电掣般的速度。</n>
+	</p>
+	<p>
+		<a href="goldintroduce.xml">返回到上一层</a>
+	</p>
+	<p>
+		<a href="Index.xml">返回</a>
+	</p>
+</body>
+
