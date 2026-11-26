@@ -7,7 +7,7 @@
 
 | # | 变量 | 值 | 状态 | 来源 / 待办 |
 |---|---|---|---|---|
-| 1 | `CLIENT_DIR` | `E:/源端/官方` | 已确认 | 本地盘点 |
+| 1 | `CLIENT_DIR` | `E:/源端/original` | 已确认 | 原始安装包解压；`官方` 目录已被在线更新污染，见 `docs/client-versions.md` |
 | 2 | `CLIENT_VERSION` | `3.1.46.0` | 已确认 | `imversion.ini` `[version]` |
 | 3 | `CLIENT_FILE_COUNT` | 579 | 已确认 | `find . -type f \| wc -l` |
 | 4 | `CLIENT_TOTAL_BYTES` | ≈ 6.1 GB | 约值 | 精确值见 `assets/manifest/assets.json` |
@@ -46,7 +46,7 @@
 
 ## 3. 缺口
 
-1. ~~客户端整包未做冷备~~ → 已完成：实体包 6.1 GB（MD5 `a81161105e4a`）+ 树指纹 `1028e2ba…`。
+1. ~~客户端整包未做冷备~~（已完成，基线换为 `original`） → 已完成：实体包 6.1 GB（MD5 `a81161105e4a`）+ 树指纹 `1028e2ba…`。
 2. 内网 IP 段、目标发行版未确认 → P4B 只能用默认值推进。
 3. 原数据库未就位（无 dump、无 `.frm`）→ P4A 输入缺失。
 4. 抓包环境未准备（无 Wireshark / dumpcap 安装记录）→ P1 首日要补。

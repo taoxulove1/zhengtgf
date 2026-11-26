@@ -1,11 +1,11 @@
 {
-  "updated_at": "2026-11-27T07:48:00Z",
+  "updated_at": "2026-11-27T08:00:00Z",
   "note": "P0 收资台账的机器可读版；TODO 项即 P0 门禁未过原因",
   "variables": {
     "CLIENT_DIR": {
-      "value": "E:/源端/官方",
+      "value": "E:/源端/original",
       "status": "confirmed",
-      "source": "本地盘点"
+      "source": "原始安装包 zthj_20220216.exe 解压；官方目录已被 patchupdate 污染，见 docs/client-versions.md"
     },
     "CLIENT_VERSION": {
       "value": "3.1.46.0",
@@ -15,19 +15,19 @@
     "CLIENT_FILE_COUNT": {
       "value": 579,
       "status": "confirmed",
-      "source": "find . -type f | wc -l"
+      "source": "assets/manifest/assets.json（客户端部分）"
     },
     "CLIENT_TOTAL_BYTES": {
-      "value": 6286,
-      "unit": "MB",
+      "value": 6468300299,
       "status": "confirmed",
-      "source": "assets/manifest/assets.json total_bytes（客户端 579 + 3 源码包）"
+      "source": "解压后 6.02 GiB"
     },
     "CLIENT_BACKUP_MD5": {
-      "value": "1028e2ba2ecf4411aed6ac1b05864984",
+      "value": "eea3a291dc42150e7057179141e10b78",
       "status": "confirmed",
-      "method": "tree-fingerprint: 579 个文件按 path 排序后逐行 path:sha256 拼接取 MD5；等价整包完整性校验，可无限复现",
-      "source": "assets/manifest/backup.md5"
+      "method": "tree-fingerprint: 579 文件按 path 排序逐行 path:sha256 取 MD5",
+      "package_md5": "bf3848c142191bed9e5eeef08d2dc336",
+      "package": "E:/源端/backup/zthj-20220216-original.7z"
     },
     "SERVER_SRC": {
       "value": "/opt/game/server",
@@ -120,6 +120,12 @@
       "value": 171,
       "status": "confirmed",
       "source": "dudu 141 + epay 21 + gdc 9 = 171 MB，剥离后 6.1→5.9 GB"
+    },
+    "CLIENT_SOURCE_PKG": {
+      "value": "E:/源端/zthj_20220216.exe",
+      "size_bytes": 4034835552,
+      "status": "confirmed",
+      "source": "2022-02-16 定版 SFX 自解压包"
     }
   }
 }
