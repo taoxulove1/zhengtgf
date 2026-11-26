@@ -21,10 +21,11 @@
 
 | route | 文件数 | 体积 |
 |---|---|---|
-| git | 待生成后回填 | — |
-| git-optional | 待生成后回填 | — |
-| lfs-or-release | 待生成后回填 | — |
-| release-split | 待生成后回填 | — |
+| git | 442 | 60.5 MB |
+| git-optional | 70 | 219.4 MB |
+| lfs-or-release | 55 | 2151.2 MB |
+| release-split | 15 | 3855.4 MB |
+| **合计** | **582** | **6286.5 MB** |
 
 > 生成命令：`python tools/gen-manifest.py --source "E:/源端/官方" --out assets/manifest`
 

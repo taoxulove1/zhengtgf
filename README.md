@@ -12,7 +12,7 @@
 | 客户端版本 | `3.1.46.0` | `assets/client/imversion.ini` |
 | 客户端文件数 | 579 个 / 6.1 GB | `assets/manifest/assets.csv` |
 | 资源包（`.pak`） | 81 个 / 5852.9 MB（占 95.6%） | 同上 |
-| 文本配置（`.xml/.ini/.txt`） | 154 个 / 0.61 MB | `assets/client/` 已入库 |
+| 文本配置（`.xml/.ini/.txt`） | 169 个 / 1.2 MB | `assets/client/` 已入库 |
 | 服务端源码 | 81 MB，`BillServer/FLServer/GatewayServer/MiniServer/RecordServer/ScenesServer/SessionServer/SuperServer` 八进程 | `src/server/` |
 | 客户端源码（2022 版） | 362 MB，VS2022 工具链 | `src/client/` |
 | 客户端源码（旧版） | 296 MB，VC2005 工具链，作对照 | `src/client-legacy/` |
@@ -74,7 +74,7 @@ GitHub 硬限：单文件 100 MB、单次推送 2 GB、仓库建议 < 1 GB。6.1
 
 | 层 | 阈值 | 去向 | 数量 | 说明 |
 |---|---|---|---|---|
-| A 文本 | < 1 MB | Git 直接纳管 | 154 | xml / ini / txt / css，`assets/client/` |
+| A 文本 | < 1 MB | Git 直接纳管 | 169 | xml / ini / txt / css，`assets/client/` |
 | B 小二进制 | 1–10 MB | Git 直接纳管（可关） | 待统计 | 图标、字体、小 dll |
 | C 中件 | 10–100 MB | Git LFS 或 Release 单卷 | 待统计 | 源码包、`.pdb`、大 dll |
 | D 大件 | ≥ 100 MB | **Release 90 MB 分卷** | 81 个 pak 中多数 | 仓库只留 `assets.csv` 中的 sha256 |
