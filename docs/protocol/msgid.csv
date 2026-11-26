@@ -1,0 +1,3 @@
+﻿id,direction,name,length_rule,min_len,max_len,phase,captured
+# 格式见 docs/protocol/README.md；captured=yes 需有 pcap 佐证
+# 以下为空骨架，P1 抓包后逐条回填；≥60 条方可通过 P2 门禁
