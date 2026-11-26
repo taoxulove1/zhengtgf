@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T03:06:00Z",
+  "updated_at": "2026-11-27T07:48:00Z",
   "note": "P0 收资台账的机器可读版；TODO 项即 P0 门禁未过原因",
   "variables": {
     "CLIENT_DIR": {
@@ -105,6 +105,21 @@
       "value": "CentOS 7.9 x86_64 / glibc 2.17",
       "status": "assumed",
       "source": "老服务端 32 位兼容基线"
+    },
+    "CLIENT_EOL": {
+      "value": true,
+      "status": "confirmed",
+      "source": "用户确认：官方已停止更新，老版本客户端，版本冻结于 3.1.46.0"
+    },
+    "CLIENT_FROZEN_AT": {
+      "value": "3.1.46.0",
+      "status": "confirmed",
+      "source": "imversion.ini；EOL 后此值不得变更，CI 校验 docs/client-baseline.md §6"
+    },
+    "CLIENT_STRIPPABLE_MB": {
+      "value": 171,
+      "status": "confirmed",
+      "source": "dudu 141 + epay 21 + gdc 9 = 171 MB，剥离后 6.1→5.9 GB"
     }
   }
 }

@@ -132,6 +132,23 @@ def check_ci():
             bad(f"[密钥] {rel} 含疑似明文口令，改走 .env / Secrets")
     ok("敏感文件与明文密钥扫描完成")
 
+    # 7) 版本冻结（EOL 客户端不得改版本号）
+    try:
+        vars_ = json.loads(read("config/variables.json") or "{}").get("variables", {})
+        eol = vars_.get("CLIENT_EOL", {}).get("value")
+        frozen = vars_.get("CLIENT_FROZEN_AT", {}).get("value")
+        imv = read("config/client/imversion.ini") or ""
+        m = re.search(r"^\s*version\s*=\s*([0-9.]+)", imv, re.M)
+        if eol:
+            if not m:
+                bad("[版本] config/client/imversion.ini 缺 version 键")
+            elif frozen and m.group(1) != str(frozen):
+                bad(f"[版本] 客户端已 EOL 冻结于 {frozen}，imversion 却被改为 {m.group(1)}")
+            else:
+                ok(f"版本冻结校验通过: {m.group(1)}（EOL，禁改）")
+    except Exception as e:
+        bad(f"[版本] 冻结校验异常: {e}")
+
 
 # ---------------- 清单自洽 ----------------
 def check_manifest():
