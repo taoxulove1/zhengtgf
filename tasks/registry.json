@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0",
+  "project": "zhengtugf",
+  "version": "0.1.0",
+  "updated_at": "2026-11-27T02:40:00Z",
+  "conventions": {
+    "states": ["pending", "running", "blocked", "done"],
+    "gate_rule": "gate.cmd 退出码 0 才允许置 done；前置未 done 拒绝 start",
+    "owner_map": {
+      "陆全通": "mmo-reverse-rebuild-team-lead",
+      "文定协": "client-proto-reverser",
+      "柯正栈": "cpp-server-engineer",
+      "盛久稳": "linux-ops-engineer",
+      "褚安库": "mysql-db-engineer",
+      "毕联通": "integration-qa"
+    }
+  },
+  "tasks": [
+    {
+      "id": "P0",
+      "name": "收资与环境盘点",
+      "owner": "陆全通",
+      "agent": "mmo-reverse-rebuild-team-lead",
+      "deps": [],
+      "est_days": [0.5, 1.0],
+      "inputs": ["客户端目录 E:/源端/官方", "服务端包 VS2022服务端server.rar", "目标 Linux 机访问"],
+      "outputs": ["docs/intake/ledger.md", "config/variables.json", "assets/manifest/assets.json"],
+      "gate": {
+        "desc": "台账 15 项变量有值；清单 582 条且 sha256 齐全；客户端冷备 MD5 一致",
+        "cmd": "python tools/validate_repo.py --phase P0"
+      },
+      "ci_cmd": "python tools/validate_repo.py --manifest",
+      "labels": ["phase:0", "type:intake"],
+      "risks": ["拿到的是增量补丁而非完整包 → +3 人日"]
+    },
+    {
+      "id": "P1",
+      "name": "客户端抓包与解密",
+      "owner": "文定协",
+      "agent": "client-proto-reverser",
+      "deps": ["P0"],
+      "est_days": [3.0, 5.0],
+      "inputs": ["src/client 客户端源码", "assets/client 配置基线", "官方客户端 3.1.46.0"],
+      "outputs": ["captures/", "tools/decrypt.py", "docs/protocol/msgid.csv", "docs/protocol/login_handshake.md"],
+      "gate": {
+        "desc": "同账号两次登录解出字节级一致字段布局；msgid.csv ≥ 60 条",
+        "cmd": "python tools/validate_repo.py --phase P1"
+      },
+      "labels": ["phase:1", "type:reverse"],
+      "risks": ["VMProtect/Themida 壳 +3 人日", "密钥动态协商 +5 人日", "UDP 分片重组 +2 人日"]
+    },
+    {
+      "id": "P2",
+      "name": "协议文档汇编",
+      "owner": "文定协",
+      "agent": "client-proto-reverser",
+      "deps": ["P1"],
+      "est_days": [2.0, 3.0],
+      "inputs": ["docs/protocol/msgid.csv", "解密后的明文样本"],
+      "outputs": ["docs/protocol/protocol.md", "docs/protocol/schema/"],
+      "gate": {
+        "desc": "六类消息齐全（登录/选区/进图/心跳/移动/背包），协议表 ≥ 120 行，字段偏移零冲突",
+        "cmd": "python tools/validate_repo.py --phase P2"
+      },
+      "labels": ["phase:2", "type:docs"],
+      "risks": ["同 opcode 多义 +1 人日"]
+    },
+    {
+      "id": "P3",
+      "name": "C++ 服务端还原",
+      "owner": "柯正栈",
+      "agent": "cpp-server-engineer",
+      "deps": ["P2"],
+      "est_days": [8.0, 12.0],
+      "inputs": ["docs/protocol/protocol.md（原样转发，不摘要）", "src/server 原服务端源码"],
+      "outputs": ["src/server-rebuild/", "src/server-rebuild/Makefile", "docs/build.md"],
+      "gate": {
+        "desc": "make 退出码 0；监听 7001；收发一包 hexdump 与原文逐字节一致；连发 100 包不崩",
+        "cmd": "python tools/validate_repo.py --phase P3"
+      },
+      "labels": ["phase:3", "type:code"],
+      "risks": ["gcc 高版本报错 +1 人日", "glibc 符号版本不匹配 +2 人日"]
+    },
+    {
+      "id": "P4A",
+      "name": "数据库基线还原",
+      "owner": "褚安库",
+      "agent": "mysql-db-engineer",
+      "deps": ["P3"],
+      "est_days": [2.0, 3.0],
+      "inputs": ["原库 dump", "src/server/Config 库连接配置"],
+      "outputs": ["docs/db/baseline.md", "sql/schema.sql", "sql/rollback.sql"],
+      "gate": {
+        "desc": "账号可登录并读出角色列表；中文名 HEX 抽查 20/20 一致；空库 restore 表数一致",
+        "cmd": "python tools/validate_repo.py --phase P4A"
+      },
+      "labels": ["phase:4", "type:db"],
+      "risks": ["latin1 双字节截断", "跨版本 ibd 不可直挂"]
+    },
+    {
+      "id": "P4B",
+      "name": "Linux 部署与守护",
+      "owner": "盛久稳",
+      "agent": "linux-ops-engineer",
+      "deps": ["P3"],
+      "est_days": [2.0, 3.0],
+      "inputs": ["src/server-rebuild 产物", "config/server 模板", "内网 IP 段"],
+      "outputs": ["docs/deploy/runbook.md", "deploy/systemd/", "deploy/firewall.md"],
+      "gate": {
+        "desc": "ss -lntp 三端口在听；systemctl active；kill -9 后 3s 自愈；外网仅 7001 open",
+        "cmd": "python tools/validate_repo.py --phase P4B"
+      },
+      "labels": ["phase:4", "type:deploy"],
+      "risks": ["云厂商封端口", "SELinux 拦 bind"]
+    },
+    {
+      "id": "P5",
+      "name": "客户端联调测试",
+      "owner": "毕联通",
+      "agent": "integration-qa",
+      "deps": ["P4A", "P4B"],
+      "est_days": [3.0, 5.0],
+      "inputs": ["可运行环境", "docs/protocol/protocol.md", "config/client 客户端配置"],
+      "outputs": ["docs/qa/report.md", "docs/qa/cases.csv", "docs/qa/evidence/"],
+      "gate": {
+        "desc": "五步链路全通；32 用例 ≥ 28 通过；200 CCU 30 分钟无 OOM",
+        "cmd": "python tools/validate_repo.py --phase P5"
+      },
+      "labels": ["phase:5", "type:qa"],
+      "risks": ["版本校验判自建服非法", "心跳早于登录完成"]
+    },
+    {
+      "id": "P6",
+      "name": "汇总交付",
+      "owner": "陆全通",
+      "agent": "mmo-reverse-rebuild-team-lead",
+      "deps": ["P5"],
+      "est_days": [0.5, 1.0],
+      "inputs": ["P0–P5 全部产出"],
+      "outputs": ["docs/delivery/checklist.md", "docs/architecture.md"],
+      "gate": {
+        "desc": "交付清单七项齐全；已知缺陷 ≤ 8 条；新人按 runbook 空机到登录 ≤ 60 分钟",
+        "cmd": "python tools/validate_repo.py --phase P6"
+      },
+      "labels": ["phase:6", "type:delivery"],
+      "risks": ["runbook 步骤遗漏"]
+    }
+  ]
+}
