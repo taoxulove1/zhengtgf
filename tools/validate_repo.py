@@ -18,6 +18,8 @@ import re
 import subprocess
 import sys
 
+from build_native_server import OUTPUT as P3_OUTPUT, SERVICES as P3_SERVICES, elf32_executable
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MB = 1024 * 1024
 MAX_TRACKED = 100 * MB
@@ -60,6 +62,11 @@ def documented_message_section(title):
     heading = rf"^## \d+\. {re.escape(title)}(?:[ \t（(]|$)[^\r\n]*$"
     section = re.search(rf"{heading}\n(.*?)(?=^## |\Z)", text, re.MULTILINE | re.DOTALL)
     return bool(section and re.search(r"^\|\s*0x[0-9a-fA-F]{4}\s*\|", section[1], re.MULTILINE))
+
+
+def native_service_artifacts():
+    binaries = (P3_OUTPUT / name for name in P3_SERVICES)
+    return all(path.is_file() and elf32_executable(path) for path in binaries)
 
 
 def tracked_files():
@@ -228,11 +235,9 @@ PHASE_RULES = {
         ],
     },
     "P3": {
-        "files": ["src/server-rebuild/Makefile"],
+        "files": ["src/server-rebuild/Makefile", "docs/build.md"],
         "checks": [
-            ("src/server-rebuild/", lambda: os.path.isdir(os.path.join(ROOT, "src/server-rebuild")) and
-             len([f for f in os.listdir(os.path.join(ROOT, "src/server-rebuild")) if f.endswith((".cpp", ".h"))]) >= 5,
-             "骨架 ≥ 5 个源文件"),
+            ("build/p3-native/", native_service_artifacts, "8 个 x86 Linux ELF 服务端产物"),
         ],
     },
     "P4A": {

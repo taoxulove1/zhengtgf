@@ -4,7 +4,8 @@ CXX = /usr/bin/g++
 CXXFLAGS = $(ZEBRA_COMPILE_OPT) -g -I. -Wall -D_GNU_SOURCE -D_REENTRANT `mysql_config --cflags` `xml2-config --cflags`
 CXXLFLAGS = $(ZEBRA_COMPILE_OPT) -Wall -lpthread -lz `mysql_config --libs_r` `xml2-config --libs` -llog4cxx -lgd -ljpeg
 
-OBJS = blowfish.o md5ex.o mycast.o mydes.o myidea.o myrc5.o EncDec.o #md5c.o
+OBJS = blowfish.o md5ex.o mycast.o mydes.o myidea.o myrc5.o EncDec.o md5c.o
+CXX_OBJS = $(filter-out md5c.o,$(OBJS))
 
 #LIB_ZEBRA = ../libzebra.a
 LIB_ENCDEC = ../libencdec.a
@@ -17,13 +18,15 @@ all: $(LIB_ENCDEC)
 #$(DEPS): .%.d: %.cpp
 #	@$(CXX) -M $(CXXFLAGS) $< > $@.$$$$; sed 's,\($*\)\.o[ :]*,\1.o $@ : ,g' < $@.$$$$ > $@; rm -f $@.$$$$
 	
-$(OBJS): %.o: %.cpp
+$(CXX_OBJS): %.o: %.cpp
 	$(CXX) -c $(CXXFLAGS) $< -o $@
-	gcc -c $(CXXFLAGS) md5c.c -o md5c.o
+
+md5c.o: md5c.c
+	$(CC) -c $(CXXFLAGS) $< -o $@
 
 $(LIB_ENCDEC): $(OBJS)
 	@rm -rf $(LIB_ENCDEC)
-	@ar cru $(LIB_ENCDEC) $(OBJS) md5c.o
+	@ar cru $(LIB_ENCDEC) $(OBJS)
 	@ranlib $(LIB_ENCDEC)
 
 clean:

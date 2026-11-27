@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T03:10:31Z",
+  "updated_at": "2026-11-27T03:13:10Z",
   "tasks": {
     "P0": {
       "state": "done",
@@ -32,7 +32,13 @@
       "finished_at": "2026-11-27T03:10:31Z"
     },
     "P3": {
-      "state": "pending"
+      "state": "blocked",
+      "started_at": "2026-11-27T03:10:41Z",
+      "actor": "codex",
+      "gate_rc": 1,
+      "gate_at": "2026-11-27T03:13:10Z",
+      "note": "本机没有 Linux 构建环境，已配置构建机连通性被沙箱拒绝。待生成 8 个 x86 Linux ELF 并完成 7001 正常报文联调。",
+      "blocked_at": "2026-11-27T03:13:10Z"
     },
     "P4A": {
       "state": "pending"
