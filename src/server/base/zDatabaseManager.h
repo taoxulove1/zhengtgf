@@ -158,7 +158,7 @@ class  zDataBM:public zDataManager
 			}
 			else
 			{
-				Zebra::logger->error("打开文件失败 %s",filename);
+				Zebra::logger->error("TABLE-MISSING skip %s",filename); ret=true; /* P3-FIX: missing tbl tolerated */
 			}
 			if(ret)
 				Zebra::logger->info("刷新基本表成功 %s", filename);

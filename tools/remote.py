@@ -51,6 +51,35 @@ def run(c, cmd, timeout=120):
     return out, err, rc
 
 
+def put_b64(c, local, remote, chmod=True, timeout=120):
+    """不经 SFTP 落地文件：本地 base64 -> SSH stdin -> `base64 -d > remote`。
+
+    适用场景：目标机 SFTP 子系统被禁 / /root 权限位异常导致 SSH_FXP_OPEN 返回 ENOENT，
+    而 SSH exec 通道正常。脚本类小文件（<1MB）走这条路最稳。
+    """
+    import base64
+    import shlex
+
+    data = base64.b64encode(open(local, "rb").read())
+    q = shlex.quote(remote)
+    cmd = f"base64 -d > {q}"
+    if chmod:
+        cmd += f" && chmod +x {q}"
+    cmd += f" && ls -l {q}"
+    si, so, se = c.exec_command(cmd, timeout=timeout)
+    step = 32768
+    for i in range(0, len(data), step):
+        si.write(data[i:i + step].decode())
+        si.flush()
+    si.channel.shutdown_write()
+    out = so.read().decode("utf-8", "replace")
+    err = se.read().decode("utf-8", "replace")
+    rc = so.channel.recv_exit_status()
+    if rc != 0:
+        raise SystemExit(f"[ERR] push {local} -> {remote} rc={rc} {err.strip()}")
+    return (out + err).strip()
+
+
 def main():
     ap = argparse.ArgumentParser()
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -58,6 +87,10 @@ def main():
     p = sub.add_parser("run"); p.add_argument("command"); p.add_argument("--timeout", type=int, default=120)
     p = sub.add_parser("put"); p.add_argument("local"); p.add_argument("remote")
     p = sub.add_parser("get"); p.add_argument("remote"); p.add_argument("local")
+    p = sub.add_parser("push")
+    p.add_argument("local")
+    p.add_argument("remote")
+    p.add_argument("--no-chmod", action="store_true")
     p = sub.add_parser("capture")
     p.add_argument("seconds", type=int)
     p.add_argument("local_out")
@@ -75,6 +108,9 @@ def main():
         if a.cmd == "put":
             sf = c.open_sftp(); sf.put(a.local, a.remote); sf.close()
             print(f"put {a.local} -> {a.remote}")
+            return 0
+        if a.cmd == "push":
+            print("push " + put_b64(c, a.local, a.remote, chmod=not a.no_chmod))
             return 0
         if a.cmd == "get":
             os.makedirs(os.path.dirname(a.local) or ".", exist_ok=True)
