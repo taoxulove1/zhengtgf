@@ -40,4 +40,10 @@ cd /root/p3-test && python3 p3_runtime_smoke.py p3-build-luabind.log
 cd /root/p3-test && p3_capture=$(mktemp ./p3-original-ping.XXXXXXXX.pcap) && printf 'Capture: %s\n' "$p3_capture" && timeout -s INT 45 /usr/sbin/tcpdump -i any -nn -s 0 -U -w - 'tcp port 8002' > "$p3_capture"
 ```
 
+保存生成的 `.pcap`，以及 `p3-runtime-smoke.log` 中 `[RUNTIME_DIR]` 目录里的 `ping-request.bin` 和 `ping-reply.bin`。以下命令在本地仓库根目录执行，参数指向三份实际文件。只有同一 TCP 会话中有相同请求和完整响应，且响应逐字节相等，才输出 `[OK][ORIGINAL_RAW_BYTES]`。
+
+```bash
+python tools/p3_compare_ping_capture.py p3-original-ping.pcap ping-request.bin ping-reply.bin
+```
+
 P3 完成后，队列才会解锁 P4A 数据库联调和 P4B 部署。P5 等两项通过后开始。
