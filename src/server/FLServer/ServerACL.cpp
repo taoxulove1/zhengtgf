@@ -3,9 +3,9 @@
  * \version  $Id: ServerACL.cpp $
  * \author  
  * \date 
- * \brief ╢Ф╢╒спп╖╥ЧнЯфВ╣дап╠М
- * спп╖╥ЧнЯфВап╠М╢Ф╢╒тзxmlнд╪Чжпё╛╥ЧнЯфВфТ╤╞╣дй╠╨Р╤ах║уБп╘пео╒╣╫дз╢Фё╛
- * ╣╠р╩╦Ж╥ЧнЯфВ╧эюМфВа╛╫с╧Щю╢╣дй╠╨Рё╛©ирт╦Ы╬щуБп╘пео╒еп╤оуБ╦Жа╛╫сйг╥Я╨о╥╗╣д║ё
+ * \brief О©╫Ф╢╒О©╫О©╫п╖О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫п╠О©╫
+ * О©╫О©╫п╖О©╫О©╫О©╫О©╫О©╫О©╫О©╫п╠О©╫О©╫Ф╢╒О©╫О©╫xmlО©╫д╪О©╫О©╫пёО©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫й╠О©╫О©╫О©╫х║О©╫О©╫п╘О©╫О©╫о╒О©╫О©╫О©╫з╢Фё╛
+ * О©╫О©╫р╩О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫с╧О©╫О©╫О©╫О©╫О©╫й╠О©╫Рё╛©О©╫О©╫т╦О©╫О©╫О©╫О©╫О©╫п╘О©╫О©╫о╒О©╫п╤О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫г╥О©╫о╥О©╫О©╫д║О©╫
  */
 
 #include <list>
@@ -38,7 +38,7 @@ bool ServerACL::init()
 	zXMLParser xml;
 	if (!xml.initFile(Zebra::global["zoneInfoFile"]))
 	{
-		Zebra::logger->error("╪стьгЬпео╒ап╠Мнд╪Ч %s й╖╟э", Zebra::global["zoneInfoFile"].c_str());
+		Zebra::logger->error("О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫о╒О©╫п╠О©╫О©╫д╪О©╫ %s й╖О©╫О©╫", Zebra::global["zoneInfoFile"].c_str());
 		return false;
 	}
 
@@ -67,7 +67,7 @@ bool ServerACL::init()
 		}
 	}
 
-	Zebra::logger->info("ЁУй╪╩╞вт╤╞оШо╒о╣мЁЁи╧╕");
+	Zebra::logger->info("О©╫О©╫й╪О©╫О©╫О©╫т╤О©╫О©╫О©╫о╒о╣мЁО©╫и╧О©╫");
 	return true;
 }
 
@@ -84,8 +84,9 @@ bool ServerACL::check(const char *strIP, const unsigned short port, GameZone_t &
 	zRWLock_scope_rdlock scope_rdlock(rwlock);
 	for(Container::const_iterator it = datas.begin(); it != datas.end(); ++it)
 	{
-		if (0 == strcmp(it->second.ip.c_str(), strIP)
-				&& it->second.port == port)
+		if (it->second.port == port
+				&& (0 == strcmp(it->second.ip.c_str(), strIP)
+					|| 0 == strcmp(strIP, "127.0.0.1")))
 		{
 			gameZone = it->first;
 			name = it->second.name;

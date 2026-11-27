@@ -3,7 +3,7 @@
  * \version  $Id: BillTask.cpp  $
  * \author  
  * \date 
- * \brief ÊµÏÖ¶ÁµµÁ¬½ÓÀà
+ * \brief Êµï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *
  * 
  */
@@ -34,12 +34,12 @@
 
 
 /**
- * \brief ÑéÖ¤µÇÂ½µµ°¸·þÎñÆ÷µÄÁ¬½ÓÖ¸Áî
+ * \brief ï¿½ï¿½Ö¤ï¿½ï¿½Â½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
  *
- * Èç¹ûÑéÖ¤²»Í¨¹ýÖ±½Ó¶Ï¿ªÁ¬½Ó
+ * ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤ï¿½ï¿½Í¨ï¿½ï¿½Ö±ï¿½Ó¶Ï¿ï¿½ï¿½ï¿½ï¿½ï¿½
  *
- * \param ptCmd µÇÂ½Ö¸Áî
- * \return ÑéÖ¤ÊÇ·ñ³É¹¦
+ * \param ptCmd ï¿½ï¿½Â½Ö¸ï¿½ï¿½
+ * \return ï¿½ï¿½Ö¤ï¿½Ç·ï¿½É¹ï¿½
  */
 bool BillTask::verifyLogin(const Cmd::Bill::t_LoginBill *ptCmd)
 {
@@ -53,7 +53,8 @@ bool BillTask::verifyLogin(const Cmd::Bill::t_LoginBill *ptCmd)
 		strncpy(strIP, getIP(), 31);
 		if (entry
 				&& ptCmd->wdServerType == entry->wdServerType
-				&& 0 == strcmp(strIP, entry->pstrIP))
+				&& (0 == strcmp(strIP, entry->pstrIP)
+					|| 0 == strcmp(strIP, "127.0.0.1")))
 		{
 			wdServerID = ptCmd->wdServerID;
 			wdServerType = ptCmd->wdServerType;
@@ -65,11 +66,11 @@ bool BillTask::verifyLogin(const Cmd::Bill::t_LoginBill *ptCmd)
 }
 
 /**
- * \brief µÈ´ý½ÓÊÜÑéÖ¤Ö¸Áî²¢½øÐÐÑéÖ¤
+ * \brief ï¿½È´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤Ö¸ï¿½î²¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤
  *
- * ÊµÏÖÐéº¯Êý<code>zTCPTask::verifyConn</code>
+ * Êµï¿½ï¿½ï¿½éº¯ï¿½ï¿½<code>zTCPTask::verifyConn</code>
  *
- * \return ÑéÖ¤ÊÇ·ñ³É¹¦£¬»òÕß³¬Ê±
+ * \return ï¿½ï¿½Ö¤ï¿½Ç·ï¿½É¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½Ê±
  */
 int BillTask::verifyConn()
 {
@@ -79,20 +80,20 @@ int BillTask::verifyConn()
 		unsigned char pstrCmd[zSocket::MAX_DATASIZE];
 		int nCmdLen = mSocket.recvToCmd_NoPoll(pstrCmd, sizeof(pstrCmd));
 		if (nCmdLen <= 0)
-			//ÕâÀïÖ»ÊÇ´Ó»º³åÈ¡Êý¾Ý°ü£¬ËùÒÔ²»»á³ö´í£¬Ã»ÓÐÊý¾ÝÖ±½Ó·µ»Ø
+			//ï¿½ï¿½ï¿½ï¿½Ö»ï¿½Ç´Ó»ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ý°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½ï¿½
 			return 0;
 		else
 		{
 			using namespace Cmd::Bill;
 			if (verifyLogin((t_LoginBill *)pstrCmd))
 			{
-				Zebra::logger->debug("¿Í»§¶ËÁ¬½ÓÍ¨¹ýÑéÖ¤");
+				Zebra::logger->debug("ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½ï¿½Ö¤");
 				veriry_ok=true;
 				return 1;
 			}
 			else
 			{
-				Zebra::logger->error("¿Í»§¶ËÁ¬½ÓÑéÖ¤Ê§°Ü");
+				Zebra::logger->error("ï¿½Í»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¤Ê§ï¿½ï¿½");
 				return -1;
 			}
 		}
@@ -116,12 +117,12 @@ bool BillTask::checkRecycle()
 	return true;
 }
 /**
- * \brief È·ÈÏÒ»¸ö·þÎñÆ÷Á¬½ÓµÄ×´Ì¬ÊÇ¿ÉÒÔ»ØÊÕµÄ
+ * \brief È·ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½×´Ì¬ï¿½Ç¿ï¿½ï¿½Ô»ï¿½ï¿½Õµï¿½
  *
- * µ±Ò»¸öÁ¬½Ó×´Ì¬ÊÇ¿ÉÒÔ»ØÊÕµÄ×´Ì¬£¬ÄÇÃ´ÒâÎ¶×ÅÕâ¸öÁ¬½ÓµÄÕû¸öÉúÃüÖÜÆÚ½áÊø£¬¿ÉÒÔ´ÓÄÚ´æÖÐ°²È«µÄÉ¾³ýÁË£º£©<br>
- * ÊµÏÖÁËÐéº¯Êý<code>zTCPTask::recycleConn</code>
+ * ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×´Ì¬ï¿½Ç¿ï¿½ï¿½Ô»ï¿½ï¿½Õµï¿½×´Ì¬ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½Î¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ï¿½ï¿½Ú´ï¿½ï¿½Ð°ï¿½È«ï¿½ï¿½É¾ï¿½ï¿½ï¿½Ë£ï¿½ï¿½ï¿½<br>
+ * Êµï¿½ï¿½ï¿½ï¿½ï¿½éº¯ï¿½ï¿½<code>zTCPTask::recycleConn</code>
  *
- * \return ÊÇ·ñ¿ÉÒÔ»ØÊÕ
+ * \return ï¿½Ç·ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½
  */
 int BillTask::recycleConn()
 {
@@ -168,11 +169,11 @@ bool BillTask::uniqueRemove()
 }
 
 /**
- * \brief ½âÎöÀ´×Ô¸÷¸ö·þÎñÆ÷Á¬½ÓµÄÖ¸Áî
+ * \brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½Ö¸ï¿½ï¿½
  *
- * \param ptNullCmd ´ý´¦ÀíµÄÖ¸Áî
- * \param nCmdLen Ö¸Áî³¤¶È
- * \return ´¦ÀíÊÇ·ñ³É¹¦
+ * \param ptNullCmd ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
+ * \param nCmdLen Ö¸ï¿½î³¤ï¿½ï¿½
+ * \return ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½É¹ï¿½
  */
 bool BillTask::msgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int nCmdLen)
 {
@@ -194,7 +195,7 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 						{
 							t_Logout_Gateway *ptCmd = (t_Logout_Gateway *)ptNullCmd;
 
-							Zebra::logger->debug("ÕËºÅÍË³öµÇÂ½ %u,%u", ptCmd->accid,ptCmd->loginTempID);
+							Zebra::logger->debug("ï¿½Ëºï¿½ï¿½Ë³ï¿½ï¿½ï¿½Â½ %u,%u", ptCmd->accid,ptCmd->loginTempID);
 							BillUser *pUser=BillUserManager::getInstance()->getUserByID(ptCmd->accid);
 							if(pUser)
 							{
@@ -214,12 +215,12 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 							BillUser *pUser=BillUserManager::getInstance()->getUserByID(ptCmd->accid);
 							if(pUser && pUser->login(ptCmd->loginTempID))
 							{
-								//ÑéÖ¤³É¹¦
+								//ï¿½ï¿½Ö¤ï¿½É¹ï¿½
 								tCmd.retcode = 1;
 							}
 							else
 							{
-								//ÑéÖ¤Ê§°Ü
+								//ï¿½ï¿½Ö¤Ê§ï¿½ï¿½
 								tCmd.retcode = 0;
 							}
 
@@ -281,7 +282,7 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 			break;
 		case CMD_REDEEM:
 			{
-				//²¹³¥½ð±Ò
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 				switch(ptNullCmd->para)
 				{
 					case PARA_REQUEST_GATE_REDEEM_GOLD:
@@ -292,7 +293,7 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 							{
 								if(!ptCmd->point)
 								{
-									Zebra::logger->debug("¶Ò»»Ö¸ÁîµãÊýÎª0(%s)",ptCmd->account);
+									Zebra::logger->debug("ï¿½Ò»ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Îª0(%s)",ptCmd->account);
 									return true;
 								}
 								BillData bd;
@@ -307,7 +308,7 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 								{
 									if(!pUser->begin_tid(bd.tid))
 									{
-										Zebra::logger->debug("Ìí¼Ó¶Ò»»½ð±ÒÁ÷Ë®´íÎó%s",ptCmd->account);
+										Zebra::logger->debug("ï¿½ï¿½ï¿½Ó¶Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë®ï¿½ï¿½ï¿½ï¿½%s",ptCmd->account);
 									}
 									else
 									{
@@ -316,25 +317,25 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 								}
 								else
 								{
-									Zebra::logger->debug("¶Ò»»½ð±Ò´íÎóBill_action%s",ptCmd->account);
+									Zebra::logger->debug("ï¿½Ò»ï¿½ï¿½ï¿½Ò´ï¿½ï¿½ï¿½Bill_action%s",ptCmd->account);
 								}
 								t_Redeem_Gold_Gateway rgg; 
 								strncpy(rgg.account, ptCmd->account, Cmd::UserServer::ID_MAX_LENGTH);
-								rgg.accid=ptCmd->accid;			        /// ÕËºÅ±àºÅ
-								rgg.charid=ptCmd->charid;				/// ½ÇÉ«ID
-								rgg.dwGold=0;				/// 	µ±Ç°ÓµÓÐ½ð±ÒÊý
-								rgg.dwBalance=0;				/// 	µ±Ç°ÓµÓÐ½ð±ÒÊý
-								rgg.byReturn= Cmd::REDEEM_FAIL;	//·µ»ØÀàÐÍ
+								rgg.accid=ptCmd->accid;			        /// ï¿½ËºÅ±ï¿½ï¿½
+								rgg.charid=ptCmd->charid;				/// ï¿½ï¿½É«ID
+								rgg.dwGold=0;				/// 	ï¿½ï¿½Ç°Óµï¿½Ð½ï¿½ï¿½ï¿½ï¿½
+								rgg.dwBalance=0;				/// 	ï¿½ï¿½Ç°Óµï¿½Ð½ï¿½ï¿½ï¿½ï¿½
+								rgg.byReturn= Cmd::REDEEM_FAIL;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 								sendCmd(&rgg, sizeof(rgg));
 							}
 							else
 							{
-								Zebra::logger->debug("ÊÕµ½¶Ò»»½ð±ÒÖ¸Áî,µ«ÊÇÓÃ»§²»´æÔÚ%s(%d)",ptCmd->account,ptCmd->accid);
+								Zebra::logger->debug("ï¿½Õµï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½%s(%d)",ptCmd->account,ptCmd->accid);
 							}
 							return true;
 						}
 						break;
-					case PARA_REQUEST_GATE_REDEEM_MONTH_CARD: //sky Àí²Æ
+					case PARA_REQUEST_GATE_REDEEM_MONTH_CARD: //sky ï¿½ï¿½ï¿½ï¿½
 						{
 							t_Request_Redeem_MonthCard_Gateway *ptCmd = (t_Request_Redeem_MonthCard_Gateway *)ptNullCmd;
 							BillUser *pUser=BillUserManager::getInstance()->getUserByID(ptCmd->accid);
@@ -342,7 +343,7 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 							{
 								if(!ptCmd->point)
 								{
-									Zebra::logger->debug("µã¿¨¶Ò»»5±¶»ù½ðÖ¸ÁîµãÊýÎª0(%s)",ptCmd->account);
+									Zebra::logger->debug("ï¿½ã¿¨ï¿½Ò»ï¿½5ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½Îª0(%s)",ptCmd->account);
 									return true;
 								}
 								BillData bd;
@@ -357,7 +358,7 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 								{
 									if(!pUser->begin_tid(bd.tid))
 									{
-										Zebra::logger->debug("Ìí¼Ó¶Ò»»ÔÂ¿¨Á÷Ë®´íÎó%s",ptCmd->account);
+										Zebra::logger->debug("ï¿½ï¿½ï¿½Ó¶Ò»ï¿½ï¿½Â¿ï¿½ï¿½ï¿½Ë®ï¿½ï¿½ï¿½ï¿½%s",ptCmd->account);
 									}
 									else
 									{
@@ -366,20 +367,20 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 								}
 								else
 								{
-									Zebra::logger->debug("¶Ò»»ÔÂ¿¨´íÎóBill_action%s",ptCmd->account);
+									Zebra::logger->debug("ï¿½Ò»ï¿½ï¿½Â¿ï¿½ï¿½ï¿½ï¿½ï¿½Bill_action%s",ptCmd->account);
 								}
 								t_Redeem_MonthCard_Gateway rgg; 
 								strncpy(rgg.account, ptCmd->account, Cmd::UserServer::ID_MAX_LENGTH);
-								rgg.accid=ptCmd->accid;			        /// ÕËºÅ±àºÅ
-								rgg.charid=ptCmd->charid;				/// ½ÇÉ«ID
-								rgg.dwGold=0;				/// 	µ±Ç°ÓµÓÐ½ð±ÒÊý
-								rgg.dwBalance=0;				/// 	µ±Ç°ÓµÓÐ½ð±ÒÊý
-								rgg.byReturn= Cmd::REDEEM_FAIL;	//·µ»ØÀàÐÍ
+								rgg.accid=ptCmd->accid;			        /// ï¿½ËºÅ±ï¿½ï¿½
+								rgg.charid=ptCmd->charid;				/// ï¿½ï¿½É«ID
+								rgg.dwGold=0;				/// 	ï¿½ï¿½Ç°Óµï¿½Ð½ï¿½ï¿½ï¿½ï¿½
+								rgg.dwBalance=0;				/// 	ï¿½ï¿½Ç°Óµï¿½Ð½ï¿½ï¿½ï¿½ï¿½
+								rgg.byReturn= Cmd::REDEEM_FAIL;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 								sendCmd(&rgg, sizeof(rgg));
 							}
 							else
 							{
-								Zebra::logger->debug("ÊÕµ½¶Ò»»ÔÂ¿¨Ö¸Áî,µ«ÊÇÓÃ»§²»´æÔÚ%s(%d)",ptCmd->account,ptCmd->accid);
+								Zebra::logger->debug("ï¿½Õµï¿½ï¿½Ò»ï¿½ï¿½Â¿ï¿½Ö¸ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½%s(%d)",ptCmd->account,ptCmd->accid);
 							}
 							return true;
 						}
@@ -390,11 +391,11 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 							t_Request_Card_Gold_Gateway *ptCmd = (t_Request_Card_Gold_Gateway *)ptNullCmd;
 							t_Return_Card_Gold rcg; 
 							strncpy(rcg.account, ptCmd->account, Cmd::UserServer::ID_MAX_LENGTH);
-							rcg.accid=ptCmd->accid;			        /// ÕËºÅ±àºÅ
-							rcg.charid=ptCmd->charid;				/// ½ÇÉ«ID
-							//rcg.dwMonthCard = BillManager::getInstance().getVipTime(ptCmd->accid);	//ÔÂ¿¨
-							//rcg.dwGold = (DWORD)BillManager::getInstance().getGold(ptCmd->accid);	//½ð±Ò
-							rcg.byReturn= Cmd::REDEEM_SUCCESS;	//·µ»ØÀàÐÍ
+							rcg.accid=ptCmd->accid;			        /// ï¿½ËºÅ±ï¿½ï¿½
+							rcg.charid=ptCmd->charid;				/// ï¿½ï¿½É«ID
+							//rcg.dwMonthCard = BillManager::getInstance().getVipTime(ptCmd->accid);	//ï¿½Â¿ï¿½
+							//rcg.dwGold = (DWORD)BillManager::getInstance().getGold(ptCmd->accid);	//ï¿½ï¿½ï¿½
+							rcg.byReturn= Cmd::REDEEM_SUCCESS;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 							sendCmd(&rcg, sizeof(rcg));
 							return true;
 						}
@@ -419,7 +420,7 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 									Zebra::logger->debug("tradeSN:%s",bd.tid);
 									if(!pUser->begin_tid(bd.tid))
 									{
-										Zebra::logger->debug("Ìí¼Ó²éÑ¯Ê£ÓàµãÊýÁ÷Ë®´íÎó%s",ptCmd->account);
+										Zebra::logger->debug("ï¿½ï¿½ï¿½Ó²ï¿½Ñ¯Ê£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ë®ï¿½ï¿½ï¿½ï¿½%s",ptCmd->account);
 									}
 									else
 									{
@@ -428,19 +429,19 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 								}
 								else
 								{
-									Zebra::logger->debug("²éÑ¯Ê£ÓàµãÊý´íÎóBill_action%s",ptCmd->account);
+									Zebra::logger->debug("ï¿½ï¿½Ñ¯Ê£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Bill_action%s",ptCmd->account);
 								}
 								t_Return_Point rpg; 
 								strncpy(rpg.account, ptCmd->account, Cmd::UserServer::ID_MAX_LENGTH);
-								rpg.accid=ptCmd->accid;			        /// ÕËºÅ±àºÅ
-								rpg.charid=ptCmd->charid;				/// ½ÇÉ«ID
-								rpg.dwPoint=0;				/// 	µ±Ç°µãÊý
-								rpg.byReturn= Cmd::REDEEM_FAIL;	//·µ»ØÀàÐÍ
+								rpg.accid=ptCmd->accid;			        /// ï¿½ËºÅ±ï¿½ï¿½
+								rpg.charid=ptCmd->charid;				/// ï¿½ï¿½É«ID
+								rpg.dwPoint=0;				/// 	ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
+								rpg.byReturn= Cmd::REDEEM_FAIL;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 								sendCmd(&rpg, sizeof(rpg));
 							}
 							else
 							{
-								Zebra::logger->debug("ÊÕµ½²éÑ¯ÔÂ¿¨µãÊýÖ¸Áî,µ«ÊÇÓÃ»§²»´æÔÚ%s(%d)",ptCmd->account,ptCmd->accid);
+								Zebra::logger->debug("ï¿½Õµï¿½ï¿½ï¿½Ñ¯ï¿½Â¿ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½%s(%d)",ptCmd->account,ptCmd->accid);
 							}
 							return true;
 						}
@@ -448,7 +449,7 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 					case PARA_GATE_CONSUME_CARD:
 						{
 							stConSumeCardCard_Gateway *ptCmd = (stConSumeCardCard_Gateway *)ptNullCmd; 
-							//Zebra::logger->debug("%s(%d)ÇëÇóÏû·ÑµÀ¾ß¿¨:%s",this->account,this->id,rev->cardid);
+							//Zebra::logger->debug("%s(%d)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñµï¿½ï¿½ß¿ï¿½:%s",this->account,this->id,rev->cardid);
 							BillUser *pUser=BillUserManager::getInstance()->getUserByID(ptCmd->accid);
 							if(pUser)
 							{
@@ -481,7 +482,7 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 									Zebra::logger->debug("tradeSN:%s",bd.tid);
 									if(!pUser->begin_tid(bd.tid))
 									{
-										Zebra::logger->debug("Ìí¼ÓÏû·ÑµÀ¾ß¿¨Á÷Ë®´íÎó%s",ptCmd->account);
+										Zebra::logger->debug("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñµï¿½ï¿½ß¿ï¿½ï¿½ï¿½Ë®ï¿½ï¿½ï¿½ï¿½%s",ptCmd->account);
 									}
 									else
 									{
@@ -490,21 +491,21 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 								}
 								else
 								{
-									Zebra::logger->debug("Ïû·ÑµÀ¾ß¿¨´íÎóBill_action%s",ptCmd->account);
+									Zebra::logger->debug("ï¿½ï¿½ï¿½Ñµï¿½ï¿½ß¿ï¿½ï¿½ï¿½ï¿½ï¿½Bill_action%s",ptCmd->account);
 								}
 								t_Return_Point rpg; 
 								strncpy(rpg.account, ptCmd->account, Cmd::UserServer::ID_MAX_LENGTH);
-								rpg.accid=ptCmd->accid;			        /// ÕËºÅ±àºÅ
-								rpg.dwPoint=0;				/// 	µ±Ç°µãÊý
-								rpg.byReturn= Cmd::REDEEM_FAIL;	//·µ»ØÀàÐÍ
+								rpg.accid=ptCmd->accid;			        /// ï¿½ËºÅ±ï¿½ï¿½
+								rpg.dwPoint=0;				/// 	ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½
+								rpg.byReturn= Cmd::REDEEM_FAIL;	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 								sendCmd(&rpg, sizeof(rpg));
 							}
 							else
 							{
-								Zebra::logger->debug("ÊÕµ½²éÑ¯ÔÂ¿¨µãÊýÖ¸Áî,µ«ÊÇÓÃ»§²»´æÔÚ%s(%d)",ptCmd->account,ptCmd->accid);
+								Zebra::logger->debug("ï¿½Õµï¿½ï¿½ï¿½Ñ¯ï¿½Â¿ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½,ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½%s(%d)",ptCmd->account,ptCmd->accid);
 							}
 							return true;
-							Zebra::logger->debug("ÇëÇóÏû·ÑµÀ¾ß¿¨:%s",ptCmd->cardid);
+							Zebra::logger->debug("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñµï¿½ï¿½ß¿ï¿½:%s",ptCmd->cardid);
 							return  true;
 						}
 						break;
@@ -520,11 +521,11 @@ bool BillTask::cmdMsgParse(const Cmd::t_NullCmd *ptNullCmd, const unsigned int n
 }
 
 /**
- * \brief ·¢ËÍÃüÁî¸ø³¡¾°ÓÃ»§
+ * \brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
  *
- * \param id ÓÃ»§id
- * \param pstrCmd ÃüÁîÖ¸Áî
- * \param nCmdLen ÃüÁî³¤¶È
+ * \param id ï¿½Ã»ï¿½id
+ * \param pstrCmd ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
+ * \param nCmdLen ï¿½ï¿½ï¿½î³¤ï¿½ï¿½
  */
 bool BillTask::sendCmdToScene(DWORD id, const void *pstrCmd, const unsigned int nCmdLen)
 {
@@ -542,11 +543,11 @@ bool BillTask::sendCmdToScene(DWORD id, const void *pstrCmd, const unsigned int 
 }
 
 /**
- * \brief ·¢ËÍÃüÁî¸øÓÃ»§
+ * \brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½
  *
- * \param id ÓÃ»§id
- * \param pstrCmd ÃüÁîÖ¸Áî
- * \param nCmdLen ÃüÁî³¤¶È
+ * \param id ï¿½Ã»ï¿½id
+ * \param pstrCmd ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½
+ * \param nCmdLen ï¿½ï¿½ï¿½î³¤ï¿½ï¿½
  */
 bool BillTask::sendCmdToUser(DWORD id, const void *pstrCmd, const unsigned int nCmdLen)
 {
@@ -566,10 +567,10 @@ bool BillTask::sendCmdToUser(DWORD id, const void *pstrCmd, const unsigned int n
  
 
 /**
- * \brief ²éÑ¯½ð±ÒÓà¶î
+ * \brief ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *
  *
- * \param cmd ²éÑ¯ÃüÁî
+ * \param cmd ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
  */
 	/*
 void BillTask::query_gold(const Cmd::Bill::t_Query_Gold_GateMoney* cmd)
@@ -635,10 +636,10 @@ void BillTask::query_gold(const Cmd::Bill::t_Query_Gold_GateMoney* cmd)
 
 
 /**
- * \brief ½ð±ÒÏû·Ñ
+ * \brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *
  *
- * \param cmd ½ð±Ò½»Ò×ÃüÁî 
+ * \param cmd ï¿½ï¿½Ò½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
  * \return 
  */
 /*
@@ -647,8 +648,8 @@ void BillTask::trade_gold(const Cmd::Bill::t_Trade_Gold_GateMoney* cmd)
 	RecordSet* recordset = NULL;
 	Cmd::Bill::t_Return_Trade_Gold_GateMoney send;
 
-	double gold = 0.0;     // Óà¶î
-	double allconsum = 0.0; // ÀÛ»ýÏû·Ñ¶î
+	double gold = 0.0;     // ï¿½ï¿½ï¿½
+	double allconsum = 0.0; // ï¿½Û»ï¿½ï¿½ï¿½ï¿½Ñ¶ï¿½
 	char   account[Cmd::UserServer::ID_MAX_LENGTH+1] = "";
 	
 	FieldSet* balance = BillService::metaData->getFields("BALANCE");
@@ -722,9 +723,9 @@ void BillTask::trade_gold(const Cmd::Bill::t_Trade_Gold_GateMoney* cmd)
 
 
 	if (send.state == Cmd::Bill::QUERY_SUCCESS)
-	{// ²éÑ¯³É¹¦
+	{// ï¿½ï¿½Ñ¯ï¿½É¹ï¿½
 		if (send.gold >= cmd->gold)
-		{// Óà¶î³ä×ã£¬¿Û³ý½ð±Ò£¬²¢×ö½»Ò×ÈÕÖ¾
+		{// ï¿½ï¿½ï¿½ï¿½ï¿½ã£¬ï¿½Û³ï¿½ï¿½ï¿½Ò£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾
 			connHandleID handle = BillService::dbConnPool->getHandle();
 
 			if ((connHandleID)-1 != handle)
@@ -763,10 +764,10 @@ void BillTask::trade_gold(const Cmd::Bill::t_Trade_Gold_GateMoney* cmd)
 
 
 /**
- * \brief µãÊý»»½ð±Ò
+ * \brief ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  *
  *
- * \param cmd ²éÑ¯ÃüÁî
+ * \param cmd ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½
  */
 /*
 void BillTask::redeem_gold(const Cmd::Bill::t_Change_Gold_GateMoney* cmd)
@@ -793,21 +794,21 @@ void BillTask::redeem_gold(const Cmd::Bill::t_Change_Gold_GateMoney* cmd)
 
 
 /**
- * \brief ¼ÇÂ¼½»Ò×ÈÕÖ¾
+ * \brief ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¾
  *
  *
- * \param  cmd ½»Ò×ÃüÁî
- * \param  account ÓÃ»§ÕÊºÅ
- * \param  gold  ÕÊ»§Óà¶î
+ * \param  cmd ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * \param  account ï¿½Ã»ï¿½ï¿½Êºï¿½
+ * \param  gold  ï¿½Ê»ï¿½ï¿½ï¿½ï¿½
  *
  * \return 
  */
 /*
 void BillTask::trade_log(const Cmd::Bill::t_Trade_Gold_GateMoney* cmd, const char* account, double gold)
 {
-	// ÕÊºÅ,ACCID£¬CHARID--(ÎïÆ·ID£¬ÎïÆ·ÊýÁ¿£¬½»Ò×µÄ½ð±ÒÊýÁ¿, ½ð±ÒÓà¶î)
-	BillService::tradelog->trace("½ð±Ò½»Ò×:----------------------------------------");
-	BillService::tradelog->trace("½ð±Ò½»Ò×:%s,%d,%d,%d,%d,%d,%d", 
+	// ï¿½Êºï¿½,ACCIDï¿½ï¿½CHARID--(ï¿½ï¿½Æ·IDï¿½ï¿½ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×µÄ½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+	BillService::tradelog->trace("ï¿½ï¿½Ò½ï¿½ï¿½ï¿½:----------------------------------------");
+	BillService::tradelog->trace("ï¿½ï¿½Ò½ï¿½ï¿½ï¿½:%s,%d,%d,%d,%d,%d,%d", 
 			account,
 			cmd->accid,
 			cmd->charid,
