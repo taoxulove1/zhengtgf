@@ -30,18 +30,23 @@ curl -sS -X PATCH "${API}" "${HDR[@]}" -d '{
 }' | python -c "import sys,json;d=json.load(sys.stdin);print('  squash=%s merge=%s rebase=%s auto=%s'%(d.get('allow_squash_merge'),d.get('allow_merge_commit'),d.get('allow_rebase_merge'),d.get('allow_auto_merge')))"
 
 # ---------- 2. 分支保护 ----------
-say "分支保护 ${BRANCH}"
-curl -sS -X PUT "${API}/branches/${BRANCH}/protection" "${HDR[@]}" -d '{
+# 单人维护说明：enforce_admins=true 会让团长也无法自行合并（PR 不能自审）。
+# 默认 false = 规则存在但管理员可绕过；多人协作时 export ENFORCE_ADMINS=true REQUIRE_CODEOWNER=true
+say "分支保护 ${BRANCH}（enforce_admins=${ENFORCE_ADMINS:-false} reviews=${REVIEWS:-1}）"
+# JSON 用 heredoc 生成，才能让 ${ENFORCE_ADMINS} 这类变量真正展开
+# （原来写成 -d '{...}' 单引号，变量不展开 → 400，报错信息还会被 GitHub 伪装成升级提示）
+PAYLOAD=$(cat <<EOF
+{
   "required_status_checks": {
     "strict": true,
     "contexts": ["validate"]
   },
-  "enforce_admins": true,
+  "enforce_admins": ${ENFORCE_ADMINS:-false},
   "required_pull_request_reviews": {
     "dismiss_stale_reviews": true,
-    "require_code_owner_reviews": true,
-    "required_approving_review_count": 1,
-    "require_last_push_approval": true
+    "require_code_owner_reviews": ${REQUIRE_CODEOWNER:-false},
+    "required_approving_review_count": ${REVIEWS:-1},
+    "require_last_push_approval": false
   },
   "restrictions": null,
   "required_linear_history": true,
@@ -50,11 +55,25 @@ curl -sS -X PUT "${API}/branches/${BRANCH}/protection" "${HDR[@]}" -d '{
   "required_conversation_resolution": true,
   "lock_branch": false,
   "allow_fork_syncing": false
-}' | python -c "
+}
+EOF
+)
+RESP=$(curl -sS -X PUT "${API}/branches/${BRANCH}/protection" "${HDR[@]}" -d "${PAYLOAD}")
+echo "$RESP" | grep -q '"message"' && echo "  PUT 未直达（$(echo "$RESP" | python -c "import sys,json;print(json.load(sys.stdin).get('message'))")），改用 GET 回读判定"
+
+# 以 GET 的最终状态为准：PUT 幂等时会返回误导性文案，不能拿它当结论
+curl -sS "${API}/branches/${BRANCH}/protection" "${HDR[@]}" | python -c "
 import sys,json
 d=json.load(sys.stdin)
-if 'message' in d: print('  FAIL',d['message'])
-else: print('  OK admins=%s linear=%s reviews=%s' % (d['enforce_admins']['enabled'], d['required_linear_history']['enabled'], d['required_pull_request_reviews']['required_approving_review_count']))
+if 'message' in d:
+    print('  FAIL', d['message']); raise SystemExit(1)
+print('  OK admins=%s linear=%s reviews=%s forcepush=%s deletions=%s contexts=%s' % (
+    d['enforce_admins']['enabled'],
+    d['required_linear_history']['enabled'],
+    d['required_pull_request_reviews']['required_approving_review_count'],
+    d['allow_force_pushes']['enabled'],
+    d['allow_deletions']['enabled'],
+    [c['context'] for c in d['required_status_checks']['contexts']]))
 "
 
 # ---------- 3. 标签体系 ----------

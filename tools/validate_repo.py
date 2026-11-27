@@ -113,10 +113,18 @@ def check_ci():
             ok(f"分支命名合规: {head}")
 
     # 5) 提交信息（PR 场景取最近一次提交）
+    #    GitHub 在 pull_request 事件里检出的 HEAD 是 refs/pull/N/merge 的**合成合并提交**，
+    #    其 subject 形如 "Merge 1ccb489 into 44a0790"，天然不符合 Conventional Commits。
+    #    这类机器生成的提交不属于任何人的提交规范，必须跳过；真正的规范由 §3 的
+    #    历史扫描（非 PR 事件）与 pre-push 钩子保证。
     if os.environ.get("GITHUB_EVENT_NAME") == "pull_request":
+        parents = subprocess.run(["git", "rev-list", "--parents", "-n", "1", "HEAD"], cwd=ROOT,
+                                 capture_output=True, text=True).stdout.split()
         out = subprocess.run(["git", "log", "-1", "--pretty=%s"], cwd=ROOT,
                              capture_output=True, text=True).stdout.strip()
-        if not re.match(r"^(feat|fix|data|docs|chore|refactor|perf|test|revert)(\([a-z-]+\))?: .{4,50}$", out):
+        if len(parents) > 2:
+            ok(f"合成合并提交，跳过规范校验: {out[:60]}")
+        elif not re.match(r"^(feat|fix|data|docs|chore|refactor|perf|test|revert)(\([a-z-]+\))?: .{4,50}$", out):
             bad(f"[提交] 不符合 Conventional Commits: {out}")
         else:
             ok(f"提交信息合规: {out}")
