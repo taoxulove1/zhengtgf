@@ -34,11 +34,10 @@
 
 下发命令：`bash tools/protect-branch.sh`（读 `GITHUB_TOKEN` + `REPO`，幂等，可重复执行）。
 
-### 2.1 免费私有库下的等效保护（当前生效方案）
+### 2.1 免费私有库下的等效保护（**已于 2026-11-27 转 public 后退役**）
 
 GitHub 免费私有库不开放 branch protection 与 rulesets，API 返回
 `Upgrade to GitHub Pro or make this repository public to enable this feature`。
-在升级 Pro 或转 public 之前，用**两道本地/CI 闸**等价覆盖四条硬约束：
 
 | 约束 | 闸一：本地 `pre-push` | 闸二：`05 主分支守门`（push 后） |
 |---|---|---|
@@ -55,15 +54,47 @@ python tools/guard_main.py --before <sha> --after <sha>   # 本地复跑同一�
 
 **诚实边界**：review 强制、`enforce_admins`、合并队列这三项无免费替代。升级路径见 §2.2。
 
-### 2.2 解锁正式保护的两种方式
+### 2.2 已解锁：2026-11-27 转为 public
 
-| 方式 | 动作 | 代价 | 可逆 |
-|---|---|---|---|
-| 转 public | `PATCH /repos {"private":false}` 或 Settings → Danger Zone → Change visibility | 服务端源码、582 条资产清单、协议文档全部公开 | 可，但 fork 与缓存已扩散 |
-| 升 Pro | 个人 \$4/月，或 Team \$4/人/月 | 私有库获得完整保护 + rulesets | 可，降级后规则失效 |
+| 项 | 值 |
+|---|---|
+| 动作 | `PATCH /repos/taoxulove1/zhengtugf {"private": false}` |
+| 时间 | 2026-11-27 09:0x CST |
+| 前置 | 全仓脱敏扫描（公网 IP → `101.33.**.**`，配置口令 → `***`），真值只留本地 `.secrets/` |
+| 结果 | 原生 branch protection 可用，§2.1 的两道等效闸从「唯一防线」降级为「本地预检」 |
 
-升级后重跑 `bash tools/protect-branch.sh`，回读确认 `enforce_admins=true`，
-再按 §5 把 `github-actions[bot]` 加入 bypass，否则 `03 执行` 无法回写 `state/queue.json`。
+保护参数（由 `bash tools/protect-branch.sh` 幂等下发）：
+
+| 参数 | 值 | 理由 |
+|---|---|---|
+| `required_status_checks.contexts` | `["validate"]` | 对应 `.github/workflows/01-validate.yml` 的 job 名 |
+| `strict` | `true` | 分支必须与 main 同步才能合 |
+| `enforce_admins` | `true` | 团长同样受约束 |
+| `required_pull_request_reviews` | 1 人 / dismiss 过期 review | 单人维护时由 §2.3 的绕过流程处理 |
+| `required_linear_history` | `true` | 禁 merge commit |
+| `allow_force_pushes` | `false` | 禁历史重写 |
+| `allow_deletions` | `false` | 禁删 main |
+
+**回退路径**：`PATCH {"private": true}` 可复原私有，但 fork 与缓存已扩散，保护参数会同时失效（退回 §2.1）。
+
+### 2.3 单人维护的合并流程（当前唯一入口）
+
+`enforce_admins: true` + 强制 review 在单人仓库会自锁。跳过 review 的唯一合规通道是 **Repository admin 的 bypass**，用 API 直接 squash 合并，等价于「管理员代审」：
+
+```bash
+# 1) 特性分支
+git switch -c feat/xxx && git push -u origin feat/xxx
+# 2) 建 PR（api.github.com 走直连，不要挂 7897）
+curl --noproxy '*' -X POST -H "Authorization: token $TOKEN" \
+  https://api.github.com/repos/taoxulove1/zhengtugf/pulls \
+  -d '{"title":"...","head":"feat/xxx","base":"main"}'
+# 3) squash 合并（admin bypass review）
+curl --noproxy '*' -X PUT -H "Authorization: token $TOKEN" \
+  https://api.github.com/repos/taoxulove1/zhengtugf/pulls/<N>/merge \
+  -d '{"merge_method":"squash"}'
+```
+
+`validate` 检查仍会跑；若红，先修再合。本地 `pre-push` 钩子保留，作为提交前的快速预检。
 
 ---
 

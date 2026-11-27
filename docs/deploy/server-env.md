@@ -4,12 +4,13 @@
 > 采集方式：`tools/server_probe.py`（paramiko 只读探针）+ `tools/remote.py`
 > 凭据存放：`.secrets/server.local.json`（**已 gitignore**，不入仓库）
 > 本文所有参数均为**实测值**，非推断；推断项单独标「待验」。
+> **脱敏说明**：仓库已于 2026-11-27 转为 public，公网 IP 统一写作 `101.33.**.**`、口令统一写作 `***`。真值只存在本地 `.secrets/server.local.json`，需要时 `python tools/remote.py run "..."` 直接调，不必回填文档。
 
 ## 1. 主机
 
 | 项 | 实测值 |
 |---|---|
-| 公网 IP | `101.33.242.142`（`curl ifconfig.me` 与内网出口一致，无 NAT 转换层） |
+| 公网 IP | `101.33.**.**`（`curl ifconfig.me` 与内网出口一致，无 NAT 转换层） |
 | 内网 IP | `10.1.0.10`（配置里所有 server 列表都用这个地址） |
 | 主机名 | `VM-0-10-centos` |
 | OS | CentOS Linux 7 (Core)，`centos-release-7-6.1810.2.el7.centos.x86_64` |
@@ -101,7 +102,7 @@ SessionServer_r.exe  GatewayServer_r.exe  MiniServer_r.exe    mysqld.exe
 | 项 | 实测值 |
 |---|---|
 | 版本 | MySQL 4.0 系列（`mysql.exe` 客户端自报 4.0；`information_schema` **不存在**，属 4.x 特性） |
-| 可用账号 | `test`（配置内使用），`root` 口令与配置里 `root:2266` **不一致**，实测被拒 |
+| 可用账号 | `test`（配置内使用），`root` 口令与配置里记录的值 **不一致**，实测被拒 |
 | 库 | `Zebra`、`mysql`、`test` |
 | Zebra 表数 | **58 张**：`1ANSWER ACCPRIV ACT ALLY ALLYTIME ARMY AUCTION BALANCE CAPTAIN CARTOONPET CDAREGAMBLE CHANGENAME CHARBASE CHARTEST CITY CONSIGNGOLD CONSIGNGOLDHISTORY CONSIGNMONEY CONSIGNMONEYHISTORY COUNTRY DARERECORD DARE_CAPTION EMPERORFORBID FORBIDTALK FUND GAMETIME GIFT HEROLIST HOME KINGNAME LOGIN LOGINSTAT MAIL MINIGAME NPCDARE PKGAME RECOMMEND RECOMMENDSUB RESTORECARD RESTOREGOLD SAMPLERELATION SCHOOL SCHOOLMEMBER SEPT SEPTMEMBER SERVERLIST SN SORTLIST TANK TBL_BONUS TBL_PCARD TECH UNION UNIONMEMBER VOTE VOTEDPLAYER VOTEITEM ZONEINFO answer` |
 
@@ -138,4 +139,4 @@ python tools/remote.py put tools/capture-server.sh /root/capture.sh
 1. Gateway 真实监听端口（日志目录名 `gatewayserver_2200` 与配置 6020 冲突，需在 Scenes 起来后复测）。
 2. `10.1.0.10` 是否绑定在 `eth0` 上（`ip addr` 未采集，配置里硬编码，若网卡只有公网 IP 则服间通信会走回环）。
 3. Scenes 崩溃栈的完整回溯（需 `WINEDEBUG=+relay` 或 `winedbg`，代价高，优先级低于抓包）。
-4. MySQL `root` 真实口令（配置里 `root:2266` 已失效，`ShowCharbase`/`LoadLogServer` 两个工具段依赖它）。
+4. MySQL `root` 真实口令（配置里 `root:***` 已失效，`ShowCharbase`/`LoadLogServer` 两个工具段依赖它）。
