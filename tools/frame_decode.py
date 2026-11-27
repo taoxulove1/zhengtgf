@@ -42,6 +42,9 @@ FLAG_ENC = 0x80000000
 FLAG_ZIP = 0x40000000
 MAXLEN = 0x00FFFFFF
 
+# 不加 --port 时只看游戏端口，避免把 SSH/HTTP 之类的噪音当帧解析
+GAME_PORTS = (8000, 8001, 8002, 6001, 6010, 6012, 6020, 7010, 7020, 9967, 10000)
+
 
 def align8(n):
     return (n + 7) & ~7
@@ -149,7 +152,7 @@ def main():
     ap.add_argument("--hex", type=int, default=16, help="每个 body 头部打印字节数")
     a = ap.parse_args()
 
-    ports = set(a.port) if a.port else None
+    ports = set(a.port) if a.port else set(GAME_PORTS)
     streams, order = pcap.build_streams(a.path, ports)
     if not order:
         print("没有带 payload 的 TCP 流")
