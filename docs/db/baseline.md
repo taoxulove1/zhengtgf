@@ -7,7 +7,7 @@
 - 仓库的 `sql/schema.sql` 含 59 个建表定义。表名与旧库的 `.FRM/.MYD/.MYI` 三件套及部署记录逐项一致。
 - 建表语句来自本地 `zebra_fixed2.sql` 与 `zebra_q2.sql` 两份转换结果。核对两份定义的列、索引和默认值后，采用带反引号的标识符写法，修复 `charbase` 中的 `INT` 列名导致的语法错误。脚本只建表，需先选用空的 `latin1` 测试库。
 - 对三份本地 Zebra 快照运行 `myisamchk --read-only --check`，每份 59 张表均返回 0。每份均有 15 张表报告未正常关闭或仍处于使用状态。本次恢复验证使用 `MYSQL/data/Zebra` 的独立副本。
-- 新端运行数据要求 62 个不同的 TBL 文件名，旧服务端散装数据只有 20 个同名候选。客户端的 `UpgradePurpleBase.tbl` CRC 验证通过，但其 12 字节记录与服务端的 116 字节结构不兼容。
+- 客户端的 `UpgradePurpleBase.tbl` CRC 验证通过，但其 12 字节记录与服务端的 116 字节结构不兼容。启动所需 TBL 和地图的剩余缺口见 [场景资源预检](../deploy/runbook.md#场景资源预检)。
 
 ## 1. 版本与字符集
 
