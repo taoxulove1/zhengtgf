@@ -38,6 +38,18 @@ cd /root/p3-test && python3 p3_runtime_smoke.py p3-build-luabind.log
 
 后续收到的 `p8002.pcap` 有 39 条完整记录和 14 字节未完成的末尾记录。可读部分有 6 条 TCP 连接，5 条可见服务端 FIN 或 RST，服务端应用层负载为 0。同期截图出现 Wine 中的 `accept()` 10057。这些证据只说明原版监听仍需排查，尚无可比响应。先核对原版进程的监听和日志，再用配套客户端重采区服列表流量。
 
+原版 `flserver_8000/20261127/102848.log` 的末尾 40 行反复出现 `ServerTask::verifyConn`。本仓库对应源码将 `ServerTask` 用于服间端口，PING 端口由 `PingTask` 处理。应检查整份日志的 `PingTask`、`LoginTask` 和套接字错误记录，再与抓包时间对照。
+
+```bash
+f=/root/zt/server/log/flserver_8000/20261127/102848.log; iconv -f GB18030 -t UTF-8 -c "$f" | grep -Ei 'PingTask|LoginTask|accept\(|10057|socket.*(error|fail)|8002' | grep -Eiv 'mysql://|passw(or)?d|token|secret|口令|密码' | tail -n 35
+```
+
+筛选截图中的最后一条 `LoginTask` 记录为 `13:54:35`，所查文件更新时间为 `14:07:48 +0800`。`p8002.pcap` 的可读 TCP 记录为 `16:01:46.352` 至 `16:01:52.863 +0800`，8002 在这段记录内收到了 62 字节应用层负载，响应应用层负载为 0。先用下列只读命令核对当前监听归属、进程启动时间和最近的原版日志，确认是否已有新的日志文件。
+
+```bash
+date '+%F %T %z'; ss -lntp 'sport = :8002'; ps -eo pid,lstart,stat,comm | grep -i '[f]lserver'; find /root/zt/server/log -type f -ipath '*flserver*' -iname '*.log' -printf '%TY-%Tm-%Td %TH:%TM:%TS %s %p\n' 2>/dev/null | sort -r | head -n 5
+```
+
 ```bash
 cd /root/p3-test && p3_capture=$(mktemp ./p3-original-ping.XXXXXXXX.pcap) && printf 'Capture: %s\n' "$p3_capture" && timeout -s INT 45 /usr/sbin/tcpdump -i any -nn -s 0 -U -w - 'tcp port 8002' > "$p3_capture"
 ```
