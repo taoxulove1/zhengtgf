@@ -84,7 +84,7 @@ python tools/decrypt.py --file raw.bin --algo des --key <hex> --no-frame
 
 ### 0.5 实测抓包证据（2026-11-27，服务器侧 tcpdump）
 
-抓包点在目标机 `101.33.242.142`（`tools/capture-server.sh`，tcpdump 4.9.2，`-i any`），取回后由 `tools/pcap_lite.py` 解链路层（Linux SLL）→ IPv4 → TCP → 流重组，**未用 tshark**。
+抓包点在目标机 `101.33.**.**`（`tools/capture-server.sh`，tcpdump 4.9.2，`-i any`），取回后由 `tools/pcap_lite.py` 解链路层（Linux SLL）→ IPv4 → TCP → 流重组，**未用 tshark**。
 
 样本：`captures/server-internal-20s.pcapng`，19 秒，5 条流，全部为 `10.1.0.10:10000 → 内部端口`（SuperServer 下发）。
 
