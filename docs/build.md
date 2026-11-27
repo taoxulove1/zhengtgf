@@ -34,6 +34,25 @@ cd /root/p3-test && python3 p3_runtime_smoke.py p3-build-luabind.log
 
 2026-11-27 的隔离运行已确认原生 `FLServer` 监听 `7001`，`7002` 收发 `100/100`，前后均为 PID `13627`。首个响应的 30 个已定义字节与源码对照一致。仓库现有的原版抓包只包含服间心跳，原版 PING 对照仍待验证。
 
+可先从已完成的实机测试导出原生基线，无需重新编译或启动服务。在 Linux 测试主机执行以下命令。成功后传回输出路径所指的压缩包，包里只包含烟测日志和两个 PING 二进制文件。
+
+```bash
+(
+  set -e
+  cd /root/p3-test
+  p3_dir=$(sed -n 's/^\[RUNTIME_DIR\] //p' p3-runtime-smoke.log | tail -n 1)
+  p3_dir=${p3_dir%$'\r'}
+  grep -q '^\[OK\]\[EXCHANGES\] port=7002 requests=100 replies=100 ' p3-runtime-smoke.log
+  case "$p3_dir" in /root/p3-test/p3-runtime-*) ;; *) exit 1 ;; esac
+  test -s "$p3_dir/ping-request.bin" && test -s "$p3_dir/ping-reply.bin" || exit 1
+  p3_out=$(mktemp /root/p3-test/p3-native-evidence.XXXXXXXX.tar.gz)
+  tar -czf "$p3_out" -C /root/p3-test p3-runtime-smoke.log \
+    -C "$p3_dir" ping-request.bin ping-reply.bin
+  tar -tzf "$p3_out"
+  sha256sum "$p3_out"
+)
+```
+
 `tools/p3_runtime_reference.py` 已确认原版 Wine `FLServer_r.exe` 的 `8002` 监听，但使用原生格式发起查询时连接提前关闭，返回 `Broken pipe`。改从与原版部署配套的客户端正常打开或刷新区服列表，采集 `8002` 上的请求和响应。比对时先核对是否为同一种请求。
 
 后续收到的 `p8002.pcap` 有 39 条完整记录和 14 字节未完成的末尾记录。可读部分有 6 条 TCP 连接，5 条可见服务端 FIN 或 RST，服务端应用层负载为 0。同期截图出现 Wine 中的 `accept()` 10057。这些证据只说明原版监听仍需排查，尚无可比响应。先核对原版进程的监听和日志，再用配套客户端重采区服列表流量。
@@ -76,7 +95,7 @@ Windows 客户端启动诊断源码位于 `tools/start-test-client.cs`。用 .NE
 ss -lntp | grep -E ':(8000|8001|8002)[[:space:]]'; ss -lntp 'sport = :8002' | grep -i 'flserver_r\.exe' && p3_capture=$(mktemp /root/p3-test/p3-original-ping.XXXXXXXX.pcap) && printf 'Capture: %s\n' "$p3_capture" && timeout -s INT 45 /usr/sbin/tcpdump -i any -nn -s 0 -U -w - 'tcp port 8002' > "$p3_capture"
 ```
 
-等待 `tcpdump` 打印统计并退出后，传回完整 `.pcap` 文件。也一并传回 `p3-runtime-smoke.log` 中 `[RUNTIME_DIR]` 目录里的 `ping-request.bin` 和 `ping-reply.bin`。以下命令在本地仓库根目录执行。第一条检查抓包记录是否完整，并统计 `8002` 流量。第二条对比实际请求和响应，只有响应逐字节相等才输出 `[OK][ORIGINAL_RAW_BYTES]`。
+等待 `tcpdump` 打印统计并退出后，传回完整 `.pcap` 文件和前述原生基线压缩包。以下命令在本地仓库根目录执行。第一条检查抓包记录是否完整，并统计 `8002` 流量。第二条在同一 TCP 会话中对比实际请求和响应，只有响应逐字节相等才输出 `[OK][ORIGINAL_RAW_BYTES]`。
 
 ```bash
 python tools/p3_compare_ping_capture.py --inspect p3-original-ping.pcap

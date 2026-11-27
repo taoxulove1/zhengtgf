@@ -14,10 +14,14 @@ PORT = 8002
 MAX_FRAME = 4096
 PING_REQUEST = b"\x1e\x02"
 PING_REPLY = b"\x1e\x01"
+TCP_SYN = 0x02
+TCP_RST = 0x04
+TCP_ACK = 0x10
 
 
-def port_streams(capture):
-    streams = {}
+def port_sessions(capture):
+    active = {}
+    sessions = []
     packet_count = 0
     sent_bytes = received_bytes = 0
     for _, link_type, packet in iter_packets(capture, strict=True):
@@ -25,20 +29,36 @@ def port_streams(capture):
         if link is None:
             continue
         tcp = parse_tcp(*link)
-        if tcp is None or PORT not in (tcp["sport"], tcp["dport"]):
+        if tcp is None or (tcp["sport"] == PORT) == (tcp["dport"] == PORT):
             continue
         packet_count += 1
-        if tcp["sport"] == PORT:
-            sent_bytes += len(tcp["payload"])
+        server = tcp["sport"] == PORT
+        src = (tcp["src"], tcp["sport"])
+        dst = (tcp["dst"], tcp["dport"])
+        key = (dst, src) if server else (src, dst)
+        flags = tcp["flags"]
+        syn = not server and (flags & (TCP_SYN | TCP_ACK)) == TCP_SYN
+        session = active.get(key)
+        # A new SYN starts a new session even when the client reuses its port.
+        if session is None or (syn and session[0] != tcp["seq"]):
+            session = (tcp["seq"] if syn else None, [], [])
+            active[key] = session
+            sessions.append(session)
+
+        payload = tcp["payload"]
+        if server:
+            sent_bytes += len(payload)
         else:
-            received_bytes += len(tcp["payload"])
-        if tcp["payload"]:
-            key = tcp["src"], tcp["sport"], tcp["dst"], tcp["dport"]
-            seq = (tcp["seq"] + bool(tcp["flags"] & 0x02)) & 0xFFFFFFFF
-            streams.setdefault(key, []).append((seq, tcp["payload"]))
+            received_bytes += len(payload)
+        if payload:
+            seq = (tcp["seq"] + bool(flags & TCP_SYN)) & 0xFFFFFFFF
+            direction = session[2] if server else session[1]
+            direction.append((seq, payload))
+        if flags & TCP_RST:
+            del active[key]
     print("[CAPTURE] tcp8002_packets={} client_payload_bytes={} server_payload_bytes={}".format(
         packet_count, received_bytes, sent_bytes))
-    return streams, sent_bytes
+    return sessions, sent_bytes
 
 
 def reassemble(parts):
@@ -80,16 +100,15 @@ def compare(capture, native_request, native_reply):
             or native_reply[4:6] != PING_REPLY or zone(native_request) != zone(native_reply)):
         raise ValueError("Expected the native ping-request.bin and ping-reply.bin from one run")
 
-    streams, sent_bytes = port_streams(capture)
+    sessions, sent_bytes = port_sessions(capture)
     if not sent_bytes:
         print("[P3_PENDING][ORIGINAL_BYTES] No server payload on TCP 8002")
         return 2
-    print("[CAPTURE] tcp8002_directions={}".format(len(streams)))
+    print("[CAPTURE] tcp8002_sessions={}".format(len(sessions)))
     observed_zones = set()
     matched_request = False
-    for key, segments in streams.items():
-        src, sport, dst, dport = key
-        if dport != PORT or sport == PORT:
+    for _, segments, reverse in sessions:
+        if not segments:
             continue
         requests = [frame for frame in frames(reassemble(segments))
                     if len(frame) == 14 and frame[4:6] == PING_REQUEST]
@@ -99,7 +118,6 @@ def compare(capture, native_request, native_reply):
         matched_request = True
         if any(zone(frame) == zone(native_request) and frame != native_request for frame in requests):
             continue
-        reverse = streams.get((dst, dport, src, sport), [])
         if not reverse:
             continue
         replies = (frame for frame in frames(reassemble(reverse))
@@ -144,7 +162,7 @@ def main():
         parser.error("comparison requires both native PING files")
     try:
         if args.inspect:
-            _, sent_bytes = port_streams(args.capture)
+            _, sent_bytes = port_sessions(args.capture)
             if not sent_bytes:
                 print("[P3_PENDING][ORIGINAL_BYTES] No server payload on TCP 8002")
                 return 2

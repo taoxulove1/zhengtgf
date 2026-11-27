@@ -211,6 +211,10 @@ def cmd_done(reg, state, args):
     if not t:
         print(f"[ERR] 未知任务 {args.id}")
         return 2
+    miss = open_deps(state, t)
+    if miss:
+        print(f"[拒绝] {args.id} 前置未完成: {', '.join(miss)}")
+        return 1
     if t.get("gate", {}).get("cmd"):
         rc = subprocess.call(t["gate"]["cmd"], shell=True, cwd=ROOT)
         if rc != 0:
