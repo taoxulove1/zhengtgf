@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="GB2312"?>
+<server gametype="7">
+  <patch>
+    <item addr="101.33.242.142" port="80" path="/autopatch" type="101" reservepatch="101.33.242.142"/>
+  </patch>
+  <zones default="雲天征途">
+    <zone name="雲天征途" id="1" addr="101.33.242.142" port="8000" type="710" zone="0" Index="1" newzone="1"/>
+  </zones>
+</server>
