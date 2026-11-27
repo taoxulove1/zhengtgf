@@ -184,3 +184,103 @@ ERROR: (zSubNetService::init)等待服务器管理器返回信息失败
   解法：同时计算「解出来的头」和「原始头」，用长度合法性（1..1 MiB）+ ENC 位判断该信谁。
 - **加密帧长度含零填充、明文帧不含**：真实客户端首包加密时 `len=12`（10 字节 body + 2 填充），
   降级明文重发时 `len=10`（填充不进长度）。切帧一律按 `align8(4+len)` 前进，body 只取 `4..4+len`。
+
+## 8. 整栈换原生的实测结论（21:20–22:00）
+
+### 8.1 挡路的第一层：Super 的依赖表是空的
+
+现象：Super/Record/Bill/Mini/FL 全起来了，`Session`、`Gateway`、`Scenes` 一律报
+`getServerEntryByType(11)` 找不到条目（Session 报「不能找到档案服务器相关信息」），随后 segfault 退出。
+
+源码定位（`SuperServer/ServerTask.cpp`）：
+
+```cpp
+static void initServerSequence() __attribute__ ((constructor));   // 211 行
+void initServerSequence() {
+    serverSequence[RECORDSERVER] = std::vector<int>();
+    int data0[] = { RECORDSERVER };
+    serverSequence[SESSIONSERVER] = std::vector<int>(data0, data0 + 1);   // Session 依赖 Record
+    ...
+}
+```
+
+`serverSequence` 是同一个 TU 里的 `static __gnu_cxx::hash_map`。GCC 下 `__attribute__((constructor))`
+的执行时机与普通静态对象的构造顺序**没有保证**，实测就是先跑了 `initServerSequence()`、
+后构造 `hash_map` —— 写进去的表被后续构造清空，于是 `processSequence()` 遍历到空 vector。
+
+日志正是这个形状：
+
+```
+SuperServer TRACE: ServerTask::processSequence(wdServerType=20)
+（此后没有任何 verifyTypeOK(wdType=11) 的 TRACE，说明循环体一次都没进）
+```
+
+修法（已验证）：去掉 `__attribute__ ((constructor))`，在 `processSequence()` 里显式初始化一次：
+
+```cpp
+bool ServerTask::processSequence()
+{
+    static bool __seq_inited = false;
+    if (!__seq_inited) { initServerSequence(); __seq_inited = true; }
+    if (hasprocessSequence) return true;
+    ...
+```
+
+重编 SuperServer 后：Session 越过依赖检查、开始连 Record(7010)；Gateway 和 Scenes 也不再秒退（进程能活着）。
+
+### 8.2 挡路的第二层：原生源码版本比部署包新
+
+Session 越过依赖后卡在两处，都是**数据/配置与新代码不匹配**：
+
+```
+SessionServer ERROR: Unknown column 'BOSSEXP' in 'field list'
+SessionServer ERROR: SELECT SEPTID, NAME, CHARID, MASTER, `VOTE`, `CREATETIME`, `REPUTE`, ...
+I/O warning : failed to load external entity "Config/GameConfig.xml"
+SessionServer ERROR: ...读取配置失败 Config/GameConfig.xml
+```
+
+- 部署的 Zebra 库里没有 `BOSSEXP` 列（06 版 schema），
+- 整台机器上也**没有** `Config/GameConfig.xml`（`src/server/SessionServer/GameConfigMgrX.cpp`、
+  `ScenesServer/GameConfigMgr.cpp` 都要它），源码树里也不带这份数据文件和建表脚本。
+
+也就是说 `p3-934bf0d` 这棵源码树对应的服务端版本 ≠ 部署包（06 版）的 DB/配置。
+继续走全原生，就得先把 DB schema 补到新版本 + 造出 `Config/GameConfig.xml`，成本不可估。
+
+### 8.3 结论与现行方案
+
+| 方案 | 结果 |
+|---|---|
+| 全原生 8 服务 | Super 的坑已修（可复用），但卡在 schema + 配置缺失；6010 仍起不来 |
+| **原生 FL + Wine 其余（现用）** | 9/10 端口在听，只有 6010 缺；客户端登录面正常（8000 有合法回包） |
+
+现行部署（已恢复并核对）：
+
+```
+8000/8001/8002  原生 FLServer
+10000 Super / 7010 Record / 7020 Bill / 6012 Mini / 6001 Session / 6020 Gateway   Wine 原版
+6010 Scenes     缺（Wine 版被 VMProtect 拦，原生版卡 schema）
+```
+
+### 8.4 config.xml 的三个 patch 与副作用（重要）
+
+排查过程中对 `/root/zt/server/config.xml` 做过三处改动，副作用不一样，回滚时别搞混：
+
+| patch | 内容 | 影响 | 现在状态 |
+|---|---|---|---|
+| `threadPoolCapacity` | 8 个服务段各插 `<threadPoolCapacity>64</threadPoolCapacity>` | 原生构建必需（不补则任务池容量 0，连接一律 FATAL）；对 Wine 原版无害 | **保留** |
+| `logfilename` | `log/xxx` → `log/nat/xxx.log` | 原生 log4cxx 要文件；但 **Wine 原版要求它是目录**，改成文件后点「启动服务」会静默失败（进程在、窗口在、端口不起） | **已回滚** |
+| `ifname` | `10.1.0.10` → `eth0` | 原生 `zSocket::getIPByIfName` 用 ioctl SIOCGIFADDR 要网卡名；Wine 原版沿用 IP。改错会导致 Super 绑定失败（`DEBUG: 0.0.0.0` + 绑定错误） | **已回滚为 IP** |
+
+备份文件：`config.xml.bak-threadpool`、`config.xml.bak-logfile`、`config.xml.bak-ifname`。
+
+### 8.5 原生构建侧的两个坑
+
+- 链接：`preflight` 探针要 `-llua -lluabind`，系统里没有 32 位版本；静态库在
+  `/root/p3-test/p3-lua-deps/lib`（`liblua.a` / `libluabind.a`），
+  用 `export LIBRARY_PATH=/root/p3-test/p3-lua-deps/lib:/usr/local/lib` 即可，不必改脚本。
+- 单服务重编：`build_native_server.py` 用 `Path(__file__).parents[1]` 定位 ROOT，
+  把裁剪版脚本放到 `/root/` 会算出 `ROOT=/` 并报 `Missing source Makefile: base/EncDec`；
+  必须放在仓库 `tools/` 下（`tools/build_super_only.py`）。另外输出目录 `build/p3-native`
+  已存在时会直接拒绝，需要先 `mv` 开。
+
+工具：`tools/native_stack.sh`（整栈原生 + 两个已知坑的处置）、`tools/fix_super_build.sh`（单编 SuperServer）。
