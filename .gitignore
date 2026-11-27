@@ -95,3 +95,13 @@ state/*.lock
 .auth/
 .secrets/
 *.local.json
+
+# 本机抓包产物：只含 SSH/浏览器噪音，不入库
+captures/win-client-*.pcapng
+captures/win-captest.pcapng
+captures/tmp-*
+
+# 本机抓包产物：只含 SSH/浏览器噪音，不入库
+captures/win-client-*.pcapng
+captures/win-captest.pcapng
+captures/tmp-*

@@ -136,3 +136,51 @@ MiniServer 自己是 `ServerID=23, IP=10.1.0.10, Port=6012`，6012 也在听；�
 1. 对齐 MiniServer 的注册类型/ID 与 Gateway 的匹配条件 → 6020 起来；
 2. 6020 起来后，用官方客户端点一次登录，服务器侧 `tcpdump` 存档 → 这才是 P3 的最终 golden（客户端自己认，比任何字节比对都硬）；
 3. 再回头处理 ScenesServer（VMProtect，见 `20261127-scenesserver-blocked-by-vmprotect.md`），它不影响登录，只影响进图。
+
+## 7. 补充实测（同日 20:49–21:07）
+
+### 7.1 6020 网关的真因是「启动顺序」，不是端口
+
+Mini 报到 Super 是 `20:31:34`，Gateway 去问 Super 是 `20:31:32` —— 差 2 秒。
+`getServerEntryByType(23)` 遍历 `serverList` 只打印出 `11 / 12 / 20` 三种 type，没有 23（`MINISERVER`，见 `base/zMisc.h:43`），于是 `GatewayServer.cpp:158` 直接 `return false`。
+
+把 `srv.sh` 的 `ORDER` 从
+
+```
+super record bill fl session gate scene mini
+```
+
+改成
+
+```
+super record bill mini fl session gate scene
+```
+
+按新顺序重启 Gateway 后：`创建到服务器(10.1.0.10:6012)的连接成功` → `启动服务成功...` → 6020 开始监听。
+**MiniServer 必须先于 GatewayServer 向 Super 注册**，这条要写进 P4B 的 runbook。
+
+### 7.2 原生与 Wine 原版混跑，服务间协议不兼容
+
+原生 `ScenesServer`（`build/p3-native/ScenesServer`，8.06 MB ELF32）在补齐 `threadPoolCapacity` 后能起线程池、能连上 Super：
+
+```
+zTCPTaskPool::init
+... 线程池容量 64, 最大连接 512 ...
+zTCPClient::connect
+INFO: 创建到服务器(10.1.0.10:10000)的连接成功
+ERROR: (zSubNetService::init)等待服务器管理器返回信息失败
+```
+
+`sendCmd(t_Startup_Request)` 发出去了，回包收不到 —— 原版 Super 直接关连接，且 Super 侧日志此后 8 分钟无任何写入。
+判断：原生 GCC 编译的 `t_Startup_Request` 与原版 MSVC 的字段布局/对齐不一致（原生带 `-D_USE_CMD_NAMESPACE -D_USE_EPOLL_`）。
+
+**结论：不能混跑。要么全原生 8 个服务，要么全原版。**
+现状「原生 FL + 原版其余」是刻意为之——原版 FL 的客户端接入面在 Wine 下不通（§1），其余服务用原版是为了保住已验证可用的内部互联。
+下一步是整栈换原生（`build/p3-native/` 下 8 个产物齐全），用同一套编译产物保证协议一致。
+
+### 7.3 帧解码器的两个坑（已在工具里处理）
+
+- **ENC 位在长度头里，长度头本身又被加密**：必须先解 8 字节才知道长度，但不知道长度又不知道解多少。
+  解法：同时计算「解出来的头」和「原始头」，用长度合法性（1..1 MiB）+ ENC 位判断该信谁。
+- **加密帧长度含零填充、明文帧不含**：真实客户端首包加密时 `len=12`（10 字节 body + 2 填充），
+  降级明文重发时 `len=10`（填充不进长度）。切帧一律按 `align8(4+len)` 前进，body 只取 `4..4+len`。
