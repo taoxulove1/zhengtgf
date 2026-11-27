@@ -7,12 +7,14 @@
 从仓库根目录在 Linux 上执行。
 
 ```bash
-make -C src/server-rebuild preflight
-make -C src/server-rebuild
+make -C src/server-rebuild preflight PYTHON=python3
+make -C src/server-rebuild PYTHON=python3
 python3 tools/validate_repo.py --phase P3
 ```
 
 预检会用 `g++ -m32` 实际编译、链接一个小程序。各开发库需与 x86 ABI 匹配。原 Makefile 使用 MySQL 兼容客户端、libxml2、log4cxx、GD、JPEG、OpenSSL、zlib、Lua 5.1 和 luabind。查询工具应支持 `mysql_config --libs_r` 及 `xml2-config`。预检通过后，构建入口在临时源码副本中调用各模块原有 Makefile，按库和服务的依赖顺序工作。
+
+构建入口兼容目标机记录的 Python 3.6。它将预检使用的 `gcc` 和 `g++` 名称传给子 Make，确保实际编译使用同一套 PATH 工具链。目标机编译器及开发库的当前状态仍需连通后核验。
 
 成功后 `build/p3-native/` 应包含 SuperServer、FLServer、RecordServer、BillServer、MiniServer、SessionServer、ScenesServer 和 GatewayServer 八个 x86 Linux ELF。构建失败时以首个编译或链接错误为准。现有输出目录会被保留，复跑使用新的检出目录或先移走已验收的本地产物。
 

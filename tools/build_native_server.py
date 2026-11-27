@@ -50,7 +50,10 @@ def preflight(directory):
         ("mysql_config", "--cflags"), ("xml2-config", "--cflags"),
         ("mysql_config", "--libs_r"), ("xml2-config", "--libs"),
     ):
-        result = subprocess.run([helper, option], text=True, capture_output=True, check=False)
+        result = subprocess.run(
+            [helper, option], universal_newlines=True, stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE, check=False,
+        )
         if result.returncode:
             raise ValueError(f"Dependency query failed: {helper} {option}")
         flags.extend(shlex.split(result.stdout))
@@ -60,7 +63,7 @@ def preflight(directory):
         ["g++", "-m32", "-x", "c++", "-", "-o", str(probe), *flags,
          "-L/usr/local/lib", "-llog4cxx", "-lgd", "-ljpeg", "-lssl", "-lz",
          "-lpthread", "-llua", "-lluabind"],
-        input="int main() { return 0; }\n", text=True, check=True,
+        input="int main() { return 0; }\n", universal_newlines=True, check=True,
     )
     if not elf32_executable(probe):
         raise ValueError("The dependency probe did not produce an x86 Linux ELF executable")
@@ -75,11 +78,14 @@ def build(work, output, jobs):
         ignore=shutil.ignore_patterns(".svn", ".backup", "*.tar.gz", "*.o", "*.a", "*.so", ".*.d"),
     )
     for service in SERVICES:
-        (source / service / service).unlink(missing_ok=True)
+        binary = source / service / service
+        if binary.is_file():
+            binary.unlink()
     for module in MODULES:
         print(f"Building {module}", flush=True)
         subprocess.run(
-            ["make", "-C", str(source / module), f"-j{jobs}", f"ZEBRA_COMPILE_OPT={FLAGS}"],
+            ["make", "-C", str(source / module), f"-j{jobs}", "CC=gcc", "CXX=g++",
+             f"ZEBRA_COMPILE_OPT={FLAGS}"],
             check=True,
         )
 
@@ -107,7 +113,7 @@ def main():
         print("P3 x86 Linux compiler and link dependencies passed.")
         if not args.check:
             OUTPUT.parent.mkdir(parents=True, exist_ok=True)
-            with tempfile.TemporaryDirectory(prefix="p3-native-", dir=OUTPUT.parent) as directory:
+            with tempfile.TemporaryDirectory(prefix="p3-native-", dir=str(OUTPUT.parent)) as directory:
                 build(Path(directory), OUTPUT, args.jobs)
     except (OSError, ValueError, subprocess.CalledProcessError) as error:
         parser.exit(1, f"P3 build failed: {error}\n")
