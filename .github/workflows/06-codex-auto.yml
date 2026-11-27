@@ -1,0 +1,167 @@
+name: 06 Codex 自动干活
+
+# 一条龙：定时 / push / 手动 → 取下一个可执行任务 → Codex 在 runner 上把活干完
+# → 跑该任务门禁 → 通过置 done、不通过置 blocked → 提交回写 main。
+# 需要仓库 Secret：OPENAI_API_KEY。
+
+on:
+  workflow_dispatch:
+    inputs:
+      task_id:
+        description: "指定任务 ID（P2/P3/P4A/P4B/P5/P6），留空自动取下一个"
+        required: false
+        default: ""
+      only_pick:
+        description: "只选任务不执行（true/false）"
+        required: false
+        default: "false"
+  schedule:
+    # 每日 23:00 CST（UTC 15:00），睡觉时也在跑
+    - cron: "0 15 * * *"
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: codex-auto
+  cancel-in-progress: false
+
+env:
+  HAS_KEY: ${{ secrets.OPENAI_API_KEY != '' }}
+  RUN_ONLY_PICK: ${{ github.event.inputs.only_pick }}
+
+jobs:
+  codex:
+    name: codex
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    # push 触发的机器人回写提交直接跳过，避免自激
+    if: >-
+      github.event_name != 'push' ||
+      (!contains(github.event.head_commit.message, '[skip ci]')
+       && !startsWith(github.event.head_commit.message, 'chore('))
+    steps:
+      - name: 检出
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 选定任务
+        id: pick
+        env:
+          INPUT_TID: ${{ github.event.inputs.task_id }}
+        run: |
+          set -uo pipefail
+          TID="$INPUT_TID"
+          if [ -z "$TID" ]; then
+            if python tools/taskctl.py next --json > /tmp/next.json 2>/dev/null; then
+              TID=$(python -c "import json;print(json.load(open('/tmp/next.json'))['id'])")
+            else
+              echo "task_id=" >> "$GITHUB_OUTPUT"
+              echo "无可执行任务（前置未 done 或全部完成）" >> "$GITHUB_STEP_SUMMARY"
+              python tools/taskctl.py status >> "$GITHUB_STEP_SUMMARY" || true
+              exit 0
+            fi
+          fi
+          echo "task_id=$TID" >> "$GITHUB_OUTPUT"
+          echo "### 本次任务：\`$TID\`" >> "$GITHUB_STEP_SUMMARY"
+          python tools/taskctl.py status >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: 生成 Codex 指令
+        if: steps.pick.outputs.task_id != ''
+        env:
+          TID: ${{ steps.pick.outputs.task_id }}
+        run: |
+          set -euo pipefail
+          mkdir -p .codex
+          python tools/auto/build_prompt.py "$TID" > .codex/run-prompt.md
+          echo "指令长度: $(wc -c < .codex/run-prompt.md) 字节"
+
+      - name: 无密钥提示
+        if: steps.pick.outputs.task_id != '' && env.HAS_KEY != 'true'
+        run: |
+          {
+            echo "### 未执行：缺少 OPENAI_API_KEY"
+            echo ""
+            echo "到仓库 Settings → Secrets and variables → Actions 新建 `OPENAI_API_KEY` 后重跑本工作流。"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Codex 执行
+        if: steps.pick.outputs.task_id != '' && env.HAS_KEY == 'true' && env.RUN_ONLY_PICK != 'true'
+        uses: openai/codex-action@v1
+        with:
+          openai-api-key: ${{ secrets.OPENAI_API_KEY }}
+          prompt-file: .codex/run-prompt.md
+          sandbox: workspace-write
+          safety-strategy: drop-sudo
+          output-file: .codex/codex-last.md
+
+      - name: 置 running 并跑门禁
+        id: gate
+        if: steps.pick.outputs.task_id != '' && env.HAS_KEY == 'true' && env.RUN_ONLY_PICK != 'true'
+        env:
+          TID: ${{ steps.pick.outputs.task_id }}
+        run: |
+          set +e
+          python tools/taskctl.py start "$TID" || true
+          python tools/taskctl.py gate "$TID" 2>&1 | tee /tmp/gate.log
+          RC=${PIPESTATUS[0]}
+          echo "rc=$RC" >> "$GITHUB_OUTPUT"
+          echo "门禁退出码：$RC"
+          {
+            echo "### 门禁结果"
+            echo ""
+            echo '```'
+            tail -40 /tmp/gate.log
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: 置 done 或 blocked
+        if: steps.gate.outputs.rc != ''
+        env:
+          TID: ${{ steps.pick.outputs.task_id }}
+          RC: ${{ steps.gate.outputs.rc }}
+        run: |
+          set -uo pipefail
+          if [ "$RC" = "0" ]; then
+            python tools/taskctl.py done "$TID"
+          else
+            python tools/taskctl.py block "$TID" --reason "cloud gate rc=$RC"
+          fi
+          python tools/taskctl.py status >> "$GITHUB_STEP_SUMMARY" || true
+
+      - name: 回写并推送
+        if: always() && steps.pick.outputs.task_id != '' && env.HAS_KEY == 'true' && env.RUN_ONLY_PICK != 'true'
+        env:
+          TID: ${{ steps.pick.outputs.task_id }}
+        run: |
+          set -uo pipefail
+          git config user.name  "codex-bot"
+          git config user.email "codex-bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "无变更，跳过提交"
+            exit 0
+          fi
+          git commit -m "feat($TID): codex 自动执行产出 [skip ci]"
+          git push origin HEAD:main
+
+      - name: 上传门禁日志
+        if: always() && steps.pick.outputs.task_id != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: codex-${{ steps.pick.outputs.task_id }}-${{ github.run_id }}
+          path: |
+            /tmp/gate.log
+            .codex/codex-last.md
+          retention-days: 14
+          if-no-files-found: ignore
