@@ -18,18 +18,27 @@ PING_REPLY = b"\x1e\x01"
 
 def port_streams(capture):
     streams = {}
-    for _, link_type, packet in iter_packets(capture):
+    packet_count = 0
+    sent_bytes = received_bytes = 0
+    for _, link_type, packet in iter_packets(capture, strict=True):
         link = strip_link(link_type, packet)
         if link is None:
             continue
         tcp = parse_tcp(*link)
         if tcp is None or PORT not in (tcp["sport"], tcp["dport"]):
             continue
+        packet_count += 1
+        if tcp["sport"] == PORT:
+            sent_bytes += len(tcp["payload"])
+        else:
+            received_bytes += len(tcp["payload"])
         if tcp["payload"]:
             key = tcp["src"], tcp["sport"], tcp["dst"], tcp["dport"]
             seq = (tcp["seq"] + bool(tcp["flags"] & 0x02)) & 0xFFFFFFFF
             streams.setdefault(key, []).append((seq, tcp["payload"]))
-    return streams
+    print("[CAPTURE] tcp8002_packets={} client_payload_bytes={} server_payload_bytes={}".format(
+        packet_count, received_bytes, sent_bytes))
+    return streams, sent_bytes
 
 
 def reassemble(parts):
@@ -71,7 +80,10 @@ def compare(capture, native_request, native_reply):
             or native_reply[4:6] != PING_REPLY or zone(native_request) != zone(native_reply)):
         raise ValueError("Expected the native ping-request.bin and ping-reply.bin from one run")
 
-    streams = port_streams(capture)
+    streams, sent_bytes = port_streams(capture)
+    if not sent_bytes:
+        print("[P3_PENDING][ORIGINAL_BYTES] No server payload on TCP 8002")
+        return 2
     print("[CAPTURE] tcp8002_directions={}".format(len(streams)))
     observed_zones = set()
     matched_request = False
@@ -121,10 +133,22 @@ def compare(capture, native_request, native_reply):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("capture", type=Path)
-    parser.add_argument("native_request", type=Path)
-    parser.add_argument("native_reply", type=Path)
+    parser.add_argument("native_request", type=Path, nargs="?")
+    parser.add_argument("native_reply", type=Path, nargs="?")
+    parser.add_argument("--inspect", action="store_true",
+                        help="Check capture integrity and summarize TCP 8002 traffic")
     args = parser.parse_args()
+    if args.inspect and (args.native_request or args.native_reply):
+        parser.error("--inspect takes only the capture file")
+    if not args.inspect and not (args.native_request and args.native_reply):
+        parser.error("comparison requires both native PING files")
     try:
+        if args.inspect:
+            _, sent_bytes = port_streams(args.capture)
+            if not sent_bytes:
+                print("[P3_PENDING][ORIGINAL_BYTES] No server payload on TCP 8002")
+                return 2
+            return 0
         return compare(args.capture, args.native_request.read_bytes(), args.native_reply.read_bytes())
     except (OSError, ValueError, struct.error) as error:
         print("[FAIL][CAPTURE] {}".format(error), file=sys.stderr)

@@ -38,6 +38,8 @@ cd /root/p3-test && python3 p3_runtime_smoke.py p3-build-luabind.log
 
 后续收到的 `p8002.pcap` 有 39 条完整记录和 14 字节未完成的末尾记录。可读部分有 6 条 TCP 连接，5 条可见服务端 FIN 或 RST，服务端应用层负载为 0。同期截图出现 Wine 中的 `accept()` 10057。这些证据只说明原版监听仍需排查，尚无可比响应。先核对原版进程的监听和日志，再用配套客户端重采区服列表流量。
 
+复核本地样本时，`p8002.b64` 解码为同一份截断文件，完整记录中客户端发往 `8002` 的 TCP 负载共 62 字节。`cap_hs.pcapng` 的 28 条 TCP 记录均涉及 `8000`。`cap_real.pcapng` 与 `cap_pu.pcapng` 字节相同，均无 `8002` 记录。原始样本保留在本机。
+
 原版 `flserver_8000/20261127/102848.log` 的末尾 40 行反复出现 `ServerTask::verifyConn`。本仓库对应源码将 `ServerTask` 用于服间端口，PING 端口由 `PingTask` 处理。应检查整份日志的 `PingTask`、`LoginTask` 和套接字错误记录，再与抓包时间对照。
 
 ```bash
@@ -74,9 +76,10 @@ Windows 客户端启动诊断源码位于 `tools/start-test-client.cs`。用 .NE
 ss -lntp | grep -E ':(8000|8001|8002)[[:space:]]'; ss -lntp 'sport = :8002' | grep -i 'flserver_r\.exe' && p3_capture=$(mktemp /root/p3-test/p3-original-ping.XXXXXXXX.pcap) && printf 'Capture: %s\n' "$p3_capture" && timeout -s INT 45 /usr/sbin/tcpdump -i any -nn -s 0 -U -w - 'tcp port 8002' > "$p3_capture"
 ```
 
-保存生成的 `.pcap`，以及 `p3-runtime-smoke.log` 中 `[RUNTIME_DIR]` 目录里的 `ping-request.bin` 和 `ping-reply.bin`。以下命令在本地仓库根目录执行，参数指向三份实际文件。只有同一 TCP 会话中有相同请求和完整响应，且响应逐字节相等，才输出 `[OK][ORIGINAL_RAW_BYTES]`。
+等待 `tcpdump` 打印统计并退出后，传回完整 `.pcap` 文件。也一并传回 `p3-runtime-smoke.log` 中 `[RUNTIME_DIR]` 目录里的 `ping-request.bin` 和 `ping-reply.bin`。以下命令在本地仓库根目录执行。第一条检查抓包记录是否完整，并统计 `8002` 流量。第二条对比实际请求和响应，只有响应逐字节相等才输出 `[OK][ORIGINAL_RAW_BYTES]`。
 
 ```bash
+python tools/p3_compare_ping_capture.py --inspect p3-original-ping.pcap
 python tools/p3_compare_ping_capture.py p3-original-ping.pcap ping-request.bin ping-reply.bin
 ```
 

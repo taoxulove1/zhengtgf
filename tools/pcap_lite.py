@@ -34,39 +34,57 @@ LINKTYPE_LINUX_SLL = 113
 LINKTYPE_LINUX_SLL2 = 276
 
 
-def read_pcapng(fh):
+def read_pcapng(fh, strict=False):
     """产出 (ts_epoch_float, linktype, raw_bytes)。"""
     data = fh.read()
     off = 0
     n = len(data)
     linktypes = []
-    while off + 12 <= n:
+    while off < n:
+        if off + 12 > n:
+            if strict:
+                raise ValueError(f"Incomplete pcapng block header at byte {off}")
+            break
         btype, blen = struct.unpack_from("<II", data, off)
         if blen < 12 or off + blen > n:
+            if strict:
+                raise ValueError(f"Incomplete or invalid pcapng block at byte {off}")
             break
+        if strict and (blen % 4 or struct.unpack_from("<I", data, off + blen - 4)[0] != blen):
+            raise ValueError(f"Invalid pcapng block length at byte {off}")
         body = data[off + 8: off + blen - 4]
         if btype == 0x0A0D0D0A:            # SHB
+            if strict and (len(body) < 16 or body[:4] != b"\x4d\x3c\x2b\x1a"):
+                raise ValueError(f"Unsupported or invalid pcapng section at byte {off}")
             linktypes = []
         elif btype == 0x00000001:          # IDB
+            if strict and len(body) < 8:
+                raise ValueError(f"Incomplete pcapng interface at byte {off}")
             lt = struct.unpack_from("<H", body, 0)[0]
             linktypes.append(lt)
         elif btype == 0x00000006:          # EPB
             iface, tsh, tsl, caplen, _orig = struct.unpack_from("<IIIII", body, 0)
+            if strict and (iface >= len(linktypes) or caplen > len(body) - 20 or caplen != _orig):
+                raise ValueError(f"Invalid interface or incomplete pcapng packet at byte {off}")
             ts = ((tsh << 32) | tsl) / 1e6
             pkt = body[20:20 + caplen]
             lt = linktypes[iface] if iface < len(linktypes) else LINKTYPE_ETHERNET
             yield ts, lt, pkt
         elif btype == 0x00000003:          # SPB
             caplen = struct.unpack_from("<I", body, 0)[0]
+            if strict and (not linktypes or caplen > len(body) - 4):
+                raise ValueError(f"Invalid interface or incomplete pcapng packet at byte {off}")
             pkt = body[4:4 + caplen]
             lt = linktypes[0] if linktypes else LINKTYPE_ETHERNET
             yield 0.0, lt, pkt
         off += blen
 
 
-def read_pcap(fh):
+def read_pcap(fh, strict=False):
     hdr = fh.read(24)
     if len(hdr) < 24:
+        if strict:
+            raise ValueError("Incomplete pcap file header")
         return
     magic = struct.unpack_from("<I", hdr, 0)[0]
     if magic == 0xA1B2C3D4:
@@ -79,27 +97,41 @@ def read_pcap(fh):
         endian, nano = ">", True
     else:
         raise ValueError(f"未知 pcap magic 0x{magic:08X}")
-    linktype = struct.unpack_from(endian + "I", hdr, 20)[0]
+    snaplen, linktype = struct.unpack_from(endian + "II", hdr, 16)
+    # The CentOS captures store the synthetic Linux cooked header in the
+    # captured length while leaving it out of the original length.
+    cooked_header_size = {LINKTYPE_LINUX_SLL: 16, LINKTYPE_LINUX_SLL2: 20}.get(linktype, 0)
     while True:
+        offset = fh.tell()
         rec = fh.read(16)
         if len(rec) < 16:
+            if strict and rec:
+                raise ValueError(f"Incomplete pcap packet header at byte {offset} ({len(rec)} of 16 bytes)")
             break
-        ts_s, ts_frac, caplen, _orig = struct.unpack(endian + "IIII", rec)
+        ts_s, ts_frac, caplen, original_size = struct.unpack(endian + "IIII", rec)
+        if strict:
+            if caplen < original_size:
+                raise ValueError(f"Truncated pcap packet at byte {offset} ({caplen} of {original_size} bytes)")
+            if caplen > snaplen or caplen - original_size not in (0, cooked_header_size):
+                raise ValueError(f"Invalid pcap packet length at byte {offset} ({caplen} bytes)")
         pkt = fh.read(caplen)
         if len(pkt) < caplen:
+            if strict:
+                raise ValueError(f"Incomplete pcap packet data at byte {offset} ({len(pkt)} of {caplen} bytes)")
             break
         div = 1e9 if nano else 1e6
         yield ts_s + ts_frac / div, linktype, pkt
 
 
-def iter_packets(path):
+def iter_packets(path, strict=False):
+    """Read a capture, optionally rejecting incomplete records or packet payloads."""
     with open(path, "rb") as fh:
         magic = fh.read(4)
         fh.seek(0)
         if magic == b"\x0a\x0d\x0d\x0a":
-            yield from read_pcapng(fh)
+            yield from read_pcapng(fh, strict=strict)
         else:
-            yield from read_pcap(fh)
+            yield from read_pcap(fh, strict=strict)
 
 
 # ------------------------------------------------------------------ 解码
