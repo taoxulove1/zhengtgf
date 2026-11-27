@@ -9,7 +9,7 @@ cat >> "$F" <<'EOF'
 
 # --- P3-WWW: official launcher HTTP (port 80) ---
 if ! ss -lnt 2>/dev/null | grep -q ':80 '; then
-  (cd /root/zt/www && nohup python3 -m http.server 80 </dev/null > http.log 2>&1 &)
+  (cd /root/zt/www && nohup python3 /root/zt/www/threaded_server.py 80 /root/zt/www </dev/null > http.log 2>&1 &)
   sleep 1
 fi
 EOF
