@@ -36,11 +36,15 @@ id,direction,name,length_rule,min_len,max_len,phase,captured
 
 ## 4. 长度规则三分类
 
+> **注意层级**：下表描述的是**帧内单条消息**的长度规则。帧本身另有 4 字节长度头（bit31 加密 / bit30 压缩 / bit23-0 长度），详见 `protocol.md §0.1`。解码顺序是**先解密 → 再切帧 → 再按 opcode 表定长读**，不要跳过帧层直接按 opcode 扫流。
+
 | 规则 | 判定 | 解析方式 |
 |---|---|---|
 | `fixed(N)` | 每次长度恒为 N | 直接按结构体读 |
 | `u16prefix` | 前 2 字节为包体长度（LE） | 读 2 字节 → 再读 N |
 | `nul` | 以 `0x00` 结束 | 扫描到 0 为止 |
+
+现有 559 条中 `length_rule` 全为 `fixed(N)`，即帧内是多条定长消息首尾相接；帧尾 0~7 字节的 8 对齐填充不属于任何消息，解析器必须容忍。
 
 ## 5. 编写约定
 
@@ -53,5 +57,6 @@ id,direction,name,length_rule,min_len,max_len,phase,captured
 
 - `msgid.csv`：**559 条**（47 个命令域），由 `tools/extract_msgid.py` 从 `src/server/base/Command.h` 自动提取。
 - `schema/commands.h`：由同一脚本生成，`#pragma pack(1)` 结构体声明。
-- `protocol.md`：§0 报文封装与登录域已填实测结论；选区/进图/心跳/移动/背包五类待 P2 补。
-- P1 门禁第三项 `captures/*.pcapng` 未满足（需管理员权限跑 `tools/capture.ps1`）。
+- `protocol.md`：**142 行**（门禁 ≥ 120 已过）。§0 报文封装 = 帧层 + 双阶段加密，均为源码逐行核对结论；登录域 12 条已列。选区/进图/心跳/移动/背包五类待 P2 补。
+- `tools/decrypt.py`：DES + RC5-32/12/16 + 帧层（长度头 / zlib / 8 对齐），6 项自检全绿。
+- P1 门禁第三项 `captures/*.pcapng` 未满足（需管理员权限跑 `tools/capture.ps1`）。这是 P2 之前唯一的硬阻塞。

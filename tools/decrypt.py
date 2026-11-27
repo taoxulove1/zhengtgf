@@ -149,6 +149,143 @@ def encdec(data: bytes, key: bytes, encrypt: bool) -> tuple:
     return bytes(buf), n - off
 
 
+# ---------------------------------------------------------------- RC5-32
+# 来源：src/client-legacy/EncDec/include/myrc5.h + source/myrc5.cpp
+# 参数：RC5-32/12/16（块 8 字节 / 12 轮 / 密钥 16 字节），小端装入
+RC5_P = 0xB7E15163
+RC5_Q = 0x9E3779B9
+M32 = 0xFFFFFFFF
+
+# 登录阶段密钥：src/client/RenderD3D/source/D3DFont.cpp:849（注释"客户端验证密钥"）
+LOGIN_KEY = bytes.fromhex("1cc41924c27d56c4235cc2291ff126e0")
+
+
+def _rotl(x, n):
+    n &= 31
+    return ((x << n) | (x >> (32 - n))) & M32
+
+
+def _rotr(x, n):
+    n &= 31
+    return ((x >> n) | (x << (32 - n))) & M32
+
+
+def rc5_setup(key: bytes, rounds: int = 12):
+    c = max(1, (len(key) + 3) // 4)
+    L = [0] * c
+    for i in range(len(key)):
+        L[i // 4] = (L[i // 4] | (key[i] << (8 * (i % 4)))) & M32
+    t = 2 * (rounds + 1)
+    S = [0] * t
+    S[0] = RC5_P
+    for i in range(1, t):
+        S[i] = (S[i - 1] + RC5_Q) & M32
+    A = B = i = j = 0
+    for _ in range(3 * max(t, c)):
+        A = S[i] = _rotl((S[i] + A + B) & M32, 3)
+        B = L[j] = _rotl((L[j] + A + B) & M32, (A + B) & 31)
+        i = (i + 1) % t
+        j = (j + 1) % c
+    return S
+
+
+def rc5_block(block8, S, encrypt=True):
+    a = int.from_bytes(block8[0:4], "little")
+    b = int.from_bytes(block8[4:8], "little")
+    n = len(S) // 2
+    if encrypt:
+        a = (a + S[0]) & M32
+        b = (b + S[1]) & M32
+        for i in range(1, n):
+            a = (_rotl(a ^ b, b) + S[2 * i]) & M32
+            b = (_rotl(b ^ a, a) + S[2 * i + 1]) & M32
+    else:
+        for i in range(n - 1, 0, -1):
+            b = _rotr((b - S[2 * i + 1]) & M32, a) ^ a
+            a = _rotr((a - S[2 * i]) & M32, b) ^ b
+        b = (b - S[1]) & M32
+        a = (a - S[0]) & M32
+    return a.to_bytes(4, "little") + b.to_bytes(4, "little")
+
+
+def rc5_encdec(data: bytes, key: bytes, encrypt: bool, rounds: int = 12):
+    """与 CDes::encdec 同构：每 8 字节一块，尾部余数原样返回。"""
+    S = rc5_setup(key, rounds)
+    buf = bytearray(data)
+    off, n = 0, len(buf)
+    while off <= n - 8:
+        buf[off:off + 8] = rc5_block(bytes(buf[off:off + 8]), S, encrypt)
+        off += 8
+    return bytes(buf), n - off
+
+
+# ---------------------------------------------------------------- 帧层
+# 来源：src/client/Client/Client.cpp:61-63
+#   typedef unsigned long tPackLengthType;
+#   #define PACKET_MAX_SIZE  0x00ffffff   // 数据包最大长度
+#   #define PACKET_FLAG_ENC  0x80000000   // 数据包加密
+#   #define PACKET_FLAG_ZIP  0x40000000   // 数据包压缩
+# 发送侧 Client.cpp:427-431：
+#   sendsize = ((datasize + 4 + 7) & ~7);          // 4 字节长度头一并参与加密，整体 8 对齐
+#   *(DWORD*)senddata = (sendsize - 4) | flags;
+#   *(DWORD*)senddata |= PACKET_FLAG_ENC;
+# 接收侧 Client.cpp:165-232：先按 8 字节块解密，再读长度头，ZIP 则 uncompress。
+FRAME_HDR = 4
+PACKET_MAX_SIZE = 0x00FFFFFF
+PACKET_FLAG_ENC = 0x80000000
+PACKET_FLAG_ZIP = 0x40000000
+
+
+def frame_build(body: bytes, zip_it: bool = True, key: bytes = None,
+                algo: str = "des", rounds: int = 12, min_zip: int = 32) -> bytes:
+    """复刻 CClient::Send 的封包：长度头 + 体，ZIP 阈值 32 字节，整体 8 对齐后加密。"""
+    import zlib
+    flags = 0
+    payload = body
+    if zip_it and len(body) > min_zip:
+        payload = zlib.compress(body, 9)
+        flags |= PACKET_FLAG_ZIP
+    n = (len(payload) + FRAME_HDR + 7) & ~7
+    buf = bytearray(n)
+    struct.pack_into("<I", buf, 0, (n - FRAME_HDR) | flags)
+    buf[FRAME_HDR:FRAME_HDR + len(payload)] = payload
+    if key:
+        flags |= PACKET_FLAG_ENC
+        struct.pack_into("<I", buf, 0, struct.unpack_from("<I", buf, 0)[0] | PACKET_FLAG_ENC)
+        if algo == "rc5":
+            out, _ = rc5_encdec(bytes(buf), key, True, rounds)
+        else:
+            out, _ = encdec(bytes(buf), key, True)
+        return out
+    return bytes(buf)
+
+
+def frame_parse(buf: bytes):
+    """把已解密的字节流切成一帧一帧，返回 [(flags, length, body)] 与尾部残留长度。
+
+    与 Client.cpp:165-232 一致：offset 前进 4 + length，不做 8 对齐回退。
+    """
+    out = []
+    off = 0
+    n = len(buf)
+    while off + FRAME_HDR < n:
+        raw = struct.unpack_from("<I", buf, off)[0]
+        flags = raw & ~PACKET_MAX_SIZE
+        length = raw & PACKET_MAX_SIZE
+        if length == 0 or off + FRAME_HDR + length > n:
+            break
+        body = buf[off + FRAME_HDR: off + FRAME_HDR + length]
+        if flags & PACKET_FLAG_ZIP:
+            import zlib
+            try:
+                body = zlib.decompress(body)
+            except Exception:
+                pass
+        out.append((flags, length, body))
+        off += FRAME_HDR + length
+    return out, n - off
+
+
 # ---------------------------------------------------------------- 解包
 def load_msgid(path="docs/protocol/msgid.csv"):
     table = {}
@@ -201,8 +338,13 @@ def main():
     ap.add_argument("--pcap", help="pcapng 路径，用 tshark 取 payload")
     ap.add_argument("--port", type=int, default=7001)
     ap.add_argument("--key", default="", help="8 字节密钥；hex 或 ascii:XXXXXXXX")
+    ap.add_argument("--algo", choices=["des", "rc5"], default="des",
+                    help="des=登录后阶段（8 字节密钥）；rc5=登录阶段（16 字节密钥，默认硬编码）")
+    ap.add_argument("--rounds", type=int, default=12, help="RC5 轮数，默认 12")
     ap.add_argument("--encrypt", action="store_true", help="反向加密（构造测试包）")
     ap.add_argument("--msgid", default="docs/protocol/msgid.csv")
+    ap.add_argument("--no-frame", action="store_true",
+                    help="跳过帧层解析（对端不带 4 字节长度头时用）")
     ap.add_argument("--selftest", action="store_true")
     a = ap.parse_args()
 
@@ -214,15 +356,41 @@ def main():
         back = des_crypt(ct, _subkeys(key), False)
         ok2 = back == pt
         print(f"DES 标准向量: {'通过' if ok1 else '失败'} ({ct.hex().upper()})")
-        print(f"往返一致: {'通过' if ok2 else '失败'}")
-        return 0 if (ok1 and ok2) else 1
+        print(f"DES 往返一致: {'通过' if ok2 else '失败'}")
 
-    if a.key.startswith("ascii:"):
+        # RC5-32/12/16 标准向量（RFC 2040）：key=全0, pt=全0 -> 21A5DBEE154B8F6D
+        rk = rc5_setup(bytes(16), 12)
+        rc = rc5_block(bytes(8), rk, True)
+        ok3 = rc.hex().upper() == "21A5DBEE154B8F6D"
+        rb = rc5_block(rc, rk, False)
+        ok4 = rb == bytes(8)
+        print(f"RC5 标准向量: {'通过' if ok3 else '失败'} ({rc.hex().upper()})")
+        print(f"RC5 往返一致: {'通过' if ok4 else '失败'}")
+        print(f"登录阶段密钥(硬编码): {LOGIN_KEY.hex()}")
+
+        # 帧层往返：构造 3 条消息 → ZIP 压缩 → RC5 加密 → 解密 → 切帧 → 逐字节比对
+        body = (b"\x01\x01" + struct.pack("<I", 0x11223344) + b"VER3.1.46.0\0")
+        body += b"\x01\x02" + struct.pack("<I", 0x55667788) + bytes(34)
+        body += b"\x0A\x05" + struct.pack("<I", 0x99AABBCC) + bytes(60)
+        wire = frame_build(body, zip_it=True, key=LOGIN_KEY, algo="rc5", rounds=12)
+        plain, _ = rc5_encdec(wire, LOGIN_KEY, False, 12)
+        frames, tail = frame_parse(plain)
+        ok5 = (len(frames) == 1 and frames[0][2] == body and tail == 0)
+        ok6 = (len(wire) % 8 == 0)
+        print(f"帧层往返一致: {'通过' if ok5 else '失败'} "
+              f"(wire={len(wire)}B, 帧={len(frames)}, body={len(body)}B, tail={tail})")
+        print(f"帧长 8 对齐: {'通过' if ok6 else '失败'} ({len(wire)} % 8 = {len(wire) % 8})")
+        return 0 if all([ok1, ok2, ok3, ok4, ok5, ok6]) else 1
+
+    if a.algo == "rc5" and not a.key:
+        key = LOGIN_KEY
+    elif a.key.startswith("ascii:"):
         key = a.key[6:].encode("latin-1")
     else:
         key = bytes.fromhex(a.key)
-    if len(key) != 8:
-        print("[ERR] 密钥必须 8 字节：--key 133457799BBCDFF1 或 --key ascii:ZT2011KEY", file=sys.stderr)
+    need = 16 if a.algo == "rc5" else 8
+    if len(key) != need:
+        print(f"[ERR] {a.algo.upper()} 密钥必须 {need} 字节，当前 {len(key)}", file=sys.stderr)
         return 2
 
     if a.payload:
@@ -235,13 +403,38 @@ def main():
         print("[ERR] 需要 --payload / --file / --pcap 之一", file=sys.stderr)
         return 2
 
-    out, rest = encdec(data, key, a.encrypt)
+    if a.algo == "rc5":
+        out, rest = rc5_encdec(data, key, a.encrypt, a.rounds)
+    else:
+        out, rest = encdec(data, key, a.encrypt)
     print(f"输入 {len(data)} 字节 → 处理 {len(data) - rest} 字节，尾部余数 {rest} 字节（按源码不加密）")
     print(f"明文前 64 字节: {out[:64].hex()}")
 
     table = load_msgid(a.msgid)
+
+    if a.encrypt:
+        # 加密方向只回显字节，不做帧解析
+        print(f"输出 hex: {out.hex()}")
+        return 0
+
+    stream = out
+    if not a.no_frame:
+        frames, tail = frame_parse(out)
+        if frames:
+            print(f"帧层：切出 {len(frames)} 帧，尾部残留 {tail} 字节")
+            for i, (flags, length, body) in enumerate(frames):
+                tag = []
+                if flags & PACKET_FLAG_ENC:
+                    tag.append("ENC")
+                if flags & PACKET_FLAG_ZIP:
+                    tag.append("ZIP")
+                print(f"  frame#{i}  len={length:<6} flags={','.join(tag) or '-'}  decompressed={len(body)}")
+            stream = b"".join(b for _, _, b in frames)
+    else:
+        print("帧层：已按 --no-frame 跳过")
+
     print(f"msgid 表 {len(table)} 条")
-    for m in parse_payload(out, table):
+    for m in parse_payload(stream, table):
         print(f"  +{m['offset']:<4} {m['opcode']}  {m['name']:<28} "
               f"len={m['len'] or '?'}  ts={m['timestamp']}  {m['payload_hex']}")
     return 0
