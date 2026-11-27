@@ -8,6 +8,7 @@
  * 
  */
 
+#include <algorithm>
 #include <mysql.h>
 #include <pthread.h>
 #include <unistd.h>
@@ -1432,7 +1433,7 @@ unsigned int MysqlClientHandle::exeInsert(const char *tableName,const dbCol *col
 				case zDBConnPool::DB_STR:
 					{
 						unsigned int len=strlen((char *)(data+offset));
-						len=len<?temp->size;
+						len = std::min(len, temp->size);
 						//You must allocate the to buffer to be at least length*2+1 bytes long.
 						char strData[len * 2 + 1];
 						mysql_real_escape_string(mysql, strData,(char *)(data+offset),len);
@@ -1779,7 +1780,7 @@ unsigned int MysqlClientHandle::exeUpdate(const char *tableName,const dbCol *col
 				case zDBConnPool::DB_STR:
 					{
 						unsigned int temp_len=strlen((char *)(data+offset));
-						temp_len=temp_len<?temp->size;
+						temp_len = std::min(temp_len, temp->size);
 						//You must allocate the to buffer to be at least length*2+1 bytes long.
 						char buffer[temp_len * 2 + 1];
 						mysql_real_escape_string(mysql, buffer,(char *)(data+offset),temp_len);
@@ -1834,7 +1835,7 @@ unsigned int MysqlClientHandle::exeUpdate(const char *tableName,const dbCol *col
 					{
 						unsigned int size = *((DWORD *)(data+offset));
 						size += sizeof(DWORD);
-						size = size <? temp->size;
+						size = std::min(size, temp->size);
 						uLong destLen = size * 120 / 100 + 12;
 						Bytef destBuffer[destLen * sizeof(Bytef)];
 						int retcode = compress(destBuffer, &destLen, (Bytef *)(data+offset),size);

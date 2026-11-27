@@ -285,7 +285,7 @@ unsigned int CountryInfo::getRealMapID(unsigned int map_id)
  */
 const char *CountryInfo::getRealMapName(const char *name)
 {
-	char *real = strstr(name , "¡¤");
+	const char *real = strstr(name , "¡¤");
 	if( real != NULL)
 	{
 		return real + 2;

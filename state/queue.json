@@ -32,12 +32,12 @@
       "finished_at": "2026-11-27T03:10:31Z"
     },
     "P3": {
-      "state": "blocked",
+      "state": "running",
       "started_at": "2026-11-27T03:10:41Z",
       "actor": "codex",
       "gate_rc": 1,
       "gate_at": "2026-11-27T03:13:10Z",
-      "note": "本机没有 Linux 构建环境，已配置构建机连通性被沙箱拒绝。待生成 8 个 x86 Linux ELF 并完成 7001 正常报文联调。",
+      "note": "实机 8 个 x86 Linux ELF 与运行库检查通过。隔离运行的原生 FLServer 监听 7001，7002 连续 PING 收发 100/100，进程未更换；30 个已定义字节与源码对照一致。原版 Wine 8002 提前断开原生格式的查询，待采集配套客户端的实际 PING 响应。",
       "blocked_at": "2026-11-27T03:13:10Z"
     },
     "P4A": {

@@ -157,13 +157,14 @@ int zSocket::recvToCmd(void *pstrCmd, const int nCmdLen, const bool wait)
 int zSocket::sendRawData(const void *pBuffer, const int nSize)
 {
 	//Zebra::logger->trace("zSocket::sendRawData");
+	int retcode = 0;
 	if (isset_flag(INCOMPLETE_WRITE))
 	{
 		clear_flag(INCOMPLETE_WRITE);
 		goto do_select;
 	}
 
-	int retcode = TEMP_FAILURE_RETRY(::send(sock, pBuffer, nSize, MSG_NOSIGNAL));
+	retcode = TEMP_FAILURE_RETRY(::send(sock, pBuffer, nSize, MSG_NOSIGNAL));
 	if (retcode == -1 && (errno == EAGAIN || errno == EWOULDBLOCK))
 	{
 do_select:

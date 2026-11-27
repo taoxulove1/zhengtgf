@@ -1,7 +1,7 @@
 # $Id: Makefile 6798 2006-06-07 17:25:25Z zjw $
 
 CXX = /usr/bin/g++
-CXXFLAGS = $(ZEBRA_COMPILE_OPT) -D_USE_EPOLL_ -D_USE_CMD_NAMESPACE -D_ENCDEC_MSG -D_WQH_DEBUG -D_ALL_SUPER_GM -I../base -I../script -I../zise -Wall  -D_ALL_SUPER_GM -D_GNU_SOURCE -D_REENTRANT `mysql_config --cflags` `xml2-config --cflags`
+CXXFLAGS = $(ZEBRA_COMPILE_OPT) -D_USE_EPOLL_ -D_USE_CMD_NAMESPACE -D_ENCDEC_MSG -D_WQH_DEBUG -D_ALL_SUPER_GM -I../base -I../script -I../zise $(if $(ZEBRA_BOOST_INCLUDE),-I"$(ZEBRA_BOOST_INCLUDE)") -Wall  -D_ALL_SUPER_GM -D_GNU_SOURCE -D_REENTRANT `mysql_config --cflags` `xml2-config --cflags`
 CXXLFLAGS = $(ZEBRA_COMPILE_OPT) -Wall -L../base -lzebra -lencdec -L../script -llua -lluabind -lpthread -lz `mysql_config --libs_r` `xml2-config --libs` -llog4cxx -L/usr/local/lib -lgd -ljpeg -lssl
 LIB_ZEBRA = ../base/libzebra.a
 

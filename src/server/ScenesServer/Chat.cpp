@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <stdarg.h>
 #include <fstream>
 #include <sstream>
@@ -4482,8 +4483,7 @@ bool Gm::summon(SceneUser *pUser,const char *para)
 		define.width = SCREEN_WIDTH;
 		define.height = SCREEN_HEIGHT;
 		define.num = atoi(prop["num"].c_str());
-		define.num = define.num >? 1;
-		define.num = define.num <? 100;
+		define.num = std::min(std::max(define.num, 1u), 100u);
 		define.interval = 30;
 		define.initstate = zSceneEntry::SceneEntry_Normal;
 		define.scriptID = atoi(prop["script"].c_str());

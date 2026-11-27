@@ -11,6 +11,7 @@
 #include "zDatabaseManager.h"
 #include "TimeTick.h"
 #include "Chat.h"
+#include <algorithm>
 #include <zlib.h>
 #include "TeamManager.h"
 #include "MessageSystem.h"
@@ -5047,7 +5048,7 @@ struct GetRequestUserAndSend
 BYTE GetRequestUserAndSend::_buf_map_user[zSocket::zSocket::MAX_USERDATASIZE];
 bool SceneUser::requestUser(Cmd::stRequestUserDataMapScreenUserCmd *rev)
 {
-	WORD loop = 200 <? rev->size;
+	WORD loop = std::min<unsigned int>(200, rev->size);
 
 	GetRequestUserAndSend request_user(this);
 	for(WORD i =0 ;i<loop ;i++)
@@ -5198,7 +5199,7 @@ BYTE GetRequestNpcAndSend::petBuf[zSocket::zSocket::MAX_USERDATASIZE];
 bool SceneUser::requestNpc(Cmd::stRequestMapNpcDataMapScreenUserCmd *rev)
 {
 	GetRequestNpcAndSend request_npc(this);
-	WORD loop = 200 <? rev->size;
+	WORD loop = std::min<unsigned int>(200, rev->size);
 
 	for(WORD i =0 ;i<loop ;i++)
 	{
@@ -8092,7 +8093,7 @@ void SceneUser::getWgLog(DWORD data)
 		//wg_log[strlen(wg_log)+2] = ((BYTE *)&data)[2];
 		//wg_log[strlen(wg_log)+3] = ((BYTE *)&data)[3];
 		bcopy(&data, &wg_log[strlen(wg_log)], sizeof(DWORD));
-		wg_log_len -= wg_log_len <? 4;
+		wg_log_len -= std::min(wg_log_len, 4u);
 #ifdef _XWL_DEBUG
 		//Zebra::logger->debug("%s 外挂日志 %s 长度%u", name, (char *)&data, wg_log_len);
 #endif

@@ -4,7 +4,7 @@ CXX = /usr/bin/g++
 CXXFLAGS = $(ZEBRA_COMPILE_OPT) -I../base -I../zise -Wall -D_GNU_SOURCE -D_REENTRANT `mysql_config --cflags` `xml2-config --cflags`
 CXXLFLAGS = $(ZEBRA_COMPILE_OPT) -Wall -L../base -lzebra -lencdec -lpthread -lz `mysql_config --libs_r` `xml2-config --libs` -llog4cxx -L/usr/local/lib -lgd -ljpeg
 LIB_ZEBRA = ../base/libzebra.a
-LIB_CRYPTO = ../base/libcrypto.a
+LIB_ENCDEC = ../base/libencdec.a
 
 OBJS = SuperServer.o ServerTask.o ServerManager.o TimeTick.o FLClient.o FLClientManager.o RoleregClient.o RoleregClientManager.o RoleregCache.o InfoClient.o InfoClientManager.o
 SRCS = $(OBJS:%.o=%.cpp)
@@ -21,7 +21,7 @@ $(DEPS): .%.d: %.cpp
 $(OBJS): %.o: %.cpp
 	$(CXX) -c $(CXXFLAGS) $< -o $@
 
-$(ALL_TARGETS): $(OBJS) $(LIB_ZEBRA) $(LIB_CRYPTO)
+$(ALL_TARGETS): $(OBJS) $(LIB_ZEBRA) $(LIB_ENCDEC)
 	$(CXX) $(OBJS) -o $@ $(CXXLFLAGS)
 
 clean:

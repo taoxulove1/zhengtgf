@@ -12,12 +12,9 @@
 #ifndef _ZLOGGER_H_
 #define _ZLOGGER_H_
 #include <log4cxx/logger.h>
-#include <log4cxx/dailyrollingfileappender.h>
+#include <string>
 #include "zType.h"
 #include "zMutex.h"
-
-using namespace log4cxx;
-using namespace log4cxx::helpers;
 
 /**
  * \def MSGBUF_MAX
@@ -57,19 +54,19 @@ class zLogger
 			 */
 			enum zLevelInt
 			{
-				ALARM_INT	= Level::ERROR_INT,
-				IFFY_INT	= Level::WARN_INT,
-				TRACE_INT	= Level::INFO_INT,
-				GBUG_INT	= Level::DEBUG_INT
+				ALARM_INT	= log4cxx::Level::ERROR_INT,
+				IFFY_INT	= log4cxx::Level::WARN_INT,
+				TRACE_INT	= log4cxx::Level::INFO_INT,
+				GBUG_INT	= log4cxx::Level::DEBUG_INT
 			};
 
-			static const LevelPtr LEVELALARM;
-			static const LevelPtr LEVELIFFY;
-			static const LevelPtr LEVELTRACE;
-			static const LevelPtr LEVELGBUG;
+			static const log4cxx::LevelPtr LEVELALARM;
+			static const log4cxx::LevelPtr LEVELIFFY;
+			static const log4cxx::LevelPtr LEVELTRACE;
+			static const log4cxx::LevelPtr LEVELGBUG;
 
-			LevelPtr zlevel;
-			zLevel(LevelPtr level);
+			log4cxx::LevelPtr zlevel;
+			zLevel(log4cxx::LevelPtr level);
 
 			public:
 			/**
@@ -136,17 +133,17 @@ class zLogger
 			static const zLevel * ALL;
 		};
 
-		zLogger(const String & name="Zebra");
+		zLogger(const std::string & name="Zebra");
 		~zLogger();
 
-		const String & getName();
-		void setName(const String & setName);
+		const std::string & getName();
+		void setName(const std::string &name);
 		bool addConsoleLog();
 		void removeConsoleLog();
-		bool addLocalFileLog(const String &file);
-		void removeLocalFileLog(const String &file);
-		bool addSysLog(const String & host);
-		void removeSysLog(const String & host);
+		bool addLocalFileLog(const std::string &file);
+		void removeLocalFileLog(const std::string &file);
+		bool addSysLog(const std::string &host = "127.0.0.1");
+		void removeSysLog(const std::string &host = "127.0.0.1");
 
 		void setLevel(const zLevel * zLevelPtr);
 		void setLevel(const std::string &level);
@@ -164,40 +161,8 @@ class zLogger
 		bool gbug(const char * pattern, ...);
 
 	private:
-		/**
-		 * \brief 本类只为了能以正确的时间写文件名,而从log4cxx::DailyRollingFileAppender继承实现的
-		 *
-		 * 增加了#setTimeZone函数和重构了#activateOptions函数,其他的用法请参见log4cxx手册
-		 */
-		class zLoggerLocalFileAppender:public DailyRollingFileAppender
-		{
-			private:
-				/**
-				 * \brief 写日志文件名所用的时区
-				 */
-				static TimeZonePtr tz;
-			public:
-				zLoggerLocalFileAppender();
-				~zLoggerLocalFileAppender();
-
-				void setTimeZone(const String &timeZone);
-				void activateOptions();
-		};
-
-		class PowerLogger:public Logger
-		{
-			public:
-				void setName(const String  &s)
-				{
-					name=s;
-				}
-				
-			protected:
-				PowerLogger(const String &s):Logger(s) { }
-
-		};
-
-		LoggerPtr logger;
+		std::string loggerName;
+		log4cxx::LoggerPtr logger;
 		char message[MSGBUF_MAX];
 		zMutex msgMut;
 };

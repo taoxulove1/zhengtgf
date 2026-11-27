@@ -166,17 +166,17 @@ class zAStar
 		 *
 		 * \param tempPos 寻路过程的中间点
 		 * \param destPos 目的点坐标
-		 * \param radius 寻路范围，超出范围的视为目的地不可达
+		 * \param searchRadius 寻路范围，超出范围的视为目的地不可达
 		 * \return 返回是否可到达目的地
 		 */
-		virtual bool moveable(const zPos &tempPos, const zPos &destPos, const int radius = radius) = 0;
+		virtual bool moveable(const zPos &tempPos, const zPos &destPos, const int searchRadius = radius) = 0;
 		/**
 		 * \brief 物件向某一个方向移动
 		 * \param direct 方向
-		 * \param step 表示步长
+		 * \param moveStep 表示步长
 		 * \return 移动是否成功
 		 */
-		virtual bool move(const int direct, const int step = step) = 0;
+		virtual bool move(const int direct, const int moveStep = step) = 0;
 		/**
 		 * \brief 使物件向某一个点移动
 		 * 带寻路算法的移动

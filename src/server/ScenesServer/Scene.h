@@ -172,7 +172,7 @@ public:
 		 */
 		const char *getRealName() const
 		{
-			char *real = strstr(name , "¡¤");
+			const char *real = strstr(name , "¡¤");
 			if( real != NULL)
 				return real + 2;
 			else

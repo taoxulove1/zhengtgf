@@ -8,33 +8,50 @@
  */
 
 #include "zLogger.h"
-#include "zTime.h"
 #include <stdarg.h>
-#include <log4cxx/patternlayout.h>
+#include <stdio.h>
 #include <log4cxx/consoleappender.h>
-#include <log4cxx/helpers/dateformat.h>
+#include <log4cxx/dailyrollingfileappender.h>
+#include <log4cxx/helpers/pool.h>
+#include <log4cxx/helpers/transcoder.h>
 #include <log4cxx/net/syslogappender.h>
-#include <sys/stat.h>
-#include <time.h>
+#include <log4cxx/patternlayout.h>
 
-using namespace log4cxx::net;
+using namespace log4cxx;
+using log4cxx::helpers::Pool;
+using log4cxx::helpers::Transcoder;
+using log4cxx::net::SyslogAppender;
+using log4cxx::net::SyslogAppenderPtr;
 
-const LevelPtr zLogger::zLevel::LEVELALARM(new Level(ALARM_INT,_T("ALARM"),3));
-const LevelPtr zLogger::zLevel::LEVELIFFY(new Level(IFFY_INT,_T("IFFY"),3));
-const LevelPtr zLogger::zLevel::LEVELTRACE(new Level(TRACE_INT,_T("TRACE"),3));
-const LevelPtr zLogger::zLevel::LEVELGBUG(new Level(GBUG_INT,_T("GBUG"),3));
+namespace {
 
-const zLogger::zLevel *  zLogger::zLevel::OFF=new zLevel(Level::OFF);
-const zLogger::zLevel *  zLogger::zLevel::FATAL=new zLevel(Level::FATAL);
+const LogString logPattern = LOG4CXX_STR("%d{yyMMdd-HH:mm:ss }%c %5p: %m%n");
+
+LogString toLogString(const std::string &value)
+{
+	LogString result;
+	Transcoder::decode(value, result);
+	return result;
+}
+
+}
+
+const LevelPtr zLogger::zLevel::LEVELALARM(new Level(ALARM_INT,LOG4CXX_STR("ALARM"),3));
+const LevelPtr zLogger::zLevel::LEVELIFFY(new Level(IFFY_INT,LOG4CXX_STR("IFFY"),3));
+const LevelPtr zLogger::zLevel::LEVELTRACE(new Level(TRACE_INT,LOG4CXX_STR("TRACE"),3));
+const LevelPtr zLogger::zLevel::LEVELGBUG(new Level(GBUG_INT,LOG4CXX_STR("GBUG"),3));
+
+const zLogger::zLevel *  zLogger::zLevel::OFF=new zLevel(Level::getOff());
+const zLogger::zLevel *  zLogger::zLevel::FATAL=new zLevel(Level::getFatal());
 const zLogger::zLevel *  zLogger::zLevel::ALARM=new zLevel(LEVELALARM);
-const zLogger::zLevel *  zLogger::zLevel::ERROR=new zLevel(Level::ERROR);
+const zLogger::zLevel *  zLogger::zLevel::ERROR=new zLevel(Level::getError());
 const zLogger::zLevel *  zLogger::zLevel::IFFY=new zLevel(LEVELIFFY);
-const zLogger::zLevel *  zLogger::zLevel::WARN=new zLevel(Level::WARN);
+const zLogger::zLevel *  zLogger::zLevel::WARN=new zLevel(Level::getWarn());
 const zLogger::zLevel *  zLogger::zLevel::TRACE=new zLevel(LEVELTRACE);
-const zLogger::zLevel *  zLogger::zLevel::INFO=new zLevel(Level::INFO);
+const zLogger::zLevel *  zLogger::zLevel::INFO=new zLevel(Level::getInfo());
 const zLogger::zLevel *  zLogger::zLevel::GBUG=new zLevel(LEVELGBUG);
-const zLogger::zLevel *  zLogger::zLevel::DEBUG=new zLevel(Level::DEBUG);
-const zLogger::zLevel *  zLogger::zLevel::ALL=new zLevel(Level::ALL);
+const zLogger::zLevel *  zLogger::zLevel::DEBUG=new zLevel(Level::getDebug());
+const zLogger::zLevel *  zLogger::zLevel::ALL=new zLevel(Level::getAll());
 
 /**
  * \brief zLevel构造函数
@@ -45,75 +62,16 @@ zLogger::zLevel::zLevel(LevelPtr level):zlevel(level)
 }
 
 
-TimeZonePtr zLogger::zLoggerLocalFileAppender::tz(TimeZone::getDefault());
-
-/**
- * \brief 构造一个本地文件Appender 
- */
-zLogger::zLoggerLocalFileAppender::zLoggerLocalFileAppender()
-{
-}
-
-/**
- * \brief 析构时，回收DateFormat内存
- */
-zLogger::zLoggerLocalFileAppender::~zLoggerLocalFileAppender()
-{
-	SAFE_DELETE(df);
-}
-
-/**
- * \brief 设置时区
- *
- * \param timeZone 时区字符串 
- */
-void zLogger::zLoggerLocalFileAppender::setTimeZone(const String &timeZone)
-{
-	tz=TimeZone::getTimeZone(timeZone);
-}
-
-/**
- * \brief 激活所设置的选项
- */
-void zLogger::zLoggerLocalFileAppender::activateOptions()
-{
-	//设置时区和预定文件
-	rc.setTimeZone(tz);
-	String ss;
-	zRTime::getLocalTZ(ss);
-	char tzstr[64];
-	strncpy(tzstr,"TZ=",3);
-	strncpy(tzstr+3,ss.c_str(),60);
-	DailyRollingFileAppender::activateOptions();
-	//由于DailyRollingFileAppender::activateOptions()会修改时区环境变量，故执行完后再修改回来 
-	putenv(tzstr);
-	tzset();
-	if (!datePattern.empty() && !fileName.empty())
-	{
-		SAFE_DELETE(df);
-		df=new helpers::DateFormat(datePattern,tz);
-
-		int64_t lastModified = 0;
-		struct stat fileStats;
-		if (::stat(T2A(fileName.c_str()), &fileStats) == 0)
-			lastModified = (int64_t)fileStats.st_mtime * 1000; 
-
-		scheduledFilename = fileName + df->format(lastModified);
-	} 
-}
-
 /**
  * \brief 构造一个zLogger 
  *
  * \param  name zLogger的名字，将会出现在输出的日志中的每一行
  */
-zLogger::zLogger(const String &name)
+zLogger::zLogger(const std::string &name)
+	: loggerName(name), logger(Logger::getLogger(name))
 {
-	///std::cout << __PRETTY_FUNCTION__ << std::endl;
 	bzero(message, sizeof(message));
-	logger = Logger::getLogger(name);
-	logger->setLevel(Level::DEBUG);
-
+	logger->setLevel(Level::getDebug());
 	addConsoleLog();
 }
 
@@ -128,20 +86,27 @@ zLogger::~zLogger()
  * \brief 得到Logger的名字，它出现在每条日志信息中
  * \return	Logger名字
  */
-const String & zLogger::getName()
+const std::string & zLogger::getName()
 {
-	return logger->getName();
+	return loggerName;
 }
 
 /**
  * \brief 设置Logger的名字，它出现在每条日志信息中
  * \param 要被设置的名字
  */
-void zLogger::setName(const String & setName)
+void zLogger::setName(const std::string &name)
 {
-	//PowerLogger *log=(PowerLogger *)logger;
-	//PowerLogger * pl=logger.p;
-	((PowerLogger *)logger.p)->setName(setName);
+	if (name == loggerName)
+		return;
+
+	LoggerPtr renamed = Logger::getLogger(name);
+	renamed->setLevel(logger->getLevel());
+	const AppenderList appenders = logger->getAllAppenders();
+	for (AppenderList::const_iterator it = appenders.begin(); it != appenders.end(); ++it)
+		renamed->addAppender(*it);
+	loggerName = name;
+	logger = renamed;
 }
 
 /**
@@ -150,15 +115,10 @@ void zLogger::setName(const String & setName)
  */
 bool zLogger::addConsoleLog()
 {
-	PatternLayoutPtr cpl = new PatternLayout("\%d{\%y\%m\%d-\%H:\%M:\%S }%c %5p: %m%n");
-	std::string s;
-	cpl->setTimeZone(zRTime::getLocalTZ(s));
-	cpl->activateOptions();
-
-	ConsoleAppenderPtr carp = new ConsoleAppender(cpl);
-	carp->setName("console");
-
-	logger->addAppender(carp);
+	LayoutPtr layout(new PatternLayout(logPattern));
+	ConsoleAppenderPtr appender(new ConsoleAppender(layout));
+	appender->setName(LOG4CXX_STR("console"));
+	logger->addAppender(appender);
 	return true;
 }
 
@@ -167,9 +127,12 @@ bool zLogger::addConsoleLog()
  */
 void zLogger::removeConsoleLog()
 {
-	AppenderPtr ap=logger->getAppender("console");
-	logger->removeAppender(ap);
-	ap->close();
+	AppenderPtr appender = logger->getAppender(LOG4CXX_STR("console"));
+	if (appender)
+	{
+		logger->removeAppender(appender);
+		appender->close();
+	}
 }
 
 /**
@@ -178,22 +141,13 @@ void zLogger::removeConsoleLog()
  * \param file 要输出的文件名，Logger会自动地添加时间后缀 
  * \return 成功返回true，否则返回false
  */
-bool zLogger::addLocalFileLog(const String &file)
+bool zLogger::addLocalFileLog(const std::string &file)
 {
-	PatternLayoutPtr fpl = new PatternLayout("\%d{\%y\%m\%d-\%H:\%M:\%S }%c %5p: %m%n");
-	String s;
-	fpl->setTimeZone(zRTime::getLocalTZ(s));
-	fpl->activateOptions();
-
-	zLoggerLocalFileAppender * farp = new  zLoggerLocalFileAppender();
-	farp->setDatePattern(".\%y\%m\%d-\%H");
-	farp->setTimeZone(s);
-	farp->setFile(file);
-	farp->setLayout(fpl);
-	farp->activateOptions();
-	farp->setName("localfile:"+file);
-
-	logger->addAppender(farp);
+	LayoutPtr layout(new PatternLayout(logPattern));
+	DailyRollingFileAppenderPtr appender(new DailyRollingFileAppender(
+		layout, toLogString(file), LOG4CXX_STR("'.'yyMMdd-HH")));
+	appender->setName(toLogString("localfile:" + file));
+	logger->addAppender(appender);
 	return true;
 }
 
@@ -201,11 +155,14 @@ bool zLogger::addLocalFileLog(const String &file)
  * \brief 移出一个本地文件Log输出
  * \param file 要移除的Log文件名 
  */
-void zLogger::removeLocalFileLog(const String &file)
+void zLogger::removeLocalFileLog(const std::string &file)
 {
-	AppenderPtr ap=logger->getAppender("localfile:"+file);
-	logger->removeAppender(ap);
-	ap->close();
+	AppenderPtr appender = logger->getAppender(toLogString("localfile:" + file));
+	if (appender)
+	{
+		logger->removeAppender(appender);
+		appender->close();
+	}
 }
 
 /**
@@ -213,14 +170,16 @@ void zLogger::removeLocalFileLog(const String &file)
  * \param host Syslog服务器地址,默认为本主机
  * \return 成功返回true，否则返回false
  */
-bool zLogger::addSysLog(const String & host="127.0.0.1")
+bool zLogger::addSysLog(const std::string &host)
 {
-	PatternLayoutPtr pls = new PatternLayout("%c %5p: %m%n");
-	SyslogAppenderPtr sarp=new SyslogAppender(pls,SyslogAppender::getFacility("user"));
-	sarp->setName(host);
-	sarp->setSyslogHost (host);
-	sarp->activateOptions();
-	logger->addAppender(sarp);
+	const LogString address = toLogString(host);
+	LayoutPtr layout(new PatternLayout(LOG4CXX_STR("%c %5p: %m%n")));
+	SyslogAppenderPtr appender(new SyslogAppender(layout, address,
+		SyslogAppender::getFacility(LOG4CXX_STR("user"))));
+	appender->setName(address);
+	Pool pool;
+	appender->activateOptions(pool);
+	logger->addAppender(appender);
 	return true;
 }
 
@@ -228,11 +187,14 @@ bool zLogger::addSysLog(const String & host="127.0.0.1")
  * \brief 移除一个Syslog输出
  * \param host 要移除的Syslog服务器地址,默认为本主机
  */
-void zLogger::removeSysLog(const String & host="127.0.0.1")
+void zLogger::removeSysLog(const std::string &host)
 {
-	AppenderPtr ap=logger->getAppender(host);
-	logger->removeAppender(ap);
-	ap->close();
+	AppenderPtr appender = logger->getAppender(toLogString(host));
+	if (appender)
+	{
+		logger->removeAppender(appender);
+		appender->close();
+	}
 }
 
 #define getMessage(msg,msglen,pat)	\
@@ -241,7 +203,7 @@ do	\
 	va_list ap;	\
 	bzero(msg, msglen);	\
 	va_start(ap, pat);		\
-	vsnprintf(msg, msglen - 1, pat, ap);	\
+	::vsnprintf(msg, msglen - 1, pat, ap);	\
 	va_end(ap);	\
 }while(false)
 
