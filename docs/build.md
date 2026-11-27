@@ -56,8 +56,10 @@ date '+%F %T %z'; ss -lntp 'sport = :8002'; ps -eo pid,lstart,stat,comm | grep -
 ss -nt state established '( sport = :8000 or sport = :8001 or sport = :8002 )'; stat -c 'Wine output: %y | %s bytes' /root/zt/log/fl.out && LC_ALL=C grep -aEi 'accept\(|10057|unhandled|exception|bind|listen|backtrace' /root/zt/log/fl.out | grep -aEiv 'mysql://|passw(or)?d|token|secret' | tail -n 20
 ```
 
+实机回传显示 `fl.out` 为 0 字节，只有一条 `8001` 服间连接，`8000` 和 `8002` 当时没有已建立的连接。单独重启原版 FLServer 时，这条服间连接也会短暂断开。恢复后在测试客户端刷新一次区服列表，无需提交账号。
+
 ```bash
-cd /root/p3-test && p3_capture=$(mktemp ./p3-original-ping.XXXXXXXX.pcap) && printf 'Capture: %s\n' "$p3_capture" && timeout -s INT 45 /usr/sbin/tcpdump -i any -nn -s 0 -U -w - 'tcp port 8002' > "$p3_capture"
+ss -lntp | grep -E ':(8000|8001|8002)[[:space:]]'; ss -lntp 'sport = :8002' | grep -i 'flserver_r\.exe' && p3_capture=$(mktemp /root/p3-test/p3-original-ping.XXXXXXXX.pcap) && printf 'Capture: %s\n' "$p3_capture" && timeout -s INT 45 /usr/sbin/tcpdump -i any -nn -s 0 -U -w - 'tcp port 8002' > "$p3_capture"
 ```
 
 保存生成的 `.pcap`，以及 `p3-runtime-smoke.log` 中 `[RUNTIME_DIR]` 目录里的 `ping-request.bin` 和 `ping-reply.bin`。以下命令在本地仓库根目录执行，参数指向三份实际文件。只有同一 TCP 会话中有相同请求和完整响应，且响应逐字节相等，才输出 `[OK][ORIGINAL_RAW_BYTES]`。
