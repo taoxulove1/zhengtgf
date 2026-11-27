@@ -73,7 +73,7 @@ print('  OK admins=%s linear=%s reviews=%s forcepush=%s deletions=%s contexts=%s
     d['required_pull_request_reviews']['required_approving_review_count'],
     d['allow_force_pushes']['enabled'],
     d['allow_deletions']['enabled'],
-    [c['context'] for c in d['required_status_checks']['contexts']]))
+    d['required_status_checks']['contexts']))
 "
 
 # ---------- 3. 标签体系 ----------
@@ -110,7 +110,7 @@ import sys,json
 d=json.load(sys.stdin)
 if 'message' in d:
     print('  未生效:',d['message']); raise SystemExit(1)
-print('  状态检查:',[c['context'] for c in d['required_status_checks']['contexts']] if d.get('required_status_checks') else 'none')
+print('  状态检查:',d['required_status_checks']['contexts'] if d.get('required_status_checks') else 'none')
 print('  管理员强制:',d['enforce_admins']['enabled'])
 print('  线性历史:',d['required_linear_history']['enabled'])
 print('  强制推送:',d['allow_force_pushes']['enabled'])
