@@ -64,6 +64,12 @@ Windows 客户端启动诊断源码位于 `tools/start-test-client.cs`。用 .NE
 
 这个入口只负责启动游戏客户端，启动器本身不访问网络，也不调用 `patchupdate.exe`。当前本机的 `patchupdate.exe.bak` 是原更新器备份。独立启动入口没有区服列表页面，不能用它代替原版 `8002` 区服测速采集。
 
+用户在平时使用的 Windows 会话中复测，诊断入口同样报告 `0x00000000`，未显示登录界面。测试副本的 `Data/zhengtu.dat`、`gui.pak`、`datas.pak` 和 `login.pak` 与原始基线的 SHA-256 一致。原更新器仍停用，静态检查显示它保留内置的官服区表请求。现有证据确认退出复现，具体退出分支尚未定位。
+
+已检查两套本地登录器资料。`登录器生成器.zip` 中的 `GameLogin.exe` 默认启动 `Client_Release.exe`，更新组件为同包的 `Updater.exe`，区表还有预设的外部地址。IDA94 工具包中的 2019 通用登录器附带 `ZtGame.dat` 文件版本 `1.0.0.1200`。当前安装包的 `zhengtu.dat` 文件版本为 `3.0.0.2606`，安装包版本为 `3.1.46.0`。两套资料均未建立与当前安装包的启动兼容性。
+
+在独立源码副本中运行 `Client.sln` 的 `Release|x86` 编译。首次运行发现 MFC 项目配置、Boost 缺失和旧 C++ 标识符冲突。补入已有的 Boost 1.34.1 并在副本验证兼容性调整后，当前首个编译错误为 `engine/include/engine.h` 中缺少 `d3d8.h`。后续链接还需要工程列出的 x86 DirectX 库，包括 `d3d8.lib`、`D3dx8.lib` 和 `Dxerr8.lib`。目前没有可用的 Windows 客户端构建产物。
+
 ```bash
 ss -lntp | grep -E ':(8000|8001|8002)[[:space:]]'; ss -lntp 'sport = :8002' | grep -i 'flserver_r\.exe' && p3_capture=$(mktemp /root/p3-test/p3-original-ping.XXXXXXXX.pcap) && printf 'Capture: %s\n' "$p3_capture" && timeout -s INT 45 /usr/sbin/tcpdump -i any -nn -s 0 -U -w - 'tcp port 8002' > "$p3_capture"
 ```
