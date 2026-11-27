@@ -167,6 +167,27 @@ class ScenesService : public zSubNetService
 			writeBackTimer = 0;
 
 			taskPool = NULL;
+
+			/* P3-FIX: uninit members ----------------------------------------
+			 * 以下成员原构造函数里从未初始化。
+			 * MSVC 的 new 常拿到零页所以 Win 版碰巧不炸；
+			 * glibc 的 operator new 给脏内存，han_biaoche 成为野指针，
+			 * SceneTimeTick::run() 第一个 tick 就崩。 */
+			memset(tianxia, 0, sizeof(tianxia));
+			fanwaigua = false;
+			fanwaiguarongcuo = 0;
+			memset(migong, 0, sizeof(migong));
+			han_biaoche = NULL;
+			han_biaoche2 = NULL;
+			chu_biaoche = NULL;
+			chu_biaoche2 = NULL;
+			hanbiaoche_type = 0;
+			chubiaoche_type = 0;
+			double_exp = 1;
+			double_drop = false;
+			levelDoubleDrop = 0;
+			memset(countryPower, 0, sizeof(countryPower));
+			/* ------------------------------------------------------------- */
 		}
 
 		bool init();
