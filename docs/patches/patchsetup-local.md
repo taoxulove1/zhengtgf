@@ -7,7 +7,7 @@
 | 原文件存档 | `assets/client/patchsetup.ini`（未改动，原样入库） |
 | 替换文件 | `config/client/patchsetup.local.ini` |
 | 改动时间 | 2026-11-27 |
-| 改动原因 | 官方已停止更新，8 个外网入口全部失效；`BugAddr` 不可达导致启动阻塞 3–10 秒，`account` 失效导致注册入口报错 |
+| 改动原因 | 将页面、账号入口和错误上报改为本地配置；旧启动器曾实际触发在线更新，见 [客户端基线](../client-baseline.md) |
 | 备份 | `E:/源端/backup/zhengtugf-client-3.1.46.0.7z`（MD5 `a8116110…`） |
 
 ## 逐键对照
@@ -32,6 +32,10 @@
 ```
 copy assets\client\patchsetup.ini <客户端目录>\patchsetup.ini
 ```
+
+2026-11-27，在测试副本 `E:/源端/源` 中将根目录的 `patchupdate.exe` 改名为 `patchupdate.exe.bak`。备份的 SHA-256 为 `f8d635187cc69538a540421273eca381114250ee657cbb4ba604461568c80613`，与改名前一致。需要恢复测试副本的更新器时，将备份改回原名。
+
+用户提供的属性截图确认桌面「征途怀旧版」快捷方式指向 `E:/源端/源/patchupdate.exe`，起始目录为 `E:/源端/源`。更新器程序中还有官服补丁列表地址。改名后这个快捷方式的原目标已不存在。测试副本的启动行为和测试服登录入口仍待验证。
 
 ## 复验
 
