@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-26T23:50:45Z",
+  "updated_at": "2026-11-27T00:21:32Z",
   "tasks": {
     "P0": {
       "state": "done",
@@ -13,13 +13,15 @@
       "finished_at": "2026-11-26T19:05:45Z"
     },
     "P1": {
-      "state": "blocked",
-      "started_at": "2026-11-26T23:50:44Z",
-      "actor": "local",
-      "gate_rc": 1,
-      "gate_at": "2026-11-26T23:50:45Z",
-      "note": "captures 缺：pktmon 需管理员权限；msgid 559 条与 decrypt.py 已达标",
-      "blocked_at": "2026-11-26T23:50:45Z"
+      "state": "done",
+      "started_at": "2026-11-27T00:21:28Z",
+      "actor": "codex",
+      "gate_rc": 0,
+      "gate_at": "2026-11-27T00:21:21Z",
+      "note": "",
+      "blocked_at": "2026-11-26T23:50:45Z",
+      "reopened_at": "2026-11-27T00:21:28Z",
+      "finished_at": "2026-11-27T00:21:32Z"
     },
     "P2": {
       "state": "pending"

@@ -1,0 +1,40 @@
+{
+  "host": "101.33.242.142",
+  "user": "root",
+  "groups": {
+    "os": {
+      "os_release": "NAME=\"CentOS Linux\"\nVERSION=\"7 (Core)\"\nID=\"centos\"\nID_LIKE=\"rhel fedora\"\nVERSION_ID=\"7\"\nPRETTY_NAME=\"CentOS Linux 7 (Core)\"\nANSI_COLOR=\"0;31\"\nCPE_NAME=\"cpe:/o:centos:centos:7\"\nHOME_URL=\"https://www.centos.org/\"\nBUG_REPORT_URL=\"https://bugs.centos.org/\"\n\nCENTOS_MANTISBT_PROJECT=\"CentOS-7\"\nCENTOS_MANTISBT_PROJECT_VERSION=\"7\"\nREDHAT_SUPPORT_PRODUCT=\"centos\"\nREDHAT_SUPPORT_PRODUCT_VERSION=\"7\"",
+      "kernel": "Linux VM-0-10-centos 3.10.0-1160.119.1.el7.x86_64 #1 SMP Tue Jun 4 14:43:51 UTC 2024 x86_64 x86_64 x86_64 GNU/Linux",
+      "glibc": "ldd (GNU libc) 2.17",
+      "arch": "x86_64",
+      "timezone": "Local time: Fri 2026-11-27 08:12:58 CST\n  Universal time: Fri 2026-11-27 00:12:58 UTC\n        RTC time: Fri 2026-11-27 00:12:57\n       Time zone: Asia/Shanghai (CST, +0800)\n     NTP enabled: no"
+    },
+    "hw": {
+      "cpu": "4\nmodel name\t: Intel(R) Xeon(R) Platinum 8255C CPU @ 2.50GHz",
+      "mem": "total        used        free      shared  buff/cache   available\nMem:           3693         583         101           0        3008        2818\nSwap:             0           0           0",
+      "disk": "Filesystem     Type  Size  Used Avail Use% Mounted on\n/dev/vda1      ext4   40G  6.2G   32G  17% /\n/dev/vda1      ext4   40G  6.2G   32G  17% /",
+      "load": "08:12:58 up 11:13,  0 users,  load average: 0.15, 0.17, 0.21"
+    },
+    "runtime": {
+      "pkgmgr": "/usr/bin/yum\ncentos-release-7-6.1810.2.el7.centos.x86_64",
+      "gcc": "gcc (GCC) 4.8.5 20150623 (Red Hat 4.8.5-44)\ng++ (GCC) 4.8.5 20150623 (Red Hat 4.8.5-44)",
+      "make": "GNU Make 3.82",
+      "java": "bash: java: command not found",
+      "python": "Python 3.6.8\nPython 2.7.5",
+      "mysql": "mysql  Ver 15.1 Distrib 5.5.68-MariaDB, for Linux (x86_64) using readline 5.1\nunknown\ninactive",
+      "dotnet": "bash: dotnet: command not found"
+    },
+    "net": {
+      "listen": "State      Recv-Q Send-Q Local Address:Port               Peer Address:Port              \nLISTEN     0      128          *:22                       *:*                   users:((\"sshd\",pid=1228,fd=3))\nLISTEN     0      100    127.0.0.1:25                       *:*                   users:((\"master\",pid=1209,fd=13))\nLISTEN     0      4096         *:6012                     *:*                   users:((\"wineserver\",pid=12887,fd=368))\nLISTEN     0      4096         *:8000                     *:*                   users:((\"wineserver\",pid=12887,fd=249))\nLISTEN     0      4096         *:8001                     *:*                   users:((\"wineserver\",pid=12887,fd=250))\nLISTEN     0      4096         *:8002                     *:*                   users:((\"FlServer_r.exe\",pid=17507,fd=61),(\"wineserver\",pid=12887,fd=251))\nLISTEN     0      4096         *:7010                     *:*                   users:((\"wineserver\",pid=12887,fd=137))\nLISTEN     0      4096         *:6020                     *:*                   users:((\"wineserver\",pid=12887,fd=404))\nLISTEN     0      50           *:3307                     *:*                   users:((\"wineserver\",pid=12543,fd=25),(\"mysqld.exe\",pid=12538,fd=72),(\"mysqld.exe\",pid=12538,fd=48))\nLISTEN     0      4096         *:7020                     *:*                   users:((\"wineserver\",pid=12887,fd=200))\nLISTEN     0      4096         *:10000                    *:*                   users:((\"wineserver\",pid=12887,fd=87))\nLISTEN     2      4096         *:6001                     *:*                   users:((\"wineserver\",pid=12887,fd=300))\nLISTEN     0      128          *:6099                     *:*                   users:((\"Xvfb\",pid=20047,fd=5))\nLISTEN     0      128       [::]:22                    [::]:*                   users:((\"sshd\",pid=1228,fd=4))\nLISTEN     0      100      [::1]:25                    [::]:*                   users:((\"master\",pid=1209,fd=14))\nLISTEN     0      128       [::]:6099                  [::]:*                   users:((\"Xvfb\",pid=20047,fd=4))",
+      "firewall": "unknown\n-P INPUT ACCEPT\n-P FORWARD ACCEPT\n-P OUTPUT ACCEPT\n-A INPUT -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -m set --match-set YJ-GLOBAL-INBLOCK src -j DROP\n-A OUTPUT -p tcp -m tcp --tcp-flags FIN,SYN,RST,ACK SYN -m set --match-set YJ-GLOBAL-OUTBLOCK dst -j DROP",
+      "selinux": "Disabled",
+      "public_ip": "101.33.242.142"
+    },
+    "game": {
+      "existing": "/data:\ntotal 8\ndrwxr-xr-x   2 root root 4096 Nov  5  2019 .\ndr-xr-xr-x. 20 root root 4096 Nov 27 08:12 ..\n\n/home:\ntotal 12\ndrwxr-xr-x.  3 root       root       4096 Nov 26 20:59 .\ndr-xr-xr-x. 20 root       root       4096 Nov 27 08:12 ..\ndrwx------   2 lighthouse lighthouse 4096 Nov 26 20:59 lighthouse\n\n/opt:\ntotal 20\ndrwxr-xr-x.  5 root root 4096 Nov 27 00:44 .\ndr-xr-xr-x. 20 root root 4096 Nov 27 08:12 ..\ndrwxr-xr-x   4 root root 4096 Nov 26 21:00 mellanox\ndrwxr-xr-x.  2 root root 4096 Oct 31  2018 rh\ndrwxr-xr-x   6 root root 4096 Nov 27 00:45 wine32\n\n/root:\ntotal 3120\ndr-xr-x---. 12 root root    4096 Nov 27 02:18 .\ndr-xr-xr-x. 20 root root    4096 Nov 27 08:12 ..\n-rw-------   1 root root      30 Nov 26 22:31 .bash_history\n-rw-r--r--.  1 root root      18 Dec 29  2013 .bash_logout\n-rw-r--r--.  1 root root     176 Dec 29  2013 .bash_profile\n-rw-r--r--.  1 root root     176 Dec 29  2013 .bashrc\n-rw-r--r--   1 root root    2371 Nov 27 01:46 boot_all.sh\n-rw-r--r--   1 root root    1828 Nov 27 01:48 boot.log\n-rw-r--r--   1 root root    1828 Nov 27 01:48 boot_out.log\n-rw-r--r--   1 root root    3407 Nov 27 00:12 build_wine32.sh\n-rw-r--r--   1 root root    2624 Nov 27 00:32 build_wine32_v2.sh\ndrwxr-xr-x   4 root root    4096 Nov 27 01:08 .cache\n-rw-r--r--   1 root root     998 Dec 11  2018 CentOS-SCLo-scl.repo\n-rw-r--r--   1 root root     971 Oct 29  2018 CentOS-SCLo-scl-rh.repo\n-rw-r--r--   1 root root     837 Nov 27 01:30 click_fl.sh\n-rw-r--r--   1 root root    1246 Nov 27 01:33 click_start_btn.sh\ndrwxr-xr-x   3 root root    4096 Mar  7  2019 .config\n-rw-r--r--.  1 root root     100 Dec 29  2013 .cshrc\n-rw-r--r--   1 root root     879 Nov 27 00:56 diag_font.sh",
+      "zt_proc": "root     17095     1  1 02:09 ?        00:05:15 SuperServer_r.exe\nroot     17243     1  1 02:09 ?        00:03:59 RecordServer_r.exe\nroot     17366     1  1 02:09 ?        00:05:40 BillServer_r.exe\nroot     17648     1  1 02:10 ?        00:05:02 SessionServer_r.exe\nroot     17771     1  1 02:10 ?        00:03:56 GatewayServer_r.exe\nroot     18778     1  1 02:13 ?        00:05:00 MiniServer_r.exe\nroot     20549     1  1 02:18 ?        00:06:14 [ScenesServer_r.] <defunct>",
+      "ports_1xxxx": "LISTEN     0      4096         *:10000                    *:*                   users:((\"wineserver\",pid=12887,fd=87))",
+      "libs": "/usr/lib64/libstdc++.so.6\n/usr/lib64/libstdc++.so.6.0.19"
+    }
+  }
+}
