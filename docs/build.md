@@ -60,6 +60,10 @@ ss -nt state established '( sport = :8000 or sport = :8001 or sport = :8002 )'; 
 
 下一轮的 45 秒监听结束时抓到 0 包。测试副本 `E:/源端/源` 的桌面快捷方式原来指向已停用的更新器，`Data/zhengtu.dat` 是客户端主体。另有一份登录器生成器，其自带列表未配置当前测试服务器，运行兼容性也未验证。下次采集前先确认使用的登录器和区服列表都指向测试服务。
 
+Windows 客户端启动诊断源码位于 `tools/start-test-client.cs`。用 .NET Framework C# 编译器的 `/target:winexe /codepage:65001` 生成可执行文件，将它放到包含 `Data` 的客户端根目录。它读取根目录 `config.ini` 的 `[server]` 段，使用 `loginaddress`、`loginport` 和 `zone`，按仓库客户端源码的参数顺序启动 `Data/zhengtu.dat`。登录端口为 `8000`，区号为 `1`。本机以测试程序验证了 `.dat` 可执行文件、参数和工作目录。现有客户端用这组参数启动后立即以 `0x00000000` 退出，未显示登录窗口。备份更新器的启动格式与仓库客户端源码存在差异，现有二进制与该源码的启动兼容性待确认。
+
+这个入口只负责启动游戏客户端，启动器本身不访问网络，也不调用 `patchupdate.exe`。当前本机的 `patchupdate.exe.bak` 是原更新器备份。独立启动入口没有区服列表页面，不能用它代替原版 `8002` 区服测速采集。
+
 ```bash
 ss -lntp | grep -E ':(8000|8001|8002)[[:space:]]'; ss -lntp 'sport = :8002' | grep -i 'flserver_r\.exe' && p3_capture=$(mktemp /root/p3-test/p3-original-ping.XXXXXXXX.pcap) && printf 'Capture: %s\n' "$p3_capture" && timeout -s INT 45 /usr/sbin/tcpdump -i any -nn -s 0 -U -w - 'tcp port 8002' > "$p3_capture"
 ```
