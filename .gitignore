@@ -93,3 +93,5 @@ assets/client/**/*.db
 !docs/**/*.pem
 state/*.lock
 .auth/
+.secrets/
+*.local.json

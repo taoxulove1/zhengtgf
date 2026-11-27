@@ -82,6 +82,48 @@ python tools/decrypt.py --file raw.bin --algo des --key <hex> --no-frame
 
 `src/server/` 下 `CDes.cpp:34-47` 只实现了 DES 路径，未见 RC5。两种可能：① 网关（`Gateway`）在登录前不加密、由客户端单方向 RC5；② 服务端 RC5 实现藏在 `SessionServer` 或网关的 DLL 里，源码树不全。**这一点必须在 P1 有真实抓包后判死**——判据是登录首个包的 bit31 是否为 1、以及 RC5 解密后 `0x0101` 的 `byCmd/byParam` 是否落在表内。在拿到 `captures/*.pcapng` 之前，本节 0.1/0.2 的客户端侧结论视为已定，服务端侧标"待验"。
 
+### 0.5 实测抓包证据（2026-11-27，服务器侧 tcpdump）
+
+抓包点在目标机 `101.33.242.142`（`tools/capture-server.sh`，tcpdump 4.9.2，`-i any`），取回后由 `tools/pcap_lite.py` 解链路层（Linux SLL）→ IPv4 → TCP → 流重组，**未用 tshark**。
+
+样本：`captures/server-internal-20s.pcapng`，19 秒，5 条流，全部为 `10.1.0.10:10000 → 内部端口`（SuperServer 下发）。
+
+| 观测项 | 实测值 | 意义 |
+|---|---|---|
+| 单流字节数 | 266 B | — |
+| 帧数 | 19 帧 | 20 秒窗口内 1 帧/秒 |
+| 单帧长度 | 14 B（4 头 + 10 体） | 与 §0.1 完全吻合 |
+| 长度头 | `0a 00 00 00` = 10，**bit31=0** | 帧层存在且内网链路**不置 ENC** |
+| body[0:2] | `01 06` | opcode `0x0106` |
+| body[2:6] | `13 58 05 00` = `0x00055813`，下帧 `0x00055814` | **每秒 +1 的秒计数**，不是墙钟时间戳 |
+| body[6:10] | `00 00 00 00` | 4 字节保留/参数 |
+| 尾部残留 | 0 字节 | 帧长严格自洽，无填充 |
+
+原始字节（流 #0 前 3 帧）：
+
+```
+0a 00 00 00 | 01 06 13 58 05 00 00 00 00 00
+0a 00 00 00 | 01 06 14 58 05 00 00 00 00 00
+0a 00 00 00 | 01 06 15 58 05 00 00 00 00 00
+└─ length ─┘ └cmd┘└param┘└─ ts ─┘└─ 4B ─┘
+```
+
+结论与推论：
+
+1. **§0.1 的帧格式被实测证实**：4 字节长度头精确等于 `帧总长-4`，且 §0.2 的"无填充、余数不处理"成立（266 = 14×19，整除，无尾部残留）。
+2. **`0x0106` 未在 `Command.h` 中定义**（该域 `LOGON_USERCMD` 的 PARA 6 不存在），它是**服间内部心跳**，不在客户端 559 条表内。P2 需在 `msgid.csv` 补一条 `direction=internal` 的记录。
+3. **内网链路不加密**（bit31=0），说明加密开关由连接类型决定，而不是全局；客户端连接才会置 ENC。这为服务端侧"能否明文解析"提供了判据。
+4. **`dwTimestamp` 在内部链路是秒计数器**，不是 Unix 时间戳；客户端链路的该字段语义仍需客户端抓包判定，暂不合并结论。
+
+复现：
+
+```bash
+python tools/remote.py capture 20 captures/server-internal-20s.pcapng "tcp and (port 10000 or port 8000)"
+python tools/pcap_lite.py captures/server-internal-20s.pcapng --list
+python tools/pcap_lite.py captures/server-internal-20s.pcapng --stream 0 --hexdump 96
+```
+
+
 
 ## 1. 登录（login）
 
