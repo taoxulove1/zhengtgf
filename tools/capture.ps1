@@ -25,6 +25,34 @@ if (-not $admin) {
 New-Item -ItemType Directory -Force -Path (Split-Path $Out -Parent) | Out-Null
 $etl = [System.IO.Path]::ChangeExtension($Out, ".etl")
 
+# 后端选择：装了 Wireshark/npcap 就用 dumpcap（pcapng 原生、字段更全），否则回退 pktmon
+$dumpcap = (Get-Command dumpcap -ErrorAction SilentlyContinue)
+if ($dumpcap) {
+    Write-Host "[backend] dumpcap $($dumpcap.Source)"
+    $iface = & $dumpcap.Source -D 2>$null | Select-String -Pattern "\\Device\\NPF_" | Select-Object -First 1
+    if (-not $iface) { throw "dumpcap 未找到可用接口，确认 npcap 已安装" }
+    $dev = ($iface.ToString() -split "\.")[0].Trim()
+    $dargs = @("-i", $dev, "-w", $Out, "-a", "duration:$Seconds")
+    if ($Filter) { $dargs += @("-f", $Filter) }
+    $proc = Start-Process -FilePath $dumpcap.Source -ArgumentList $dargs -PassThru -NoNewWindow
+    if (Test-Path $ClientExe) {
+        Write-Host "      启动客户端 $ClientExe"
+        $cp = Start-Process -FilePath $ClientExe -WorkingDirectory (Split-Path $ClientExe -Parent) -PassThru
+    } else { $cp = $null }
+    Start-Sleep -Seconds $Seconds
+    if ($cp -and -not $cp.HasExited) { $cp | Stop-Process -Force -ErrorAction SilentlyContinue }
+    if (-not $proc.HasExited) { $proc | Stop-Process -Force -ErrorAction SilentlyContinue }
+    if (Test-Path $Out) {
+        $f = Get-Item $Out
+        $h = (Get-FileHash $Out -Algorithm SHA256).Hash.ToLower()
+        Write-Host "      完成: $($f.FullName)  $([math]::Round($f.Length/1KB,1)) KB"
+        Write-Host "      sha256=$h"
+        Add-Content -Path (Join-Path (Split-Path $Out -Parent) "index.csv") -Value ("{0},{1},{2},{3}" -f (Split-Path $Out -Leaf), $f.Length, $h, (Get-Date -Format "yyyy-MM-ddTHH:mm:ssZ"))
+    } else { throw "dumpcap 未产出文件" }
+    return
+}
+Write-Host "[backend] pktmon（未检测到 dumpcap）"
+
 Write-Host "[1/5] 清理旧会话"
 pktmon stop 2>$null | Out-Null
 pktmon filter remove 2>$null | Out-Null

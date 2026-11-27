@@ -1,11 +1,12 @@
 {
-  "updated_at": "2026-11-27T08:00:00Z",
+  "updated_at": "2026-11-27T08:06:00Z",
   "note": "P0 收资台账的机器可读版；TODO 项即 P0 门禁未过原因",
   "variables": {
     "CLIENT_DIR": {
-      "value": "E:/源端/original",
+      "value": "E:/源端/官方",
       "status": "confirmed",
-      "source": "原始安装包 zthj_20220216.exe 解压；官方目录已被 patchupdate 污染，见 docs/client-versions.md"
+      "role": "工作副本（启动/抓包/patch 在此进行）",
+      "source": "2026-11-27 08:05 重装复原，指纹与只读基线一致"
     },
     "CLIENT_VERSION": {
       "value": "3.1.46.0",
@@ -126,6 +127,16 @@
       "size_bytes": 4034835552,
       "status": "confirmed",
       "source": "2022-02-16 定版 SFX 自解压包"
+    },
+    "CLIENT_BASELINE_MIRROR": {
+      "value": "E:/源端/original",
+      "status": "confirmed",
+      "role": "只读基线，永不启动，仅用于比对与回滚"
+    },
+    "CLIENT_TREE_MD5": {
+      "value": "eea3a291dc42150e7057179141e10b78",
+      "status": "confirmed",
+      "method": "579 文件按 path 排序逐行 path:sha256 拼接取 MD5；两目录实测相等"
     }
   }
 }
