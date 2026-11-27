@@ -29,7 +29,7 @@
 | 会话解决 | 必须（`required_conversation_resolution: true`） | 遗留 comment 不放行 |
 | 状态检查 | `validate` / `task-gate` 必过 | 二值门禁 |
 | 强制推送 / 删除 | 均关闭 | 保护基线 |
-| 管理员豁免 | 关闭（`enforce_admins: true`） | 规则对团长同样生效 |
+| 管理员豁免 | 见 §2.2（当前 `false`） | 单人维护需保留 bypass，否则 PR 自锁 |
 | 合并队列 | 开启（如仓库套餐支持） | 避免串行回归 |
 
 下发命令：`bash tools/protect-branch.sh`（读 `GITHUB_TOKEN` + `REPO`，幂等，可重复执行）。
@@ -69,8 +69,8 @@ python tools/guard_main.py --before <sha> --after <sha>   # 本地复跑同一�
 |---|---|---|
 | `required_status_checks.contexts` | `["validate"]` | 对应 `.github/workflows/01-validate.yml` 的 job 名 |
 | `strict` | `true` | 分支必须与 main 同步才能合 |
-| `enforce_admins` | `true` | 团长同样受约束 |
-| `required_pull_request_reviews` | 1 人 / dismiss 过期 review | 单人维护时由 §2.3 的绕过流程处理 |
+| `enforce_admins` | `false` | 单人维护：置 true 会导致 PR 无法自审而自锁。多人协作时改 `ENFORCE_ADMINS=true` |
+| `required_pull_request_reviews` | 1 人 / dismiss 过期 review / 不要求 CODEOWNERS | 由 §2.3 的管理员 bypass 落地 |
 | `required_linear_history` | `true` | 禁 merge commit |
 | `allow_force_pushes` | `false` | 禁历史重写 |
 | `allow_deletions` | `false` | 禁删 main |
@@ -154,7 +154,8 @@ curl --noproxy '*' -X PUT -H "Authorization: token $TOKEN" \
 | `/.github/workflows/` `/tools/` `/tasks/` | 陆全通 | 全局 |
 | `/docs/qa/` | 毕联通 | P5 |
 
-禁止事项：本人 PR 自批；用 `admin` 绕过保护（`enforce_admins` 已开）；在 `main` 上直接 `git push --force`。
+禁止事项：本人 PR 自批；在 `main` 上直接 `git push --force`；绕过 `validate` 强制合并。
+（§2.3 的 admin bypass 只用于**跳过 review**，不是跳过 CI 与线性历史。）
 
 ---
 
