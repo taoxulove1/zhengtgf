@@ -50,6 +50,12 @@ f=/root/zt/server/log/flserver_8000/20261127/102848.log; iconv -f GB18030 -t UTF
 date '+%F %T %z'; ss -lntp 'sport = :8002'; ps -eo pid,lstart,stat,comm | grep -i '[f]lserver'; find /root/zt/server/log -type f -ipath '*flserver*' -iname '*.log' -printf '%TY-%Tm-%Td %TH:%TM:%TS %s %p\n' 2>/dev/null | sort -r | head -n 5
 ```
 
+16:26 的复核显示 `8002` 仍归 `FLServer_r.exe` PID `17507`，最近的应用日志仍停在 14:07:48。原版启动脚本将 Wine 的标准输出和错误输出写入 `/root/zt/log/fl.out`。如果需要恢复原版测试服务，先查看这个文件和当前连接。在可以短暂停服的测试窗口，只用原版 FLServer 界面停止并重新启动该服务，再确认 `8000`、`8001`、`8002` 和日志更新时间。整栈启动脚本会停掉同一 Wine 前缀中的其他服务，不用于本次单服恢复。
+
+```bash
+ss -nt state established '( sport = :8000 or sport = :8001 or sport = :8002 )'; stat -c 'Wine output: %y | %s bytes' /root/zt/log/fl.out && LC_ALL=C grep -aEi 'accept\(|10057|unhandled|exception|bind|listen|backtrace' /root/zt/log/fl.out | grep -aEiv 'mysql://|passw(or)?d|token|secret' | tail -n 20
+```
+
 ```bash
 cd /root/p3-test && p3_capture=$(mktemp ./p3-original-ping.XXXXXXXX.pcap) && printf 'Capture: %s\n' "$p3_capture" && timeout -s INT 45 /usr/sbin/tcpdump -i any -nn -s 0 -U -w - 'tcp port 8002' > "$p3_capture"
 ```
