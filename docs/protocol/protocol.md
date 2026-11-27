@@ -1,9 +1,9 @@
 # 协议文档 · 征途 3.1.46.0
 
-> 状态：**骨架**（P2 未开始）。填写标准见 `README.md`。
+> P2 已校验源码报文布局。客户端实测待 P5。
 > 门禁：本文件 ≥ 120 行且六类消息齐全，否则 `P2` 不得置 done。
 
-## 0. 报文封装（P1 源码实测结论）
+## 0. 报文封装（P1 源码与样本）
 
 > **本轮更正两条早期误判**：① 有 4 字节长度前缀，不是"按 opcode 定长裸流"；② 有 zlib 压缩（`PACKET_FLAG_ZIP`），不是"无 zlib"。依据为 `src/client/Client/Client.cpp:61-63` 与同文件收发两段（收 155-232 / 发 372-460），逐行核对后重写本节。
 
@@ -51,36 +51,9 @@ return nLen - offset;          // 余数字节明文残留
 | opcode | `(byCmd << 8) | byParam`，形如 `0x0101` | 559 条已提取，见 `msgid.csv` |
 | 尾部填充 | `align8(4 + len)` 多出的 0~7 字节被 `length` 计入，解析需容忍 | `Client.cpp:428`、`230` |
 
-### 0.3 工作流（工具已实现，可直接跑）
+### 0.3 验证范围
 
-```bash
-# 自检（DES/RC5 标准向量 + 帧层往返 + 8 对齐）
-python tools/decrypt.py --selftest
-
-# 登录阶段抓包 → RC5 解 → 切帧 → 查 opcode 表
-python tools/decrypt.py --pcap captures/login.pcapng --port 7001 --algo rc5
-
-# 登录后阶段，密钥来自 0x0104 下发的 key[keyOffset:keyOffset+8]
-python tools/decrypt.py --file captures/after_login.bin --algo des --key <16位hex>
-
-# 对端不带长度头时跳过帧层
-python tools/decrypt.py --file raw.bin --algo des --key <hex> --no-frame
-```
-
-实测样例（自造 RC5 帧，`0x0101` 版本校验）：
-
-```
-输入 24 字节 → 处理 24 字节，尾部余数 0 字节
-明文前 64 字节: 14000080010144332211564552332e312e34362e30000000
-                  └─ 0x80000014 = ENC | (24-4) ─┘
-帧层：切出 1 帧，尾部残留 0 字节
-  frame#0  len=20  flags=ENC  decompressed=20
-  +0    0x0101  USERVERIFYVER  len=18  ts=287454020  564552332e312e34362e30 ("VER3.1.46.0")
-```
-
-### 0.4 服务端侧对称性待验
-
-`src/server/` 下 `CDes.cpp:34-47` 只实现了 DES 路径，未见 RC5。两种可能：① 网关（`Gateway`）在登录前不加密、由客户端单方向 RC5；② 服务端 RC5 实现藏在 `SessionServer` 或网关的 DLL 里，源码树不全。**这一点必须在 P1 有真实抓包后判死**——判据是登录首个包的 bit31 是否为 1、以及 RC5 解密后 `0x0101` 的 `byCmd/byParam` 是否落在表内。在拿到 `captures/*.pcapng` 之前，本节 0.1/0.2 的客户端侧结论视为已定，服务端侧标"待验"。
+仓库的帧层自检使用合成输入，客户端登录链路完整运行待验证。登录服源码在启用通信加密时有 RC5 路径。现有实包只支持下节的内部链路结论。
 
 ### 0.5 实测抓包证据（2026-11-27，服务器侧 tcpdump）
 
@@ -111,74 +84,94 @@ python tools/decrypt.py --file raw.bin --algo des --key <hex> --no-frame
 结论与推论：
 
 1. **§0.1 的帧格式被实测证实**：4 字节长度头精确等于 `帧总长-4`，且 §0.2 的"无填充、余数不处理"成立（266 = 14×19，整除，无尾部残留）。
-2. **`0x0106` 未在 `Command.h` 中定义**（该域 `LOGON_USERCMD` 的 PARA 6 不存在），它是**服间内部心跳**，不在客户端 559 条表内。P2 需在 `msgid.csv` 补一条 `direction=internal` 的记录。
-3. **内网链路不加密**（bit31=0），说明加密开关由连接类型决定，而不是全局；客户端连接才会置 ENC。这为服务端侧"能否明文解析"提供了判据。
+2. **`0x0106` 未在 `Command.h` 中定义**（该域 `LOGON_USERCMD` 的 PARA 6 不存在），它是**服间内部心跳**，不在客户端 559 条表内。内部心跳在第 4 节单列。
+3. **内网链路不加密**（bit31=0）。这段抓包没有客户端连接。
 4. **`dwTimestamp` 在内部链路是秒计数器**，不是 Unix 时间戳；客户端链路的该字段语义仍需客户端抓包判定，暂不合并结论。
 
 复现：
 
 ```bash
-python tools/remote.py capture 20 captures/server-internal-20s.pcapng "tcp and (port 10000 or port 8000)"
 python tools/pcap_lite.py captures/server-internal-20s.pcapng --list
 python tools/pcap_lite.py captures/server-internal-20s.pcapng --stream 0 --hexdump 96
 ```
 
-
-
 ## 1. 登录（login）
 
-### 登录域（LOGON_USERCMD = 0x01）实测 12 条
+下列偏移从去除传输层长度头后的消息开头起算。共同头为 6 字节，依次是命令域、子命令和 32 位时间字段。数值字段为小端。长度列对应当前源码的 32 位布局。客户端链路的运行证据尚待 P5。
 
-| ID | 结构体 | 长度 | 说明 |
-|---|---|---|---|
-| `0x0101` | `stUserVerifyVerCmd` | 18 | 版本校验，payload 为 `"VER3.1.46.0\0"` |
-| `0x0102` | `stUserRequestLoginCmd` | 40 | 账号密码登录 |
-| `0x0103` | `stServerReturnLoginFailedCmd` | 15 | 登录失败 |
-| `0x0104` | `stServerReturnLoginSuccessCmd` | 28 | 登录成功 |
-| `0x0105` | `stPasswdLogonUserCmd` | 24 | 密码登录变体 |
-| `0x0107` | `stAccountLogonUserCmd` | 16 | 账号登录变体 |
-| `0x0109` | `stPasswordLogonUserCmd` | 17 | 密码登录变体 |
-| `0x010A` | `stBackSelectUserCmd` | 14 | 返回选区 |
-| `0x010B` | `stJpegPassportUserCmd` | — | 图片验证码 |
-| `0x010C` | `stCountryInfoUserCmd` | — | 国家/区服信息 |
+| ID | 方向 | 长度规则 | 字段名 | 类型 | 字节序 | 偏移 | 取值样例 | 触发场景 |
+|---|---|---|---|---|---|---:|---|---|
+| 0x0101 | C→S | 10 | version | u32 | LE | 6 | 1999（源码默认） | 校验版本 |
+| 0x0102 | C→S | 94 | pstrName | bytes[48] | — | 6 | 测试账号字段 | 提交账号认证 |
+| 0x0102 | C→S | 94 | pstrPassword | bytes[16] | — | 54 | — | 提交账号认证 |
+| 0x0102 | C→S | 94 | game / zone | u16 / u16 | LE | 70 / 72 | 0 / 1（示例） | 请求目标游戏区 |
+| 0x0103 | S→C | 7 | byReturnCode | u8 | — | 6 | — | 认证或区服检查失败 |
+| 0x0104 | S→C | 288 | pstrIP / wdPort | bytes[16] / u16 | LE 端口 | 14 / 30 | — | 返回网关地址 |
 
-完整 559 条见 `msgid.csv`；C 结构体声明见 `schema/commands.h`。
-
-
-### 0x???? LOGIN_VER (C→S)
-
-<!-- TODO: 九列表 -->
-
-### 0x???? LOGIN_AUTH (C→S)
-
-<!-- TODO: 九列表 -->
-
-### 0x???? LOGIN_RESULT (S→C)
-
-<!-- TODO: 九列表 -->
+见 [三步登录时序](login_handshake.md) 和 [登录服源码](../../src/server/FLServer/LoginTask.cpp)。原索引列出的其他同域子命令保留为源码查找入口。
 
 ## 2. 选区（select-server）
 
-<!-- TODO: 服务器列表下发 / 选区请求 / 选区结果 -->
+登录请求已经包含目标游戏号和区号。连接网关后，创建角色界面的国家列表请求与初次选择区服属于两个操作。
+
+| ID | 方向 | 长度规则 | 字段名 | 类型 | 字节序 | 偏移 | 取值样例 | 触发场景 |
+|---|---|---|---|---|---|---:|---|---|
+| 0x1807 | C→S | 6 | — | 共同头 | — | — | — | 请求国家列表 |
+| 0x010C | S→C | 8 + 38 × size | size | u16 | LE | 6 | 1（示例） | 返回国家列表 |
+| 0x010C | S→C | 8 + 38 × size | countryinfo | Country_Info[] | LE 数值 | 8 | — | 每条包含 ID、注册/登录状态和名称 |
+
+[网关列表处理](../../src/server/GatewayServer/GatewayTask.cpp) 根据配置从角色存档服或会话服获取国家排序信息。部署环境的区服显示与可用状态在 P5 对照。
 
 ## 3. 进图（enter-map）
 
-<!-- TODO: 角色列表 → 角色进入 → 场景加载完成 -->
+| ID | 方向 | 长度规则 | 字段名 | 类型 | 字节序 | 偏移 | 取值样例 | 触发场景 |
+|---|---|---|---|---|---|---:|---|---|
+| 0x1801 | S→C | 246 + size | charInfo | SelectUserInfo[2] | LE 数值 | 6 | — | 下发两个角色槽位 |
+| 0x1801 | S→C | 246 + size | size | u16 | LE | 244 | 0（无图片） | 尾部附加的验证码字节数 |
+| 0x1803 | C→S | 17 | charNo | u32 | LE | 6 | 角色数组下标 | 确认角色 |
+| 0x031C | S→C | 192 + 12 × npc_count | width / height | u32 / u32 | LE | 6 / 10 | — | 下发地图尺寸 |
+| 0x031C | S→C | 192 + 12 × npc_count | pstrFilename | bytes[32] | — | 46 | — | 提供地图文件名 |
+| 0x031C | S→C | 192 + 12 × npc_count | mainRoleX / mainRoleY | i32 / i32 | LE | 182 / 186 | — | 下发角色入图坐标 |
+| 0x031C | S→C | 192 + 12 × npc_count | npc_count / npc_list | i16 / 条目数组 | LE | 190 / 192 | 0–300（发送端限制） | 附加初始 NPC 的 ID、x、y |
+| 0x031D | C→S | 6 | — | 共同头 | — | — | — | 确认地图加载 |
+| 0x03FF | S→C | 6 | — | 共同头 | — | — | — | 通知初始数据发送结束 |
+
+角色列表长度来自 [GatewayServer/GateUser.cpp](../../src/server/GatewayServer/GateUser.cpp)，地图长度来自 [ScenesServer/SceneUser.cpp](../../src/server/ScenesServer/SceneUser.cpp) 的实际发送表达式。
 
 ## 4. 心跳（heartbeat）
 
-<!-- TODO: 间隔 15 s 假设，待实测；超时判定 -->
+| ID | 方向 | 长度规则 | 字段名 | 类型 | 字节序 | 偏移 | 取值样例 | 触发场景 |
+|---|---|---|---|---|---|---:|---|---|
+| 0x0106 | 服间 S→S | 10 | 秒计数 | u32 | LE | 2 | 相邻帧递增 1 | 已抓包的内部心跳 |
+| 0x0106 | 服间 S→S | 10 | 未知尾字段 | bytes[4] | — | 6 | 样本为 0 | 已抓包的内部心跳 |
+| 0x0204 | C→S、S→C | 6 | — | 共同头 | — | — | — | 网关探测及回包 |
+
+内网样本每秒一帧。客户端探测的间隔和超时要按客户端测试记录验收。
 
 ## 5. 移动（move）
 
-<!-- TODO: 坐标结构、朝向、速度、寻路点序列 -->
+| ID | 方向 | 长度规则 | 字段名 | 类型 | 字节序 | 偏移 | 取值样例 | 触发场景 |
+|---|---|---|---|---|---|---:|---|---|
+| 0x0602 | C→S、S→C | 16 | dwUserTempID | u32 | LE | 6 | — | 标识移动实体 |
+| 0x0602 | C→S、S→C | 16 | byDirect | u8 | — | 10 | 0–7（八方向） | 行进方向 |
+| 0x0602 | C→S、S→C | 16 | bySpeed | u8 | — | 11 | — | 速度字段 |
+| 0x0602 | C→S、S→C | 16 | x / y | u16 / u16 | LE | 12 / 14 | — | 地图坐标 |
+
+普通移动消息使用单组坐标，见 [场景服务处理](../../src/server/ScenesServer/SceneUser.cpp) 与 [客户端发送逻辑](../../src/client/Client/MainCharacter.cpp)。
 
 ## 6. 背包（inventory）
 
-<!-- TODO: 增删改、堆叠、使用、丢弃 -->
+| ID | 方向 | 长度规则 | 字段名 | 类型 | 字节序 | 偏移 | 取值样例 | 触发场景 |
+|---|---|---|---|---|---|---:|---|---|
+| 0x0401 | S→C | 4397 | byActionType / object | u8 / t_Object | — | 6 / 7 | — | 下发新增或变更的道具记录 |
+| 0x0402 | S→C | 10 | qwThisID | u32 | LE | 6 | — | 从客户端清除道具记录 |
+| 0x0406 | S→C | 14 | qwThisID / dwNum | u32 / u32 | LE | 6 / 10 | — | 刷新堆叠数量 |
+| 0x0407 | C→S | 14 | qwThisID / dwNumber | u32 / u32 | LE | 6 / 10 | — | 请求使用道具 |
 
-## 7. 异常与未知
+物品记录的整体宽度已校验，内部字段沿用 [Object.h](../../src/server/base/Object.h)。道具数量变化及持久化属于 P5。
 
-| opcode | 现象 | 处理策略 |
-|---|---|---|
-| — | — | 丢弃 / 透传 / 仅日志 |
+## 7. 版本与证据边界
+
+- [schema/p2_wire.h](schema/p2_wire.h) 的核心结构用原源码做了 x86 编译器布局对照。
+- [msgid.csv](msgid.csv)、[fields.csv](fields.csv) 和 [protocol.generated.md](protocol.generated.md) 保留旧版生成器的 559 条索引。旧生成器会把头部重复计入，并漏掉宏展开数组、复合类型和可变尾部。实现 P3 时，核心报文以本页与校验头文件为准，其余条目需回查源定义。
+- 现有实包证据仅覆盖服间的 0x0106。登录、选区、进图、客户端心跳、移动、背包的方向和长度来自源码，客户端真机验收记入 P5。

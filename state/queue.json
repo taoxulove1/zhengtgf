@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-11-27T00:21:32Z",
+  "updated_at": "2026-11-27T03:10:31Z",
   "tasks": {
     "P0": {
       "state": "done",
@@ -24,7 +24,12 @@
       "finished_at": "2026-11-27T00:21:32Z"
     },
     "P2": {
-      "state": "pending"
+      "state": "done",
+      "started_at": "2026-11-27T03:06:31Z",
+      "actor": "codex",
+      "gate_rc": 0,
+      "gate_at": "2026-11-27T03:10:31Z",
+      "finished_at": "2026-11-27T03:10:31Z"
     },
     "P3": {
       "state": "pending"

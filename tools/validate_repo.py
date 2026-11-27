@@ -55,6 +55,13 @@ def count_lines(path):
     return 0 if t is None else len(t.splitlines())
 
 
+def documented_message_section(title):
+    text = read("docs/protocol/protocol.md") or ""
+    heading = rf"^## \d+\. {re.escape(title)}(?:[ \t（(]|$)[^\r\n]*$"
+    section = re.search(rf"{heading}\n(.*?)(?=^## |\Z)", text, re.MULTILINE | re.DOTALL)
+    return bool(section and re.search(r"^\|\s*0x[0-9a-fA-F]{4}\s*\|", section[1], re.MULTILINE))
+
+
 def tracked_files():
     out = subprocess.run(["git", "ls-files", "-z"], cwd=ROOT,
                          capture_output=True).stdout
@@ -210,12 +217,13 @@ PHASE_RULES = {
         ],
     },
     "P2": {
-        "files": ["docs/protocol/protocol.md"],
+        "files": ["docs/protocol/protocol.md", "docs/protocol/login_handshake.md",
+                  "docs/protocol/schema/p2_wire.h"],
         "checks": [
             ("docs/protocol/protocol.md", lambda: count_lines("docs/protocol/protocol.md") >= 120,
              "协议表 ≥ 120 行"),
         ] + [
-            ("docs/protocol/protocol.md", (lambda kw: lambda: kw in (read("docs/protocol/protocol.md") or ""))(kw),
+            ("docs/protocol/protocol.md", (lambda kw: lambda: documented_message_section(kw))(kw),
              f"含「{kw}」类消息") for kw in ("登录", "选区", "进图", "心跳", "移动", "背包")
         ],
     },

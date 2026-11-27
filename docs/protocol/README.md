@@ -6,7 +6,7 @@
 |---|---|---|
 | `protocol.md` | 九列消息表，按业务分类分节 | ≥ 120 行；六类齐全 |
 | `msgid.csv` | 机器可读消息索引 | ≥ 60 条 |
-| `schema/*.h` | `#pragma pack(1)` 结构体声明 | 字段与表一一对应 |
+| `schema/p2_wire.h` | P2 核心消息的定长结构及变长前缀 | 与服务端源码的 x86 大小及字段偏移逐项对照 |
 | `login_handshake.md` | 登录三步时序 + 字段偏移 | 三步齐全 |
 
 ## 2. `protocol.md` 九列
@@ -56,7 +56,7 @@ id,direction,name,length_rule,min_len,max_len,phase,captured
 ## 6. 当前状态
 
 - `msgid.csv`：**559 条**（47 个命令域），由 `tools/extract_msgid.py` 从 `src/server/base/Command.h` 自动提取。
-- `schema/commands.h`：由同一脚本生成，`#pragma pack(1)` 结构体声明。
-- `protocol.md`：**142 行**（门禁 ≥ 120 已过）。§0 报文封装 = 帧层 + 双阶段加密，均为源码逐行核对结论；登录域 12 条已列。选区/进图/心跳/移动/背包五类待 P2 补。
-- `tools/decrypt.py`：DES + RC5-32/12/16 + 帧层（长度头 / zlib / 8 对齐），6 项自检全绿。
-- P1 门禁第三项 `captures/*.pcapng` 未满足（需管理员权限跑 `tools/capture.ps1`）。这是 P2 之前唯一的硬阻塞。
+- [协议正文](protocol.md) 已覆盖登录、选区、进图、心跳、移动和背包，三步时序见 [登录说明](login_handshake.md)。
+- [P2 核心结构](schema/p2_wire.h) 已与原声明做 x86 编译器布局核验。变长前缀的长度公式见协议正文。
+- `schema/commands.h`、`fields.csv` 和 `protocol.generated.md` 是早期生成器的检索材料。生成器存在重复计入命令头和漏算复合字段的问题。
+- 入库抓包覆盖内部心跳。客户端消息的运行状态在 P5 对照验证。
