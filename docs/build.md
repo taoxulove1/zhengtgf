@@ -58,6 +58,8 @@ ss -nt state established '( sport = :8000 or sport = :8001 or sport = :8002 )'; 
 
 实机回传显示 `fl.out` 为 0 字节，只有一条 `8001` 服间连接，`8000` 和 `8002` 当时没有已建立的连接。单独重启原版 FLServer 时，这条服间连接也会短暂断开。恢复后在测试客户端刷新一次区服列表，无需提交账号。
 
+下一轮的 45 秒监听结束时抓到 0 包。测试副本 `E:/源端/源` 的桌面快捷方式原来指向已停用的更新器，`Data/zhengtu.dat` 是客户端主体。另有一份登录器生成器，其自带列表未配置当前测试服务器，运行兼容性也未验证。下次采集前先确认使用的登录器和区服列表都指向测试服务。
+
 ```bash
 ss -lntp | grep -E ':(8000|8001|8002)[[:space:]]'; ss -lntp 'sport = :8002' | grep -i 'flserver_r\.exe' && p3_capture=$(mktemp /root/p3-test/p3-original-ping.XXXXXXXX.pcap) && printf 'Capture: %s\n' "$p3_capture" && timeout -s INT 45 /usr/sbin/tcpdump -i any -nn -s 0 -U -w - 'tcp port 8002' > "$p3_capture"
 ```
