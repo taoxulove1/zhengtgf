@@ -1,0 +1,15 @@
+[version]
+signature="$CHICAGO$"
+AdvancedINF=2.0
+
+[Add.Code]
+BjrcbEdit.dll=BjrcbEdit.dll
+
+[BjrcbEdit.dll]
+file-win32-x86=thiscab
+clsid={74C7AC8A-E5E0-4410-808B-919741E496E6}
+FileVersion=1,0,1,0
+DestDir=11 
+RegisterServer=yes
+
+

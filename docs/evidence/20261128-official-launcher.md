@@ -94,3 +94,37 @@ patchsetup.ini、startflist.xml、backupflist.xml、日志与 config.ini×2）�
 3. srvlist zones 的 id/type 组合（710/101）若客户端校验版本号（versionsign），迭代看
    服务器 access log 请求参数即知。
 4. HTTP 服务为 python3 单线程；多用户并发补丁下载建议后续换 nginx。
+
+## 八、.co 补丁格式破解（20261128 02:15 定案）
+
+**结论：`.co` = raw deflate（windowBits=-15），无 zlib 头，无任何加密。**
+
+破解过程（含两次误判记录）：
+1. 误判一：先入为主套客户端 XPAK 3DES 算法（20210112taozhi 密码）→ 全部解不开。
+   根因排查中发现 cotool.cpp 的 `DES_LONG=unsigned long` 在 LP64 下为 8 字节，
+   DES 半块读写全错——修复后仍解不开，证明算法本身对不上而非实现 bug。
+2. patchupdate.exe 静态逆向：XPAK 魔数 0x46db24、pack-open 0x42c020（明文头+末尾索引）、
+   KeyDerive 0x4291c0（密码 `xuzhao20041108` 硬编码于 .rdata 0x46db2c，15 字节，
+   MD5String 0x44ee80 → 3DES HeaderData 表 0x481498 与客户端 HeaderData_DES_SPtrans
+   逐字节一致）、写路径 0x42b69d。此机制用于**本地 `<名>_pack.pack` 缓存**
+   （0x4198d0/0x41a410 的 `_pack`/`%s.pack` 命名），非服务器 .co。
+3. 终判：官方配对样本 raw deflate 扫描一发命中——
+   - official-flist.xml.co(11102B) → inflate → **59164B，与 official-flist.xml 逐字节一致**
+   - official-patchsetup.ini.co(200B) → 398B ini 明文
+   - official-ztsafe.sys.co(4698B) → 8976B MZ 驱动
+   - sample-00257.grp.co(17.9MB) → 21467032B pack 体
+4. URL 四模板（`%s.co`/`?time=`/`?CRC=`/`?versionsign=`，0x41b730）确认所有下载
+   强制 .co 后缀、无明文回退；python http.server 会剥离 query string，天然兼容。
+
+**生成与伺服**（tools/gen_co_files.py）：17+1 个 .co 已上传三路径
+（/autopatch/、/autopatchhuaijiu/、/Zhengtu/Client/autopatchhuaijiu/）：
+flist.xml.co、srvflist.xml.co、patchsetup.ini.co、patchupdate.exe.co、config.ini.co、
+patchupdate.log.co(stub)、uninst.exe.co、Data|data/ztsafe.sys.co（官方 8976B 驱动）、
+epay/{version.xml,autoupdate.exe,epayupdate.exe,cfg.ini,epay.exe,unzip.exe,
+autoupdate.xml,register.exe,Register.exe}.co。
+服务器端自验 18/18 OK（HTTP 200 + inflate 回验）；外网 curl flist.xml.co = 200/14758B。
+本地 15 个 0 字节 .dl 残留已清。
+
+工具沉淀：tools/cobf*.cpp（密码×表×skip 爆破，含 LP64 DES_LONG 修复）、
+tools/usweep.cpp、tools/gen_co_files.py、tools/analyze_patchupdate_co.py、
+tools/disasm_42c0.py、tools/disasm_keyderive.py、tools/find_callers.py。

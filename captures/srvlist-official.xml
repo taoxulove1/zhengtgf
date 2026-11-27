@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- edited with XMLSpy v2005 sp2 U (http://www.altova.com) by any (Ru-Board) -->
+<server gametype="7">
+	<patch>
+	<!-- zone: 0: 电信区 ; 1: 网通区 ; 3: 临时测试区-->
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold01" type="101" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold02" type="102" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold03" type="103" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold04" type="104" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold05" type="105" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold06" type="106" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold07" type="107" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold08" type="108" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold09" type="109" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold10" type="110" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold11" type="111" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold12" type="112" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold13" type="113" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold14" type="114" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold15" type="115" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold16" type="116" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold17" type="117" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong101.ztgamail.com" port="80" path="/autopatchold18" type="118" reservepatch="211.159.204.9"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold01" type="201" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold02" type="202" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold03" type="203" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold04" type="204" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold05" type="205" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold06" type="206" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold07" type="207" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold08" type="208" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold09" type="209" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold10" type="210" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold11" type="211" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold12" type="212" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold13" type="213" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold14" type="214" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold15" type="215" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold16" type="216" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold17" type="217" reservepatch="109.244.42.98"/>
+		<item addr="huaijiugong102.ztgamail.com" port="80" path="/autopatchold18" type="218" reservepatch="109.244.42.98"/>
+		
+		<!-- ztlv-hjcdnupdate01.ztgame.com.cn -->
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold01" type="701" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="0"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold02" type="702" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="0"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold03" type="703" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="20261124R2_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold04" type="704" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="20230119R3_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold05" type="705" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="20200924R1_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold06" type="706" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="20261110R1_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold07" type="707" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="20261124R3_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold08" type="708" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="20261126R5_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold09" type="709" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="20261126R2_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold10" type="710" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="20261126R4_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold11" type="711" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="20260929R9_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold12" type="712" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="20261126R3_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold13" type="713" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="20260920R2_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold14" type="714" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="20260929R9_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold15" type="715" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="20260929R8_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold16" type="716" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="20260929R9_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold17" type="717" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="20251219R13_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold18" type="718" reservepatch="211.159.204.9" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong101.ztgamail.com" versionsign="0"/>
+		
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold01" type="801" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="0"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold02" type="802" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="0"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold03" type="803" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="20261124R2_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold04" type="804" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="20230119R3_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold05" type="805" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="20200924R1_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold06" type="806" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="20261110R1_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold07" type="807" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="20261124R3_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold08" type="808" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="20261126R5_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold09" type="809" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="20261126R2_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold10" type="810" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="20261126R4_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold11" type="811" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="20260929R9_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold12" type="812" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="20261126R3_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold13" type="813" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="20260920R2_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold14" type="814" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="20260929R9_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold15" type="815" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="20260929R8_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold16" type="816" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="20260929R9_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold17" type="817" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="20251219R13_HJ"/>
+		<item addr="ztlv-hjcdnupdate01.ztgame.com.cn" port="80" path="/autopatchold18" type="818" reservepatch="109.244.42.98" secondcdn="ztlv-hjcdnupdate01.ztgame.com.cn,huaijiugong102.ztgamail.com" versionsign="0"/>	
+	</patch>
+
+
+	<zones default="踏雪横戈(经典版)">
+		<!-- 电信区参照 -->
+    	
+	<zone name="踏雪横戈(经典版)" id="406" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="710" zone="0" Index="14" newzone="1"/>
+	<zone name="周年庆典(独立版)" id="404" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="708" zone="0" Index="14"/>
+	<zone name="剑定山河(独立版)" id="401" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="712" zone="0" Index="14"/>
+	<zone name="夏日盛典(独立版)" id="400" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="712" zone="0" Index="14"/>
+	<zone name="激战夏日(经典版)" id="399" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="709" zone="0" Index="14"/>
+	
+	
+	
+	
+	<zone name="激情九天(经典版)" id="327" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="709" zone="0" Index="14" otherInfo="激情逐月/ 情义九天/"/>
+	<zone name="浩瀚天下(独立版)" id="328" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="707" zone="0" Index="14" otherInfo="浩瀚风云/ 浩气天下/"/>
+	
+	<zone name="决战沙场(独立版)" id="338" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="712" zone="0" Index="14" otherInfo="决战四海/ 盛世沙场/"/>
+	
+	<zone name="鸾凤决战(独立版)" id="375" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="712" zone="0" Index="14"/>
+	<zone name="九霄呈祥(经典版)" id="378" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="709" zone="0" Index="14" otherInfo="激战九霄/ 华星呈祥/"/>
+	<zone name="春回剑舞(独立版)" id="379" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="712" zone="0" Index="14" otherInfo="剑舞对决/ 春回啸月/"/>
+	
+	<zone name="仙境中原(经典版)" id="382" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="703" zone="0" Index="14" otherInfo="狂傲中原/ 仙境风云/"/>
+	
+	
+	
+	
+	
+	
+	<zone name="春风再起(独立版)" id="397" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="712" zone="0" Index="14" otherInfo="春暖花开/ 骏马迎春/ 风云再起/"/>
+	<zone name="玉雪九州(经典版)" id="402" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="709" zone="0" Index="14" otherInfo="玉雪狂欢/ 暖阳九州/"/>
+	<zone name="烽火八荒(独立版)(合区)" id="403" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="712" zone="0" Index="14" otherInfo="烽火凌云/ 傲视八荒/ 热辣万人大服/"/>
+	<zone name="江湖庆典(独立版)(合区)" id="405" addr="101.133.228.131:43.140.185.69" port="7000:7000" type="712" zone="0" Index="14" otherInfo="江湖对决/ 年终庆典/"/>
+
+      		
+       </zones>
+       <board>
+                <item show="0" content="全国哀悼 所有游戏15日停运1天##由于甘肃舟曲地区发生特大山洪泥石流，据国务院公告：2010年8月15日为全国哀悼日，在此期间全国停止公共娱乐活动。##为了表达对甘肃舟曲特大山洪泥石流遇难同胞的深切哀悼，巨人网络决定：自2010年8月15日00：00-24:00期间暂停巨人网络公司旗下所有游戏产品的运营，包括官网主页以及相关客服反馈渠道(其中不包括客服热线)，均暂停服务。##为了让玩家能专心参加悼念活动，8月16日将开放1天“冲星失败返积分”,“幸运星”,“点数换金子送绑银”,“双倍经验”活动。##巨人网络也在此呼吁广大玩家共同停止各项公共娱乐活动，共同表达哀悼之情。"/>
+       </board>       
+</server>

@@ -1,0 +1,48 @@
+[Version]
+Signature = "$Chicago$"
+AdvancedINF=2.5
+
+[DefaultInstall]
+CopyFiles=files,drivers
+RegisterOCXs=RegisterFiles
+
+[DefaultUninstall]
+cleanup=1
+Delfiles=files
+Delfiles=drivers
+UnRegisterOCXs=RegisterFiles
+
+[SourceDisksNames]
+1 = %DiskName%,"CgbEdit.dll",0
+1 = %DiskName%,"CgbKeyFlt.sys",0
+
+[SourceDisksFiles]
+CgbEdit.dll=1
+CgbKeyFlt.sys=1
+
+[RegisterFiles]
+%11%\CgbEdit.dll
+
+[CgbEdit.dll]
+file-win32-x86=thiscab
+Clsid={5157896D-FCA4-40C8-BFCF-34CD3BAEE25A}
+RegisterServer=yes
+FileVersion=2,0,0,0
+
+[CgbKeyFlt.sys]
+file-win32-x86=thiscab
+FileVersion=1,0,7,2
+destdir=10
+
+[DestinationDirs]
+files=11
+drivers=10
+
+[files]
+CgbEdit.dll
+
+[drivers]
+CgbKeyFlt.sys
+
+[Strings]
+DiskName = "CGBEdit"

@@ -1,0 +1,17 @@
+[version] 
+; version signature (same for both NT and Win95) do not remove
+signature="$CHICAGO$"
+Provider==%Provider%
+
+[Add.Code]
+CMBEdit.dll=CMBEdit.dll
+
+[CMBEdit.dll]
+file-win32-x86=thiscab
+clsid={0CA54D3F-CEAE-48AF-9A2B-31909CB9515D}
+RegisterServer=yes
+FileVersion=1,2,0,3
+DestDir=11
+
+[Strings]
+Provider="Information Technology Department Of China Merchants Bank"

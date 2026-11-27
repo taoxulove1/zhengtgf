@@ -1,0 +1,402 @@
+/*
+2011.6.1
+hujunjie
+
+绑定流程
+*/
+
+
+body{
+	margin:0; 
+	padding:0;
+	width:100%;
+	font-family: "Lucida Grande","Lucida Sans Unicode","Lucida Sans",Verdana,Arial,sans-serif;
+	color:#555555;
+    font-size: 12px;
+	}
+a img{
+	list-style:none;
+	border:0;
+	}
+a{
+	text-decoration:underline;
+	color:#FF6600;
+	cursor:pointer;
+	padding:0;
+	margin:0;
+	}
+
+ul, li{
+	padding:0;
+	margin:0;
+	}
+ul li{
+	list-style:none;
+	clear:both;
+	height:40px;
+	}
+ul li span label{
+	cursor:pointer;
+	}
+.left{
+	float:left;
+	}
+#PAY_MAIN_DIV{
+	position:relative;
+	top:0px;
+	left:0px;
+	}
+.pay_main_div{
+	width:705px; 
+	height:536px; 
+	margin:0 auto; 
+	overflow:hidden;
+	}
+
+#PAY_MAIN_DIV .pay_bg{
+	width:700px;
+	height:467px;
+
+	}
+
+#PAY_MAIN_DIV ul li input{
+	vertical-align:middle;
+	}
+#PAY_MAIN_DIV ul li input.txt_200{
+	width:200px;
+	border:1px solid #90b8d6;
+	/*
+	background-color:#cdeaff;
+	color:#006588;*/
+	}
+	
+#PAY_MAIN_DIV ul li input.txt_100{
+	width:80px;
+	border:1px solid #90b8d6;
+	/*background-color:#cdeaff;
+	color:#006588;*/
+	}	
+
+
+#PAY_MAIN_DIV ul li .span_txt{
+	width:95px;
+	text-align:right;
+	display:inline-block;
+	}	
+
+
+
+#PAY_MAIN_DIV .pay_bottom_div span{
+	display:inline-block;
+	width:70px;
+	}	
+#PAY_MAIN_DIV .pay_bottom_div span.txt1{
+	width:85px;
+	}	
+
+
+	
+#PAY_MAIN_DIV .more_img_div{
+	height:14px; 
+	width:200px; 
+	background:url(../images/paygame/more_img.jpg) no-repeat; 
+	padding-left:20px;
+	position:relative; 
+	top:10px; 
+	left:120px;
+	}
+	
+#PAY_MAIN_DIV .pay_bottom{
+	width:750px; 
+	height:126px;
+	}	
+
+	
+#PAY_MAIN_DIV .pay_bottom_main{
+	width:170px;
+	height:350px;
+	position:relative;
+	color:#1a80c9;
+	top:90px;
+	left:10px;
+	line-height:30px;
+	font-size:12px;
+	margin:0 auto;
+	}
+	
+#PAY_MAIN_DIV .bank_img{
+	position:relative;
+	top:0px;
+	*top:-7px;
+	left:0px;
+	}	
+.show_bg_bank_div{
+	position: relative; 
+	height:180px;
+	width:499px;
+	margin:0 auto;
+	overflow:scroll;
+	overflow-x:hidden;
+	}
+
+#PAY_MAIN_DIV .pay_bg ul{
+	float:left; 
+	width:465px; 
+	padding-top:35px;
+	}
+#PAY_MAIN_DIV .pay_bg .s1{
+	color:#006699;
+	}	
+
+#PAY_SHOW_DIV{
+	position:absolute;
+	top:80px;
+	left:82px;
+	}
+
+#PAY_SHOW_DIV .pay_next_btn{
+	width:110px; 
+	height:40px; 
+	background:url(../images/paygame/pay_next_btn.jpg) no-repeat;
+	padding-left:100px;
+	display:inline-block;
+	cursor:pointer;
+	}
+#PAY_SHOW_DIV .pay_next_btn:hover{
+	background:url(../images/paygame/pay_next_btn_1.jpg) no-repeat;
+	}	
+#PAY_SHOW_DIV .pay_can_btn{
+	background:url(../images/paygame/pay_can_btn.jpg) no-repeat; 
+	width:114px; 
+	height:24px; 
+	display:inline-block; 
+	cursor:pointer;
+	}
+#PAY_SHOW_DIV .pay_can_btn:hover{
+	background:url(../images/paygame/pay_can_btn_1.jpg) no-repeat; 
+	}
+#PAY_SHOW_DIV ul{
+	width:499px; 
+	margin:0 auto;
+	height:180px;
+	overflow:scroll;
+	overflow-x:hidden;
+	}	
+
+#PAY_SHOW_DIV ul li span{
+	padding-left:15px;
+	}		
+	
+.payMoneyTxt{
+	position:relative; 
+	top:2px; 
+	*top:-1px; 
+	left:0px;
+	}
+#PAY_MAIN_DIV .pay_num_div{
+	width:290px; 
+	float:left;
+	}	
+#PAY_MAIN_DIV .pay_num_div > span{
+	display:inline-block;
+	width:80px;
+	height:25px;
+	}	
+	
+	
+#PAY_MONEY{
+	color:#006699;
+	font-weight:bold;
+	}
+
+
+.bg_left{
+	width:456px; 
+	height:471px; 
+	background:url(../images/paygame/bg_left.jpg) no-repeat; 
+	float:left;
+	position:relative;
+	}
+.bg_right{
+	width:241px; 
+	height:471px; 
+	background:url(../images/paygame/bg_right.jpg) no-repeat;
+	position:relative;
+	float:left;
+	}
+.bg_right .main_div{
+	margin:200px 0 0 12px;
+	}
+.bili{
+	width:219px;
+	height:202px;
+	background:url(../images/paygame/bili.jpg) no-repeat;
+	display:inline-block;
+	}		
+.bg_right div{
+	width:196px;
+	border:1px solid #b7c5eb; 
+	background-color:#ffffff;
+	line-height:16px; 
+	padding:10px;
+	}	
+.show_bg_top{
+	width:540px; 
+	height:55px; 
+	background:url(../images/paygame/show_bg_top.png) no-repeat;
+	}
+.show_bg_top .img_title{
+	margin:20px 0 0 20px;
+	}
+.show_bg_line{
+	width:540px; 
+	background:url(../images/paygame/show_bg_line.png) repeat-y;
+	height:auto;
+	}
+	
+.show_bg_bottom{
+	width:540px; 
+	height:120px; 
+	background:url(../images/paygame/show_bg_bottom.png) no-repeat; 
+	text-align:center;
+	overflow:hidden;
+	}
+	
+.li_img_title{
+	padding:40px 0 30px 60px;
+	}
+	
+.li_line{
+	padding:0; 
+	height:20px;
+	}
+.pad70{
+	padding-left:70px;
+	}
+.hand{
+	cursor:pointer;
+	}
+/*
+充值信息显示
+*/
+
+ul li .span_txt{
+	width:180px;
+	text-align:right;
+	display:inline-block;
+	}	
+
+ul li.li_btn{
+	padding-left:0px;
+	}	
+
+ul li.li_btn{
+	text-align:center;
+	}
+#PAY_SHOW_DIV ul li.li_btn span{
+	padding:0;
+	}
+
+#CHECK_CODE_DIV{
+	float:left; 
+	width:450px;
+	}
+.return_btn_txt{
+	position:relative; 
+	top:-30px; 
+	left:40px;
+	}
+
+#PAY_SHOW_MAIN_DIV{
+	display:none;
+	}
+	
+#MASK_BG{
+	position:absolute; 
+	top:0px; 
+	left:0px; 
+	background-color:#000000;
+	filter:Alpha(Opacity=40);
+	opacity:0.4; 
+	width:100%;
+	height:100%;
+
+	}
+
+
+.btn{
+	margin:25px 0 0 30px;
+	display:inline-block;
+	cursor:pointer;
+	}
+
+
+.pay_ok_btn{
+	width:150px;
+	height:72px;
+	background:url(../images/paygame/pay_ok_btn.jpg) no-repeat; 
+	}
+
+.pay_ok_btn:hover{
+	background:url(../images/paygame/pay_ok_btn_1.jpg) no-repeat; 
+	}
+.pay_check_ok{
+	width:150px;
+	height:72px;
+	background:url(../images/paygame/pay_check_ok.jpg) no-repeat; 
+	}
+.pay_check_ok:hover{
+	background:url(../images/paygame/pay_check_ok_1.jpg) no-repeat; 
+	}
+
+.cz_btn:hover{
+	background:url(../images/paygame/cz_btn_1.jpg) no-repeat; 
+	}		
+	
+.cz_btn{
+	width:150px; 
+	height:72px; 
+	background:url(../images/paygame/cz_btn.jpg) no-repeat;
+	margin:0;
+	}	
+
+
+.pay_goon_btn{
+	background:url(../images/paygame/jxcz_btn.jpg) no-repeat; 
+	width:163px; 
+	height:72px;
+	}
+.pay_goon_btn:hover{
+	background:url(../images/paygame/jxcz_btn_1.jpg) no-repeat;
+	}
+
+.eggDiv{
+	position:absolute;
+	top:50px;
+	right:-10px;
+	}
+
+.eggShowMain{
+	width:300px;
+	margin:0 auto;
+}
+
+.bbs_div{
+	position:absolute; 
+	top:165px; 
+	left:30px;
+	}
+
+.caidan_txt{
+	font-weight:bold;
+	font-size:14px;
+	color:#f00;
+	width:190px;
+	}
+
+
+
+
+
+
+	

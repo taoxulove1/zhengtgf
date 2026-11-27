@@ -1,0 +1,24 @@
+; INF file for PowerEnterSDB
+[version] 
+; version signature (same for both NT and Win95) do not remove
+signature="$CHICAGO$"
+AdvancedINF=2.0
+
+[Add.Code]
+PowerEnterSDB.ocx=PowerEnterSDB.ocx
+PECSP.dll=PECSP.dll
+
+[PECSP.dll]
+file-win32-x86=thiscab
+FileVersion=1,0,0,1
+destdir=11
+
+[PowerEnterSDB.ocx]
+file-win32-x86=thiscab
+FileVersion=2,2,0,15
+RegisterServer=yes
+
+[Strings]
+Provider="CSII Special For SDB"
+
+; end of INF file

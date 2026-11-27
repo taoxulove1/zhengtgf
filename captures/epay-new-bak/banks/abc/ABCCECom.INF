@@ -1,0 +1,19 @@
+; version signature (same for both NT and Win95) do not remove and change
+[version]
+signature="$CHICAGO$"
+AdvancedINF=2.0
+
+;file in cab
+[Add.Code]
+ABCCECom.ocx=ABCCECom.ocx
+
+[ABCCECom.ocx]
+file=thiscab
+FileVersion=1,0,11,222
+clsid={1086BE51-00F5-4371-A449-9A2DECE1B138}
+RegisterServer=yes
+;DestDir is downloaded program files
+;10 for windows dir
+;11 for system32 dir
+;none for default
+DestDir=11

@@ -1,0 +1,32 @@
+; INF file for spdb safe
+[version] 
+; version signature (same for both NT and Win95) do not remove
+signature="$CHICAGO$"
+AdvancedINF=2.0
+
+[Add.Code]
+spdbsign_v3.ocx=spdbsign_v3.ocx
+spdbsafe_v4.ocx=spdbsafe_v4.ocx
+PECSP.dll=PECSP.dll
+
+[spdbsign_v3.ocx]
+file-win32-x86=thiscab
+FileVersion=1,0,0,25
+RegisterServer=yes
+DestDir=11
+
+[spdbsafe_v4.ocx]
+file-win32-x86=thiscab
+FileVersion=2,3,3,93
+RegisterServer=yes
+DestDir=11
+
+[PECSP.dll]
+file-win32-x86=thiscab
+FileVersion=1,0,0,1
+DestDir=11
+
+[Strings]
+Provider="CSII Special For SPDB"
+
+; end of INF file

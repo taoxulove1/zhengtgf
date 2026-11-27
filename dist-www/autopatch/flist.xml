@@ -7,13 +7,20 @@
     <file size="302160" path="hprotect.exe" crc="7e0729a2" must="1" />
     <file size="1052474" path="public.lib" crc="9725dc77" must="1" />
     <file size="2152664" path="uirc.dll" crc="c7172c8b" must="1" />
+    <file size="609" path="config.ini" crc="f3649761" must="1" />
     <file size="1696152" path="d3d9.dll" crc="d87b4fba" must="1" />
     <file size="640000" path="dbghelp.dll" crc="fe7390c0" must="1" />
+    <file size="72547" path="flist.xml" crc="bbb11639" must="1" />
     <file size="286720" path="fmodex.dll" crc="b108fbec" must="1" />
     <file size="27" path="imversion.ini" crc="701c108c" must="1" />
     <file size="1260440" path="packrepair.exe" crc="c1d7ee10" must="1" />
-    <file size="534" path="patchsetup.ini" crc="2f45a7b0" must="1" />
-    <file size="580896" path="patchupdate.exe" crc="dc290211" must="1" />
+    <file size="496" path="patchsetup.ini" crc="635a8c6f" must="1" />
+    <file size="534" path="patchsetup.ini.bak-official-20261128" crc="2f45a7b0" must="1" />
+    <file size="0" path="patchsetup.ini.dl" crc="ffffffff" must="1" />
+    <file size="0" path="patchupdate.exe.dl" crc="ffffffff" must="1" />
+    <file size="580896" path="patchupdate.exe.tmp2" crc="f0298b81" must="1" />
+    <file size="1940" path="patchupdate.log" crc="b82fb9cc" must="1" />
+    <file size="0" path="srvflist.xml.dl" crc="ffffffff" must="1" />
     <file size="76696" path="trojankillerdll.dll" crc="85bb9d37" must="1" />
     <file size="258456" path="unicows.dll" crc="5b7a88f5" must="1" />
     <file size="580504" path="ztconfig.exe" crc="a9b2b9a4" must="1" />
@@ -115,7 +122,7 @@
     <file size="12807456" path="data/zhengtu.dat" crc="cacbd0af" must="1" />
     <file size="12807456" path="data/zhengtu.dav" crc="cacbd0af" must="1" />
     <file size="7334912" path="data/zhengtu.pdb" crc="9c50f4fa" must="1" />
-    <file size="8976" path="data/ztsafe.sys" crc="1f243916" must="1" />
+    <file size="0" path="data/ztsafe.sys.dl" crc="ffffffff" must="1" />
     <file size="56" path="data/3dvoiceengine/3dvoiceengine.ini" crc="d9333994" must="1" />
     <file size="33992" path="data/3dvoiceengine/imengine.dll" crc="82752a20" must="1" />
     <file size="838552" path="data/3dvoiceengine/imengineex.dll" crc="37334b29" must="1" />
@@ -260,6 +267,7 @@
     <file size="400" path="data/help/weeklyhelp5.xml" crc="ab69e3a2" must="1" />
     <file size="803" path="data/help/weeklyhelp6.xml" crc="c86a6c30" must="1" />
     <file size="328" path="data/help/ziliaopian.xml" crc="287dd04a" must="1" />
+    <file size="10973" path="data/log/zhengtu 01-22-49.log" crc="41ba5c11" must="1" />
     <file size="4471528" path="data/mapterrain/duanwei-an.pak" crc="794620b6" must="1" />
     <file size="4275516" path="data/mapterrain/duanwei-hong.pak" crc="e862fd15" must="1" />
     <file size="4065452" path="data/mapterrain/duanwei-lan.pak" crc="63c58898" must="1" />
@@ -439,19 +447,26 @@
     <file size="11708" path="dudu/sound/vedio_request.wav" crc="a42d3a84" must="1" />
     <file size="558764" path="dudu/sound/vedio_wait_accept.wav" crc="34bc1a78" must="1" />
     <file size="99236" path="dudu/sound/voicechannel_inout.wav" crc="bfe34b8f" must="1" />
-    <file size="64912" path="epay/register.exe" crc="3675399e" must="1" />
-    <file size="446352" path="epay/autoupdate.exe" crc="4752fcf0" must="1" />
-    <file size="308" path="epay/autoupdate.xml" crc="da8f79fa" must="1" />
-    <file size="58" path="epay/cfg.ini" crc="63354e1e" must="1" />
-    <file size="571280" path="epay/epay.exe" crc="d5393bac" must="1" />
-    <file size="335248" path="epay/epayupdate.exe" crc="9727c801" must="1" />
+    <file size="79528" path="epay/register.exe" crc="40bca3fc" must="1" />
+    <file size="384200" path="epay/autoupdate.exe" crc="ceb18472" must="1" />
+    <file size="0" path="epay/autoupdate.exe.dl" crc="ffffffff" must="1" />
+    <file size="301" path="epay/autoupdate.xml" crc="6dccfa9" must="1" />
+    <file size="0" path="epay/autoupdate.xml.dl" crc="ffffffff" must="1" />
+    <file size="63" path="epay/cfg.ini" crc="1de41a61" must="1" />
+    <file size="0" path="epay/cfg.ini.dl" crc="ffffffff" must="1" />
+    <file size="585896" path="epay/epay.exe" crc="4d92d984" must="1" />
+    <file size="0" path="epay/epay.exe.dl" crc="ffffffff" must="1" />
+    <file size="349864" path="epay/epayupdate.exe" crc="98078d82" must="1" />
+    <file size="0" path="epay/epayupdate.exe.dl" crc="ffffffff" must="1" />
     <file size="168" path="epay/filelist.xml" crc="92bcaac5" must="1" />
     <file size="1869" path="epay/microsoft.vc80.crt.manifest" crc="e5edbfa0" must="1" />
     <file size="479232" path="epay/msvcm80.dll" crc="e5921b8a" must="1" />
     <file size="548864" path="epay/msvcp80.dll" crc="aef71eea" must="1" />
     <file size="626688" path="epay/msvcr80.dll" crc="e76e86f0" must="1" />
-    <file size="269712" path="epay/unzip.exe" crc="c41ddb0" must="1" />
-    <file size="8690" path="epay/version.xml" crc="a3d63808" must="1" />
+    <file size="0" path="epay/register.exe.dl" crc="ffffffff" must="1" />
+    <file size="284328" path="epay/unzip.exe" crc="e3361e71" must="1" />
+    <file size="0" path="epay/unzip.exe.dl" crc="ffffffff" must="1" />
+    <file size="0" path="epay/version.xml.dl" crc="ffffffff" must="1" />
     <file size="413" path="epay/banks/abc/abccecom.inf" crc="19d0b28a" must="1" />
     <file size="461896" path="epay/banks/abc/abccecom.ocx" crc="d296a0c5" must="1" />
     <file size="184320" path="epay/banks/abc/netsign.dll" crc="80a26160" must="1" />

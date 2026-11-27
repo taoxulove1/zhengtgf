@@ -1,0 +1,11 @@
+[version]
+    signature="$CHICAGO$"
+    AdvancedINF=2.0
+[Add.Code]
+    CIBClient.ocx=CIBClient.ocx
+[CIBClient.ocx]
+    file-win32-x86=thiscab
+    clsid={8BE80FD3-B35E-CD48-1179-1B592DDEDDA7}
+    FileVersion=1,0,0,1
+    DestDir=11
+    RegisterServer=yes

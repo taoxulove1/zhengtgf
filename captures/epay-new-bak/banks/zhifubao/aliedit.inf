@@ -1,0 +1,56 @@
+[Version]
+Signature = "$Chicago$"
+AdvancedINF=2.5
+
+[DefaultInstall]
+CopyFiles=files, driverFiles
+RegisterOCXs=RegisterFiles
+
+[DefaultUninstall]
+cleanup=1
+Delfiles=files
+UnRegisterOCXs=RegisterFiles
+
+[SourceDisksNames]
+1 = %DiskName%,"aliedit.dll",0
+
+[SourceDisksFiles]
+aliedit.dll=1
+
+[RegisterFiles]
+%11%\aliedit\aliedit.dll
+%11%\aliedit\pta.dll
+%11%\aliedit\alidcp.dll
+
+[aliedit.dll]
+file-win32-x86=thiscab
+clsid={488A4255-3236-44B3-8F27-FA1AECAA8844}
+RegisterServer=yes
+FileVersion=2,4,0,1
+
+[pta.dll]
+file-win32-x86=thiscab
+Clsid={1E0DFFCF-27FF-4574-849B-55007349FEDA}
+RegisterServer=yes
+FileVersion=2,5,1,509
+
+[alidcp.dll]
+file-win32-x86=thiscab
+clsid={FEE3C8C5-9BEA-4079-AB36-63ECABFC7392}
+RegisterServer=yes
+FileVersion=2,0,0,1
+
+[DestinationDirs]
+files=11, aliedit
+driverFiles=11, drivers
+
+[files]
+aliedit.dll
+pta.dll
+alidcp.dll
+
+[driverFiles]
+alidevice.sys
+
+[Strings]
+DiskName = "aliedit"
