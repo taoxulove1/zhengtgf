@@ -36,6 +36,8 @@ cd /root/p3-test && python3 p3_runtime_smoke.py p3-build-luabind.log
 
 `tools/p3_runtime_reference.py` 已确认原版 Wine `FLServer_r.exe` 的 `8002` 监听，但使用原生格式发起查询时连接提前关闭，返回 `Broken pipe`。改从与原版部署配套的客户端正常打开或刷新区服列表，采集 `8002` 上的请求和响应。比对时先核对是否为同一种请求。
 
+后续收到的 `p8002.pcap` 有 39 条完整记录和 14 字节未完成的末尾记录。可读部分有 6 条 TCP 连接，5 条可见服务端 FIN 或 RST，服务端应用层负载为 0。同期截图出现 Wine 中的 `accept()` 10057。这些证据只说明原版监听仍需排查，尚无可比响应。先核对原版进程的监听和日志，再用配套客户端重采区服列表流量。
+
 ```bash
 cd /root/p3-test && p3_capture=$(mktemp ./p3-original-ping.XXXXXXXX.pcap) && printf 'Capture: %s\n' "$p3_capture" && timeout -s INT 45 /usr/sbin/tcpdump -i any -nn -s 0 -U -w - 'tcp port 8002' > "$p3_capture"
 ```
